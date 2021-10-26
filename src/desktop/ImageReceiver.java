@@ -22,6 +22,8 @@ import com.midfield_system.api.util.Log;
 import com.midfield_system.api.viewer.VideoCanvas;
 import com.midfield_system.protocol.IoStatus;
 
+import util.Dialog;
+
 //------------------------------------------------------------------------------
 /**
  * Sample code of MidField System API: ImageReceiver 

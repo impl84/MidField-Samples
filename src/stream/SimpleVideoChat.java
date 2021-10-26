@@ -6,13 +6,14 @@ import java.io.IOException;
 import com.midfield_system.api.system.MfsNode;
 import com.midfield_system.api.system.SystemException;
 
+import util.ConsolePrinter;
 import util.ConsoleReader;
 
 //------------------------------------------------------------------------------
 /**
  * Sample code of MidField System API: SimpleVideoChat
  *
- * Date Modified: 2021.08.24
+ * Date Modified: 2021.11.05
  *
  */
 
@@ -35,6 +36,7 @@ public class SimpleVideoChat
 		AbstractSampleCode sender = null;
 		AbstractSampleCode receiver = null;
 		ConsoleReader reader = ConsoleReader.getInstance();
+		ConsolePrinter printer = ConsolePrinter.getInstance();
 		
 		try {
 			// MidField System を初期化する．
@@ -44,7 +46,7 @@ public class SimpleVideoChat
 			mfs.activate();					// SystemException
 			
 			// 入出力構成ツールを生成する．
-			ConfigTool cfgTool = new ConfigTool(reader);
+			ConfigTool cfgTool = new ConfigTool(reader, printer);
 			
 			// ビデオ送信用のサンプルコードを実行する．
 			sender = new DeviceToNetworkEx();

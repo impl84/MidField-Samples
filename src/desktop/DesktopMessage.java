@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Sample code of MidField System API: DesktopMessage 
  *
- * Date Modified: 2021.09.10
+ * Date Modified: 2021.10.26
  *
  */
 
@@ -17,17 +17,11 @@ class DesktopMessage
 	implements	Serializable
 {
 	//- PACKAGE CONSTANT VALUE -------------------------------------------------
-	static final String MESSAGE_TYPE = "Desktop-Message";
-	
-	//- PACKAGE ENUM -----------------------------------------------------------
-	static enum Subtype
-	{
-		START_CONTROL,
-		CONTROL_ACCEPTED,
-		CONTROL_REFUSED,
-		CONTROL_MESSAGE,
-		STOP_CONTROL
-	}
+	static final String START_CONTROL		= "Start-Control";
+	static final String CONTROL_ACCEPTED	= "Control-Accepted";
+	static final String CONTROL_REFUSED		= "Control-Refused";
+	static final String CONTROL_MESSAGE		= "Control-Message";
+	static final String STOP_CONTROL		= "Stop-Control";
 	
 	//- PACKAGE ENUM -----------------------------------------------------------
 	static enum Action
@@ -46,7 +40,6 @@ class DesktopMessage
 //==============================================================================
 	
 	//- PRIVATE VARIABLE -------------------------------------------------------
-	private final Subtype subtype;
 	private final Action action;
 	private final Serializable object;
 	
@@ -60,18 +53,16 @@ class DesktopMessage
 	
 	//- CONSTRUCTOR ------------------------------------------------------------
 	//
-	DesktopMessage(Subtype subtype, Serializable object)
+	DesktopMessage(Serializable object)
 	{
-		this.subtype = subtype;
 		this.action = Action.UNKNOWN;
 		this.object = object;
 	}
 	
 	//- CONSTRUCTOR ------------------------------------------------------------
 	//
-	DesktopMessage(Subtype subtype, Action action, Serializable object)
+	DesktopMessage(Action action, Serializable object)
 	{
-		this.subtype = subtype;
 		this.action = action;
 		this.object = object;
 	}
@@ -79,13 +70,6 @@ class DesktopMessage
 //------------------------------------------------------------------------------
 //  PACKAGE METHOD:
 //------------------------------------------------------------------------------
-	
-	//- PACKAGE METHOD ---------------------------------------------------------
-	//
-	Subtype getSubtype()
-	{
-		return this.subtype;
-	}
 	
 	//- PACKAGE METHOD ---------------------------------------------------------
 	//

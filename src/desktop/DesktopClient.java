@@ -1,6 +1,12 @@
 
 package desktop;
 
+import static desktop.DesktopMessage.CONTROL_ACCEPTED;
+import static desktop.DesktopMessage.CONTROL_MESSAGE;
+import static desktop.DesktopMessage.CONTROL_REFUSED;
+import static desktop.DesktopMessage.START_CONTROL;
+import static desktop.DesktopMessage.STOP_CONTROL;
+
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -15,13 +21,11 @@ import com.midfield_system.api.system.PacketCommunicator;
 import com.midfield_system.api.system.PacketIoException;
 import com.midfield_system.api.system.SystemException;
 
-import desktop.DesktopMessage.Subtype;
-
 //------------------------------------------------------------------------------
 /**
  * Sample code of MidField System API: DesktopClient 
  *
- * Date Modified: 2021.09.20
+ * Date Modified: 2021.10.27
  *
  */
 
@@ -30,8 +34,7 @@ public class DesktopClient
 	implements	CommPacketHandler
 {
 	//- PUBLIC CONSTANT VALUE --------------------------------------------------	
-	public static final String
-		DESKTOP_CLIENT = "DesktopClient"; //$NON-NLS-1$
+	public static final String DESKTOP_CLIENT = "DesktopClient";
 	
 	//- PRIVATE CONSTANT VALUE -------------------------------------------------	
 	private static final String
@@ -72,12 +75,6 @@ public class DesktopClient
 	{
 		boolean wasHandled = true;
 		
-		// 入力パケットが DesktopMessage 用のパケットであることを確認する．
-		String msgType = pkt.getMessageType();
-		if (msgType.equals(DesktopMessage.MESSAGE_TYPE) == false) {
-			wasHandled = false;
-			return wasHandled;
-		}
 		// パケットから DesktopMessage のインスタンスを取得する．
 		DesktopMessage msg = pkt.getSerializableObject(DesktopMessage.class);
 		if (msg == null) {
@@ -87,11 +84,12 @@ public class DesktopClient
 		// 送信元の ObjectId を取得する．
 		ObjectId srcId = pkt.getSourceObjectId();
 		
-		// メッセージのサブタイプ毎の処理を実行する．
-		switch (msg.getSubtype()) {
+		// メッセージタイプ毎の処理を実行する．
+		String type = pkt.getMessageType();
+		switch (type) {
 		case CONTROL_ACCEPTED	: msgHn_ControlAccepted(msg);		break;
 		case CONTROL_REFUSED	: msgHn_ControlRefused(msg);		break;
-		default 				: msgHn_illegalMessage(msg, srcId);	break;
+		default 				: msgHn_UnsupportedMessage(type, srcId);break;
 		}
 		return wasHandled;
 	}
@@ -152,8 +150,8 @@ public class DesktopClient
 	void startControl(String dstAddr)
 	{
 		// 遠隔操作開始メッセージを配送する．
-		DesktopMessage msg = new DesktopMessage(Subtype.START_CONTROL, null);
-		CommPacket pkt = new CommPacket(DesktopMessage.MESSAGE_TYPE, this.svrId);
+		CommPacket pkt = new CommPacket(START_CONTROL, this.svrId);
+		DesktopMessage msg = new DesktopMessage(null);
 		pkt.setSerializableObject(msg);
 		this.comm.dispatchPacket(pkt);
 	}
@@ -163,8 +161,8 @@ public class DesktopClient
 	void dispatchEvent(DesktopMessage.Action action, Serializable obj)
 	{
 		// 遠隔操作メッセージを配送する．
-		DesktopMessage msg = new DesktopMessage(Subtype.CONTROL_MESSAGE, action, obj);
-		CommPacket pkt = new CommPacket(DesktopMessage.MESSAGE_TYPE, this.svrId);
+		CommPacket pkt = new CommPacket(CONTROL_MESSAGE, this.svrId);
+		DesktopMessage msg = new DesktopMessage(action, obj);
 		pkt.setSerializableObject(msg);
 		this.comm.dispatchPacket(pkt);
 	}
@@ -174,8 +172,8 @@ public class DesktopClient
 	void stopControl()
 	{
 		// 遠隔操作停止メッセージを配送する．
-		DesktopMessage msg = new DesktopMessage(Subtype.STOP_CONTROL, null);
-		CommPacket pkt = new CommPacket(DesktopMessage.MESSAGE_TYPE, this.svrId);
+		CommPacket pkt = new CommPacket(STOP_CONTROL, this.svrId);
+		DesktopMessage msg = new DesktopMessage(null);
 		pkt.setSerializableObject(msg);
 		this.comm.dispatchPacket(pkt);
 	}
@@ -184,7 +182,7 @@ public class DesktopClient
 	//
 	void close()
 	{
-		this.comm.delete();
+		this.comm.close();
 	}
 	
 //------------------------------------------------------------------------------
@@ -192,7 +190,7 @@ public class DesktopClient
 //------------------------------------------------------------------------------
 	
 	//- PRIVATE METHOD ---------------------------------------------------------
-	//		
+	//
 	private void msgHn_ControlAccepted(DesktopMessage msg)
 	{
 		Object obj = msg.getObject();
@@ -210,7 +208,7 @@ public class DesktopClient
 //------------------------------------------------------------------------------
 	
 	//- PRIVATE METHOD ---------------------------------------------------------
-	//		
+	//
 	private void msgHn_ControlRefused(DesktopMessage msg)
 	{
 		SwingUtilities.invokeLater(
@@ -223,13 +221,13 @@ public class DesktopClient
 //------------------------------------------------------------------------------
 	
 	//- PRIVATE METHOD ---------------------------------------------------------
-	//	
-	private void msgHn_illegalMessage(DesktopMessage msg, ObjectId srcId)
+	//
+	private void msgHn_UnsupportedMessage(String type, ObjectId srcId)
 	{
 		// PacketIoException を生成し，
 		// パケット入出力に関する例外処理を実行する．
 		PacketIoException ex = new PacketIoException(
-			String.format(STR_ILLEGAL_MESSAGE, msg.getSubtype(), srcId)
+			String.format(STR_ILLEGAL_MESSAGE, type, srcId)
 		);
 		SwingUtilities.invokeLater(
 			() -> this.viewer.handleIllegalMessage(ex)

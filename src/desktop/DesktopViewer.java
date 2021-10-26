@@ -45,6 +45,7 @@ import com.midfield_system.api.util.Log;
 import com.midfield_system.api.viewer.VideoCanvas;
 
 import util.AppUtilities;
+import util.Dialog;
 
 //------------------------------------------------------------------------------
 /**

@@ -23,6 +23,7 @@ import com.midfield_system.api.util.Log;
 import com.midfield_system.gui.misc.MessagePanel;
 
 import util.AppUtilities;
+import util.Dialog;
 
 //------------------------------------------------------------------------------
 /**

@@ -17,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import util.Dialog;
+
 //------------------------------------------------------------------------------
 /**
  * Sample code of MidField System API: HostAddressPanel 

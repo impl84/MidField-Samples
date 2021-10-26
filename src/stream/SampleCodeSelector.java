@@ -13,7 +13,7 @@ import util.ConsoleReader;
 /**
  * Sample code of MidField System API: SampleCodeSelector
  *
- * Date Modified: 2021.09.23
+ * Date Modified: 2021.11.05
  *
  */
 
@@ -105,7 +105,7 @@ public class SampleCodeSelector
 		this.mfs.activate();				// SystemException
 		
 		// 入出力構成ツールを生成する．
-		this.cfgTool = new ConfigTool(this.reader);
+		this.cfgTool = new ConfigTool(this.reader, this.printer);
 		
 		// サンプルコードとして実行可能なインスタンスを要素とする配列を生成する．
 		this.samples = new AbstractSampleCode[] {

@@ -11,6 +11,7 @@ import com.midfield_system.api.stream.ProtocolType;
 import com.midfield_system.api.stream.SegmentIo;
 import com.midfield_system.api.stream.StreamFormat;
 import com.midfield_system.api.stream.StreamInfoManager;
+import com.midfield_system.api.util.LogPrinter;
 import com.midfield_system.protocol.StreamInfo;
 
 import util.LineReader;
@@ -19,7 +20,7 @@ import util.LineReader;
 /**
  * Sample code of MidField System API: ConfigTool
  *
- * Date Modified: 2021.09.23
+ * Date Modified: 2021.11.05
  *
  */
 
@@ -32,8 +33,9 @@ class ConfigTool
 	
 	//- PRIVATE VARIABLE -------------------------------------------------------
 	
-	// 1行読込み用のインターフェース
+	// 行単位の文字列入出力用インターフェース
 	private final LineReader reader;
+	private final LogPrinter printer;
 	
 //==============================================================================
 //  INSTANCE METHOD:
@@ -45,9 +47,10 @@ class ConfigTool
 	
 	//- PACKAGE METHOD ---------------------------------------------------------
 	//
-	ConfigTool(LineReader reader)
+	ConfigTool(LineReader reader, LogPrinter printer)
 	{
 		this.reader = reader;
+		this.printer = printer;
 	}
 	
 	//- PACKAGE METHOD ---------------------------------------------------------
@@ -82,7 +85,7 @@ class ConfigTool
 		throws	IOException	
 	{
 		// 送信ホスト名/IPアドレスをコマンドラインから取得する．
-		System.out.print("  送信ホスト名/IPアドレス：");
+		this.printer.printf("  送信ホスト名/IPアドレス：");
 		String srcAddr = this.reader.readLine();
 			// IOException
 		

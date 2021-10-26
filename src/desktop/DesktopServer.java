@@ -1,6 +1,12 @@
 
 package desktop;
 
+import static desktop.DesktopMessage.CONTROL_ACCEPTED;
+import static desktop.DesktopMessage.CONTROL_MESSAGE;
+import static desktop.DesktopMessage.CONTROL_REFUSED;
+import static desktop.DesktopMessage.START_CONTROL;
+import static desktop.DesktopMessage.STOP_CONTROL;
+
 import java.awt.AWTException;
 import java.awt.GraphicsConfiguration;
 import java.awt.Robot;
@@ -23,13 +29,11 @@ import com.midfield_system.api.system.PacketIoException;
 import com.midfield_system.api.system.SystemException;
 import com.midfield_system.api.util.Log;
 
-import desktop.DesktopMessage.Subtype;
-
 //------------------------------------------------------------------------------
 /**
  * Sample code of MidField System API: DesktopServer 
  *
- * Date Modified: 2021.09.20
+ * Date Modified: 2021.10.27
  *
  */
 
@@ -38,8 +42,7 @@ public class DesktopServer
 	implements	CommPacketHandler
 {
 	//- PUBLIC CONSTANT VALUE --------------------------------------------------
-	public static final String
-		DESKTOP_SERVER = "DesktopServer"; //$NON-NLS-1$
+	public static final String DESKTOP_SERVER = "DesktopServer";
 	
 	//- PRIVATE CONSTANT VALUE -------------------------------------------------
 	private static final String
@@ -88,12 +91,6 @@ public class DesktopServer
 	{
 		boolean wasHandled = true;
 		
-		// 入力パケットが DesktopMessage 用のパケットであることを確認する．
-		String msgType = pkt.getMessageType();
-		if (msgType.equals(DesktopMessage.MESSAGE_TYPE) == false) {
-			wasHandled = false;
-			return wasHandled;
-		}
 		// パケットから DesktopMessage のインスタンスを取得する．
 		DesktopMessage msg = pkt.getSerializableObject(DesktopMessage.class);
 		if (msg == null) {
@@ -103,12 +100,13 @@ public class DesktopServer
 		// 送信元の ObjectId を取得する．
 		ObjectId srcId = pkt.getSourceObjectId();
 		
-		// メッセージのサブタイプ毎の処理を実行する．
-		switch (msg.getSubtype()) {
-		case START_CONTROL		: msgHn_StartControl(msg, srcId);	break;
-		case CONTROL_MESSAGE	: msgHn_ControlMessage(msg);		break;
-		case STOP_CONTROL		: msgHn_StopControl(msg);			break;
-		default 				: msgHn_illegalMessage(msg, srcId);	break;
+		// メッセージタイプ毎の処理を実行する．
+		String type = pkt.getMessageType();
+		switch (type) {
+		case START_CONTROL	: msgHn_StartControl(msg, srcId);		break;
+		case CONTROL_MESSAGE: msgHn_ControlMessage(msg);			break;
+		case STOP_CONTROL	: msgHn_StopControl(msg);				break;
+		default 			: msgHn_UnsupportedMessage(type, srcId);break;
 		}
 		return wasHandled;
 	}
@@ -172,7 +170,7 @@ public class DesktopServer
 	void close()
 	{
 		stopControl();
-		this.comm.delete();
+		this.comm.close();
 	}
 	
 	//- PACKAGE METHOD ---------------------------------------------------------
@@ -200,7 +198,7 @@ public class DesktopServer
 	//	
 	private void msgHn_StartControl(DesktopMessage inMsg, ObjectId srcId)
 	{
-		Subtype subtype = Subtype.CONTROL_REFUSED;
+		String msgType = CONTROL_REFUSED;
 		Serializable obj = null;
 		
 		// ソースホストアドレスを取得する．
@@ -220,7 +218,7 @@ public class DesktopServer
 				Log.message(STR_ACCEPT_CONTROL, srcNodeId);
 				
 				// メッセージタイプの設定と出力パラメータの取得．
-				subtype = Subtype.CONTROL_ACCEPTED;
+				msgType = CONTROL_ACCEPTED;
 				obj = this.imgSender.getOutputParam();
 			}
 			catch (SystemException | StreamException ex) {
@@ -228,26 +226,26 @@ public class DesktopServer
 				// デスクトップ制御を拒否する．
 				Log.message(STR_REJECT_CONTROL, srcNodeId);
 				Log.message(ex);
-				subtype = Subtype.CONTROL_REFUSED;
+				msgType = CONTROL_REFUSED;
 				obj = ex;
 			}
 		}
 		else {
 			// デスクトップ制御を拒否する．
 			Log.message(STR_REJECT_CONTROL, srcNodeId);
-			subtype = Subtype.CONTROL_REFUSED;
+			msgType = CONTROL_REFUSED;
 			obj = null;
 		}
 		// デスクトップ制御受入要求に対する応答を返す．
 		ObjectId dstId = srcId;
-		DesktopMessage outMsg = new DesktopMessage(subtype, obj);
-		CommPacket pkt = new CommPacket(DesktopMessage.MESSAGE_TYPE, dstId);
-		pkt.setSerializableObject(outMsg);
+		CommPacket pkt = new CommPacket(msgType, dstId);
+		DesktopMessage msg = new DesktopMessage(obj);
+		pkt.setSerializableObject(msg);
 		this.comm.dispatchPacket(pkt);
 		
 		// デスクトップ制御を受け入れる場合は，
 		// 状態変更：デスクトップ制御受入中．
-		if (subtype == Subtype.CONTROL_ACCEPTED) {
+		if (msgType.equals(CONTROL_ACCEPTED)) {
 			this.state = ControlState.CONTROLLED;
 		}
 	}
@@ -361,11 +359,11 @@ public class DesktopServer
 		int btnNum = 0;
 		
 		switch (ev.getButton()) {
-		case MouseEvent.NOBUTTON	: btnNum = 0;								break;
-		case MouseEvent.BUTTON1		: btnNum = InputEvent.BUTTON1_DOWN_MASK;	break;
-		case MouseEvent.BUTTON2		: btnNum = InputEvent.BUTTON2_DOWN_MASK;	break;
-		case MouseEvent.BUTTON3		: btnNum = InputEvent.BUTTON3_DOWN_MASK;	break;
-		default 					: /* error */								break;
+		case MouseEvent.NOBUTTON: btnNum = 0;								break;
+		case MouseEvent.BUTTON1	: btnNum = InputEvent.BUTTON1_DOWN_MASK;	break;
+		case MouseEvent.BUTTON2	: btnNum = InputEvent.BUTTON2_DOWN_MASK;	break;
+		case MouseEvent.BUTTON3	: btnNum = InputEvent.BUTTON3_DOWN_MASK;	break;
+		default 				: /* error */								break;
 		}
 		return btnNum;
 	}
@@ -376,8 +374,8 @@ public class DesktopServer
 
 	//- PRIVATE METHOD ---------------------------------------------------------
 	//	
-	private void msgHn_illegalMessage(DesktopMessage msg, ObjectId srcId)
+	private void msgHn_UnsupportedMessage(String type, ObjectId srcId)
 	{
-		Log.warning(STR_ILLEGAL_MESSAGE, msg.getSubtype(), srcId);
+		Log.warning(STR_ILLEGAL_MESSAGE, type, srcId);
 	}
 }

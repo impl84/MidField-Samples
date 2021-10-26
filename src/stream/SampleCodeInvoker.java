@@ -13,7 +13,7 @@ import util.ConsoleReader;
 /**
  * Sample code of MidField System API: SampleCodeInvoker
  *
- * Date Modified: 2021.09.23
+ * Date Modified: 2021.11.05
  *
  */
 
@@ -79,7 +79,7 @@ public class SampleCodeInvoker
 	// サンプルコード
 	private final AbstractSampleCode sample;
 	
-	// コンソールを利用した文字の入出力
+	// コンソールを利用した行単位の文字列の入出力
 	private final ConsoleReader reader;
 	private final ConsolePrinter printer;
 	
@@ -112,7 +112,7 @@ public class SampleCodeInvoker
 		this.mfs.activate();				// SystemException
 		
 		// 入出力構成ツールを生成する．
-		ConfigTool cfgTool = new ConfigTool(this.reader);
+		ConfigTool cfgTool = new ConfigTool(this.reader, this.printer);
 		
 		// サンプルコードの処理を開始する．
 		this.printer.println("> サンプルコードの処理を開始します．");
