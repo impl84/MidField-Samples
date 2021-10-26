@@ -9,7 +9,7 @@ import com.midfield_system.api.stream.SegmentIo;
 /**
  * Sample code of MidField System API: NetworkToNetworkEx
  *
- * Date Modified: 2021.09.19
+ * Date Modified: 2021.10.26
  *
  */
 
@@ -68,8 +68,7 @@ class NetworkToNetworkEx
 	void configureOutput(ConfigTool cfgTool, SegmentIo segIo)
 		throws	IOException
 	{
-		// SegmentIo の出力を送信ストリームとして構成し，
-		// トランスポートプロトコルの設定を行う．
+		// SegentIo の出力を送信ストリームとして構成する．
 		cfgTool.configureOutgoingStream(segIo);
 			// IOException
 	}
