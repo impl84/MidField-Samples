@@ -12,7 +12,7 @@ import com.midfield_system.api.system.rpc.RpcResponse;
 /**
  * Sample code of MidField System API: ServerMethodExample
  *
- * Date Modified: 2021.09.06
+ * Date Modified: 2021.11.17
  *
  */
 
@@ -190,7 +190,7 @@ public class ServerMethodExample
 		result.put("unitPrice",		Integer.toString(unitPrice));
 		result.put("totalPrice",	Integer.toString(totalPrice));
 		
-		// EchoResponse ‚ğŒ‹‰Ê‚Æ‚·‚éRPC‰“š‚ğ¶¬‚·‚éD
+		// Œ‹‰Ê‚ğŠÜ‚ŞRPC‰“š‚ğ¶¬‚·‚éD
 		RpcResponse response = RpcResponse.responseWithResult(
 			request, result
 		);
