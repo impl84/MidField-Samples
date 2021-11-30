@@ -15,9 +15,9 @@ import util.ConsolePrinter;
 
 //------------------------------------------------------------------------------
 /**
- * Sample code of MidField System API: GsonTest
+ * Sample code of MidField System API: MockRpc
  *
- * Date Modified: 2021.11.17
+ * Date Modified: 2021.11.30
  *
  */
 
