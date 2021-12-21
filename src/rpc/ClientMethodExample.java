@@ -20,7 +20,7 @@ import com.midfield_system.api.util.Log;
 /**
  * Sample code of MidField System API: ClientMethodExample
  *
- * Date Modified: 2021.09.06
+ * Date Modified: 2021.12.21
  *
  */
 
@@ -102,8 +102,8 @@ public class ClientMethodExample
 		
 		Future<RpcResponse> future0 = sendRequest("Ex.getBooleanResult", null);
 		Future<RpcResponse> future1 = sendRequest("Ex.getSuccessResult", null);
-		printResult(waiteResponse(future0));
-		printResult(waiteResponse(future1));
+		printResult(waitResponse(future0));
+		printResult(waitResponse(future1));
 	}
 	
 	//- PRIVATE METHOD ---------------------------------------------------------
@@ -215,7 +215,7 @@ public class ClientMethodExample
 	
 	//- PRIVATE METHOD ---------------------------------------------------------
 	//
-	private Object waiteResponse(Future<RpcResponse> future)
+	private Object waitResponse(Future<RpcResponse> future)
 	{
 		Object result = null;
 		try {
