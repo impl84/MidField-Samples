@@ -12,7 +12,8 @@ import java.io.IOException;
  */
 public interface LineReader
 {
-	// - INTERFACE METHOD ------------------------------------------------------
-	//
-	String readLine() throws IOException;
+    // - INTERFACE METHOD ------------------------------------------------------
+    //
+    String readLine()
+        throws IOException;
 }

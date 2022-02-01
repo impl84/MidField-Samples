@@ -13,61 +13,61 @@ import com.midfield_system.api.stream.SegmentIo;
  *
  */
 class DeviceToNetworkEx
-	extends	AbstractSampleCode
+    extends
+        AbstractSampleCode
 {
-	// - PRIVATE CONSTANT VALUE ------------------------------------------------
-	private static final String
-		DESCRIPTION	= "Device -> Outgoing Stream";
-	
+    // - PRIVATE CONSTANT VALUE ------------------------------------------------
+    private static final String DESCRIPTION = "Device -> Outgoing Stream";
+    
 // =============================================================================
-//  INSTANCE METHOD:
+// INSTANCE METHOD:
 // =============================================================================
-	
+    
 // -----------------------------------------------------------------------------
-//  PACKAGE METHOD:
+// PACKAGE METHOD:
 // -----------------------------------------------------------------------------
-	
-	// - PACKAGE METHOD --------------------------------------------------------
-	//
-	DeviceToNetworkEx()
-	{
-		//
-	}
-	
+    
+    // - PACKAGE METHOD --------------------------------------------------------
+    //
+    DeviceToNetworkEx()
+    {
+        //
+    }
+    
 // -----------------------------------------------------------------------------
-//  PACKAGE METHOD: OVERRIDES: AbstractSampleCode
+// PACKAGE METHOD: OVERRIDES: AbstractSampleCode
 // -----------------------------------------------------------------------------
-	
-	// - PACKAGE METHOD --------------------------------------------------------
-	// - OVERRIDES: AbstractSampleCode
-	//
-	@Override
-	String getDescription()
-	{
-		return	DESCRIPTION;
-	}
-	
-	// - PACKAGE METHOD --------------------------------------------------------
-	// - OVERRIDES: AbstractSampleCode
-	//
-	@Override
-	void configureInput(ConfigTool cfgTool, SegmentIo segIo)
-		throws	IOException
-	{
-		// SegmentIo の入力を入力デバイスとして構成する．
-		cfgTool.configureInputDevice(segIo);
-			// IOException
-	}
-	
-	// - PACKAGE METHOD --------------------------------------------------------
-	// - OVERRIDES: AbstractSampleCode
-	//
-	@Override
-	void configureOutput(ConfigTool cfgTool, SegmentIo segIo)
-		throws	IOException
-	{
-		// SegentIo の出力を送信ストリームとして構成する．
-		cfgTool.configureOutgoingStream(segIo);
-			// IOException
-	}
+    
+    // - PACKAGE METHOD --------------------------------------------------------
+    // - OVERRIDES: AbstractSampleCode
+    //
+    @Override
+    String getDescription()
+    {
+        return DESCRIPTION;
+    }
+    
+    // - PACKAGE METHOD --------------------------------------------------------
+    // - OVERRIDES: AbstractSampleCode
+    //
+    @Override
+    void configureInput(ConfigTool cfgTool, SegmentIo segIo)
+        throws IOException
+    {
+        // SegmentIo の入力を入力デバイスとして構成する．
+        cfgTool.configureInputDevice(segIo);
+        // IOException
+    }
+    
+    // - PACKAGE METHOD --------------------------------------------------------
+    // - OVERRIDES: AbstractSampleCode
+    //
+    @Override
+    void configureOutput(ConfigTool cfgTool, SegmentIo segIo)
+        throws IOException
+    {
+        // SegentIo の出力を送信ストリームとして構成する．
+        cfgTool.configureOutgoingStream(segIo);
+        // IOException
+    }
 }

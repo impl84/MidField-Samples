@@ -14,73 +14,74 @@ import javax.swing.event.ListSelectionListener;
 
 /*----------------------------------------------------------------------------*/
 /**
- * CommandList 
+ * CommandList
  *
  * Copyright (C) Koji Hashimoto
  *
- * Date Modified: 2021.08.26
- * Koji Hashimoto 
+ * Date Modified: 2021.08.26 Koji Hashimoto
  *
  */
 @SuppressWarnings("serial")
 class CommandListPanel
-	extends		JPanel
-	implements	ListSelectionListener
+    extends
+        JPanel
+    implements
+        ListSelectionListener
 {
 // =============================================================================
-//  INSTANCE VARIABLE:
+// INSTANCE VARIABLE:
 // =============================================================================
-
-	// - PRIVATE VARIABLE ------------------------------------------------------
-	private RemoteController remocon = null;
-	
-	private JList<String> cmdLst = null;
-	
+    
+    // - PRIVATE VARIABLE ------------------------------------------------------
+    private RemoteController remocon = null;
+    
+    private JList<String> cmdLst = null;
+    
 // -----------------------------------------------------------------------------
-//  PUBLIC METHOD: IMPLEMENTS: ListSelectionListener
+// PUBLIC METHOD: IMPLEMENTS: ListSelectionListener
 // -----------------------------------------------------------------------------
-
-	// - PUBLIC METHOD ---------------------------------------------------------
-	// - IMPLEMENTS: ListSelectionListener
-	//
-	@Override
-	public void valueChanged(ListSelectionEvent ev)
-	{
-		if (ev.getValueIsAdjusting()) {
-			return;
-		}
-		String command = this.cmdLst.getSelectedValue();
-		this.remocon.setSelectedCommand(command);
-	}
-	
+    
+    // - PUBLIC METHOD ---------------------------------------------------------
+    // - IMPLEMENTS: ListSelectionListener
+    //
+    @Override
+    public void valueChanged(ListSelectionEvent ev)
+    {
+        if (ev.getValueIsAdjusting()) {
+            return;
+        }
+        String command = this.cmdLst.getSelectedValue();
+        this.remocon.setSelectedCommand(command);
+    }
+    
 // -----------------------------------------------------------------------------
-//  PACKAGE METHOD:
+// PACKAGE METHOD:
 // -----------------------------------------------------------------------------
-
-	// - PACKAGE METHOD --------------------------------------------------------
-	//		
-	CommandListPanel(RemoteController remocon, String[] cmdArray)
-	{
-		this.remocon = remocon;
-		setupGui(cmdArray);
-	}
-	
+    
+    // - PACKAGE METHOD --------------------------------------------------------
+    //
+    CommandListPanel(RemoteController remocon, String[] cmdArray)
+    {
+        this.remocon = remocon;
+        setupGui(cmdArray);
+    }
+    
 // -----------------------------------------------------------------------------
-//  PRIVATE METHOD:
-// -----------------------------------------------------------------------------	
-
-	// - PRIVATE METHOD --------------------------------------------------------
-	//
-	private void setupGui(String[] cmdArray)
-	{
-		this.cmdLst = new JList<String>(cmdArray);
-		this.cmdLst.addListSelectionListener(this);
-		this.cmdLst.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
-		JScrollPane scrollPane = new JScrollPane(this.cmdLst);
-		
-		setLayout(new BorderLayout());
-		add(scrollPane, BorderLayout.CENTER);
-		setBorder(BDR_EMPTY_8);
-	}
+// PRIVATE METHOD:
+// -----------------------------------------------------------------------------
+    
+    // - PRIVATE METHOD --------------------------------------------------------
+    //
+    private void setupGui(String[] cmdArray)
+    {
+        this.cmdLst = new JList<String>(cmdArray);
+        this.cmdLst.addListSelectionListener(this);
+        this.cmdLst.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+        JScrollPane scrollPane = new JScrollPane(this.cmdLst);
+        
+        setLayout(new BorderLayout());
+        add(scrollPane, BorderLayout.CENTER);
+        setBorder(BDR_EMPTY_8);
+    }
 }

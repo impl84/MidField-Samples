@@ -11,61 +11,62 @@ import com.midfield_system.api.util.LogPrinter;
  *
  */
 public class ConsolePrinter
-	implements	LogPrinter
+    implements
+        LogPrinter
 {
 // =============================================================================
-//  CLASS VARIABLE:
+// CLASS VARIABLE:
 // =============================================================================
-	
-	// - PRIVATE STATIC VARIABLE -----------------------------------------------
-	private static ConsolePrinter theInstance = null;
-	
+    
+    // - PRIVATE STATIC VARIABLE -----------------------------------------------
+    private static ConsolePrinter theInstance = null;
+    
 // =============================================================================
-//  CLASS METHOD:
+// CLASS METHOD:
 // =============================================================================
-	
+    
 // -----------------------------------------------------------------------------
-//  PUBLIC STATIC METHOD:
+// PUBLIC STATIC METHOD:
 // -----------------------------------------------------------------------------
-	
-	// - PUBLIC STATIC METHOD --------------------------------------------------
-	//
-	public static ConsolePrinter getInstance()
-	{
-		// ConsolePrinter のインスタンスの有無を確認する．
-		if (ConsolePrinter.theInstance == null) {
-			// インスタンスが存在しない場合は，
-			// ConsolePrinter のインスタンスを生成する．
-			ConsolePrinter.theInstance = new ConsolePrinter();
-		}
-		// ConsoleReader のインスタンスを返す．
-		return ConsolePrinter.theInstance;
-		
-	}
-	
+    
+    // - PUBLIC STATIC METHOD --------------------------------------------------
+    //
+    public static ConsolePrinter getInstance()
+    {
+        // ConsolePrinter のインスタンスの有無を確認する．
+        if (ConsolePrinter.theInstance == null) {
+            // インスタンスが存在しない場合は，
+            // ConsolePrinter のインスタンスを生成する．
+            ConsolePrinter.theInstance = new ConsolePrinter();
+        }
+        // ConsoleReader のインスタンスを返す．
+        return ConsolePrinter.theInstance;
+        
+    }
+    
 // =============================================================================
-//  INSTANCE METHOD:
+// INSTANCE METHOD:
 // =============================================================================
-	
+    
 // -----------------------------------------------------------------------------
-//  PUBLIC METHOD: IMPLEMENTS: LineReader
+// PUBLIC METHOD: IMPLEMENTS: LineReader
 // -----------------------------------------------------------------------------
-	
-	// - PUBLIC METHOD ---------------------------------------------------------
-	// - IMPLEMENTS: LogPrinter
-	//
-	@Override
-	public void printf(String format, Object... args)
-	{
-		System.out.printf(format, args);
-	}
-	
-	// - PUBLIC METHOD ---------------------------------------------------------
-	// - IMPLEMENTS: LogPrinter
-	//
-	@Override
-	public void println(Object obj)
-	{
-		System.out.println(obj);
-	}
+    
+    // - PUBLIC METHOD ---------------------------------------------------------
+    // - IMPLEMENTS: LogPrinter
+    //
+    @Override
+    public void printf(String format, Object... args)
+    {
+        System.out.printf(format, args);
+    }
+    
+    // - PUBLIC METHOD ---------------------------------------------------------
+    // - IMPLEMENTS: LogPrinter
+    //
+    @Override
+    public void println(Object obj)
+    {
+        System.out.println(obj);
+    }
 }
