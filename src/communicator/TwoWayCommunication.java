@@ -7,28 +7,26 @@ import com.midfield_system.api.system.SystemProperty;
 import util.ConsolePrinter;
 import util.ConsoleReader;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: TwoWayCommunication 
  *
  * Date Modified: 2021.10.27
  *
  */
-
-//==============================================================================
 public class TwoWayCommunication
 {
-	//- PACKAGE CONSTANT VALUE -------------------------------------------------
+	// - PACKAGE CONSTANT VALUE ------------------------------------------------
 	static final String ASYNC_INTERVIEW_REQUEST		= "Async-Interview-Request";
 	static final String ASYNC_INTERVIEW_RESPONSE	= "Async-Interview-Response";
 	static final String INTERVIEW_REQUEST			= "Interview-Request";
 	static final String INTERVIEW_RESPONSE			= "Interview-Response";
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC STATIC METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC STATIC METHOD ---------------------------------------------------
+	// - PUBLIC STATIC METHOD --------------------------------------------------
 	//
 	public static void main(String[] args)
 	{

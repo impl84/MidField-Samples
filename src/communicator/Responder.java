@@ -14,40 +14,38 @@ import com.midfield_system.api.system.PacketIoException;
 
 import util.ConsolePrinter;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: Responder 
  *
  * Date Modified: 2021.10.27
  *
  */
-
-//==============================================================================
 public class Responder
 	implements	CommPacketHandler
 {
-	//- PUBLIC CONSTANT VALUE --------------------------------------------------
+	// - PUBLIC CONSTANT VALUE -------------------------------------------------
 	public static final String COMMUNICATOR_NAME = "Responder";
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 	
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private final ConsolePrinter printer;
 	
 	private final PacketCommunicator comm;
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE METHOD:
-//==============================================================================
+// =============================================================================
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPREMENTS: CommPacketHandler
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPREMENTS: CommPacketHandler
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPREMENTS: CommPacketHandler
 	//
 	@Override
 	public boolean handleIncomingPacket(CommPacket inPkt)
@@ -64,8 +62,8 @@ public class Responder
 		return handled;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPREMENTS: CommPacketHandler
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPREMENTS: CommPacketHandler
 	//
 	@Override
 	public void handlePacketIoException(PacketIoException ex)
@@ -73,8 +71,8 @@ public class Responder
 		ex.printStackTrace();
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPREMENTS: CommPacketHandler
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPREMENTS: CommPacketHandler
 	//
 	@Override
 	public void handleUnreachablePacket(CommPacket inPkt)
@@ -82,11 +80,11 @@ public class Responder
 		this.printer.println("未到達パケット：" + inPkt.getMessageType());
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PACKAGE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- CONSTRUCTOR ------------------------------------------------------------
+	// - CONSTRUCTOR -----------------------------------------------------------
 	//
 	Responder(ConsolePrinter printer)
 	{
@@ -96,7 +94,7 @@ public class Responder
 		this.comm = new PacketCommunicator(COMMUNICATOR_NAME, this);
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void close()
 	{
@@ -104,11 +102,11 @@ public class Responder
 		this.comm.close();
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD: 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void msgHn_AsyncInterviewRequest(CommPacket reqPkt)
 	{
@@ -130,7 +128,7 @@ public class Responder
 		this.comm.dispatchPacket(resPkt);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void msgHn_InterviewRequest(CommPacket reqPkt)
 	{
@@ -155,7 +153,7 @@ public class Responder
 		this.comm.dispatchPacket(resPkt);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void msgHn_UnsupportedMessage(CommPacket inPkt)
 	{

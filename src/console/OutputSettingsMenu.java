@@ -17,19 +17,17 @@ import com.midfield_system.api.stream.StreamPerformer;
 import com.midfield_system.api.stream.VideoFormat;
 import com.midfield_system.api.system.SystemException;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: OutputSettingsMenu
  *
  * Date Modified: 2021.08.23
  *
  */
-
-//==============================================================================
 public class OutputSettingsMenu
 	extends		ConsoleMenu
 {
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final String
 		MENU_TITLE					= "□システム □入力設定 ■出力設定 □ストリーム操作",
 		MENU_PROMPT					= "out";
@@ -41,26 +39,26 @@ public class OutputSettingsMenu
 		SHOW_SEGMENT_IO				= "入出力設定表示",
 		QUIT						= "設定キャンセル → □システム";
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private SystemMenu systemMenu= null;
 	private StreamControlMenu streamControlMenu = null;
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public OutputSettingsMenu()
 	{
 		//
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public void setStateInstanue(SystemMenu sysMenu, StreamControlMenu stmMenu)
 	{
@@ -68,11 +66,11 @@ public class OutputSettingsMenu
 		this.streamControlMenu = stmMenu;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PROTECTED METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PROTECTED METHOD -------------------------------------------------------
+	// - PROTECTED METHOD ------------------------------------------------------
 	//
 	@Override
 	protected MenuItem[] initMenuItems()
@@ -89,7 +87,7 @@ public class OutputSettingsMenu
 		return menuItems;
 	}
 	
-	//- PROTECTED METHOD -------------------------------------------------------
+	// - PROTECTED METHOD ------------------------------------------------------
 	//
 	@Override
 	protected String getMenuTitle()
@@ -97,7 +95,7 @@ public class OutputSettingsMenu
 		return MENU_TITLE;
 	}
 	
-	//- PROTECTED METHOD -------------------------------------------------------
+	// - PROTECTED METHOD ------------------------------------------------------
 	//
 	@Override
 	protected String getPrompt()
@@ -105,11 +103,11 @@ public class OutputSettingsMenu
 		return MENU_PROMPT;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu setDefaultRenderer()
 	{
@@ -127,7 +125,7 @@ public class OutputSettingsMenu
 		return this;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu configureOutgoingStream()
 	{
@@ -183,7 +181,7 @@ public class OutputSettingsMenu
 		return this;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private VideoFormat selectVideoFormat(List<StreamFormat> lsOutFmt)
 	{
@@ -220,7 +218,7 @@ public class OutputSettingsMenu
 		return vidFmt;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private AudioFormat selectAudioFormat(
 		VideoFormat vidFmt, List<StreamFormat> lsOutFmt
@@ -266,7 +264,7 @@ public class OutputSettingsMenu
 		return audFmt;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private boolean selectTransportProtocol()
 	{
@@ -286,7 +284,7 @@ public class OutputSettingsMenu
 		return useTCP;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private boolean selectConnectionDirection()
 	{
@@ -306,7 +304,7 @@ public class OutputSettingsMenu
 		return isRcvCon;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu setupStream()
 	{
@@ -354,7 +352,7 @@ public class OutputSettingsMenu
 		return this.streamControlMenu;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu quit()
 	{

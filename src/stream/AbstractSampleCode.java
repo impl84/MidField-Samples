@@ -14,23 +14,21 @@ import com.midfield_system.api.viewer.VideoCanvas;
 
 import util.SimpleViewer;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: AbstractSampleCode
  *
  * Date Modified: 2021.08.24
  *
  */
-
-//==============================================================================
 abstract class AbstractSampleCode
 	implements	WindowListener
 {
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 	
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	
 	// StreamPerformer 
 	private StreamPerformer pfmr = null;
@@ -41,28 +39,28 @@ abstract class AbstractSampleCode
 	// サンプルコードの動作状態(true:動作中，false:停止中)
 	private boolean isRunning = false;
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE METHOD:
-//==============================================================================
+// =============================================================================
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPLEMENTS: WindowListener
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowActivated(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowClosed(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowClosing(WindowEvent ev)
@@ -72,42 +70,42 @@ abstract class AbstractSampleCode
 		closeSampleCode();
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowDeactivated(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowDeiconified(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowIconified(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowOpened(WindowEvent ev) { }
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PACKAGE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	AbstractSampleCode()
 	{
 		//
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	// サンプルコードの動作状態(true:動作中，false:停止中)を返す．
 	//
 	boolean isRunning()
@@ -115,7 +113,7 @@ abstract class AbstractSampleCode
 		return this.isRunning;
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	// サンプルコードの処理を開始する．
 	//
 	void open(ConfigTool cfgTool)
@@ -162,7 +160,7 @@ abstract class AbstractSampleCode
 		}
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	// サンプルコードの処理を終了する．
 	//
 	void close()
@@ -174,28 +172,28 @@ abstract class AbstractSampleCode
 		SwingUtilities.invokeLater(() -> this.viewer.dispose());
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	// サンプルコードの概要説明を取得する．
 	//
 	abstract String getDescription();
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	// SegmentIo の入力を構成する．
 	//
 	abstract void configureInput(ConfigTool cfgTool, SegmentIo segIo)
 		throws IOException;
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	// SegmentIo の出力を構成する．
 	//
 	abstract void configureOutput(ConfigTool cfgTool, SegmentIo segIo)
 		throws IOException;
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	// ※EDT上で実行される．
 	//
 	private void setupSimpleViewer()
@@ -212,7 +210,7 @@ abstract class AbstractSampleCode
 		this.viewer.addVideoCanvas(vidCvs);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	// サンプルコードの処理を終了する．
 	//
 	private synchronized void closeSampleCode()

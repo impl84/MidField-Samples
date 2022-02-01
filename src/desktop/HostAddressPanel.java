@@ -19,22 +19,20 @@ import javax.swing.JTextField;
 
 import util.Dialog;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: HostAddressPanel 
  *
  * Date Modified: 2021.09.19
  *
  */
-
-//==============================================================================
 @SuppressWarnings("serial")
 public class HostAddressPanel
 	extends		JPanel
 	implements	KeyListener,
 				InputMethodListener
 {
-	//- PUBLIC CONSTANT VALUE --------------------------------------------------
+	// - PUBLIC CONSTANT VALUE -------------------------------------------------
 	public static final String
 		STR_START_CONTROL	= "開始",
 		STR_STOP_CONTROL	= "停止";
@@ -43,7 +41,7 @@ public class HostAddressPanel
 		STR_PLEASE_INPUT	= "ホスト名 / IPアドレスを入力してください．",
 		STR_INVALID_ADDR	= "%s への接続に失敗しました．";
 
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final String
 		STR_REMOTE_HOST		= "  ホスト名/IPアドレス : ";
 
@@ -56,11 +54,11 @@ public class HostAddressPanel
 		CONTROLLING	// 遠隔操作状態
 	}
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private Component baseComp = null;
 	private JTextField txtAddr = null;
 	private JButton btnControl = null;
@@ -68,11 +66,11 @@ public class HostAddressPanel
 	private ConnectionState stat = ConnectionState.IDLE;
 	private boolean isEditing = false;	
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE METHOD:
-//==============================================================================
+// =============================================================================
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//	
 	public HostAddressPanel(Component baseComp, ActionListener listener)
 	{
@@ -80,7 +78,7 @@ public class HostAddressPanel
 		setup(listener);	
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public boolean isControllingState()
 	{
@@ -91,7 +89,7 @@ public class HostAddressPanel
 		return isControlling;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public boolean isIdleState()
 	{
@@ -102,7 +100,7 @@ public class HostAddressPanel
 		return isIdle;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public String getSelectedAddress()
 	{
@@ -113,7 +111,7 @@ public class HostAddressPanel
 			dstAddr = null;
 			return dstAddr;
 		}
-		//----------------------------------------------------------------------
+		// ---------------------------------------------------------------------
 		try {
 			// 入力されているアドレスの確認．
 			InetAddress.getByName(dstAddr);
@@ -130,7 +128,7 @@ public class HostAddressPanel
 		}
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public void changeToControllingState()
 	{
@@ -141,7 +139,7 @@ public class HostAddressPanel
 		this.stat = ConnectionState.CONTROLLING;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public void changeToIdleState()
 	{
@@ -152,7 +150,7 @@ public class HostAddressPanel
 		this.stat = ConnectionState.IDLE;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public void changeToConnectingState()
 	{
@@ -162,10 +160,10 @@ public class HostAddressPanel
 		this.stat = ConnectionState.CONNECTING;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: KeyListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: KeyListener
 	//
 	@Override
 	public void keyTyped(KeyEvent ev)
@@ -173,8 +171,8 @@ public class HostAddressPanel
 		// Not Implemented.
 	}
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: KeyListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: KeyListener
 	//
 	@Override
 	public void keyPressed(KeyEvent ev)
@@ -182,8 +180,8 @@ public class HostAddressPanel
 		// Not Implemented.
 	}
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: KeyListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: KeyListener
 	//
 	@Override
 	public void keyReleased(KeyEvent ev)
@@ -198,8 +196,8 @@ public class HostAddressPanel
 		}
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: InputMethodListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: InputMethodListener
 	//
 	@Override
 	public void caretPositionChanged(InputMethodEvent ev)
@@ -207,8 +205,8 @@ public class HostAddressPanel
 		// Not Implemented.
 	}
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: InputMethodListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: InputMethodListener
 	//
 	@Override
 	public void inputMethodTextChanged(InputMethodEvent ev)
@@ -216,11 +214,11 @@ public class HostAddressPanel
 		this.isEditing = true;
 	}	
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------	
+// -----------------------------------------------------------------------------	
 
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void setup(ActionListener listener)
 	{

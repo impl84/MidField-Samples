@@ -6,19 +6,17 @@ import java.util.List;
 import com.midfield_system.api.stream.SegmentIo;
 import com.midfield_system.api.stream.StreamPerformer;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: SystemMenu
  *
  * Date Modified: 2021.08.23
  *
  */
-
-//==============================================================================
 public class SystemMenu
 	extends		ConsoleMenu
 {
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final String
 		MENU_TITLE				= "■システム □入力設定 □出力設定 □ストリーム操作",
 		MENU_PROMPT				= "sys";
@@ -29,26 +27,26 @@ public class SystemMenu
 		SELECT_STREAM			= "ストリーム選択       → □ストリーム操作",
 		EXIT					= "終了";
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private InputSettingsMenu inputSeggingsMenu = null;
 	private StreamControlMenu streamControlMenu = null;
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public SystemMenu()
 	{
 		//
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public void setStateInstance(InputSettingsMenu inMenu, StreamControlMenu stmMenu)
 	{
@@ -56,11 +54,11 @@ public class SystemMenu
 		this.streamControlMenu = stmMenu;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PROTECTED METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PROTECTED METHOD -------------------------------------------------------
+	// - PROTECTED METHOD ------------------------------------------------------
 	//
 	@Override
 	protected MenuItem[] initMenuItems()
@@ -76,7 +74,7 @@ public class SystemMenu
 		return menuItems;
 	}
 	
-	//- PROTECTED METHOD -------------------------------------------------------
+	// - PROTECTED METHOD ------------------------------------------------------
 	//
 	@Override
 	protected String getMenuTitle()
@@ -84,7 +82,7 @@ public class SystemMenu
 		return MENU_TITLE;
 	}
 	
-	//- PROTECTED METHOD -------------------------------------------------------
+	// - PROTECTED METHOD ------------------------------------------------------
 	//
 	@Override
 	protected String getPrompt()
@@ -92,11 +90,11 @@ public class SystemMenu
 		return MENU_PROMPT;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu transitionToInput()
 	{
@@ -109,7 +107,7 @@ public class SystemMenu
 		return this.inputSeggingsMenu;
 	}
 
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu selectStream()
 	{
@@ -150,7 +148,7 @@ public class SystemMenu
 		return nextMenu;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void printStreamPerformerList(List<StreamPerformer> lsPfmr)
 	{
@@ -169,7 +167,7 @@ public class SystemMenu
 		}
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu showStreamList()
 	{
@@ -187,7 +185,7 @@ public class SystemMenu
 		return this;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu exit()
 	{

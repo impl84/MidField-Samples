@@ -26,30 +26,28 @@ import util.AppUtilities;
 import util.InputField;
 import util.LineReader;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: ExConsoleFrame
  *
  * Date Modified: 2021.08.23
  *
  */
-
-//==============================================================================
 @SuppressWarnings("serial")
 public class ExConsoleFrame
 	extends		JFrame
 	implements	SystemEventListener,
 				WindowListener
 {
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final Dimension DIM_MIN_FRAME = new Dimension(800, 480);
 	private static final Dimension DIM_PREF_FRAME = new Dimension(1080, 640);
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 	
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private MessagePanel mpConsoleOut = null;
 	private InputField ifConsoleIn = null;
 	
@@ -57,12 +55,12 @@ public class ExConsoleFrame
 	private MessagePanel mpSystemEvent = null;
 	private MessagePanel mpResourceStatus  = null;
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPLEMENTS: SystemEventListener
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: SystemEventListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: SystemEventListener
 	//
 	@Override
 	public void update(SystemEvent ev)
@@ -73,24 +71,24 @@ public class ExConsoleFrame
 		SwingUtilities.invokeLater(() -> updateOnEdt(ev));
 	}
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPLEMENTS: WindowListener
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowActivated(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowClosed(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowClosing(WindowEvent ev)
@@ -101,42 +99,42 @@ public class ExConsoleFrame
 		}
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowDeactivated(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowDeiconified(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowIconified(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowOpened(WindowEvent ev) { }
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PACKAGE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	ExConsoleFrame()
 	{
 		setupGui();
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	LineReader getLineReader()
 	{
@@ -144,7 +142,7 @@ public class ExConsoleFrame
 		return reader;
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	LogPrinter getConsolePrinter()
 	{
@@ -152,7 +150,7 @@ public class ExConsoleFrame
 		return printer;
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	LogPrinter getSystemLogPrinter()
 	{
@@ -160,7 +158,7 @@ public class ExConsoleFrame
 		return printer;
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void putCommandSequence(String commands)
 	{
@@ -171,11 +169,11 @@ public class ExConsoleFrame
 		}
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	void setupGui()
 	{
@@ -210,7 +208,7 @@ public class ExConsoleFrame
 		setVisible(true);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private JComponent createLeftPane()
 	{
@@ -227,7 +225,7 @@ public class ExConsoleFrame
 		return this.mpConsoleOut;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private JComponent createRightPane()
 	{
@@ -253,11 +251,11 @@ public class ExConsoleFrame
 		return panel;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void updateOnEdt(SystemEvent ev)
 	{

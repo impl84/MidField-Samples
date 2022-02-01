@@ -25,19 +25,17 @@ import com.midfield_system.api.stream.event.StreamExceptionEvent;
 import com.midfield_system.api.system.SystemException;
 import com.midfield_system.api.util.Log;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: ImageSender 
  *
  * Date Modified: 2021.09.20
  *
  */
-
-//==============================================================================
 public class ImageSender
 	implements	StreamEventListener
 {
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 
 	// デスクトップイメージをキャプチャする際のフレームレート
 	// （値は 2.0/4.0/8.0/16.0 のいずれか．）
@@ -47,26 +45,26 @@ public class ImageSender
 		STR_FILTER_NOT_FOUND	= "適切なデスクトップキャプチャフィルタがありません．",
 		STR_NO_SUITABLE_FORMAT	= "適切なキャプチャフォーマットがありません．";
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 	
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private final DesktopServer server;
 	
 	private StreamPerformer pfmr = null;
 	private IoParam outParam = null;
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE METHOD:
-//==============================================================================
+// =============================================================================
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: StreamEventListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: StreamEventListener
 	//
 	@Override
 	public void update(StreamEvent ev)
@@ -97,11 +95,11 @@ public class ImageSender
 		}
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PACKAGE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- CONSTRUCTOR ------------------------------------------------------------
+	// - CONSTRUCTOR -----------------------------------------------------------
 	//
 	ImageSender(DesktopServer server)
 		throws	SystemException,
@@ -140,14 +138,14 @@ public class ImageSender
 			// SystemException, StreamException
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//	
 	IoParam getOutputParam()
 	{
 		return this.outParam;
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//	
 	void close()
 	{
@@ -158,11 +156,11 @@ public class ImageSender
 		}
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private DeviceInfo getDesktopImageSource()
 		throws	SystemException
@@ -176,7 +174,7 @@ public class ImageSender
 		return dskImgSrc;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private StreamFormat getSuitableCaptureFormat(DeviceInfo devInf)
 		throws	SystemException	
@@ -189,7 +187,7 @@ public class ImageSender
 			if ((stmFmt instanceof VideoFormat) == false) {
 				continue;
 			}
-			//------------------------------------------------------------------
+			// -----------------------------------------------------------------
 			VideoFormat vidFmt = (VideoFormat)stmFmt;
 			double frameRate = vidFmt.getFrameRate();
 			if (frameRate == DEF_FRAME_RATE) {
@@ -205,7 +203,7 @@ public class ImageSender
 		return fmt;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void setupPerformer(SegmentIo segIo)
 		throws	SystemException,
@@ -235,46 +233,46 @@ public class ImageSender
 		}
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD: StreamEventListener
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void evHn_IoStatus(IoStatusEvent ev)
 	{
 		// Not Implemented.
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void evHn_RendererStatus(RendererStatusEvent ev)
 	{
 		// Not Implemented.
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void evHn_MixerStatus(MixerStatusEvent ev)
 	{
 		// Not Implemented.
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void evHn_PerformerState(PerformerStateEvent ev)
 	{
 		// Not Implemented.
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void evHn_Segment(SegmentEvent ev)
 	{
 		Log.warning(ev.toString());
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void evHn_FlowUpdate(FlowUpdateEvent ev)
 	{
@@ -285,7 +283,7 @@ public class ImageSender
 		}
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void evHn_StreamExceptionEvent(StreamExceptionEvent ev)
 	{

@@ -11,19 +11,17 @@ import com.midfield_system.api.stream.StreamFormat;
 import com.midfield_system.api.stream.StreamInfoManager;
 import com.midfield_system.protocol.StreamInfo;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: InputSettingsMenu
  *
  * Date Modified: 2021.08.19
  *
  */
-
-//==============================================================================
 public class InputSettingsMenu
 	extends		ConsoleMenu
 {
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final String
 		MENU_TITLE					= "□システム ■入力設定 □出力設定 □ストリーム操作",
 		MENU_PROMPT					= " in";
@@ -36,26 +34,26 @@ public class InputSettingsMenu
 		SHOW_SEGMENT_IO				= "入出力設定表示",
 		QUIT						= "設定キャンセル → □システム";
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 	
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private SystemMenu systemMenu = null;
 	private OutputSettingsMenu outputSettingsMenu = null;
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public InputSettingsMenu()
 	{
 		//
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public void setStateInstance(SystemMenu sysMenu, OutputSettingsMenu outMenu)
 	{
@@ -63,11 +61,11 @@ public class InputSettingsMenu
 		this.outputSettingsMenu = outMenu;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PROTECTED METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PROTECTED METHOD -------------------------------------------------------
+	// - PROTECTED METHOD ------------------------------------------------------
 	//
 	@Override
 	protected MenuItem[] initMenuItems()
@@ -86,7 +84,7 @@ public class InputSettingsMenu
 		return menuItems;
 	}
 	
-	//- PROTECTED METHOD -------------------------------------------------------
+	// - PROTECTED METHOD ------------------------------------------------------
 	//
 	@Override
 	protected String getMenuTitle()
@@ -94,7 +92,7 @@ public class InputSettingsMenu
 		return MENU_TITLE;
 	}
 	
-	//- PROTECTED METHOD -------------------------------------------------------
+	// - PROTECTED METHOD ------------------------------------------------------
 	//
 	@Override
 	protected String getPrompt()
@@ -102,11 +100,11 @@ public class InputSettingsMenu
 		return MENU_PROMPT;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu addCaptureDevice()
 	{
@@ -159,7 +157,7 @@ public class InputSettingsMenu
 		return this;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu refreshSourceStreamInfo()
 	{
@@ -179,7 +177,7 @@ public class InputSettingsMenu
 		return this;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu configureIncomingStream()
 	{
@@ -211,7 +209,7 @@ public class InputSettingsMenu
 		return this;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu transitionToOutput()
 	{
@@ -231,7 +229,7 @@ public class InputSettingsMenu
 		return nextMenu;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private ConsoleMenu quit()
 	{

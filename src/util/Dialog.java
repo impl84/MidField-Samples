@@ -9,39 +9,37 @@ import javax.swing.SwingUtilities;
 import com.midfield_system.api.system.SystemException;
 import com.midfield_system.api.util.Constants;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: Dialog 
  *
  * Date Modified: 2021.10.26
  *
  */
-
-//==============================================================================
 public class Dialog
 {
-	//- PACKAGE CONSTANT VALUE -------------------------------------------------
+	// - PACKAGE CONSTANT VALUE ------------------------------------------------
 	static final String
 		STR_TITLE_MESSAGE	= "Message",
 		STR_TITLE_WARNING	= "Warning",
 		STR_TITLE_ERROR		= "Error";
 	
-//==============================================================================
+// =============================================================================
 //  CLASS METHOD:
-//==============================================================================
+// =============================================================================
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC STATIC METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//	
 	public static void message(Component parent, String msg)
 	{
 		popup(parent, STR_TITLE_MESSAGE, msg);
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//	
 	public static void warning(Component parent, Throwable throwable)
 	{
@@ -49,14 +47,14 @@ public class Dialog
 		warning(parent, msg);
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//	
 	public static void warning(Component parent, String msg)
 	{
 		popup(parent, STR_TITLE_WARNING, msg);
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//	
 	public static void error(Component parent, Throwable throwable)
 	{
@@ -64,18 +62,18 @@ public class Dialog
 		error(parent, msg);
 	}
 
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//	
 	public static void error(Component parent, String msg)
 	{
 		popup(parent, STR_TITLE_ERROR, msg);
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE STATIC METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private static void popup(Component parent, String title, String msg)
 	{
@@ -97,7 +95,7 @@ public class Dialog
 		}
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private static void showDialog(
 		Component parent, String title, int type, String msg

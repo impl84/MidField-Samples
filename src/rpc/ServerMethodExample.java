@@ -8,30 +8,28 @@ import com.midfield_system.api.system.rpc.Registerable;
 import com.midfield_system.api.system.rpc.RpcRequest;
 import com.midfield_system.api.system.rpc.RpcResponse;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: ServerMethodExample
  *
  * Date Modified: 2021.11.17
  *
  */
-
-//==============================================================================
 public class ServerMethodExample
 	implements	Registerable
 {
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final String METHOD_PREFIX = "Ex";
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE METHOD:
-//==============================================================================
+// =============================================================================
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: RPCóvãÅèàóùÇÃó·
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse getBooleanResult(RpcRequest request)
 	{
@@ -45,7 +43,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse getSuccessResult(RpcRequest request)
 	{
@@ -59,7 +57,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse getResponseWithResult(RpcRequest request)
 	{
@@ -73,7 +71,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse getParseError(RpcRequest request)
 	{
@@ -89,7 +87,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse getInvalidRequest(RpcRequest request)
 	{
@@ -101,7 +99,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse getMethodNotFound(RpcRequest request)
 	{
@@ -113,7 +111,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse getInvalidParams(RpcRequest request)
 	{
@@ -127,7 +125,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse getInternalError(RpcRequest request)
 	{
@@ -141,7 +139,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse getServerError(RpcRequest request)
 	{
@@ -155,7 +153,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse echo(RpcRequest request)
 	{
@@ -170,7 +168,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse orderProducts(RpcRequest request)
 	{
@@ -198,7 +196,7 @@ public class ServerMethodExample
 		return response;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
+	// - PUBLIC METHOD ---------------------------------------------------------
 	//
 	public RpcResponse notification(RpcRequest request)
 	{
@@ -207,12 +205,12 @@ public class ServerMethodExample
 		return response;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPLEMENTS: Registerable
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: Registerable
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: Registerable
 	//
 	@Override
 	public String getMethodPrefix()

@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 import com.midfield_system.gui.misc.PopupMessage;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * ServerAddressPanel
  *
@@ -28,8 +28,6 @@ import com.midfield_system.gui.misc.PopupMessage;
  * Koji Hashimoto 
  *
  */
-
-//==============================================================================
 @SuppressWarnings("serial")
 class ServerAddressPanel
 	extends		JPanel
@@ -37,7 +35,7 @@ class ServerAddressPanel
 				KeyListener,
 				InputMethodListener
 {
-	//- PACKAGE CONSTANT VALUE -------------------------------------------------
+	// - PACKAGE CONSTANT VALUE ------------------------------------------------
 	static enum ConnectionState
 	{
 		IDLE,		// ÉAÉCÉhÉãèÛë‘ 
@@ -45,7 +43,7 @@ class ServerAddressPanel
 		CONTROLLING	// êßå‰èÛë‘
 	}	
 
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final String
 		STR_START_CONTROL	= Messages.getString("ServerAddressPanel.0"), //$NON-NLS-1$
 		STR_STOP_CONTROL	= Messages.getString("ServerAddressPanel.1"); //$NON-NLS-1$
@@ -57,11 +55,11 @@ class ServerAddressPanel
 	private static final String
 		STR_REMOTE_HOST		= Messages.getString("ServerAddressPanel.4"); //$NON-NLS-1$
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private RemoteController remocon = null;
 	
 	private JTextField addrFld = null;
@@ -70,16 +68,16 @@ class ServerAddressPanel
 	private ConnectionState stat = ConnectionState.IDLE;
 	private boolean isEditing = false;	
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE METHOD:
-//==============================================================================
+// =============================================================================
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPLEMENTS: ActionListener
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: ActionListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: ActionListener
 	//
 	@Override
 	public void actionPerformed(ActionEvent ev)
@@ -93,12 +91,12 @@ class ServerAddressPanel
 		}	
 	}	
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPLEMENTS: KeyListener
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: KeyListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: KeyListener
 	//
 	@Override
 	public void keyTyped(KeyEvent ev)
@@ -106,8 +104,8 @@ class ServerAddressPanel
 		// Not Implemented.
 	}
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: KeyListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: KeyListener
 	//
 	@Override
 	public void keyPressed(KeyEvent ev)
@@ -115,8 +113,8 @@ class ServerAddressPanel
 		// Not Implemented.
 	}
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: KeyListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: KeyListener
 	//
 	@Override
 	public void keyReleased(KeyEvent ev)
@@ -131,12 +129,12 @@ class ServerAddressPanel
 		}
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPLEMENTS: InputMethodListener
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: InputMethodListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: InputMethodListener
 	//
 	@Override
 	public void caretPositionChanged(InputMethodEvent ev)
@@ -144,8 +142,8 @@ class ServerAddressPanel
 		// Not Implemented.
 	}
 
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: InputMethodListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: InputMethodListener
 	//
 	@Override
 	public void inputMethodTextChanged(InputMethodEvent ev)
@@ -153,11 +151,11 @@ class ServerAddressPanel
 		this.isEditing = true;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PACKAGE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//	
 	ServerAddressPanel(RemoteController remocon)
 	{
@@ -165,7 +163,7 @@ class ServerAddressPanel
 		setupGui();	
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	boolean isControllingState()
 	{
@@ -176,7 +174,7 @@ class ServerAddressPanel
 		return isControlling;
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void setState(ConnectionState state)
 	{
@@ -203,11 +201,11 @@ class ServerAddressPanel
 		}
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------	
+// -----------------------------------------------------------------------------	
 
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void setupGui()
 	{
@@ -225,11 +223,11 @@ class ServerAddressPanel
 		add(this.ctlBtn, BorderLayout.EAST);
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD: actionPerformed()
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	void evHn_StartControl()
 	{
@@ -245,7 +243,7 @@ class ServerAddressPanel
 		this.remocon.startRemoteControl(address);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private String getSelectedAddress()
 	{
@@ -272,7 +270,7 @@ class ServerAddressPanel
 		}
 	}
 
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	void evHn_StopControl()
 	{

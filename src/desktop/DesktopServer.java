@@ -29,22 +29,20 @@ import com.midfield_system.api.system.PacketIoException;
 import com.midfield_system.api.system.SystemException;
 import com.midfield_system.api.util.Log;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: DesktopServer 
  *
  * Date Modified: 2021.10.27
  *
  */
-
-//==============================================================================
 public class DesktopServer
 	implements	CommPacketHandler
 {
-	//- PUBLIC CONSTANT VALUE --------------------------------------------------
+	// - PUBLIC CONSTANT VALUE -------------------------------------------------
 	public static final String DESKTOP_SERVER = "DesktopServer";
 	
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final String
 		STR_ACCEPT_CONTROL	= "※遠隔(%s)からのデスクトップ操作を開始します．",
 		STR_REJECT_CONTROL	= "※遠隔(%s)からのデスクトップ操作を拒否します．",
@@ -61,11 +59,11 @@ public class DesktopServer
 		CONTROLLED	// デスクトップ制御受入中
 	}
 
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 	
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private final PacketCommunicator comm;
 	
 	private final double scaleX;
@@ -75,16 +73,16 @@ public class DesktopServer
 	private ImageSender imgSender = null;
 	private ControlState state = ControlState.WAIT;
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE METHOD:
-//==============================================================================
+// =============================================================================
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPREMENTS: CommPacketHandler
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPREMENTS: CommPacketHandler
 	//
 	@Override
 	public synchronized boolean handleIncomingPacket(CommPacket pkt)
@@ -111,8 +109,8 @@ public class DesktopServer
 		return wasHandled;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPREMENTS: CommPacketHandler
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPREMENTS: CommPacketHandler
 	//
 	@Override
 	public void handlePacketIoException(PacketIoException ex)
@@ -120,8 +118,8 @@ public class DesktopServer
 		Log.warning(ex);
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPREMENTS: CommPacketHandler
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPREMENTS: CommPacketHandler
 	//
 	@Override
 	public void handleUnreachablePacket(CommPacket inPkt)
@@ -129,11 +127,11 @@ public class DesktopServer
 		Log.warning(STR_UNREACHABLE);
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PACKAGE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- CONSTRUCTOR ------------------------------------------------------------
+	// - CONSTRUCTOR -----------------------------------------------------------
 	//
 	DesktopServer(JFrame frame)
 		throws	SystemException
@@ -158,14 +156,14 @@ public class DesktopServer
 		}
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	boolean isControlled()
 	{
 		return (this.state == ControlState.CONTROLLED);
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void close()
 	{
@@ -173,7 +171,7 @@ public class DesktopServer
 		this.comm.close();
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	synchronized void stopControl()
 	{
@@ -190,11 +188,11 @@ public class DesktopServer
 		}
 	}	
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD: START_CONTROL
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void msgHn_StartControl(DesktopMessage inMsg, ObjectId srcId)
 	{
@@ -250,7 +248,7 @@ public class DesktopServer
 		}
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private boolean checkAccept(DesktopMessage msg)
 	{
@@ -259,22 +257,22 @@ public class DesktopServer
 		return (this.state == ControlState.WAIT);
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD: STOP_CONTROL
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void msgHn_StopControl(DesktopMessage msg)
 	{
 		stopControl();
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD: CONTROL_MESSAGE
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void msgHn_ControlMessage(DesktopMessage msg)
 	{
@@ -297,7 +295,7 @@ public class DesktopServer
 		}
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void evHn_KeyPress(KeyEvent ev)
 	{
@@ -305,7 +303,7 @@ public class DesktopServer
 		this.robot.keyPress(keyCode);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void evHn_KeyRelease(KeyEvent ev)
 	{
@@ -313,7 +311,7 @@ public class DesktopServer
 		this.robot.keyRelease(keyCode);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void evHn_MousePress(MouseEvent ev)
 	{
@@ -323,7 +321,7 @@ public class DesktopServer
 		}
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void evHn_MouseRelease(MouseEvent ev)
 	{
@@ -333,7 +331,7 @@ public class DesktopServer
 		}
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void evHn_MouseMove(MouseEvent ev)
 	{
@@ -342,7 +340,7 @@ public class DesktopServer
 		this.robot.mouseMove(x, y);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void evHn_MouseWheel(MouseWheelEvent ev)
 	{
@@ -350,9 +348,9 @@ public class DesktopServer
 		this.robot.mouseWheel(wheelAmt);
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private int getMouseButtonNumber(MouseEvent ev)
 	{
@@ -368,11 +366,11 @@ public class DesktopServer
 		return btnNum;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD: Illigal message
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	private void msgHn_UnsupportedMessage(String type, ObjectId srcId)
 	{

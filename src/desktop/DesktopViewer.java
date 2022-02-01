@@ -47,15 +47,13 @@ import com.midfield_system.api.viewer.VideoCanvas;
 import util.AppUtilities;
 import util.Dialog;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: DesktopViewer 
  *
  * Date Modified: 2021.09.20
  *
  */
-
-//==============================================================================
 @SuppressWarnings("serial")
 public class DesktopViewer
 	extends		Frame
@@ -65,7 +63,7 @@ public class DesktopViewer
 				MouseWheelListener,
 				ActionListener
 {
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final String
 		TITLE_REMOTE_DESKTOP	= "遠隔デスクトップ",
 		STR_TITLE_FORMAT		= TITLE_REMOTE_DESKTOP + " (%s)";
@@ -85,11 +83,11 @@ public class DesktopViewer
 	
 	private static final Container DUMMY_COMPONENT = new Container();
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 	
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private final RemoteDesktop remoteDesktop;
 	
 	private DesktopClient client = null;
@@ -102,16 +100,16 @@ public class DesktopViewer
 		labBitRate		= null,
 		labPktLossRate	= null;
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE METHOD:
-//==============================================================================
+// =============================================================================
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: KeyListener
-//------------------------------------------------------------------------------	
+// -----------------------------------------------------------------------------	
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: KeyListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: KeyListener
 	//
 	@Override
 	public void keyPressed(KeyEvent ev)
@@ -120,8 +118,8 @@ public class DesktopViewer
 		this.client.dispatchEvent(KEY_PRESS, ev);
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: KeyListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: KeyListener
 	//
 	@Override
 	public void keyReleased(KeyEvent ev)
@@ -130,8 +128,8 @@ public class DesktopViewer
 		this.client.dispatchEvent(KEY_RELEASE, ev);
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: KeyListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: KeyListener
 	//
 	@Override
 	public void keyTyped(KeyEvent ev)
@@ -139,12 +137,12 @@ public class DesktopViewer
 		// Not Implemented.
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: MouseListener
-//------------------------------------------------------------------------------	
+// -----------------------------------------------------------------------------	
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: MouseListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: MouseListener
 	//
 	@Override
 	public void mouseClicked(MouseEvent ev)
@@ -152,8 +150,8 @@ public class DesktopViewer
 		// Not Implemented.
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: MouseListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: MouseListener
 	//
 	@Override
 	public void mouseEntered(MouseEvent ev)
@@ -161,8 +159,8 @@ public class DesktopViewer
 		// Not Implemented.
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: MouseListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: MouseListener
 	//
 	@Override
 	public void mouseExited(MouseEvent ev)
@@ -170,8 +168,8 @@ public class DesktopViewer
 		// Not Implemented.
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: MouseListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: MouseListener
 	//
 	@Override
 	public void mousePressed(MouseEvent ev)
@@ -180,8 +178,8 @@ public class DesktopViewer
 		this.client.dispatchEvent(MOUSE_PRESS, ev);
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: MouseListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: MouseListener
 	//
 	@Override
 	public void mouseReleased(MouseEvent ev)
@@ -190,12 +188,12 @@ public class DesktopViewer
 		this.client.dispatchEvent(MOUSE_RELEASE, ev);
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: MouseMotionListener
-//------------------------------------------------------------------------------	
+// -----------------------------------------------------------------------------	
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: MouseMotionListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: MouseMotionListener
 	//
 	@Override
 	public void mouseDragged(MouseEvent ev)
@@ -204,8 +202,8 @@ public class DesktopViewer
 		this.client.dispatchEvent(MOUSE_MOVE, ev);
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: MouseMotionListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: MouseMotionListener
 	//
 	@Override
 	public void mouseMoved(MouseEvent ev)
@@ -214,12 +212,12 @@ public class DesktopViewer
 		this.client.dispatchEvent(MOUSE_MOVE, ev);
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: MouseWheelListener
-//------------------------------------------------------------------------------	
+// -----------------------------------------------------------------------------	
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: MouseWheelListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: MouseWheelListener
 	//
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent ev)
@@ -227,12 +225,12 @@ public class DesktopViewer
 		this.client.dispatchEvent(MOUSE_WHEEL, ev);
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: ActionListener
-//------------------------------------------------------------------------------	
+// -----------------------------------------------------------------------------	
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: ActionListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: ActionListener
 	//
 	@Override
 	public void actionPerformed(ActionEvent ev)
@@ -246,11 +244,11 @@ public class DesktopViewer
 		}
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PACKAGE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- CONSTRUCTOR ------------------------------------------------------------
+	// - CONSTRUCTOR -----------------------------------------------------------
 	//	
 	DesktopViewer(RemoteDesktop remoteDesktop)
 	{
@@ -258,7 +256,7 @@ public class DesktopViewer
 		setupGui();
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//	
 	void close()
 	{
@@ -277,7 +275,7 @@ public class DesktopViewer
 		dispose();
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void controlAccepted(IoParam inPrm)
 	{
@@ -315,7 +313,7 @@ public class DesktopViewer
 		}
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void handleIllegalMessage(PacketIoException ex)
 	{
@@ -344,7 +342,7 @@ public class DesktopViewer
 		Dialog.warning(this, ex);
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void controlRefused(String msg)
 	{
@@ -356,7 +354,7 @@ public class DesktopViewer
 		this.pnlConAddr.changeToIdleState();
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void updatePlayoutStatus(double frameRate)
 	{
@@ -365,7 +363,7 @@ public class DesktopViewer
 		));
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void updateConnectionStatus(int bitRate, double lossRate)
 	{
@@ -378,11 +376,11 @@ public class DesktopViewer
 		));
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	void setupGui()
 	{
@@ -419,14 +417,14 @@ public class DesktopViewer
 		setVisible(true);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void removeDesktopViewer()
 	{
 		this.remoteDesktop.removeViewer(this);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	//	2017/9/6 KeyEvent を生成し直す．
 	//	KeyEvent は Serializable を実装しているが，KeyEvent の中に含まれている
@@ -461,7 +459,7 @@ public class DesktopViewer
 		return kev;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	//	2017/9/6 
 	//  KeyEvent 同様，ダミーのコンポーネントをソースコンポーネントとして
@@ -500,9 +498,9 @@ public class DesktopViewer
 		return mev;
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private Container setupMessageComponents()
 	{
@@ -520,7 +518,7 @@ public class DesktopViewer
 		return container;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void newDesktopPane(VideoCanvas vidCvs, IoParam inPrm)
 	{
@@ -565,7 +563,7 @@ public class DesktopViewer
 		validate(); // スクロール区画のサイズに応じてレイアウトを調整する．
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void deleteDesktopPane()
 	{
@@ -575,9 +573,9 @@ public class DesktopViewer
 		repaint();
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	void evHn_StartControl()
 	{
@@ -600,7 +598,7 @@ public class DesktopViewer
 		}
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//	
 	void evHn_StopControl()
 	{

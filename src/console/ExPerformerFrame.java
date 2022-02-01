@@ -29,42 +29,40 @@ import com.midfield_system.protocol.IoStatus;
 
 import util.AppUtilities;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: ExPerformerFrame
  *
  * Date Modified: 2021.08.20
  *
  */
-
-//==============================================================================
 @SuppressWarnings("serial")
 public class ExPerformerFrame
 	extends		JFrame
 	implements	StreamEventListener,
 				WindowListener
 {
-	//- PRIVATE CONSTANT VALUE -------------------------------------------------
+	// - PRIVATE CONSTANT VALUE ------------------------------------------------
 	private static final Dimension DIM_MIN_FRAME = new Dimension(400, 360);
 	private static final Dimension DIM_PREF_FRAME = new Dimension(960, 480);
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private StreamPerformer performer = null;
 	
 	private MessagePanel mpStreamEvent = null;
 	private MessagePanel mpRendererStatus = null;
 	private MessagePanel mpIoStatus = null;
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPLEMENTS: StreamEventListener
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: StreamEventListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: StreamEventListener
 	//
 	@Override
 	public void update(StreamEvent ev)
@@ -96,24 +94,24 @@ public class ExPerformerFrame
 		}
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPLEMENTS: WindowListener
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowActivated(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowClosed(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowClosing(WindowEvent ev)
@@ -125,35 +123,35 @@ public class ExPerformerFrame
 		}
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowDeactivated(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowDeiconified(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowIconified(WindowEvent ev) { }
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPLEMENTS: WindowListener
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPLEMENTS: WindowListener
 	//
 	@Override
 	public void windowOpened(WindowEvent ev) { }
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PACKAGE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	ExPerformerFrame(StreamPerformer stm)
 	{
@@ -166,11 +164,11 @@ public class ExPerformerFrame
 		this.performer.addStreamEventListener(this);
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	void setupGui(StreamPerformer stm)
 	{
@@ -203,7 +201,7 @@ public class ExPerformerFrame
 		setVisible(true);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private JPanel createLeftPane(StreamPerformer stm)
 	{
@@ -220,7 +218,7 @@ public class ExPerformerFrame
 		return panel;
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private JComponent createRightPane()
 	{

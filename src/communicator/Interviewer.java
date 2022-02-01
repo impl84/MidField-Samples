@@ -17,41 +17,39 @@ import com.midfield_system.api.system.SystemException;
 
 import util.ConsolePrinter;
 
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 /**
  * Sample code of MidField System API: Interviewer 
  *
  * Date Modified: 2021.10.27
  *
  */
-
-//==============================================================================
 public class Interviewer
 	implements	CommPacketHandler
 {
-	//- PUBLIC CONSTANT VALUE --------------------------------------------------
+	// - PUBLIC CONSTANT VALUE -------------------------------------------------
 	public static final String COMMUNICATOR_NAME = "Interviewer";
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE VARIABLE:
-//==============================================================================
+// =============================================================================
 	
-	//- PRIVATE VARIABLE -------------------------------------------------------
+	// - PRIVATE VARIABLE ------------------------------------------------------
 	private final ConsolePrinter printer;
 	
 	private final PacketCommunicator comm;
 	private final ObjectId peerId;
 	
-//==============================================================================
+// =============================================================================
 //  INSTANCE METHOD:
-//==============================================================================
+// =============================================================================
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PUBLIC METHOD: IMPREMENTS: CommPacketHandler
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPREMENTS: CommPacketHandler
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPREMENTS: CommPacketHandler
 	//
 	@Override
 	public boolean handleIncomingPacket(CommPacket inPkt)
@@ -67,8 +65,8 @@ public class Interviewer
 		return handled;
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPREMENTS: CommPacketHandler
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPREMENTS: CommPacketHandler
 	//
 	@Override
 	public void handlePacketIoException(PacketIoException ex)
@@ -76,8 +74,8 @@ public class Interviewer
 		ex.printStackTrace();
 	}
 	
-	//- PUBLIC METHOD ----------------------------------------------------------
-	//- IMPREMENTS: CommPacketHandler
+	// - PUBLIC METHOD ---------------------------------------------------------
+	// - IMPREMENTS: CommPacketHandler
 	//
 	@Override
 	public void handleUnreachablePacket(CommPacket inPkt)
@@ -85,11 +83,11 @@ public class Interviewer
 		this.printer.println("未到達パケット：" + inPkt.getMessageType());
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PACKAGE METHOD:
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- CONSTRUCTOR ------------------------------------------------------------
+	// - CONSTRUCTOR -----------------------------------------------------------
 	//
 	Interviewer(ConsolePrinter printer, String peerAddr)
 	{
@@ -102,7 +100,7 @@ public class Interviewer
 		this.peerId = new ObjectId(Responder.COMMUNICATOR_NAME, peerAddr);
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void asyncInterview()
 	{
@@ -121,7 +119,7 @@ public class Interviewer
 		this.comm.dispatchPacket(reqPkt);
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void interview()
 	{
@@ -153,7 +151,7 @@ public class Interviewer
 		}
 	}
 	
-	//- PACKAGE METHOD ---------------------------------------------------------
+	// - PACKAGE METHOD --------------------------------------------------------
 	//
 	void close()
 	{
@@ -161,11 +159,11 @@ public class Interviewer
 		this.comm.close();
 	}
 	
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 //  PRIVATE METHOD: 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void msgHn_AsyncInterviewResponse(CommPacket resPkt)
 	{
@@ -174,7 +172,7 @@ public class Interviewer
 		this.printer.println(resMsg);
 	}
 	
-	//- PRIVATE METHOD ---------------------------------------------------------
+	// - PRIVATE METHOD --------------------------------------------------------
 	//
 	private void msgHn_UnsupportedMessage(CommPacket inPkt)
 	{
