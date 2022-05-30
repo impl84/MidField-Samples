@@ -1,5 +1,5 @@
 
-package stream;
+package performer;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;

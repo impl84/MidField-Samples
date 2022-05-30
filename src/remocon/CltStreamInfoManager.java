@@ -1,20 +1,18 @@
 
 package remocon;
 
-import static com.midfield_system.api.system.rpc.ParamName.SOURCE_NODE_ADDRESS;
+import static com.midfield_system.api.rpc.ParamName.SOURCE_NODE_ADDRESS;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.midfield_system.api.system.rpc.RpcRequest;
+import com.midfield_system.api.rpc.RpcRequest;
 
 /*----------------------------------------------------------------------------*/
 /**
- * CltStreamInfoManager
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.09.02 Koji Hashimoto
+ * Sample code of MidField System API: CltStreamInfoManager
+ * 
+ * Date Modified: 2022.06.08
  *
  */
 public class CltStreamInfoManager

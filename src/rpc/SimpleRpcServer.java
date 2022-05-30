@@ -1,9 +1,9 @@
 
 package rpc;
 
-import com.midfield_system.api.system.rpc.Registerable;
-import com.midfield_system.api.system.rpc.RegisterableArrayFactory;
-import com.midfield_system.api.system.rpc.RpcServer;
+import com.midfield_system.api.rpc.Registerable;
+import com.midfield_system.api.rpc.RegisterableArrayFactory;
+import com.midfield_system.api.rpc.RpcServer;
 import com.midfield_system.api.util.Log;
 
 import util.ConsolePrinter;
@@ -13,7 +13,7 @@ import util.ConsoleReader;
 /**
  * Sample code of MidField System API: SimpleRpcServer
  *
- * Date Modified: 2021.09.06
+ * Date Modified: 2022.05.31
  *
  */
 public class SimpleRpcServer
@@ -26,7 +26,8 @@ public class SimpleRpcServer
     // RegisterableArrayFactory の例
     private static final RegisterableArrayFactory FACTORY = () -> {
         // RPC要求処理メソッドを含む Registerable の配列を生成して返す．
-        Registerable   example           = new ServerMethodExample();
+        Registerable example = new ServerMethodExample();
+        
         Registerable[] registerableArray = {
             example
         };
@@ -56,6 +57,7 @@ public class SimpleRpcServer
             printer.println("");
             
             // RpcServer を生成する．
+            // (UnknownHostException)
             rpcServer = new RpcServer(
                 SERVER_NAME,    // RPCサーバ名またはIPアドレス
                 PORT_NUMBER,    // RPCサーバのポート番号
@@ -64,8 +66,6 @@ public class SimpleRpcServer
                 true,           // JSONオブジェクト(文字列)をログ出力するか否か
                 FACTORY         // RegisterableArrayFactory のインスタンス
             );
-                // UnknownHostException
-            
             // RpcServer の処理を開始する．
             rpcServer.open();
             

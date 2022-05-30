@@ -3,9 +3,9 @@ package console;
 
 /*----------------------------------------------------------------------------*/
 /**
- * Sample code of MidField System API: MenuDescription
+ * Sample code of MidField System API: MenuItem
  *
- * Date Modified: 2021.08.19
+ * Date Modified: 2022.06.08
  *
  */
 class MenuItem

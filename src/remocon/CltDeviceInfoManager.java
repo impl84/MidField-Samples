@@ -1,15 +1,13 @@
 
 package remocon;
 
-import com.midfield_system.api.system.rpc.RpcRequest;
+import com.midfield_system.api.rpc.RpcRequest;
 
 /*----------------------------------------------------------------------------*/
 /**
- * CltDeviceInfoManager
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.09.03 Koji Hashimoto
+ * Sample code of MidField System API: CltDeviceInfoManager
+ * 
+ * Date Modified: 2022.06.08
  *
  */
 public class CltDeviceInfoManager

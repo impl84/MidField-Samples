@@ -10,16 +10,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import com.midfield_system.api.system.rpc.InvocableMethod;
-import com.midfield_system.api.system.rpc.RpcRequest;
+import com.midfield_system.api.rpc.RpcRequest;
+import com.midfield_system.core.rpc.InvocableMethod;
 
 /*----------------------------------------------------------------------------*/
 /**
- * CommandParser
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.09.06 Koji Hashimoto
+ * Sample code of MidField System API: CommandParser
+ * 
+ * Date Modified: 2022.06.08
  *
  */
 class CommandParser

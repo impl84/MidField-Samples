@@ -1,5 +1,5 @@
 
-package stream;
+package performer;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,35 +10,55 @@ import com.midfield_system.api.stream.SegmentIo;
 import com.midfield_system.api.stream.StreamInfoManager;
 import com.midfield_system.api.stream.StreamPerformer;
 import com.midfield_system.api.system.MfsNode;
+import com.midfield_system.api.util.Log;
 import com.midfield_system.api.viewer.VideoCanvas;
 import com.midfield_system.protocol.StreamInfo;
 
+import util.ConsolePrinter;
 import util.ConsoleReader;
 import util.SimpleViewer;
 
-// Sample code of MidField System API
-// Date Modified: 2021.09.19
-//
+/*----------------------------------------------------------------------------*/
+/**
+ * Sample code of MidField System API: NetworkToRenderer
+ *
+ * Date Modified: 2022.06.09
+ *
+ */
 public class NetworkToRenderer
 {
+    // - PRIVATE CONSTANT VALUE ------------------------------------------------
+    private static final String SENDER_ADDR = "172.16.126.156";
+    
+// =============================================================================
+// CLASS METHOD:
+// =============================================================================
+    
+// -----------------------------------------------------------------------------
+// PUBLIC STATIC METHOD:
+// -----------------------------------------------------------------------------
+    
+    // - PUBLIC STATIC METHOD --------------------------------------------------
+    //
     public static void main(String[] args)
     {
-        MfsNode         mfs    = null;
-        StreamPerformer pfmr   = null;
-        ConsoleReader   reader = ConsoleReader.getInstance();
+        // コンソールからの文字入力を扱う ConsoleReader のインスタンスを取得する．
+        ConsoleReader reader = ConsoleReader.getInstance();
+        
+        // MidField System のログ出力先をコンソールに設定する．
+        Log.setLogPrinter(ConsolePrinter.getInstance());
+        
+        MfsNode         mfs  = null;
+        StreamPerformer pfmr = null;
         
         try {
             // MidField System を初期化し，起動する．
-            mfs = MfsNode.initialize();		// SystemException
-            mfs.activate();					// SystemException
-            
-            // 送信ホスト名/IPアドレスをコマンドラインから取得する．
-            System.out.print("  送信ホスト名/IPアドレス：");
-            String srcAddr = reader.readLine();	// IOException
+            mfs = MfsNode.initialize();
+            mfs.activate();
             
             // ストリーム情報リストを送信ホストから取得する．
             StreamInfoManager stmInfMgr = StreamInfoManager.getInstance();
-            List<StreamInfo>  lsStmInf  = stmInfMgr.fetchSourceStreamInfoList(srcAddr);
+            List<StreamInfo>  lsStmInf  = stmInfMgr.fetchSourceStreamInfoList(SENDER_ADDR);
             if (lsStmInf.size() <= 0) {
                 throw new IOException("  ※受信可能なストリームがありません．");
             }
@@ -49,12 +69,11 @@ public class NetworkToRenderer
             // SegmentIo の出力をデフォルトレンダラとして構成する．
             segIo.configureDefaultRenderer();
             
-            // オプションの設定をする．
-            segIo.setLiveSource(true);	// ライブソースオプションを有効にする．
+            // ライブソースオプションを有効にする．
+            segIo.setLiveSource(true);
             
             // SegmentIo をもとに StreamPerformer を生成する．
-            pfmr = StreamPerformer.newInstance(segIo);	// SystemException,
-                                                      	// StreamException
+            pfmr = StreamPerformer.newInstance(segIo);
             
             // StreamPerformer から VideoCanvas を取得する．
             VideoCanvas vidCvs = pfmr.getVideoCanvas();
@@ -63,28 +82,30 @@ public class NetworkToRenderer
             SwingUtilities.invokeAndWait(() -> {
                 new SimpleViewer("Network to Renderer", vidCvs);
             });
-            // InterruptedException, InvocationTargetException
-            
             // 入出力処理を開始する．
-            pfmr.open();	// StreamException
-            pfmr.start();	// StreamException
+            pfmr.open();
+            pfmr.start();
             
             // Enterキーの入力を待つ．
             System.out.print("> Enter キーの入力を待ちます．");
-            reader.readLine();	// IOException
+            reader.readLine();
             
             // 入出力処理を終了する．
-            pfmr.stop();	// StreamException
+            pfmr.stop();
             pfmr.close();
         }
         catch (Exception ex) {
             ex.printStackTrace();
         }
         finally {
-            // StreamPerformer, MidField System を終了する．
-            if (pfmr != null) { pfmr.delete(); }
-            if (mfs != null) { mfs.shutdown(); }
-            
+            // StreamPerformer の処理を終了する．
+            if (pfmr != null) {
+                pfmr.delete();
+            }
+            // MidField System を終了する．
+            if (mfs != null) {
+                mfs.shutdown();
+            }
             // ConsoleReader を解放する．
             reader.release();
         }

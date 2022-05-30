@@ -1,14 +1,14 @@
 
 package rpc;
 
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_CODE;
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_DATA;
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_MESSAGE;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_CODE;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_DATA;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_MESSAGE;
 
 import java.util.Map;
 
-import com.midfield_system.api.system.rpc.ErrorResponseHandler;
-import com.midfield_system.api.system.rpc.RpcClient;
+import com.midfield_system.api.rpc.ErrorResponseHandler;
+import com.midfield_system.api.rpc.RpcClient;
 import com.midfield_system.api.util.Log;
 
 import util.ConsolePrinter;
@@ -18,14 +18,14 @@ import util.ConsoleReader;
 /**
  * Sample code of MidField System API: SimpleRpcClient
  *
- * Date Modified: 2021.09.06
+ * Date Modified: 2022.08.12
  *
  */
 public class SimpleRpcClient
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
     private static final String SERVER_NAME = "127.0.0.1";
-    private static final int    PORT_NUMBER = 60202;
+    private static final int    SERVER_PORT = 60202;
     
     // ErrorResponseHandler の例
     private static final ErrorResponseHandler HANDLER = (reason, response, ex) -> {
@@ -66,18 +66,16 @@ public class SimpleRpcClient
             printer.println("");
             
             // RpcClient を生成する．
+            // (UnknownHostException, IOException)
             rpcClient = new RpcClient(
                 SERVER_NAME,    // RPCサーバ名またはIPアドレス
-                PORT_NUMBER,    // RPCサーバのポート番号
+                SERVER_PORT,    // RPCサーバのポート番号
                 false,          // JSONオブジェクト(文字列)を整形するか否か
                 true,           // JSONオブジェクト(文字列)をログ出力するか否か
                 HANDLER         // ErrorResponseHandler のインスタンス
             );
-                // UnknownHostException
-            
             // RpcClient の処理を開始する．
             rpcClient.open();
-                // IOException
             
             // クライアント側のメソッドの例を実行する．
             ClientMethodExample example = new ClientMethodExample(rpcClient);

@@ -1,9 +1,9 @@
 
 package rpc;
 
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_CODE;
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_DATA;
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_MESSAGE;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_CODE;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_DATA;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_MESSAGE;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -12,8 +12,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import com.midfield_system.api.system.rpc.RpcClient;
-import com.midfield_system.api.system.rpc.RpcResponse;
+import com.midfield_system.api.rpc.RpcClient;
+import com.midfield_system.api.rpc.RpcResponse;
 import com.midfield_system.api.util.Log;
 
 /*----------------------------------------------------------------------------*/

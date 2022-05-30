@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.midfield_system.api.system.rpc.RpcRequest;
-import com.midfield_system.api.system.rpc.RpcResponse;
+import com.midfield_system.api.rpc.RpcRequest;
+import com.midfield_system.api.rpc.RpcResponse;
 import com.midfield_system.api.util.Constants;
 import com.midfield_system.api.util.Log;
 

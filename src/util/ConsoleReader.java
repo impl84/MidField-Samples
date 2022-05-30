@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 /**
  * Sample code of MidField System API: ConsoleReader
  *
- * Date Modified: 2021.08.23
+ * Date Modified: 2022.06.08
  *
  */
 public class ConsoleReader
@@ -53,7 +53,7 @@ public class ConsoleReader
     // - PRIVATE VARIABLE ------------------------------------------------------
     
     // 標準入力からの1行読み込みに利用する BufferedReader
-    private BufferedReader bufferedReader = null;
+    private final BufferedReader bufferedReader;
     
 // =============================================================================
 // INSTANCE METHOD:
@@ -68,23 +68,13 @@ public class ConsoleReader
     public void release()
     {
         try {
-            // BufferedReader のインスタンスの有無を確認する．
-            if (this.bufferedReader == null) {
-                // インスタンスが存在しないので，何もせずに戻る．
-                return;
-            }
             // BufferedReader を閉じる．
+            // (IOException)
             this.bufferedReader.close();
-            // IOException
         }
         catch (IOException ex) {
             // 例外発生時のスタックトレースを出力する．
             ex.printStackTrace();
-        }
-        finally {
-            // BufferedReader のインスタンスを格納するための
-            // 変数を初期化しておく．
-            this.bufferedReader = null;
         }
     }
     
@@ -100,8 +90,8 @@ public class ConsoleReader
         throws IOException
     {
         // 標準入力から1行読み込む．
+        // (IOException)
         String line = this.bufferedReader.readLine();
-        // IOException
         
         // 読み込んだ1行を返す．
         return line;

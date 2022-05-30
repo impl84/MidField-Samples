@@ -1,9 +1,9 @@
 
 package remocon;
 
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_CODE;
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_DATA;
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_MESSAGE;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_CODE;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_DATA;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_MESSAGE;
 import static com.midfield_system.gui.misc.GuiConstants.BDR_EMPTY_8;
 
 import java.awt.BorderLayout;
@@ -21,10 +21,10 @@ import java.util.concurrent.TimeoutException;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import com.midfield_system.api.system.rpc.ErrorResponseHandler;
-import com.midfield_system.api.system.rpc.RpcClient;
-import com.midfield_system.api.system.rpc.RpcRequest;
-import com.midfield_system.api.system.rpc.RpcResponse;
+import com.midfield_system.api.rpc.ErrorResponseHandler;
+import com.midfield_system.api.rpc.RpcClient;
+import com.midfield_system.api.rpc.RpcRequest;
+import com.midfield_system.api.rpc.RpcResponse;
 import com.midfield_system.api.util.Log;
 import com.midfield_system.api.util.TaskExecutor;
 import com.midfield_system.gui.misc.MessagePanel;
@@ -35,11 +35,9 @@ import util.AppUtilities;
 
 /*----------------------------------------------------------------------------*/
 /**
- * RemoteController
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.09.12 Koji Hashimoto
+ * Sample code of MidField System API: RemoteController
+ * 
+ * Date Modified: 2022.08.09
  *
  */
 @SuppressWarnings("serial")
@@ -51,7 +49,7 @@ public class RemoteController
     private static final String STR_PROGRAM_NAME = Messages.getString("RemoteController.0");
     private static final String STR_TITLE_FORMAT = STR_PROGRAM_NAME + " (%s)";
     private static final String STR_CANT_CONNECT = Messages.getString("RemoteController.1");
-    public static final String  LINE_SEPARATOR   = Messages.getString("RemoteController.3");
+    private static final String LINE_SEPARATOR   = Messages.getString("RemoteController.3");
     private static final String LINE_HEADER      = Messages.getString("RemoteController.4");
     
     private static final int RPC_PORT_NUMBER = 60202;

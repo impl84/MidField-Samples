@@ -14,11 +14,9 @@ import javax.swing.event.ListSelectionListener;
 
 /*----------------------------------------------------------------------------*/
 /**
- * CommandList
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.08.26 Koji Hashimoto
+ * Sample code of MidField System API: CommandListPanel
+ * 
+ * Date Modified: 2022.06.08
  *
  */
 @SuppressWarnings("serial")
