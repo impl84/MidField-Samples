@@ -15,11 +15,9 @@ import javax.swing.JTextField;
 
 /*----------------------------------------------------------------------------*/
 /**
- * CommandBox
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.08.26 Koji Hashimoto
+ * Sample code of MidField System API: CommandBox
+ * 
+ * Date Modified: 2022.06.08
  *
  */
 @SuppressWarnings("serial")

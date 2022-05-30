@@ -1,5 +1,5 @@
 
-package stream;
+package performer;
 
 import java.io.IOException;
 
@@ -7,17 +7,17 @@ import com.midfield_system.api.stream.SegmentIo;
 
 /*----------------------------------------------------------------------------*/
 /**
- * Sample code of MidField System API: NetworkToNetworkEx
- *
- * Date Modified: 2021.10.26
+ * Sample code of MidField System API: DeviceToRendererEx
+ * 
+ * Date Modified: 2021.09.19
  *
  */
-class NetworkToNetworkEx
+class DeviceToRendererEx
     extends
         AbstractSampleCode
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String DESCRIPTION = "Incoming Stream -> Outgoing Stream";
+    private static final String DESCRIPTION = "Device -> Renderer";
     
 // =============================================================================
 // INSTANCE METHOD:
@@ -29,7 +29,7 @@ class NetworkToNetworkEx
     
     // - PACKAGE METHOD --------------------------------------------------------
     //
-    NetworkToNetworkEx()
+    DeviceToRendererEx()
     {
         //
     }
@@ -54,8 +54,8 @@ class NetworkToNetworkEx
     void configureInput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException
     {
-        // SegmentIo の入力を受信ストリームとして構成する．
-        cfgTool.configureIncomingStream(segIo);
+        // SegmentIo の入力を入力デバイスとして構成する．
+        cfgTool.configureInputDevice(segIo);
         // IOException
     }
     
@@ -66,8 +66,8 @@ class NetworkToNetworkEx
     void configureOutput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException
     {
-        // SegentIo の出力を送信ストリームとして構成する．
-        cfgTool.configureOutgoingStream(segIo);
+        // SegmentIo の出力をデフォルトレンダラとして構成する．
+        cfgTool.configureDefaultRenderer(segIo);
         // IOException
     }
 }

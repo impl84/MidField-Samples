@@ -4,9 +4,9 @@ package rpc;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.midfield_system.api.system.rpc.Registerable;
-import com.midfield_system.api.system.rpc.RpcRequest;
-import com.midfield_system.api.system.rpc.RpcResponse;
+import com.midfield_system.api.rpc.Registerable;
+import com.midfield_system.api.rpc.RpcRequest;
+import com.midfield_system.api.rpc.RpcResponse;
 
 /*----------------------------------------------------------------------------*/
 /**

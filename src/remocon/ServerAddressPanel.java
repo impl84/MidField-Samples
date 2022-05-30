@@ -20,11 +20,9 @@ import com.midfield_system.gui.misc.PopupMessage;
 
 /*----------------------------------------------------------------------------*/
 /**
- * ServerAddressPanel
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.08.26 Koji Hashimoto
+ * Sample code of MidField System API: ServerAddressPanel
+ * 
+ * Date Modified: 2022.06.08
  *
  */
 @SuppressWarnings("serial")

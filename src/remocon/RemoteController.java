@@ -1,9 +1,9 @@
 
 package remocon;
 
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_CODE;
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_DATA;
-import static com.midfield_system.api.system.rpc.JsonRpcConstants.ERR_MESSAGE;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_CODE;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_DATA;
+import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_MESSAGE;
 import static com.midfield_system.gui.misc.GuiConstants.BDR_EMPTY_8;
 
 import java.awt.BorderLayout;
@@ -21,10 +21,10 @@ import java.util.concurrent.TimeoutException;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import com.midfield_system.api.system.rpc.ErrorResponseHandler;
-import com.midfield_system.api.system.rpc.RpcClient;
-import com.midfield_system.api.system.rpc.RpcRequest;
-import com.midfield_system.api.system.rpc.RpcResponse;
+import com.midfield_system.api.rpc.ErrorResponseHandler;
+import com.midfield_system.api.rpc.RpcClient;
+import com.midfield_system.api.rpc.RpcRequest;
+import com.midfield_system.api.rpc.RpcResponse;
 import com.midfield_system.api.util.Log;
 import com.midfield_system.api.util.TaskExecutor;
 import com.midfield_system.gui.misc.MessagePanel;
@@ -35,11 +35,9 @@ import util.AppUtilities;
 
 /*----------------------------------------------------------------------------*/
 /**
- * RemoteController
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.09.12 Koji Hashimoto
+ * Sample code of MidField System API: RemoteController
+ * 
+ * Date Modified: 2022.06.08
  *
  */
 @SuppressWarnings("serial")

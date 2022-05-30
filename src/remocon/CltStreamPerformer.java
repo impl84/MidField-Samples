@@ -1,20 +1,18 @@
 
 package remocon;
 
-import static com.midfield_system.api.system.rpc.ParamName.PERFORMER_NUMBER;
+import static com.midfield_system.api.rpc.ParamName.PERFORMER_NUMBER;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.midfield_system.api.system.rpc.RpcRequest;
+import com.midfield_system.api.rpc.RpcRequest;
 
 /*----------------------------------------------------------------------------*/
 /**
- * CltStreamPerformer
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.09.03 Koji Hashimoto
+ * Sample code of MidField System API: CltStreamPerformer
+ * 
+ * Date Modified: 2022.06.08
  *
  */
 public class CltStreamPerformer

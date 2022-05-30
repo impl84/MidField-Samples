@@ -1,28 +1,26 @@
 
 package remocon;
 
-import static com.midfield_system.api.system.rpc.ParamName.AUDIO_DEVICE_INDEX;
-import static com.midfield_system.api.system.rpc.ParamName.AUDIO_FORMAT_INDEX;
-import static com.midfield_system.api.system.rpc.ParamName.CONNECTION_MODE;
-import static com.midfield_system.api.system.rpc.ParamName.IS_LIVE_SOURCE;
-import static com.midfield_system.api.system.rpc.ParamName.MULTICAST_ADDRESS;
-import static com.midfield_system.api.system.rpc.ParamName.PROTOCOL_TYPE;
-import static com.midfield_system.api.system.rpc.ParamName.STREAM_INFO_INDEX;
-import static com.midfield_system.api.system.rpc.ParamName.VIDEO_DEVICE_INDEX;
-import static com.midfield_system.api.system.rpc.ParamName.VIDEO_FORMAT_INDEX;
+import static com.midfield_system.api.rpc.ParamName.AUDIO_DEVICE_INDEX;
+import static com.midfield_system.api.rpc.ParamName.AUDIO_FORMAT_INDEX;
+import static com.midfield_system.api.rpc.ParamName.CONNECTION_MODE;
+import static com.midfield_system.api.rpc.ParamName.IS_LIVE_SOURCE;
+import static com.midfield_system.api.rpc.ParamName.MULTICAST_ADDRESS;
+import static com.midfield_system.api.rpc.ParamName.PROTOCOL_TYPE;
+import static com.midfield_system.api.rpc.ParamName.STREAM_INFO_INDEX;
+import static com.midfield_system.api.rpc.ParamName.VIDEO_DEVICE_INDEX;
+import static com.midfield_system.api.rpc.ParamName.VIDEO_FORMAT_INDEX;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.midfield_system.api.system.rpc.RpcRequest;
+import com.midfield_system.api.rpc.RpcRequest;
 
 /*----------------------------------------------------------------------------*/
 /**
- * CltSegmentIo
- *
- * Copyright (C) Koji Hashimoto
- *
- * Date Modified: 2021.09.03 Koji Hashimoto
+ * Sample code of MidField System API: CltSegmentIo
+ * 
+ * Date Modified: 2022.06.08
  *
  */
 public class CltSegmentIo
