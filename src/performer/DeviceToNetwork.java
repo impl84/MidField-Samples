@@ -40,7 +40,7 @@ public class DeviceToNetwork
     {
         // コンソールからの文字入力を扱う ConsoleReader のインスタンスを取得する．
         ConsoleReader reader = ConsoleReader.getInstance();
-
+        
         // MidField System のログ出力先をコンソールに設定する．
         Log.setLogPrinter(ConsolePrinter.getInstance());
         

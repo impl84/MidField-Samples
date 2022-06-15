@@ -55,7 +55,7 @@ public class RcSegmentIo
         // åãâ Çï‘Ç∑ÅD
         return result;
     }
-
+    
     // - PUBLIC METHOD ---------------------------------------------------------
     //
     public String configureIncomingStream(RcStreamInfo stmInf)
@@ -75,7 +75,7 @@ public class RcSegmentIo
         // åãâ Çï‘Ç∑ÅD
         return result;
     }
-
+    
 // -----------------------------------------------------------------------------
 // PUBLIC METHOD:
 // -----------------------------------------------------------------------------
@@ -128,7 +128,7 @@ public class RcSegmentIo
             "SegmentIo.configureOutgoingStream", params
         );
         // åãâ Çï‘Ç∑ÅD
-        return result;       
+        return result;
     }
     
     // - PUBLIC METHOD ---------------------------------------------------------

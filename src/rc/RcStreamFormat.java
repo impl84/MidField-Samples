@@ -15,7 +15,7 @@ public class RcStreamFormat
 // =============================================================================
     
     // - PRIVATE VARIABLE ------------------------------------------------------    
-    private final int formatIndex;
+    private final int    formatIndex;
     private final String format;
     
 // =============================================================================
@@ -50,5 +50,5 @@ public class RcStreamFormat
     {
         this.formatIndex = formatIndex;
         this.format = format;
-    }    
+    }
 }

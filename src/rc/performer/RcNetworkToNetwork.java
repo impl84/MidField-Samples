@@ -35,7 +35,7 @@ public class RcNetworkToNetwork
     private static final String SERVER_ADDR = "172.16.126.156";
     private static final int    SERVER_PORT = 60202;
     
-    private static final String SENDER_ADDR = "172.16.126.155";    
+    private static final String SENDER_ADDR = "172.16.126.155";
     
 // =============================================================================
 // CLASS METHOD:
@@ -51,7 +51,7 @@ public class RcNetworkToNetwork
     {
         // コンソールからの文字入力を扱う ConsoleReader のインスタンスを取得する．
         ConsoleReader reader = ConsoleReader.getInstance();
-
+        
         // MidField System のログ出力先をコンソールに設定する．
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
@@ -62,7 +62,7 @@ public class RcNetworkToNetwork
             // RcMfsNode を生成し，遠隔操作を開始する．
             mfs = new RcMfsNode(SERVER_ADDR, SERVER_PORT, HANDLER);
             mfs.open();
-
+            
             // ストリーム情報リストを送信ホストから取得する．
             RcStreamInfoManager stmInfMgr = mfs.getRcStreamInfoManager();
             List<RcStreamInfo>  lsStmInf  = stmInfMgr.fetchSourceStreamInfoList(SENDER_ADDR);
@@ -70,9 +70,9 @@ public class RcNetworkToNetwork
                 throw new IOException("  ※受信可能なストリームがありません．");
             }
             // RcSegmentIo の入力を受信ストリームとして構成する．
-            RcSegmentIo segIo = mfs.newRcSegmentIo();            
+            RcSegmentIo segIo = mfs.newRcSegmentIo();
             segIo.configureIncomingStream(lsStmInf.get(0));
-
+            
             // RcSegmentIo の出力を送信ストリームとして構成する．
             segIo.configureOutgoingStream(
                 segIo.getOutputVideoFormatList().get(0),

@@ -90,10 +90,10 @@ public class RcDeviceInfoManager
         // 配列の要素をデバイスリストへ追加する．
         for (int index = 0; index < result.size(); index++) {
             Map<String, Object> map = result.get(index);
-
+            
             @SuppressWarnings("unchecked")
             RcDeviceInfo devInf = new RcDeviceInfo(
-                index, 
+                index,
                 (String)map.get("deviceName"),
                 (ArrayList<String>)map.get("formatList")
             );

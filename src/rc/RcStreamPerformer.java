@@ -77,7 +77,7 @@ public class RcStreamPerformer
         // 対応する遠隔メソッドを呼び出し，結果を返す．
         // (RemoteControlException)
         return invokeRemoteMethod("StreamPerformer.delete");
-    }    
+    }
     
 // -----------------------------------------------------------------------------
 // PACKAGE METHOD:

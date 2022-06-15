@@ -31,11 +31,11 @@ public class NetworkToNetwork
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
     private static final String SENDER_ADDR = "172.16.126.156";
-
+    
 // =============================================================================
 // CLASS METHOD:
 // =============================================================================
-
+    
 // -----------------------------------------------------------------------------
 // PUBLIC STATIC METHOD:
 // -----------------------------------------------------------------------------
@@ -46,7 +46,7 @@ public class NetworkToNetwork
     {
         // コンソールからの文字入力を扱う ConsoleReader のインスタンスを取得する．
         ConsoleReader reader = ConsoleReader.getInstance();
-
+        
         // MidField System のログ出力先をコンソールに設定する．
         Log.setLogPrinter(ConsolePrinter.getInstance());
         

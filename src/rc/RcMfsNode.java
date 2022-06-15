@@ -37,7 +37,7 @@ public class RcMfsNode
     
     private RcDeviceInfoManager devInfMgr = null;
     private RcStreamInfoManager stmInfMgr = null;
-    private RcSegmentIo segIo = null;
+    private RcSegmentIo         segIo     = null;
     
 // =============================================================================
 // INSTANCE METHOD:
@@ -169,7 +169,7 @@ public class RcMfsNode
         // 対応する遠隔メソッドを呼び出す．
         // (RemoteControlException)
         Object result = invoke("MfsNode.unlock", null);
-
+        
         // 結果を String に変換して返す．
         return (String)result;
     }

@@ -17,8 +17,8 @@ public class RcDeviceInfo
 // =============================================================================
     
     // - PRIVATE VARIABLE ------------------------------------------------------    
-    private final int deviceIndex;
-    private final String deviceName;
+    private final int               deviceIndex;
+    private final String            deviceName;
     private final ArrayList<String> formatList;
     
 // =============================================================================
