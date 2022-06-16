@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Sample code of MidField System API: RcDeviceInfoManager
  *
- * Date Modified: 2022.06.08
+ * Date Modified: 2022.06.16
  *
  */
 public class RcDeviceInfoManager
@@ -95,7 +95,8 @@ public class RcDeviceInfoManager
             RcDeviceInfo devInf = new RcDeviceInfo(
                 index,
                 (String)map.get("deviceName"),
-                (ArrayList<String>)map.get("formatList")
+                (ArrayList<String>)map.get("formatList"),
+                Integer.parseInt((String)map.get("preferredIndex"))
             );
             lsDevInf.add(devInf);
         }

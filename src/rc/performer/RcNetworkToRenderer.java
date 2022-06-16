@@ -30,10 +30,10 @@ import util.ConsoleReader;
 public class RcNetworkToRenderer
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String SERVER_ADDR = "172.16.126.157";
+    private static final String SERVER_ADDR = "172.16.126.156";
     private static final int    SERVER_PORT = 60202;
     
-    private static final String SENDER_ADDR = "172.16.126.156";
+    private static final String SENDER_ADDR = "172.16.126.155";
     
 // =============================================================================
 // CLASS METHOD:

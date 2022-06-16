@@ -13,7 +13,7 @@ import com.midfield_system.api.stream.ProtocolType;
 /**
  * Sample code of MidField System API: RcSegmentIo
  *
- * Date Modified: 2022.06.09
+ * Date Modified: 2022.06.16
  *
  */
 public class RcSegmentIo
@@ -43,9 +43,9 @@ public class RcSegmentIo
         
         // 引数を設定する．
         params.put("videoDeviceIndex", Integer.toString(vidDev.getDeviceIndex()));
-        params.put("videoFormatIndex", "0");
+        params.put("videoFormatIndex", Integer.toString(vidDev.getPreferredIndex()));
         params.put("audioDeviceIndex", Integer.toString(audDev.getDeviceIndex()));
-        params.put("audioFormatIndex", "0");
+        params.put("audioFormatIndex", Integer.toString(audDev.getPreferredIndex()));
         
         // 対応する遠隔メソッドを呼び出す．
         // (RemoteControlException)

@@ -30,7 +30,7 @@ import util.ConsoleReader;
 public class RcDeviceToNetwork
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String SERVER_ADDR = "172.16.126.155";
+    private static final String SERVER_ADDR = "172.16.126.154";
     private static final int    SERVER_PORT = 60202;
     
 // =============================================================================
@@ -73,7 +73,7 @@ public class RcDeviceToNetwork
             // RcSegmentIo の出力を送信ストリームとして構成する．
             segIo.configureOutgoingStream(
                 segIo.getOutputVideoFormatList().get(0),
-                segIo.getOutputAudioFormatList().get(1)
+                segIo.getOutputAudioFormatList().get(0)
             );
             // トランスポートプロトコルの設定を行う．
             segIo.setTransportProtocol(

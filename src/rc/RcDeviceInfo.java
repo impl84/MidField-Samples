@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Sample code of MidField System API: RcDeviceInfo
  *
- * Date Modified: 2022.06.08
+ * Date Modified: 2022.06.16
  *
  */
 public class RcDeviceInfo
@@ -20,6 +20,7 @@ public class RcDeviceInfo
     private final int               deviceIndex;
     private final String            deviceName;
     private final ArrayList<String> formatList;
+    private final int               preferredIndex;
     
 // =============================================================================
 // INSTANCE METHOD:
@@ -50,16 +51,24 @@ public class RcDeviceInfo
         return this.formatList;
     }
     
+    // - PUBLIC METHOD ---------------------------------------------------------
+    //
+    public int getPreferredIndex()
+    {
+        return this.preferredIndex;
+    }
+    
 // -----------------------------------------------------------------------------
 // PACKAGE METHOD:
 // -----------------------------------------------------------------------------
     
     // - PACKAGE METHOD --------------------------------------------------------
     //
-    RcDeviceInfo(int deviceIndex, String deviceName, ArrayList<String> formatList)
+    RcDeviceInfo(int deviceIndex, String deviceName, ArrayList<String> formatList, int preferredIndex)
     {
         this.deviceIndex = deviceIndex;
         this.deviceName = deviceName;
         this.formatList = formatList;
+        this.preferredIndex = preferredIndex;
     }
 }
