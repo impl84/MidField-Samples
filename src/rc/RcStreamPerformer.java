@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Sample code of MidField System API: RcStreamPerformer
  *
- * Date Modified: 2022.06.08
+ * Date Modified: 2022.06.21
  *
  */
 public class RcStreamPerformer
@@ -19,7 +19,7 @@ public class RcStreamPerformer
     
     // - PRIVATE VARIABLE ------------------------------------------------------
     private final RcMfsNode mfs;
-    private final int       performerNumber;
+    private final int       performerIndex;
     
 // =============================================================================
 // INSTANCE METHOD:
@@ -99,8 +99,8 @@ public class RcStreamPerformer
         Map<String, Object> map = (Map<String, Object>)this.mfs.invoke(
             "StreamPerformer.newInstance", null
         );
-        // 結果から performerNumber を取得する．
-        this.performerNumber = Integer.parseInt((String)map.get("performerNumber"));
+        // 結果から performerIndex を取得する．
+        this.performerIndex = Integer.parseInt((String)map.get("performerIndex"));
     }
     
 // -----------------------------------------------------------------------------
@@ -116,7 +116,7 @@ public class RcStreamPerformer
         Map<String, Object> params = new LinkedHashMap<String, Object>();
         
         // 引数を設定する．
-        params.put("performerNumber", Integer.toString(this.performerNumber));
+        params.put("performerIndex", Integer.toString(this.performerIndex));
         
         // 対応する遠隔メソッドを呼び出す．
         // (RemoteControlException)

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Sample code of MidField System API: RcDeviceInfo
  *
- * Date Modified: 2022.06.16
+ * Date Modified: 2022.06.21
  *
  */
 public class RcDeviceInfo
@@ -64,7 +64,10 @@ public class RcDeviceInfo
     
     // - PACKAGE METHOD --------------------------------------------------------
     //
-    RcDeviceInfo(int deviceIndex, String deviceName, ArrayList<String> formatList, int preferredIndex)
+    RcDeviceInfo(
+        int deviceIndex, String deviceName,
+        ArrayList<String> formatList, int preferredIndex
+    )
     {
         this.deviceIndex = deviceIndex;
         this.deviceName = deviceName;
