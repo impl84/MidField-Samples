@@ -20,7 +20,7 @@ import util.LineReader;
 /**
  * Sample code of MidField System API: ConfigTool
  *
- * Date Modified: 2021.11.05
+ * Date Modified: 2022.08.18
  *
  */
 class ConfigTool
@@ -69,8 +69,8 @@ class ConfigTool
         
         // 入力デバイスの出力フォーマットを決める．
         // （ここではデフォルトのフォーマットを利用する．）
-        StreamFormat vidFmt = vidDev.getDefaultOutputFormat();
-        StreamFormat audFmt = audDev.getDefaultOutputFormat();
+        StreamFormat vidFmt = vidDev.getPreferredOutputFormat();
+        StreamFormat audFmt = audDev.getPreferredOutputFormat();
         
         // Segment I/O の入力を入力デバイス情報と出力フォーマットで構成する．
         segIo.configureInputDevice(vidDev, vidFmt, audDev, audFmt);

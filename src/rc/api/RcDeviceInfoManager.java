@@ -1,19 +1,18 @@
 
-package rc;
+package rc.api;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 /*----------------------------------------------------------------------------*/
 /**
- * Sample code of MidField System API: RcStreamInfoManager
+ * Sample code of MidField System API: RcDeviceInfoManager
  *
- * Date Modified: 2022.06.09
+ * Date Modified: 2022.06.16
  *
  */
-public class RcStreamInfoManager
+public class RcDeviceInfoManager
 {
 // =============================================================================
 // INSTANCE VARIABLE:
@@ -32,23 +31,32 @@ public class RcStreamInfoManager
     
     // - PUBLIC METHOD ---------------------------------------------------------
     //
-    public List<RcStreamInfo> fetchSourceStreamInfoList(String addr)
+    public List<RcDeviceInfo> getInputVideoDeviceInfoList()
         throws RemoteControlException
     {
-        // 遠隔メソッド呼び出しの引数となるマップを生成する．
-        Map<String, Object> params = new LinkedHashMap<String, Object>();
-        
-        // 引数を設定する．
-        params.put("sourceNodeAddress", addr);
-        
         // 対応する遠隔メソッドを呼び出す．
         // (RemoteControlException)
         @SuppressWarnings("unchecked")
         ArrayList<Map<String, Object>> result = (ArrayList<Map<String, Object>>)this.mfs.invoke(
-            "StreamInfoManager.fetchSourceStreamInfoList", params
+            "DeviceInfoManager.getInputVideoDeviceInfoList", null
         );
-        // ストリーム情報リストを生成して返す．
-        return newSourceStreamInfoList(result);
+        // デバイスリストを生成して返す．
+        return newInputDeviceInfoList(result);
+    }
+    
+    // - PUBLIC METHOD ---------------------------------------------------------
+    //
+    public List<RcDeviceInfo> getInputAudioDeviceInfoList()
+        throws RemoteControlException
+    {
+        // 対応する遠隔メソッドを呼び出す．
+        // (RemoteControlException)
+        @SuppressWarnings("unchecked")
+        ArrayList<Map<String, Object>> result = (ArrayList<Map<String, Object>>)this.mfs.invoke(
+            "DeviceInfoManager.getInputAudioDeviceInfoList", null
+        );
+        // デバイスリストを生成して返す．
+        return newInputDeviceInfoList(result);
     }
     
 // -----------------------------------------------------------------------------
@@ -57,7 +65,7 @@ public class RcStreamInfoManager
     
     // - CONSTRUCTOR -----------------------------------------------------------
     //
-    RcStreamInfoManager(RcMfsNode mfs)
+    RcDeviceInfoManager(RcMfsNode mfs)
     {
         if (mfs == null) {
             throw new NullPointerException();
@@ -70,31 +78,29 @@ public class RcStreamInfoManager
 // -----------------------------------------------------------------------------
     
     // - PRIVATE METHOD --------------------------------------------------------
-    //  
-    private List<RcStreamInfo> newSourceStreamInfoList(
+    //
+    private List<RcDeviceInfo> newInputDeviceInfoList(
         ArrayList<Map<String, Object>> result
     )
     {
-        // ストリーム情報リストを生成する．
-        List<RcStreamInfo> lsStmInf = new ArrayList<RcStreamInfo>();
+        // デバイスリストを生成する．
+        List<RcDeviceInfo> lsDevInf = new ArrayList<RcDeviceInfo>();
         
         // 遠隔メソッド呼び出しの結果として得られた配列を操作し，
-        // 配列の要素をストリーム情報リストへ追加する．
+        // 配列の要素をデバイスリストへ追加する．
         for (int index = 0; index < result.size(); index++) {
             Map<String, Object> map = result.get(index);
             
-            RcStreamInfo stmInf = new RcStreamInfo(
+            @SuppressWarnings("unchecked")
+            RcDeviceInfo devInf = new RcDeviceInfo(
                 index,
-                (String)map.get("videoConnection"),
-                (String)map.get("videoDescription"),
-                (String)map.get("videoFormat"),
-                (String)map.get("audioConnection"),
-                (String)map.get("audioDescription"),
-                (String)map.get("audioFormat")
+                (String)map.get("deviceName"),
+                (ArrayList<String>)map.get("formatList"),
+                Integer.parseInt((String)map.get("preferredIndex"))
             );
-            lsStmInf.add(stmInf);
+            lsDevInf.add(devInf);
         }
-        // ストリーム情報リストを返す．
-        return lsStmInf;
+        // デバイスリストを返す．
+        return lsDevInf;
     }
 }

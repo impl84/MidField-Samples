@@ -14,11 +14,11 @@ import com.midfield_system.api.stream.ConnectionMode;
 import com.midfield_system.api.stream.ProtocolType;
 import com.midfield_system.api.util.Log;
 
-import rc.RcMfsNode;
-import rc.RcSegmentIo;
-import rc.RcStreamInfo;
-import rc.RcStreamInfoManager;
-import rc.RcStreamPerformer;
+import rc.api.RcMfsNode;
+import rc.api.RcSegmentIo;
+import rc.api.RcStreamInfo;
+import rc.api.RcStreamInfoManager;
+import rc.api.RcStreamPerformer;
 import util.ConsolePrinter;
 import util.ConsoleReader;
 
@@ -26,16 +26,16 @@ import util.ConsoleReader;
 /**
  * Sample code of MidField System API: RcNetworkToNetwork
  * 
- * Date Modified: 2022.06.09
+ * Date Modified: 2022.10.17
  *
  */
 public class RcNetworkToNetwork
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String SERVER_ADDR = "172.16.126.155";
+    private static final String SERVER_ADDR = "172.16.127.166";
     private static final int    SERVER_PORT = 60202;
     
-    private static final String SENDER_ADDR = "172.16.126.154";
+    private static final String SENDER_ADDR = "172.16.127.206";
     
 // =============================================================================
 // CLASS METHOD:

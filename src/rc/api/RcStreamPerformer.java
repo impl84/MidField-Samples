@@ -1,5 +1,5 @@
 
-package rc;
+package rc.api;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

@@ -12,11 +12,11 @@ import com.midfield_system.api.stream.ConnectionMode;
 import com.midfield_system.api.stream.ProtocolType;
 import com.midfield_system.api.util.Log;
 
-import rc.RcDeviceInfo;
-import rc.RcDeviceInfoManager;
-import rc.RcMfsNode;
-import rc.RcSegmentIo;
-import rc.RcStreamPerformer;
+import rc.api.RcDeviceInfo;
+import rc.api.RcDeviceInfoManager;
+import rc.api.RcMfsNode;
+import rc.api.RcSegmentIo;
+import rc.api.RcStreamPerformer;
 import util.ConsolePrinter;
 import util.ConsoleReader;
 
@@ -24,13 +24,13 @@ import util.ConsoleReader;
 /**
  * Sample code of MidField System API: RcDeviceToNetwork
  * 
- * Date Modified: 2022.06.09
+ * Date Modified: 2022.10.17
  *
  */
 public class RcDeviceToNetwork
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String SERVER_ADDR = "172.16.126.154";
+    private static final String SERVER_ADDR = "172.16.127.206";
     private static final int    SERVER_PORT = 60202;
     
 // =============================================================================

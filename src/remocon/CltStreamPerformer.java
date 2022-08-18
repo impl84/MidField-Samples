@@ -1,7 +1,7 @@
 
 package remocon;
 
-import static com.midfield_system.api.rpc.ParamName.PERFORMER_NUMBER;
+import static com.midfield_system.api.rpc.ParamName.PERFORMER_INDEX;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -12,7 +12,7 @@ import com.midfield_system.api.rpc.RpcRequest;
 /**
  * Sample code of MidField System API: CltStreamPerformer
  * 
- * Date Modified: 2022.06.08
+ * Date Modified: 2022.08.18
  *
  */
 public class CltStreamPerformer
@@ -100,8 +100,8 @@ public class CltStreamPerformer
             // RPC要求用のマップを生成する．
             map = new TreeMap<String, Object>();
             
-            // StreamPerformer の ID をマップに設定する．
-            map.put(PERFORMER_NUMBER, args[1]);
+            // StreamPerformer のインデックス番号をマップに設定する．
+            map.put(PERFORMER_INDEX, args[1]);
         }
         // RPC要求を生成して返す．
         RpcRequest rpcReq = RpcRequest.createRequest(args[0], map);

@@ -1,5 +1,5 @@
 
-package rc;
+package rc.api;
 
 import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_CODE;
 import static com.midfield_system.api.rpc.JsonRpcConstants.ERR_DATA;
@@ -20,7 +20,7 @@ import com.midfield_system.api.rpc.RpcResponse;
 /**
  * Sample code of MidField System API: RcMfsNode
  *
- * Date Modified: 2022.06.09
+ * Date Modified: 2022.11.08
  *
  */
 public class RcMfsNode
@@ -55,7 +55,7 @@ public class RcMfsNode
     {
         // 引数で与えられたサーバと接続するための RpcClient を生成する．
         // (UnknownHostException, IOException)
-        rpcClient = new RpcClient(
+        this.rpcClient = new RpcClient(
             serverName,     // RPCサーバ名またはIPアドレス
             serverPort,     // RPCサーバのポート番号
             false,          // JSONオブジェクト(文字列)を整形するか否か
