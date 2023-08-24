@@ -10,9 +10,9 @@ import javax.swing.WindowConstants;
 
 import com.midfield_system.api.viewer.VideoCanvas;
 
-/*----------------------------------------------------------------------------*/
 /**
- * Sample code of MidField System API: SimpleViewer
+ * 
+ * Sample code for MidField API
  *
  * Date Modified: 2021.09.19
  *
