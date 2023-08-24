@@ -10,9 +10,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
-/*----------------------------------------------------------------------------*/
 /**
- * Sample code of MidField System API: InputField
+ * 
+ * Sample code for MidField API
  *
  * Date Modified: 2021.08.24
  *

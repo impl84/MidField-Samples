@@ -9,9 +9,9 @@ import javax.swing.SwingUtilities;
 import com.midfield_system.api.system.SystemException;
 import com.midfield_system.api.util.Constants;
 
-/*----------------------------------------------------------------------------*/
 /**
- * Sample code of MidField System API: Dialog
+ * 
+ * Sample code for MidField API
  *
  * Date Modified: 2021.10.26
  *

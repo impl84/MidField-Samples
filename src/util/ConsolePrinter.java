@@ -3,9 +3,9 @@ package util;
 
 import com.midfield_system.api.util.LogPrinter;
 
-/*----------------------------------------------------------------------------*/
 /**
- * Sample code of MidField System API: ConsolePrinter
+ * 
+ * Sample code for MidField API
  *
  * Date Modified: 2021.08.24
  *

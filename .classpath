@@ -8,7 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Development/MidField-Runtime/gson-2.8.2.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/00_MidField-Core"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/01_MidField-Gui"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/01_MidField-Ui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/10_MidField-Application"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

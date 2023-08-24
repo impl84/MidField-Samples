@@ -5,9 +5,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/*----------------------------------------------------------------------------*/
 /**
- * Sample code of MidField System API: ConsoleReader
+ * 
+ * Sample code for MidField API
  *
  * Date Modified: 2022.06.08
  *

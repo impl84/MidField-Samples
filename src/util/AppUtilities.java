@@ -1,7 +1,7 @@
 
 package util;
 
-import static com.midfield_system.gui.misc.GuiConstants.FONT_GUI_DEFAULT;
+import static com.midfield_system.ui.misc.GuiConstants.FONT_GUI_DEFAULT;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -12,11 +12,11 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 
-import com.midfield_system.gui.misc.PopupMessage;
+import com.midfield_system.ui.misc.PopupMessage;
 
-/*----------------------------------------------------------------------------*/
 /**
- * Sample code of MidField System API: AppUtilities
+ * 
+ * Sample code for MidField API
  *
  * Date Modified: 2021.09.19
  *
