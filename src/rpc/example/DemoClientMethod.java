@@ -3,10 +3,8 @@ package rpc.example;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import com.midfield_system.api.util.Log;
 import com.midfield_system.rpc.api.ErrorObject;
@@ -17,7 +15,7 @@ import com.midfield_system.rpc.api.RpcClient;
  * 
  * Sample code for MidField API
  *
- * Date Modified: 2023.10.25
+ * Date Modified: 2023.10.31
  *
  */
 public class DemoClientMethod
@@ -201,9 +199,6 @@ public class DemoClientMethod
                 Log.message("△ error: %s", error);
             }
         }
-        catch (InterruptedException | ExecutionException | TimeoutException ex) {
-            Log.warning("%s: %s", ex.getClass().getName(), ex.getMessage());
-        }
         catch (Exception ex) {
             Log.error(ex);
         }
@@ -228,8 +223,8 @@ public class DemoClientMethod
         Object result = null;
         try {
             // RPC応答を取得する．
+            // (InterruptedException, ExecutionException, TimeoutException)
             ResponseObject response = future.get(2000, TimeUnit.MILLISECONDS);
-            // InterruptedException, ExecutionException, TimeoutException
             
             // 結果が null の場合はエラー情報を出力する．
             result = response.getResult();
@@ -237,9 +232,6 @@ public class DemoClientMethod
                 ErrorObject error = response.getError();
                 Log.message("△ error: %s", error);
             }
-        }
-        catch (InterruptedException | ExecutionException | TimeoutException ex) {
-            Log.warning("%s: %s", ex.getClass().getName(), ex.getMessage());
         }
         catch (Exception ex) {
             Log.error(ex);

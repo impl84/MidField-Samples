@@ -1,9 +1,6 @@
 
 package rpc.example;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
-
 import com.midfield_system.api.util.Log;
 import com.midfield_system.rpc.api.ErrorObject;
 import com.midfield_system.rpc.api.ResponseObject;
@@ -13,7 +10,7 @@ import com.midfield_system.rpc.api.RpcClient;
  * 
  * Sample code for MidField API
  *
- * Date Modified: 2023.10.25
+ * Date Modified: 2023.10.31
  *
  */
 public class SimpleClientMethod
@@ -30,7 +27,7 @@ public class SimpleClientMethod
         Object result = null;
         try {
             // サーバのメソッドを呼び出し，RPC応答を取得する．
-            // (InterruptedException, ExecutionException, TimeoutException)            
+            // (InterruptedException, ExecutionException, TimeoutException)
             ResponseObject response = this.rpcClient.invoke(
                 "Simple.echo",  // 呼び出すメソッド名
                 echoString,     // メソッドの引数
@@ -42,9 +39,6 @@ public class SimpleClientMethod
                 ErrorObject error = response.getError();
                 Log.message("error: %s", error);
             }
-        }
-        catch (InterruptedException | ExecutionException | TimeoutException ex) {
-            Log.warning("%s: %s", ex.getClass().getName(), ex.getMessage());
         }
         catch (Exception ex) {
             Log.error(ex);
