@@ -33,13 +33,13 @@ public class ConsolePrinter
     //
     public static ConsolePrinter getInstance()
     {
-        // ConsolePrinter ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì—L–³‚ğŠm”F‚·‚éD
+        // ConsolePrinter ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æœ‰ç„¡ã‚’ç¢ºèªã™ã‚‹ï¼
         if (ConsolePrinter.theInstance == null) {
-            // ƒCƒ“ƒXƒ^ƒ“ƒX‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍC
-            // ConsolePrinter ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éD
+            // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ï¼Œ
+            // ConsolePrinter ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
             ConsolePrinter.theInstance = new ConsolePrinter();
         }
-        // ConsoleReader ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚·D
+        // ConsoleReader ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™ï¼
         return ConsolePrinter.theInstance;
         
     }

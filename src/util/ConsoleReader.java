@@ -35,13 +35,13 @@ public class ConsoleReader
     //
     public static ConsoleReader getInstance()
     {
-        // ConsoleReader ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì—L–³‚ğŠm”F‚·‚éD
+        // ConsoleReader ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æœ‰ç„¡ã‚’ç¢ºèªã™ã‚‹ï¼
         if (ConsoleReader.theInstance == null) {
-            // ƒCƒ“ƒXƒ^ƒ“ƒX‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍC
-            // ConsoleReader ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éD
+            // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ï¼Œ
+            // ConsoleReader ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
             ConsoleReader.theInstance = new ConsoleReader();
         }
-        // ConsoleReader ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚·D
+        // ConsoleReader ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™ï¼
         return ConsoleReader.theInstance;
         
     }
@@ -52,7 +52,7 @@ public class ConsoleReader
     
     // - PRIVATE VARIABLE ------------------------------------------------------
     
-    // •W€“ü—Í‚©‚ç‚Ì1s“Ç‚İ‚İ‚É—˜—p‚·‚é BufferedReader
+    // æ¨™æº–å…¥åŠ›ã‹ã‚‰ã®1è¡Œèª­ã¿è¾¼ã¿ã«åˆ©ç”¨ã™ã‚‹ BufferedReader
     private final BufferedReader bufferedReader;
     
 // =============================================================================
@@ -68,12 +68,12 @@ public class ConsoleReader
     public void release()
     {
         try {
-            // BufferedReader ‚ğ•Â‚¶‚éD
+            // BufferedReader ã‚’é–‰ã˜ã‚‹ï¼
             // (IOException)
             this.bufferedReader.close();
         }
         catch (IOException ex) {
-            // —áŠO”­¶‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğo—Í‚·‚éD
+            // ä¾‹å¤–ç™ºç”Ÿæ™‚ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ï¼
             ex.printStackTrace();
         }
     }
@@ -89,11 +89,11 @@ public class ConsoleReader
     public String readLine()
         throws IOException
     {
-        // •W€“ü—Í‚©‚ç1s“Ç‚İ‚ŞD
+        // æ¨™æº–å…¥åŠ›ã‹ã‚‰1è¡Œèª­ã¿è¾¼ã‚€ï¼
         // (IOException)
         String line = this.bufferedReader.readLine();
         
-        // “Ç‚İ‚ñ‚¾1s‚ğ•Ô‚·D
+        // èª­ã¿è¾¼ã‚“ã 1è¡Œã‚’è¿”ã™ï¼
         return line;
     }
     
@@ -105,7 +105,7 @@ public class ConsoleReader
     //
     private ConsoleReader()
     {
-        // •W€“ü—Í‚©‚ç‚Ì1s“Ç‚İ‚İ‚É—˜—p‚·‚é BufferedReader ‚ğ¶¬‚·‚éD
+        // æ¨™æº–å…¥åŠ›ã‹ã‚‰ã®1è¡Œèª­ã¿è¾¼ã¿ã«åˆ©ç”¨ã™ã‚‹ BufferedReader ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     }
 }

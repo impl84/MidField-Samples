@@ -18,7 +18,7 @@ import util.ConsolePrinter;
 public class DemoRpcServer
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String SERVER_NAME   = null;       // ƒƒCƒ‹ƒhƒJ[ƒhƒAƒhƒŒƒX
+    private static final String SERVER_NAME   = null;       // ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰ã‚¢ãƒ‰ãƒ¬ã‚¹
     private static final int    PORT_NUMBER   = 60202;
     private static final int    MAX_IDLE_TIME = 600 * 1000; // [ms]
     
@@ -34,42 +34,42 @@ public class DemoRpcServer
     //
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ğƒRƒ“ƒ\[ƒ‹‚Éİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         RpcServer rpcServer = null;
         try {
-            Log.message("> DemoRpcServer: RpcServer ‚Ìˆ—‚ğŠJn‚µ‚Ü‚·D");
+            Log.message("> DemoRpcServer: RpcServer ã®å‡¦ç†ã‚’é–‹å§‹ã—ã¾ã™ï¼");
             
-            // RegisterableArrayFactory ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+            // RegisterableArrayFactory ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
             RegisterableArrayFactory factory = () -> new Registerable[] {new DemoServerMethod()};
             
-            // RpcServer ‚ğ¶¬‚·‚éD
+            // RpcServer ã‚’ç”Ÿæˆã™ã‚‹ï¼
             // (UnknownHostException)
             rpcServer = new RpcServer(
-                SERVER_NAME,    // RPCƒT[ƒo–¼‚Ü‚½‚ÍIPƒAƒhƒŒƒX
-                PORT_NUMBER,    // RPCƒT[ƒo‚Ìƒ|[ƒg”Ô†
-                MAX_IDLE_TIME,  // ƒRƒlƒNƒVƒ‡ƒ“–ˆ‚É‹–—e‚·‚éÅ‘å‚ÌƒAƒCƒhƒ‹ŠÔ
-                false,          // JSONƒIƒuƒWƒFƒNƒg(•¶š—ñ)‚ğ®Œ`‚·‚é‚©”Û‚©
-                true,           // JSONƒIƒuƒWƒFƒNƒg(•¶š—ñ)‚ğƒƒOo—Í‚·‚é‚©”Û‚©
+                SERVER_NAME,    // RPCã‚µãƒ¼ãƒåã¾ãŸã¯IPã‚¢ãƒ‰ãƒ¬ã‚¹
+                PORT_NUMBER,    // RPCã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·
+                MAX_IDLE_TIME,  // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ¯ã«è¨±å®¹ã™ã‚‹æœ€å¤§ã®ã‚¢ã‚¤ãƒ‰ãƒ«æ™‚é–“
+                false,          // JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’æ•´å½¢ã™ã‚‹ã‹å¦ã‹
+                true,           // JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ã‹å¦ã‹
                 factory         // RegisterableArrayFactory
             );
-            // RpcServer ‚Ìˆ—‚ğŠJn‚·‚éD
+            // RpcServer ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             rpcServer.open();
             
-            // ƒRƒ“ƒ\[ƒ‹‚©‚ç‚Ì“ü—Í‚ğ‘Ò‚ÂD
-            Log.message("> DemoRpcServer: I—¹‚·‚éÛ‚Í Enter ƒL[‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢D");
+            // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‹ã‚‰ã®å…¥åŠ›ã‚’å¾…ã¤ï¼
+            Log.message("> DemoRpcServer: çµ‚äº†ã™ã‚‹éš›ã¯ Enter ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãã ã•ã„ï¼");
             System.in.read();
         }
         catch (Exception ex) {
-            // RpcServer ‚Ì“®ì’†‚É—áŠO‚ª”­¶‚µ‚½D
-            Log.message("> DemoRpcServer: RpcServer ‚ÌÀs’†‚É—áŠO‚ª”­¶‚µ‚Ü‚µ‚½D");
+            // RpcServer ã®å‹•ä½œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼
+            Log.message("> DemoRpcServer: RpcServer ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸï¼");
             ex.printStackTrace();
         }
         finally {
-            // RpcServer ‚Ìˆ—‚ğI—¹‚·‚éD
+            // RpcServer ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (rpcServer != null) {
-                Log.message("> DemoRpcServer: RpcServer ‚Ìˆ—‚ğI—¹‚µ‚Ü‚·D");
+                Log.message("> DemoRpcServer: RpcServer ã®å‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ï¼");
                 rpcServer.close();
             }
         }

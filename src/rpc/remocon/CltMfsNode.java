@@ -35,7 +35,7 @@ public class CltMfsNode
     //
     public RequestObject isRunning(String[] args)
     {
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], null);
         return rpcReq;
     }
@@ -44,7 +44,7 @@ public class CltMfsNode
     //
     public RequestObject lock(String[] args)
     {
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], null);
         return rpcReq;
     }
@@ -53,7 +53,7 @@ public class CltMfsNode
     //
     public RequestObject unlock(String[] args)
     {
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], null);
         return rpcReq;
     }

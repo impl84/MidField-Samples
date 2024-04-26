@@ -57,13 +57,13 @@ public class RemoteOperator
         throws UnknownHostException,
             IOException
     {
-        // ‰“Šu‚Ì MidField System ‚É‘Î‚µ‚Ä‘€ì‚ğŠJn‚·‚éD
+        // é éš”ã® MidField System ã«å¯¾ã—ã¦æ“ä½œã‚’é–‹å§‹ã™ã‚‹ï¼
         this.mfsRmt = new MfsRemote(nodeAddr, portNumber, errHandler);
         
-        // ‰“Šu‚Ì MidField System ‚Ö‚Ì‘€ì‚ğŠJn‚·‚éD
+        // é éš”ã® MidField System ã¸ã®æ“ä½œã‚’é–‹å§‹ã™ã‚‹ï¼
         this.mfsRmt.initializeRemoteControl();
         
-        // ‰“Šu‚Ì MidField System ‚Å“®ì‚·‚é StreamPerformer ‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+        // é éš”ã® MidField System ã§å‹•ä½œã™ã‚‹ StreamPerformer ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.mapPfmr = new HashMap<PerformerId, StreamPerformer>();
     }
     
@@ -71,11 +71,11 @@ public class RemoteOperator
     //
     public void shutdownAll()
     {
-        // “®ì’†‚Ì StreamPerformer ‚ğ‘S‚Äíœ‚·‚éD
+        // å‹•ä½œä¸­ã® StreamPerformer ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹ï¼
         this.mapPfmr.values().stream()
             .forEach(StreamPerformer::delete);
         
-        // ‰“Šu‚Ì MidField System ‚Ö‚Ì‘€ì‚ğI—¹‚·‚éD
+        // é éš”ã® MidField System ã¸ã®æ“ä½œã‚’çµ‚äº†ã™ã‚‹ï¼
         this.mfsRmt.shutdownRemoteControl();
     }
     
@@ -90,14 +90,14 @@ public class RemoteOperator
     {
         var segIo = this.mfsRmt.newSegmentIo();
         
-        // ¥ƒrƒfƒI‚ÆƒI[ƒfƒBƒIƒfƒoƒCƒX‚Å“ü—Í‚ğ\¬‚·‚éD
+        // â–¼ãƒ“ãƒ‡ã‚ªã¨ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒã‚¤ã‚¹ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureInputDevice(segIo);
         
-        // ¥„§ƒŒƒ“ƒ_ƒ‰‚Åo—Í‚ğ\¬‚·‚éD
+        // â–¼æ¨å¥¨ãƒ¬ãƒ³ãƒ€ãƒ©ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         boolean usePreferredRenderer = true;
         configureRenderer(segIo, usePreferredRenderer);
         
-        // ¥RcStreamPerformer ‚ğ¶¬‚µ‚Äˆ—‚ğŠJn‚µC‚»‚ÌID‚ğ•Ô‚·D
+        // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã—ã¦å‡¦ç†ã‚’é–‹å§‹ã—ï¼Œãã®IDã‚’è¿”ã™ï¼
         return setupStreamPerformer(segIo);
     }
     
@@ -108,13 +108,13 @@ public class RemoteOperator
     {
         var segIo = this.mfsRmt.newSegmentIo();
         
-        // ¥ƒrƒfƒI‚ÆƒI[ƒfƒBƒIƒfƒoƒCƒX‚Å“ü—Í‚ğ\¬‚·‚éD
+        // â–¼ãƒ“ãƒ‡ã‚ªã¨ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒã‚¤ã‚¹ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureInputDevice(segIo);
         
-        // ¥‘—MƒXƒgƒŠ[ƒ€‚Åo—Í‚ğ\¬‚·‚éD
+        // â–¼é€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureOutgoingStream(segIo, true);
         
-        // ¥RcStreamPerformer ‚ğ¶¬‚µ‚Äˆ—‚ğŠJn‚µC‚»‚ÌID‚ğ•Ô‚·D
+        // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã—ã¦å‡¦ç†ã‚’é–‹å§‹ã—ï¼Œãã®IDã‚’è¿”ã™ï¼
         return setupStreamPerformer(segIo);
     }
     
@@ -125,13 +125,13 @@ public class RemoteOperator
     {
         var segIo = this.mfsRmt.newSegmentIo();
         
-        // ¥ƒrƒfƒI‚ÆƒI[ƒfƒBƒIƒfƒoƒCƒX‚Å“ü—Í‚ğ\¬‚·‚éD
+        // â–¼ãƒ“ãƒ‡ã‚ªã¨ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒã‚¤ã‚¹ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureInputDevice(segIo);
         
-        // ¥ƒ~ƒLƒT[‚Ö‚Ì“ü—Í‚Æ‚µ‚Äo—Í‚ğ\¬‚·‚éD
+        // â–¼ãƒŸã‚­ã‚µãƒ¼ã¸ã®å…¥åŠ›ã¨ã—ã¦å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureMixerInput(mixerId, segIo);
         
-        // ¥RcStreamPerformer ‚ğ¶¬‚µ‚Äˆ—‚ğŠJn‚µC‚»‚ÌID‚ğ•Ô‚·D
+        // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã—ã¦å‡¦ç†ã‚’é–‹å§‹ã—ï¼Œãã®IDã‚’è¿”ã™ï¼
         return setupStreamPerformer(segIo);
     }
     
@@ -142,14 +142,14 @@ public class RemoteOperator
     {
         var segIo = this.mfsRmt.newSegmentIo();
         
-        // ¥óMƒXƒgƒŠ[ƒ€‚Å“ü—Í‚ğ\¬‚·‚éD
+        // â–¼å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureIncomingStream(sourceId, segIo);
         
-        // ¥„§ƒŒƒ“ƒ_ƒ‰‚Åo—Í‚ğ\¬‚·‚éD
+        // â–¼æ¨å¥¨ãƒ¬ãƒ³ãƒ€ãƒ©ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         boolean usePreferredRenderer = true;
         configureRenderer(segIo, usePreferredRenderer);
         
-        // ¥RcStreamPerformer ‚ğ¶¬‚µ‚Äˆ—‚ğŠJn‚µC‚»‚ÌID‚ğ•Ô‚·D
+        // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã—ã¦å‡¦ç†ã‚’é–‹å§‹ã—ï¼Œãã®IDã‚’è¿”ã™ï¼
         return setupStreamPerformer(segIo);
     }
     
@@ -160,15 +160,15 @@ public class RemoteOperator
     {
         var segIo = this.mfsRmt.newSegmentIo();
         
-        // ¥óMƒXƒgƒŠ[ƒ€‚Å“ü—Í‚ğ\¬‚·‚éD
+        // â–¼å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureIncomingStream(sourceId, segIo);
         
-        // ¥‘—MƒXƒgƒŠ[ƒ€‚Åo—Í‚ğ\¬‚·‚éD
-        // E„§ƒvƒŒƒrƒ…[ƒ[‚ğ—˜—p‚·‚éD
+        // â–¼é€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+        // ãƒ»æ¨å¥¨ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ãƒ¯ãƒ¼ã‚’åˆ©ç”¨ã™ã‚‹ï¼
         boolean usePreferredPreviewer = true;
         configureOutgoingStream(segIo, usePreferredPreviewer);
         
-        // ¥RcStreamPerformer ‚ğ¶¬‚µ‚Äˆ—‚ğŠJn‚µC‚»‚ÌID‚ğ•Ô‚·D
+        // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã—ã¦å‡¦ç†ã‚’é–‹å§‹ã—ï¼Œãã®IDã‚’è¿”ã™ï¼
         return setupStreamPerformer(segIo);
     }
     
@@ -179,13 +179,13 @@ public class RemoteOperator
     {
         var segIo = this.mfsRmt.newSegmentIo();
         
-        // ¥óMƒXƒgƒŠ[ƒ€‚Å“ü—Í‚ğ\¬‚·‚éD
+        // â–¼å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureIncomingStream(sourceId, segIo);
         
-        // ¥ƒ~ƒLƒT[‚Ö‚Ì“ü—Í‚Æ‚µ‚Äo—Í‚ğ\¬‚·‚éD
+        // â–¼ãƒŸã‚­ã‚µãƒ¼ã¸ã®å…¥åŠ›ã¨ã—ã¦å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureMixerInput(mixerId, segIo);
         
-        // ¥RcStreamPerformer ‚ğ¶¬‚µ‚Äˆ—‚ğŠJn‚µC‚»‚ÌID‚ğ•Ô‚·D
+        // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã—ã¦å‡¦ç†ã‚’é–‹å§‹ã—ï¼Œãã®IDã‚’è¿”ã™ï¼
         return setupStreamPerformer(segIo);
     }
     
@@ -196,15 +196,15 @@ public class RemoteOperator
     {
         var segIo = this.mfsRmt.newSegmentIo();
         
-        // ¥ƒ~ƒLƒT[‚Æ‚µ‚Ä“ü—Í‚ğ\¬‚·‚éD
+        // â–¼ãƒŸã‚­ã‚µãƒ¼ã¨ã—ã¦å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureStreamingMixer(mixerName, segIo);
         
-        // ¥ƒŒƒ“ƒ_ƒ‰‚Åo—Í‚ğ\¬‚·‚éD
-        // E„§ƒŒƒ“ƒ_ƒ‰‚Å‚Í–³‚­CƒfƒtƒHƒ‹ƒgƒŒƒ“ƒ_ƒ‰‚ğ—˜—p‚·‚éD
+        // â–¼ãƒ¬ãƒ³ãƒ€ãƒ©ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+        // ãƒ»æ¨å¥¨ãƒ¬ãƒ³ãƒ€ãƒ©ã§ã¯ç„¡ãï¼Œãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ¬ãƒ³ãƒ€ãƒ©ã‚’åˆ©ç”¨ã™ã‚‹ï¼
         boolean usePreferredRenderer = false;
         configureRenderer(segIo, usePreferredRenderer);
         
-        // ¥RcStreamPerformer ‚ğ¶¬‚µ‚Äˆ—‚ğŠJn‚µC‚»‚ÌID‚ğ•Ô‚·D
+        // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã—ã¦å‡¦ç†ã‚’é–‹å§‹ã—ï¼Œãã®IDã‚’è¿”ã™ï¼
         return setupStreamPerformer(segIo);
     }
     
@@ -215,15 +215,15 @@ public class RemoteOperator
     {
         var segIo = this.mfsRmt.newSegmentIo();
         
-        // ¥ƒ~ƒLƒT[‚Æ‚µ‚Ä“ü—Í‚ğ\¬‚·‚éD
+        // â–¼ãƒŸã‚­ã‚µãƒ¼ã¨ã—ã¦å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         configureStreamingMixer(mixerName, segIo);
         
-        // ¥‘—MƒXƒgƒŠ[ƒ€‚Åo—Í‚ğ\¬‚·‚éD
-        // E„§ƒvƒŒƒrƒ…[ƒ[‚Å‚Í–³‚­CƒfƒtƒHƒ‹ƒgƒvƒŒƒrƒ…[ƒ[‚ğ—˜—p‚·‚éD
+        // â–¼é€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+        // ãƒ»æ¨å¥¨ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ãƒ¯ãƒ¼ã§ã¯ç„¡ãï¼Œãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ãƒ¯ãƒ¼ã‚’åˆ©ç”¨ã™ã‚‹ï¼
         boolean usePreferredPreviewer = false;
         configureOutgoingStream(segIo, usePreferredPreviewer);
         
-        // ¥RcStreamPerformer ‚ğ¶¬‚µ‚Äˆ—‚ğŠJn‚µC‚»‚ÌID‚ğ•Ô‚·D
+        // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã—ã¦å‡¦ç†ã‚’é–‹å§‹ã—ï¼Œãã®IDã‚’è¿”ã™ï¼
         return setupStreamPerformer(segIo);
     }
     
@@ -264,7 +264,7 @@ public class RemoteOperator
     }
     
 // -----------------------------------------------------------------------------
-// PRIVATE METHOD: SegmentIo ‚Ì“ü—Í‚Ì\¬
+// PRIVATE METHOD: SegmentIo ã®å…¥åŠ›ã®æ§‹æˆ
 // -----------------------------------------------------------------------------
     
     // - PRIVATE METHOD --------------------------------------------------------
@@ -272,20 +272,20 @@ public class RemoteOperator
     private void configureInputDevice(SegmentIo segIo)
         throws RemoteControlException
     {
-        // ¥ƒrƒfƒI‚ÆƒI[ƒfƒBƒIƒfƒoƒCƒX‚Å“ü—Í‚ğ\¬‚·‚éD
-        // E“ü—ÍƒfƒoƒCƒX‚ğ‘I‘ğ‚µ‚Äİ’è‚·‚éD
+        // â–¼ãƒ“ãƒ‡ã‚ªã¨ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒã‚¤ã‚¹ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+        // ãƒ»å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ã‚’é¸æŠã—ã¦è¨­å®šã™ã‚‹ï¼
         var devInfMgr = this.mfsRmt.getDeviceInfoManager();
         
         var lsVidDev = devInfMgr.getVideoInputDeviceInfoList();
         if (lsVidDev.size() <= 0) {
             throw new RemoteControlException(
-                "¦—˜—p‰Â”\‚ÈƒrƒfƒI“ü—ÍƒfƒoƒCƒX‚ª‚ ‚è‚Ü‚¹‚ñD"
+                "â€»åˆ©ç”¨å¯èƒ½ãªãƒ“ãƒ‡ã‚ªå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚Šã¾ã›ã‚“ï¼"
             );
         }
         var lsAudDev = devInfMgr.getAudioInputDeviceInfoList();
         if (lsAudDev.size() <= 0) {
             throw new RemoteControlException(
-                "¦—˜—p‰Â”\‚ÈƒI[ƒfƒBƒI“ü—ÍƒfƒoƒCƒX‚ª‚ ‚è‚Ü‚¹‚ñD"
+                "â€»åˆ©ç”¨å¯èƒ½ãªã‚ªãƒ¼ãƒ‡ã‚£ã‚ªå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚Šã¾ã›ã‚“ï¼"
             );
         }
         segIo.configureInputDevice(lsVidDev.get(0), lsAudDev.get(0));
@@ -296,9 +296,9 @@ public class RemoteOperator
     private void configureIncomingStream(PerformerId srcPfmrId, SegmentIo segIo)
         throws RemoteControlException
     {
-        // ¥óMƒXƒgƒŠ[ƒ€‚Å“ü—Í‚ğ\¬‚·‚éD
-        // E‘—MŒ³‚ª‘—M‚µ‚Ä‚¢‚éƒXƒgƒŠ[ƒ€‚Ì’†‚©‚çC
-        // ˆø”‚Å—^‚¦‚ç‚ê‚½ƒpƒtƒH[ƒ}ID‚ÌƒXƒgƒŠ[ƒ€‚ğ‘I‘ğ‚µ‚Äg‚¤D
+        // â–¼å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+        // ãƒ»é€ä¿¡å…ƒãŒé€ä¿¡ã—ã¦ã„ã‚‹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ä¸­ã‹ã‚‰ï¼Œ
+        // å¼•æ•°ã§ä¸ãˆã‚‰ã‚ŒãŸãƒ‘ãƒ•ã‚©ãƒ¼ãƒIDã®ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é¸æŠã—ã¦ä½¿ã†ï¼
         var stmInfMgr = this.mfsRmt.getStreamInfoManager();
         var srcAddr   = srcPfmrId.getNodeAddress();
         var lsStmInf  = stmInfMgr.fetchSourceStreamInfoList(srcAddr);
@@ -308,11 +308,11 @@ public class RemoteOperator
             .findFirst()
             .orElseThrow(
                 () -> new RemoteControlException(
-                    "¦óM‚·‚×‚«ƒXƒgƒŠ[ƒ€‚ª‚ ‚è‚Ü‚¹‚ñD"
+                    "â€»å—ä¿¡ã™ã¹ãã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒã‚ã‚Šã¾ã›ã‚“ï¼"
                 )
             );
         
-        // RcSegmentIo ‚Ì“ü—Í‚ğóMƒXƒgƒŠ[ƒ€‚Æ‚µ‚Ä\¬‚·‚éD
+        // RcSegmentIo ã®å…¥åŠ›ã‚’å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         segIo.configureIncomingStream(stmInf);
     }
     
@@ -321,13 +321,13 @@ public class RemoteOperator
     private void configureStreamingMixer(String mixerName, SegmentIo segIo)
         throws RemoteControlException
     {
-        // ¥ƒ~ƒLƒT[‚Æ‚µ‚Ä“ü—Í‚ğ\¬‚·‚éD
-        // Eƒ~ƒLƒT[‚ÌƒtƒH[ƒ}ƒbƒg‚É‚ÍCƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ìİ’è’l‚ğ“K—p‚·‚éD
+        // â–¼ãƒŸã‚­ã‚µãƒ¼ã¨ã—ã¦å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+        // ãƒ»ãƒŸã‚­ã‚µãƒ¼ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«ã¯ï¼Œã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šå€¤ã‚’é©ç”¨ã™ã‚‹ï¼
         segIo.configureStreamingMixer(mixerName);
     }
     
 // -----------------------------------------------------------------------------
-// PRIVATE METHOD: SegmentIo ‚Ìo—Í‚Ì\¬
+// PRIVATE METHOD: SegmentIo ã®å‡ºåŠ›ã®æ§‹æˆ
 // -----------------------------------------------------------------------------
     
     // - PRIVATE METHOD --------------------------------------------------------
@@ -335,20 +335,20 @@ public class RemoteOperator
     private void configureOutgoingStream(SegmentIo segIo, boolean usePreferredPreviewer)
         throws RemoteControlException
     {
-        // ¥‘—MƒXƒgƒŠ[ƒ€‚Åo—Í‚ğ\¬‚·‚éD
-        // E‘—MƒtƒH[ƒ}ƒbƒg‚ğ‘I‘ğ‚µ‚Äİ’è‚·‚éD
-        // ETCP‚ğ—˜—p‚µCƒRƒlƒNƒVƒ‡ƒ“Ú‘±—v‹‚ğó‚¯“ü‚ê‚éD
-        // E„§ƒvƒŒƒrƒ…[ƒ\‚ğ—˜—p‚·‚éD
+        // â–¼é€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+        // ãƒ»é€ä¿¡ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’é¸æŠã—ã¦è¨­å®šã™ã‚‹ï¼
+        // ãƒ»TCPã‚’åˆ©ç”¨ã—ï¼Œã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ¥ç¶šè¦æ±‚ã‚’å—ã‘å…¥ã‚Œã‚‹ï¼
+        // ãƒ»æ¨å¥¨ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ãƒ¯â€”ã‚’åˆ©ç”¨ã™ã‚‹ï¼
         var lsVidFmt = segIo.getOutputVideoFormatList();
         if (lsVidFmt.size() <= 0) {
             throw new RemoteControlException(
-                "¦‘—M‰Â”\‚ÈƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ª‚ ‚è‚Ü‚¹‚ñD"
+                "â€»é€ä¿¡å¯èƒ½ãªãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒã‚ã‚Šã¾ã›ã‚“ï¼"
             );
         }
         var lsAudFmt = segIo.getOutputAudioFormatList();
         if (lsAudFmt.size() <= 0) {
             throw new RemoteControlException(
-                "¦‘—M‰Â”\‚ÈƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ª‚ ‚è‚Ü‚¹‚ñD"
+                "â€»é€ä¿¡å¯èƒ½ãªã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒã‚ã‚Šã¾ã›ã‚“ï¼"
             );
         }
         segIo.configureOutgoingStream(lsVidFmt.get(0), lsAudFmt.get(0));
@@ -379,7 +379,7 @@ public class RemoteOperator
     private void configureMixerInput(PerformerId mixerId, SegmentIo segIo)
         throws RemoteControlException
     {
-        // ¥ƒ~ƒLƒT[‚Ö‚Ì“ü—Í‚Æ‚µ‚Äo—Í‚ğ\¬‚·‚éD
+        // â–¼ãƒŸã‚­ã‚µãƒ¼ã¸ã®å…¥åŠ›ã¨ã—ã¦å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         segIo.configureMixerInput(mixerId);
     }
     

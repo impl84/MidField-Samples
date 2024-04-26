@@ -49,13 +49,13 @@ public class CltSegmentIo
     //
     public RequestObject reset(String[] args)
     {
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], null);
         return rpcReq;
     }
     
 // -----------------------------------------------------------------------------
-// PUBLIC METHOD: RPC: “ü—Íİ’èi“ü—ÍƒfƒoƒCƒXj
+// PUBLIC METHOD: RPC: å…¥åŠ›è¨­å®šï¼ˆå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ï¼‰
 // -----------------------------------------------------------------------------
     
     // - PUBLIC METHOD ---------------------------------------------------------
@@ -64,24 +64,24 @@ public class CltSegmentIo
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 5) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new TreeMap<String, Object>();
             
-            // ƒfƒoƒCƒX‚ÆƒtƒH[ƒ}ƒbƒg‚ÌƒCƒ“ƒfƒbƒNƒX’l‚ğƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // ãƒ‡ãƒã‚¤ã‚¹ã¨ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã‚’ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(VIDEO_DEVICE_INDEX, args[1]);
             map.put(VIDEO_FORMAT_INDEX, args[2]);
             map.put(AUDIO_DEVICE_INDEX, args[3]);
             map.put(AUDIO_FORMAT_INDEX, args[4]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }
     
 // -----------------------------------------------------------------------------
-// PUBLIC METHOD: RPC: “ü—Íİ’èióMƒXƒgƒŠ[ƒ€j
+// PUBLIC METHOD: RPC: å…¥åŠ›è¨­å®šï¼ˆå—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ï¼‰
 // -----------------------------------------------------------------------------
     
     // - PUBLIC METHOD ---------------------------------------------------------
@@ -90,21 +90,21 @@ public class CltSegmentIo
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 2) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new TreeMap<String, Object>();
             
-            // ƒXƒgƒŠ[ƒ€î•ñ‚ÌƒCƒ“ƒfƒbƒNƒX’l‚ğƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // ã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã‚’ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(STREAM_INFO_INDEX, args[1]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }
     
 // -----------------------------------------------------------------------------
-// PUBLIC METHOD: RPC: “ü—Íİ’èiƒ~ƒLƒT[j
+// PUBLIC METHOD: RPC: å…¥åŠ›è¨­å®šï¼ˆãƒŸã‚­ã‚µãƒ¼ï¼‰
 // -----------------------------------------------------------------------------
     
     // - PUBLIC METHOD ---------------------------------------------------------
@@ -113,28 +113,28 @@ public class CltSegmentIo
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 2) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new TreeMap<String, Object>();
             
-            // ƒXƒgƒŠ[ƒ€î•ñ‚ÌƒCƒ“ƒfƒbƒNƒX’l‚ğƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // ã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã‚’ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(MIXER_NAME, args[1]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }
     
 // -----------------------------------------------------------------------------
-// PUBLIC METHOD: RPC: o—Íİ’èi‘—MƒXƒgƒŠ[ƒ€j
+// PUBLIC METHOD: RPC: å‡ºåŠ›è¨­å®šï¼ˆé€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ï¼‰
 // -----------------------------------------------------------------------------
     
     // - PUBLIC METHOD ---------------------------------------------------------
     //
     public RequestObject getOutputVideoFormatList(String[] args)
     {
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], null);
         return rpcReq;
     }
@@ -143,7 +143,7 @@ public class CltSegmentIo
     //
     public RequestObject getOutputAudioFormatList(String[] args)
     {
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], null);
         return rpcReq;
     }
@@ -154,16 +154,16 @@ public class CltSegmentIo
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 3) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new TreeMap<String, Object>();
             
-            // ƒrƒfƒI‚ÆƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ÌƒCƒ“ƒfƒbƒNƒX’l‚ğƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // ãƒ“ãƒ‡ã‚ªã¨ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã‚’ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(VIDEO_FORMAT_INDEX, args[1]);
             map.put(AUDIO_FORMAT_INDEX, args[2]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }
@@ -174,17 +174,17 @@ public class CltSegmentIo
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 3) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new TreeMap<String, Object>();
             
-            // TCP‚ğ—˜—p‚·‚é‚©”Û‚©C‚¨‚æ‚ÑƒRƒlƒNƒVƒ‡ƒ“ƒ‚[ƒh‚Ìw’è‚ğ
-            // ƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // TCPã‚’åˆ©ç”¨ã™ã‚‹ã‹å¦ã‹ï¼ŒãŠã‚ˆã³ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã®æŒ‡å®šã‚’
+            // ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(PROTOCOL_TYPE, args[1]);
             map.put(CONNECTION_MODE, args[2]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }
@@ -195,21 +195,21 @@ public class CltSegmentIo
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 2) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new TreeMap<String, Object>();
             
-            // ƒ}ƒ‹ƒ`ƒLƒƒƒXƒgƒAƒhƒŒƒX‚ğƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // ãƒãƒ«ãƒã‚­ãƒ£ã‚¹ãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(MULTICAST_ADDRESS, args[1]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }
     
 // -----------------------------------------------------------------------------
-// PUBLIC METHOD: RPC: o—Íİ’èiƒ~ƒLƒT[‚Ö‚Ì“ü—Íj
+// PUBLIC METHOD: RPC: å‡ºåŠ›è¨­å®šï¼ˆãƒŸã‚­ã‚µãƒ¼ã¸ã®å…¥åŠ›ï¼‰
 // -----------------------------------------------------------------------------
     
     // - PUBLIC METHOD ---------------------------------------------------------
@@ -218,47 +218,47 @@ public class CltSegmentIo
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 2) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new TreeMap<String, Object>();
             
-            // ƒXƒgƒŠ[ƒ€î•ñ‚ÌƒCƒ“ƒfƒbƒNƒX’l‚ğƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // ã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã‚’ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(MIXER_NAME, args[1]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }
     
 // -----------------------------------------------------------------------------
-// PUBLIC METHOD: RPC: o—Íİ’èiƒŒƒ“ƒ_ƒ‰j
+// PUBLIC METHOD: RPC: å‡ºåŠ›è¨­å®šï¼ˆãƒ¬ãƒ³ãƒ€ãƒ©ï¼‰
 // -----------------------------------------------------------------------------
     
     // - PUBLIC METHOD ---------------------------------------------------------
     //
     public RequestObject configurePreferredRenderer(String[] args)
     {
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], null);
         return rpcReq;
     }
     
 // -----------------------------------------------------------------------------
-// PUBLIC METHOD: RPC: ƒvƒŒƒrƒ…[ƒ‚Ìİ’è
+// PUBLIC METHOD: RPC: ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ãƒ¯ã®è¨­å®š
 // -----------------------------------------------------------------------------
     
     // - PUBLIC METHOD ---------------------------------------------------------
     //
     public RequestObject setPreferredPreviewer(String[] args)
     {
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], null);
         return rpcReq;
     }
     
 // -----------------------------------------------------------------------------
-// PUBLIC METHOD: RPC: Šeíİ’è
+// PUBLIC METHOD: RPC: å„ç¨®è¨­å®š
 // -----------------------------------------------------------------------------
     
     // - PUBLIC METHOD ---------------------------------------------------------
@@ -267,15 +267,15 @@ public class CltSegmentIo
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 2) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new TreeMap<String, Object>();
             
-            // ƒ‰ƒCƒuƒ\[ƒX‚Å‚ ‚é‚©”Û‚©‚ğƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // ãƒ©ã‚¤ãƒ–ã‚½ãƒ¼ã‚¹ã§ã‚ã‚‹ã‹å¦ã‹ã‚’ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(IS_LIVE_SOURCE, args[1]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }

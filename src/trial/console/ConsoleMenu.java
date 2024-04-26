@@ -26,9 +26,9 @@ import util.LineReader;
 abstract class ConsoleMenu
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String STR_ITEM_LIST    = "¥";
-    private static final String STR_ITEM_MESSAGE = "|";
-    private static final String STR_ITEM_WARNING = "¦";
+    private static final String STR_ITEM_LIST    = "â–¼";
+    private static final String STR_ITEM_MESSAGE = "âˆ’";
+    private static final String STR_ITEM_WARNING = "â€»";
     
 // =============================================================================
 // CLASS VARIABLE:
@@ -153,13 +153,13 @@ abstract class ConsoleMenu
     {
         ConsoleMenu nextMenu = this;
         
-        // ƒƒjƒ…[ƒ^ƒCƒgƒ‹‚ğo—Í‚·‚éD
+        // ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¿ã‚¤ãƒˆãƒ«ã‚’å‡ºåŠ›ã™ã‚‹ï¼
         printSeparator();
         print("%s\n", getMenuTitle());
         printShortSeparator();
         print("\n");
         
-        // ƒƒjƒ…[€–Ú‚ğo—Í‚·‚éD
+        // ãƒ¡ãƒ‹ãƒ¥ãƒ¼é …ç›®ã‚’å‡ºåŠ›ã™ã‚‹ï¼
         for (MenuItem item : this.menuItems) {
             if (item.isEmptyMenu() == false) {
                 print("  [%d] %s\n", item.getMenuNumber(), item.getDescription());
@@ -168,22 +168,22 @@ abstract class ConsoleMenu
                 print("\n");
             }
         }
-        // ƒƒjƒ…[”Ô†‚Ì“ü—Í‚ğ‘Ò‚ÂD
-        int selectedNumber = selectNumber("ƒƒjƒ…[”Ô†");
+        // ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç•ªå·ã®å…¥åŠ›ã‚’å¾…ã¤ï¼
+        int selectedNumber = selectNumber("ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç•ªå·");
         
-        // ‘I‘ğ‚³‚ê‚½ƒƒjƒ…[”Ô†‚É‘Î‰‚µ‚½ƒAƒNƒVƒ‡ƒ“‚ğÀs‚·‚éD
+        // é¸æŠã•ã‚ŒãŸãƒ¡ãƒ‹ãƒ¥ãƒ¼ç•ªå·ã«å¯¾å¿œã—ãŸã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         for (MenuItem item : this.menuItems) {
             if (selectedNumber == item.getMenuNumber()) {
                 nextMenu = item.action();
                 break;
             }
         }
-        // Ÿ‚Ì ConsoleMenu ‚ğ•Ô‚·D
+        // æ¬¡ã® ConsoleMenu ã‚’è¿”ã™ï¼
         return nextMenu;
     }
     
 // -----------------------------------------------------------------------------
-// PROTECTED METHOD: Šg’£ƒNƒ‰ƒX‚ÅÀ‘•‚·‚éƒƒ\ƒbƒh
+// PROTECTED METHOD: æ‹¡å¼µã‚¯ãƒ©ã‚¹ã§å®Ÿè£…ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 // -----------------------------------------------------------------------------
     
     // - PROTECTED METHOD ------------------------------------------------------
@@ -199,7 +199,7 @@ abstract class ConsoleMenu
     abstract protected String getPrompt();
     
 // -----------------------------------------------------------------------------
-// PROTECTED METHOD: ƒƒbƒZ[ƒW‚Ìo—Í
+// PROTECTED METHOD: ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å‡ºåŠ›
 // -----------------------------------------------------------------------------
     
     // - PROTECTED METHOD ------------------------------------------------------
@@ -237,7 +237,7 @@ abstract class ConsoleMenu
     //
     protected void printDeviceInfoList(List<DeviceInfo> lsDevInf)
     {
-        printListTitle("“ü—ÍƒfƒoƒCƒXˆê——");
+        printListTitle("å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ä¸€è¦§");
         int size = lsDevInf.size();
         for (int i = 0; i < size; i++) {
             DeviceInfo devInf = lsDevInf.get(i);
@@ -249,7 +249,7 @@ abstract class ConsoleMenu
     //
     protected void printStreamFormatList(List<StreamFormat> lsStmFmt)
     {
-        printListTitle("ƒtƒH[ƒ}ƒbƒgˆê——");
+        printListTitle("ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆä¸€è¦§");
         int size = lsStmFmt.size();
         for (int i = 0; i < size; i++) {
             StreamFormat stmFmt = lsStmFmt.get(i);
@@ -284,7 +284,7 @@ abstract class ConsoleMenu
     }
     
 // -----------------------------------------------------------------------------
-// PROTECTED METHOD: “ü—Í‚ğ”º‚¤ƒƒbƒZ[ƒW‚Ìo—Í
+// PROTECTED METHOD: å…¥åŠ›ã‚’ä¼´ã†ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å‡ºåŠ›
 // -----------------------------------------------------------------------------
     
     // - PROTECTED METHOD ------------------------------------------------------
@@ -294,12 +294,12 @@ abstract class ConsoleMenu
         int num = -1;
         
         print("\n");
-        print("  [ã‹LˆÈŠO‚Ì”Ô†] ƒLƒƒƒ“ƒZƒ‹\n");
+        print("  [ä¸Šè¨˜ä»¥å¤–ã®ç•ªå·] ã‚­ãƒ£ãƒ³ã‚»ãƒ«\n");
         
         while (num < 0) {
             try {
                 print("\n");
-                print("> %s‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢D\n", msg);
+                print("> %sã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼\n", msg);
                 print("> ");
                 String line = ConsoleMenu.readLine();
                 // IOException
@@ -330,7 +330,7 @@ abstract class ConsoleMenu
         String line = null;
         
         try {
-            print("> %s‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢D\n", msg);
+            print("> %sã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼\n", msg);
             print("> ");
             line = ConsoleMenu.readLine();
             // IOException
@@ -364,7 +364,7 @@ abstract class ConsoleMenu
     //
     protected void pause()
     {
-        print("> ENTER KEY ‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢D\n");
+        print("> ENTER KEY ã‚’æŠ¼ã—ã¦ãã ã•ã„ï¼\n");
         try {
             ConsoleMenu.readLine();
         }
@@ -388,10 +388,10 @@ abstract class ConsoleMenu
     protected void printSegmentIo(SegmentIo segIo)
     {
         print("\n");
-        print("–“üo—Íİ’è  `````````````````````````````\n");
-        printIoParamList("“ü—Íİ’è", segIo.getInputParamList());
-        printIoParamList("o—Íİ’è", segIo.getOutputParamList());
-        print("````````````````````````````````````\n");
+        print("ï¼Šå…¥å‡ºåŠ›è¨­å®š  ã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œ\n");
+        printIoParamList("å…¥åŠ›è¨­å®š", segIo.getInputParamList());
+        printIoParamList("å‡ºåŠ›è¨­å®š", segIo.getOutputParamList());
+        print("ã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œ\n");
         pause();
     }
     
@@ -406,8 +406,8 @@ abstract class ConsoleMenu
         ConsoleMenu.printf("\n");
         // 1 2 3 4
         // 01234567890123456789012345678901234567890
-        ConsoleMenu.printf("\\\\\\\\\\\\\\\\\\\\");
-        ConsoleMenu.printf("\\\\\\\\\\\\\\\\\\\\n");
+        ConsoleMenu.printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”");
+        ConsoleMenu.printf("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
     }
     
     // - PRIVATE METHOD --------------------------------------------------------
@@ -424,44 +424,44 @@ abstract class ConsoleMenu
     //
     private void printIoParam(IoParam ioPrm)
     {
-        // Description ‚ğ•\¦‚·‚éD
+        // Description ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         String desc = ioPrm.getDescription();
         if (desc == null) {
             desc = ioPrm.getStreamName();
         }
         ConsoleMenu.printf("%s\n", desc);
         
-        // ‘—MƒzƒXƒg‚ğ•\¦‚·‚éD
+        // é€ä¿¡ãƒ›ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ï¼
         String sender = ioPrm.getSourceAddress();
         if (sender != null) {
-            print("    ‘—MƒzƒXƒg  : %s\n", sender);
+            print("    é€ä¿¡ãƒ›ã‚¹ãƒˆ  : %s\n", sender);
         }
-        // ƒvƒƒgƒRƒ‹‚ğ•\¦‚·‚éD
+        // ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         String prot = ioPrm.getConnectionInfo();
         if (prot != null) {
-            print("    ƒvƒƒgƒRƒ‹  : %s\n", prot);
+            print("    ãƒ—ãƒ­ãƒˆã‚³ãƒ«  : %s\n", prot);
         }
-        // ƒtƒH[ƒ}ƒbƒg‚ğ•\¦‚·‚éD
+        // ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡¨ç¤ºã™ã‚‹ï¼
         StreamFormat stmFmt = ioPrm.getStreamFormat();
-        print("    ƒtƒH[ƒ}ƒbƒg: %s\n", stmFmt.toString());
+        print("    ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ: %s\n", stmFmt.toString());
     }
     
     // - PRIVATE METHOD --------------------------------------------------------
     //
     private void printStreamInfo(StreamInfo stmInf)
     {
-        // StreamInfo ‚©‚ç IoParam ‚ÌƒŠƒXƒg‚ğ•œŒ³‚·‚éD
+        // StreamInfo ã‹ã‚‰ IoParam ã®ãƒªã‚¹ãƒˆã‚’å¾©å…ƒã™ã‚‹ï¼
         List<IoParam> lsIoPrm = stmInf.restoreIoParamList();
         
-        // IoParam ‚ÌƒŠƒXƒgæ“ª‚Ì—v‘f‚ğæ“¾‚µCİ’è€–Ú‚ğ•\¦‚·‚éD
+        // IoParam ã®ãƒªã‚¹ãƒˆå…ˆé ­ã®è¦ç´ ã‚’å–å¾—ã—ï¼Œè¨­å®šé …ç›®ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         printIoParam(lsIoPrm.get(0));
         
-        // IoParam ‚ÌƒŠƒXƒg‚É 2‚Â‚ß‚Ì—v‘f‚ª‚ ‚éê‡‚ÍC
-        // ‚»‚ÌƒtƒH[ƒ}ƒbƒg‚ğ•\¦‚·‚éD
+        // IoParam ã®ãƒªã‚¹ãƒˆã« 2ã¤ã‚ã®è¦ç´ ãŒã‚ã‚‹å ´åˆã¯ï¼Œ
+        // ãã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’è¡¨ç¤ºã™ã‚‹ï¼
         if (lsIoPrm.size() >= 2) {
             IoParam      ioPrm  = lsIoPrm.get(1);
             StreamFormat stmFmt = ioPrm.getStreamFormat();
-            print("    ƒtƒH[ƒ}ƒbƒg: %s\n", stmFmt.toString());
+            print("    ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ: %s\n", stmFmt.toString());
         }
     }
 }

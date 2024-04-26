@@ -42,15 +42,15 @@ public class CltStreamInfoManager
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 2) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new HashMap<String, Object>();
             
-            // ƒ\[ƒXƒm[ƒhƒAƒhƒŒƒX‚ğƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // ã‚½ãƒ¼ã‚¹ãƒãƒ¼ãƒ‰ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(SOURCE_NODE_ADDRESS, args[1]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }

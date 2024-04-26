@@ -30,42 +30,42 @@ public class TwoWayCommunication
     //
     public static void main(String[] args)
     {
-        // ƒRƒ“ƒ\[ƒ‹‚ğ—˜—p‚µ‚½•¶š‚Ì“üo—Í‚Ì€”õ‚ğ‚·‚éD
+        // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚’åˆ©ç”¨ã—ãŸæ–‡å­—ã®å…¥å‡ºåŠ›ã®æº–å‚™ã‚’ã™ã‚‹ï¼
         ConsoleReader  reader  = ConsoleReader.getInstance();
         ConsolePrinter printer = ConsolePrinter.getInstance();
         
         MfsNode mfs = null;
         try {
-            // MidField System ‚ğ‰Šú‰»‚µC‹N“®‚·‚éD
-            printer.println("> MidField System ‚ğ‹N“®‚µ‚Ü‚·D");
+            // MidField System ã‚’åˆæœŸåŒ–ã—ï¼Œèµ·å‹•ã™ã‚‹ï¼
+            printer.println("> MidField System ã‚’èµ·å‹•ã—ã¾ã™ï¼");
             mfs = MfsNode.initialize(); // SystemException
             mfs.activate();             // SystemException
             
-            // MidField System ‚ª—˜—p‚µ‚Ä‚¢‚éƒ[ƒJƒ‹IPƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+            // MidField System ãŒåˆ©ç”¨ã—ã¦ã„ã‚‹ãƒ­ãƒ¼ã‚«ãƒ«IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             SystemProperty sp          = SystemProperty.getCurrentProperty();
             String         localIpAddr = sp.getSysLocalIpAddrWoScopeId();
             
-            // Responder ‚Æ Interviewer ‚ğ¶¬‚·‚éD
+            // Responder ã¨ Interviewer ã‚’ç”Ÿæˆã™ã‚‹ï¼
             Responder   responder   = new Responder(printer);
             Interviewer interviewer = new Interviewer(printer, localIpAddr);
             
-            // Interviewer ‚ª Responder ‚Ö—v‹ƒpƒPƒbƒg‚ğ‘—M‚µC
-            // Responder ‚ª Interviewer ‚Ö‰“šƒpƒPƒbƒg‚ğ•ÔM‚·‚éD
-            // ¦Interviewer ‚Í—v‹ƒpƒPƒbƒg‚ğ‘—M‚µ‚½ŒãC
-            // ˆÙ‚È‚éƒXƒŒƒbƒh‚Å•ÔM‚ğˆ—‚·‚éD
+            // Interviewer ãŒ Responder ã¸è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã—ï¼Œ
+            // Responder ãŒ Interviewer ã¸å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã‚’è¿”ä¿¡ã™ã‚‹ï¼
+            // â€»Interviewer ã¯è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã—ãŸå¾Œï¼Œ
+            // ç•°ãªã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã§è¿”ä¿¡ã‚’å‡¦ç†ã™ã‚‹ï¼
             interviewer.asyncInterview();
             
-            // Interviewer ‚ª Responder ‚Ö—v‹ƒpƒPƒbƒg‚ğ‘—M‚µC
-            // Responder ‚ª Interviewer ‚Ö‰“šƒpƒPƒbƒg‚ğ•ÔM‚·‚éD
-            // ¦Interviewer ‚Í—v‹ƒpƒPƒbƒg‚ğ‘—M‚µ‚½ŒãC
-            // “¯‚¶ƒXƒŒƒbƒh‚Å•ÔM‚ª“Í‚­‚Ü‚Å‘Ò‚¿C•ÔM‚ğˆ—‚·‚éD
+            // Interviewer ãŒ Responder ã¸è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã—ï¼Œ
+            // Responder ãŒ Interviewer ã¸å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã‚’è¿”ä¿¡ã™ã‚‹ï¼
+            // â€»Interviewer ã¯è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã—ãŸå¾Œï¼Œ
+            // åŒã˜ã‚¹ãƒ¬ãƒƒãƒ‰ã§è¿”ä¿¡ãŒå±Šãã¾ã§å¾…ã¡ï¼Œè¿”ä¿¡ã‚’å‡¦ç†ã™ã‚‹ï¼
             interviewer.interview();
             
-            // Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚ÂD
-            printer.println("> Enter ƒL[‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢D");
+            // Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¤ï¼
+            printer.println("> Enter ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãã ã•ã„ï¼");
             reader.readLine();
             
-            // Interviewer ‚Æ Responder ‚ğI—¹‚·‚éD
+            // Interviewer ã¨ Responder ã‚’çµ‚äº†ã™ã‚‹ï¼
             interviewer.close();
             responder.close();
         }
@@ -73,12 +73,12 @@ public class TwoWayCommunication
             ex.printStackTrace();
         }
         finally {
-            // MidField System ‚ğI—¹‚·‚éD
+            // MidField System ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (mfs != null) {
-                System.out.println("> MidField System ‚ğI—¹‚µ‚Ü‚·D");
+                System.out.println("> MidField System ã‚’çµ‚äº†ã—ã¾ã™ï¼");
                 mfs.shutdown();
             }
-            // •W€“ü—Í‚©‚ç‚Ì1s“Ç‚İ‚İ‚É—˜—p‚µ‚½ ConsoleReader ‚ğ‰ğ•ú‚·‚éD
+            // æ¨™æº–å…¥åŠ›ã‹ã‚‰ã®1è¡Œèª­ã¿è¾¼ã¿ã«åˆ©ç”¨ã—ãŸ ConsoleReader ã‚’è§£æ”¾ã™ã‚‹ï¼
             reader.release();
         }
     }

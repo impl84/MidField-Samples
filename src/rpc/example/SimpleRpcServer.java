@@ -19,45 +19,45 @@ public class SimpleRpcServer
 {
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ðƒRƒ“ƒ\[ƒ‹‚ÉÝ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼Ž
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         RpcServer rpcServer = null;
         try {
-            Log.message("> SimpleRpcServer: RpcServer ‚Ìˆ—‚ðŠJŽn‚µ‚Ü‚·D");
+            Log.message("> SimpleRpcServer: RpcServer ã®å‡¦ç†ã‚’é–‹å§‹ã—ã¾ã™ï¼Ž");
             
-            // RpcServer ‚ð¶¬‚·‚éD
+            // RpcServer ã‚’ç”Ÿæˆã™ã‚‹ï¼Ž
             // (UnknownHostException)
             rpcServer = new RpcServer(
-                null,       // RPCƒT[ƒo–¼‚Ü‚½‚ÍIPƒAƒhƒŒƒX(ƒƒCƒ‹ƒhƒJ[ƒhƒAƒhƒŒƒX)
-                60202,      // RPCƒT[ƒo‚Ìƒ|[ƒg”Ô†
-                600 * 1000, // ƒRƒlƒNƒVƒ‡ƒ“–ˆ‚É‹–—e‚·‚éÅ‘å‚ÌƒAƒCƒhƒ‹ŽžŠÔ(msec)
-                false,      // JSONƒIƒuƒWƒFƒNƒg(•¶Žš—ñ)‚ð®Œ`‚·‚é‚©”Û‚©
-                true,       // JSONƒIƒuƒWƒFƒNƒg(•¶Žš—ñ)‚ðƒƒOo—Í‚·‚é‚©”Û‚©
-                factory     // ServerMethodFactory ‚ÌŽÀ‘•
+                null,       // RPCã‚µãƒ¼ãƒåã¾ãŸã¯IPã‚¢ãƒ‰ãƒ¬ã‚¹(ãƒ¯ã‚¤ãƒ«ãƒ‰ã‚«ãƒ¼ãƒ‰ã‚¢ãƒ‰ãƒ¬ã‚¹)
+                60202,      // RPCã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·
+                600 * 1000, // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ¯Žã«è¨±å®¹ã™ã‚‹æœ€å¤§ã®ã‚¢ã‚¤ãƒ‰ãƒ«æ™‚é–“(msec)
+                false,      // JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’æ•´å½¢ã™ã‚‹ã‹å¦ã‹
+                true,       // JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ã‹å¦ã‹
+                factory     // ServerMethodFactory ã®å®Ÿè£…
             );
-            // RpcServer ‚Ìˆ—‚ðŠJŽn‚·‚éD
+            // RpcServer ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼Ž
             rpcServer.open();
             
-            // ƒRƒ“ƒ\[ƒ‹‚©‚ç‚Ì“ü—Í‚ð‘Ò‚ÂD
-            Log.message("> SimpleRpcServer: I—¹‚·‚éÛ‚Í Enter ƒL[‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢D");
+            // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‹ã‚‰ã®å…¥åŠ›ã‚’å¾…ã¤ï¼Ž
+            Log.message("> SimpleRpcServer: çµ‚äº†ã™ã‚‹éš›ã¯ Enter ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãã ã•ã„ï¼Ž");
             System.in.read();
         }
         catch (Exception ex) {
-            // RpcServer ‚Ì“®ì’†‚É—áŠO‚ª”­¶‚µ‚½D
-            Log.message("> SimpleRpcServer: RpcServer ‚ÌŽÀs’†‚É—áŠO‚ª”­¶‚µ‚Ü‚µ‚½D");
+            // RpcServer ã®å‹•ä½œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼Ž
+            Log.message("> SimpleRpcServer: RpcServer ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸï¼Ž");
             ex.printStackTrace();
         }
         finally {
-            // RpcServer ‚Ìˆ—‚ðI—¹‚·‚éD
+            // RpcServer ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼Ž
             if (rpcServer != null) {
-                Log.message("> SimpleRpcServer: RpcServer ‚Ìˆ—‚ðI—¹‚µ‚Ü‚·D");
+                Log.message("> SimpleRpcServer: RpcServer ã®å‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ï¼Ž");
                 rpcServer.close();
             }
         }
     }
     
-    // RegisterableArrayFactoryFServerMethodFactory ƒNƒ‰ƒX‚Æ‚µ‚Ä‚ÌŽÀ‘•
+    // RegisterableArrayFactoryï¼šServerMethodFactory ã‚¯ãƒ©ã‚¹ã¨ã—ã¦ã®å®Ÿè£…
     static RegisterableArrayFactory factory = new ServerMethodFactory();
     
     static class ServerMethodFactory
@@ -74,7 +74,7 @@ public class SimpleRpcServer
         }
     }
     
-    // ¥ŽQlFRegisterableArrayFactory ‚ÌŽÀ‘•i–³–¼ƒNƒ‰ƒXj
+    // â–¼å‚è€ƒï¼šRegisterableArrayFactory ã®å®Ÿè£…ï¼ˆç„¡åã‚¯ãƒ©ã‚¹ï¼‰
     static RegisterableArrayFactory factory_ex0 = new RegisterableArrayFactory()
     {
         @Override
@@ -84,10 +84,10 @@ public class SimpleRpcServer
         }
     };
     
-    // ¥ŽQlFRegisterableArrayFactory ‚ÌŽÀ‘•iƒ‰ƒ€ƒ_Ž®j
+    // â–¼å‚è€ƒï¼šRegisterableArrayFactory ã®å®Ÿè£…ï¼ˆãƒ©ãƒ ãƒ€å¼ï¼‰
     static RegisterableArrayFactory factory_ex1 = () -> { return new Registerable[] {new SimpleServerMethod()}; };
     
-    // ¥ŽQlFRegisterableArrayFactory ‚ÌŽÀ‘•i‰Â”\‚ÈŒÀ‚èÈ—ª‚µ‚½ƒ‰ƒ€ƒ_Ž®j
+    // â–¼å‚è€ƒï¼šRegisterableArrayFactory ã®å®Ÿè£…ï¼ˆå¯èƒ½ãªé™ã‚Šçœç•¥ã—ãŸãƒ©ãƒ ãƒ€å¼ï¼‰
     static RegisterableArrayFactory factory_ex2 = () -> new Registerable[] {new SimpleServerMethod()};
     
 }

@@ -29,14 +29,14 @@ public class OutputSettingsMenu
         ConsoleMenu
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String MENU_TITLE  = " ƒVƒXƒeƒ€  “ü—Íİ’è ¡o—Íİ’è  ƒXƒgƒŠ[ƒ€‘€ì";
+    private static final String MENU_TITLE  = "â–¡ã‚·ã‚¹ãƒ†ãƒ  â–¡å…¥åŠ›è¨­å®š â– å‡ºåŠ›è¨­å®š â–¡ã‚¹ãƒˆãƒªãƒ¼ãƒ æ“ä½œ";
     private static final String MENU_PROMPT = "out";
     
-    private static final String SET_DEFAULT_RENDERER      = "Ä¶/•\¦İ’è";
-    private static final String CONFIGURE_OUTGOING_STREAM = "‘—MƒXƒgƒŠ[ƒ€İ’è";
-    private static final String SETUP_STREAM              = "ƒXƒgƒŠ[ƒ€¶¬ ¨  ƒXƒgƒŠ[ƒ€‘€ì";
-    private static final String SHOW_SEGMENT_IO           = "“üo—Íİ’è•\¦";
-    private static final String QUIT                      = "İ’èƒLƒƒƒ“ƒZƒ‹ ¨  ƒVƒXƒeƒ€";
+    private static final String SET_DEFAULT_RENDERER      = "å†ç”Ÿ/è¡¨ç¤ºè¨­å®š";
+    private static final String CONFIGURE_OUTGOING_STREAM = "é€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ è¨­å®š";
+    private static final String SETUP_STREAM              = "ã‚¹ãƒˆãƒªãƒ¼ãƒ ç”Ÿæˆ â†’ â–¡ã‚¹ãƒˆãƒªãƒ¼ãƒ æ“ä½œ";
+    private static final String SHOW_SEGMENT_IO           = "å…¥å‡ºåŠ›è¨­å®šè¡¨ç¤º";
+    private static final String QUIT                      = "è¨­å®šã‚­ãƒ£ãƒ³ã‚»ãƒ« â†’ â–¡ã‚·ã‚¹ãƒ†ãƒ ";
     
 // =============================================================================
 // INSTANCE VARIABLE:
@@ -112,13 +112,13 @@ public class OutputSettingsMenu
     {
         SegmentIo segIo = ConsoleMenu.getSegmentIo();
         
-        // SegmentIo ‚Ìo—Í‚Æ‚µ‚ÄƒfƒtƒHƒ‹ƒgƒŒƒ“ƒ_ƒ‰‚ğİ’è‚·‚éD
+        // SegmentIo ã®å‡ºåŠ›ã¨ã—ã¦ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ¬ãƒ³ãƒ€ãƒ©ã‚’è¨­å®šã™ã‚‹ï¼
         segIo.configureRenderer();
         
-        // ƒ‰ƒCƒuƒ\[ƒXƒIƒvƒVƒ‡ƒ“‚ğ—LŒø‚É‚·‚éD
+        // ãƒ©ã‚¤ãƒ–ã‚½ãƒ¼ã‚¹ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æœ‰åŠ¹ã«ã™ã‚‹ï¼
         segIo.setLiveSource(true);
         
-        // Œ»İ‚Ì SegmentIo ‚Ì“üo—Íî•ñ‚ğ•\¦‚·‚éD
+        // ç¾åœ¨ã® SegmentIo ã®å…¥å‡ºåŠ›æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         showSegmentIo();
         
         return this;
@@ -130,40 +130,40 @@ public class OutputSettingsMenu
     {
         SegmentIo segIo = ConsoleMenu.getSegmentIo();
         
-        // SegmentIo ‚Éİ’è‚³‚ê‚Ä‚¢‚é“ü—Íî•ñ‚ğ‚à‚Æ‚ÉC
-        // —˜—p‰Â”\‚Èo—ÍƒtƒH[ƒ}ƒbƒgî•ñ‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éD
+        // SegmentIo ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å…¥åŠ›æƒ…å ±ã‚’ã‚‚ã¨ã«ï¼Œ
+        // åˆ©ç”¨å¯èƒ½ãªå‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         List<StreamFormat> lsOutFmt = segIo.getOutputVideoFormatList();
         lsOutFmt.addAll(segIo.getOutputAudioFormatList());
         int size = lsOutFmt.size();
         if (size <= 0) {
-            warningPause("—˜—p‰Â”\‚Èo—ÍƒtƒH[ƒ}ƒbƒg‚ª‚ ‚è‚Ü‚¹‚ñD\n");
+            warningPause("åˆ©ç”¨å¯èƒ½ãªå‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒã‚ã‚Šã¾ã›ã‚“ï¼\n");
             return this;
         }
-        // o—ÍƒtƒH[ƒ}ƒbƒgî•ñƒŠƒXƒg‚ÌŠe—v‘f‚ğ•\¦‚·‚éD
+        // å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ãƒªã‚¹ãƒˆã®å„è¦ç´ ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         printStreamFormatList(lsOutFmt);
         
-        // o—ÍƒtƒH[ƒ}ƒbƒgî•ñƒŠƒXƒg‚ÉƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡
-        // ƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ğ‘I‘ğ‚·‚éD
+        // å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ãƒªã‚¹ãƒˆã«ãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆ
+        // ãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’é¸æŠã™ã‚‹ï¼
         VideoFormat vidFmt = selectVideoFormat(lsOutFmt);
         
-        // o—ÍƒtƒH[ƒ}ƒbƒgî•ñƒŠƒXƒg‚ÉƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ªŠÜ‚Ü‚ê‚Ä‚¢‚éê‡
-        // ƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ğ‘I‘ğ‚·‚éD
-        // ¦‘I‘ğÏ‚İ‚ÌƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ª DV/M2TS ‚Ìê‡‚ÍC
-        // ƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ğ‘I‘ğ‚µ‚È‚¢D
+        // å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ãƒªã‚¹ãƒˆã«ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒå«ã¾ã‚Œã¦ã„ã‚‹å ´åˆ
+        // ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’é¸æŠã™ã‚‹ï¼
+        // â€»é¸æŠæ¸ˆã¿ã®ãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒ DV/M2TS ã®å ´åˆã¯ï¼Œ
+        // ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’é¸æŠã—ãªã„ï¼
         AudioFormat audFmt = selectAudioFormat(vidFmt, lsOutFmt);
         if ((vidFmt == null) && (audFmt == null)) {
             return this;
         }
-        // SegmentIo ‚Ìo—Í‚ğC‘—MƒXƒgƒŠ[ƒ€‚Æ‚µ‚Ä\¬‚·‚éD
+        // SegmentIo ã®å‡ºåŠ›ã‚’ï¼Œé€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         segIo.configureOutgoingStream(vidFmt, audFmt);
         
-        // ƒgƒ‰ƒ“ƒXƒ|[ƒgƒvƒƒgƒRƒ‹‚ğ‘I‘ğ‚·‚éD
+        // ãƒˆãƒ©ãƒ³ã‚¹ãƒãƒ¼ãƒˆãƒ—ãƒ­ãƒˆã‚³ãƒ«ã‚’é¸æŠã™ã‚‹ï¼
         ProtocolType type          = ProtocolType.UDP;
         boolean      isTcpSelected = selectTransportProtocol();
         if (isTcpSelected) {
             type = ProtocolType.TCP;
         }
-        // Ú‘±‚Ì•ûŒü‚ğ‘I‘ğ‚·‚é(TCP—˜—p‚Ì‚İ)D
+        // æ¥ç¶šã®æ–¹å‘ã‚’é¸æŠã™ã‚‹(TCPåˆ©ç”¨æ™‚ã®ã¿)ï¼
         boolean isRcvCon = false;
         if (isTcpSelected) {
             isRcvCon = selectConnectionDirection();
@@ -172,8 +172,8 @@ public class OutputSettingsMenu
         if (isRcvCon) {
             mode = ConnectionMode.PASSIVE;
         }
-        // ƒgƒ‰ƒ“ƒXƒ|[ƒgƒvƒƒgƒRƒ‹‚ÆÚ‘±‚Ì•ûŒü‚ğİ’è‚µC
-        // Œ»İ‚Ì SegmentIo ‚Ì“üo—Íî•ñ‚ğ•\¦‚·‚éD
+        // ãƒˆãƒ©ãƒ³ã‚¹ãƒãƒ¼ãƒˆãƒ—ãƒ­ãƒˆã‚³ãƒ«ã¨æ¥ç¶šã®æ–¹å‘ã‚’è¨­å®šã—ï¼Œ
+        // ç¾åœ¨ã® SegmentIo ã®å…¥å‡ºåŠ›æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         segIo.setTransportProtocol(type, mode);
         showSegmentIo();
         
@@ -186,8 +186,8 @@ public class OutputSettingsMenu
     {
         VideoFormat vidFmt = null;
         
-        // —^‚¦‚ç‚ê‚½ StreamFormat ‚ÌƒŠƒXƒg‚É
-        // ƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚ğŠm”F‚·‚éD
+        // ä¸ãˆã‚‰ã‚ŒãŸ StreamFormat ã®ãƒªã‚¹ãƒˆã«
+        // ãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹ã‚’ç¢ºèªã™ã‚‹ï¼
         boolean isVid = false;
         for (StreamFormat stmFmt : lsOutFmt) {
             if (stmFmt instanceof VideoFormat) {
@@ -196,23 +196,23 @@ public class OutputSettingsMenu
             }
         }
         if (isVid == false) {
-            // —˜—p‰Â”\‚ÈƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ª–³‚¢D
+            // åˆ©ç”¨å¯èƒ½ãªãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒç„¡ã„ï¼
             return vidFmt;
         }
-        // ƒrƒfƒIƒtƒH[ƒ}ƒbƒg”Ô†‚ğ‘I‘ğ‚·‚éD
+        // ãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆç•ªå·ã‚’é¸æŠã™ã‚‹ï¼
         int size = lsOutFmt.size();
-        int num  = selectNumber("ƒrƒfƒIƒtƒH[ƒ}ƒbƒg”Ô†");
+        int num  = selectNumber("ãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆç•ªå·");
         if (num >= size) {
-            warningPause("ƒRƒ}ƒ“ƒh‚ğƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½D\n");
+            warningPause("ã‚³ãƒãƒ³ãƒ‰ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸï¼\n");
             return vidFmt;
         }
-        // ‘I‘ğ‚³‚ê‚½ƒrƒfƒIƒtƒH[ƒ}ƒbƒgî•ñ‚ğæ“¾‚·‚éD
+        // é¸æŠã•ã‚ŒãŸãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ï¼
         StreamFormat stmFtm = lsOutFmt.get(num);
         if (stmFtm instanceof VideoFormat) {
             vidFmt = (VideoFormat)stmFtm;
         }
         else {
-            warningPause("ƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚Å‚Í‚ ‚è‚Ü‚¹‚ñD\n");
+            warningPause("ãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§ã¯ã‚ã‚Šã¾ã›ã‚“ï¼\n");
         }
         return vidFmt;
     }
@@ -225,16 +225,16 @@ public class OutputSettingsMenu
     {
         AudioFormat audFmt = null;
         
-        // ‘I‘ğÏ‚İ‚ÌƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ª DV/M2TS ‚Ìê‡‚ÍC
-        // ƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ğ‘I‘ğ‚µ‚È‚¢D
+        // é¸æŠæ¸ˆã¿ã®ãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒ DV/M2TS ã®å ´åˆã¯ï¼Œ
+        // ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’é¸æŠã—ãªã„ï¼
         if (vidFmt != null) {
             IoFormat ioFmt = vidFmt.getIoFormat();
             if ((ioFmt == IoFormat.DVSD) || (ioFmt == IoFormat.M2TS)) {
                 return audFmt;
             }
         }
-        // —^‚¦‚ç‚ê‚½ StreamFormat ‚ÌƒŠƒXƒg‚É
-        // ƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚ğŠm”F‚·‚éD
+        // ä¸ãˆã‚‰ã‚ŒãŸ StreamFormat ã®ãƒªã‚¹ãƒˆã«
+        // ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹ã‚’ç¢ºèªã™ã‚‹ï¼
         boolean isAud = false;
         for (StreamFormat stmFmt : lsOutFmt) {
             if (stmFmt instanceof AudioFormat) {
@@ -243,23 +243,23 @@ public class OutputSettingsMenu
             }
         }
         if (isAud == false) {
-            // —˜—p‰Â”\‚ÈƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ª–³‚¢D
+            // åˆ©ç”¨å¯èƒ½ãªã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒç„¡ã„ï¼
             return audFmt;
         }
-        // ƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg”Ô†‚ğ‘I‘ğ‚·‚éD
+        // ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆç•ªå·ã‚’é¸æŠã™ã‚‹ï¼
         int size = lsOutFmt.size();
-        int num  = selectNumber("ƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg”Ô†");
+        int num  = selectNumber("ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆç•ªå·");
         if (num >= size) {
-            warningPause("ƒRƒ}ƒ“ƒh‚ğƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½D\n");
+            warningPause("ã‚³ãƒãƒ³ãƒ‰ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸï¼\n");
             return audFmt;
         }
-        // ‘I‘ğ‚³‚ê‚½ƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒgî•ñ‚ğæ“¾‚·‚éD
+        // é¸æŠã•ã‚ŒãŸã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ï¼
         StreamFormat stmFtm = lsOutFmt.get(num);
         if (stmFtm instanceof AudioFormat) {
             audFmt = (AudioFormat)stmFtm;
         }
         else {
-            warningPause("ƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚Å‚Í‚ ‚è‚Ü‚¹‚ñD\n");
+            warningPause("ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§ã¯ã‚ã‚Šã¾ã›ã‚“ï¼\n");
         }
         return audFmt;
     }
@@ -270,11 +270,11 @@ public class OutputSettingsMenu
     {
         boolean useTCP = false;
         
-        printListTitle("ƒXƒgƒŠ[ƒ€“]‘—ƒvƒƒgƒRƒ‹");
+        printListTitle("ã‚¹ãƒˆãƒªãƒ¼ãƒ è»¢é€ãƒ—ãƒ­ãƒˆã‚³ãƒ«");
         print("  [0] TCP\n");
         print("  [1] UDP\n");
         
-        int num = selectNumber("ƒvƒƒgƒRƒ‹”Ô†");
+        int num = selectNumber("ãƒ—ãƒ­ãƒˆã‚³ãƒ«ç•ªå·");
         switch (num) {
         case 0:
             useTCP = true;
@@ -283,7 +283,7 @@ public class OutputSettingsMenu
             useTCP = false;
             break;
         default:
-            warningPause("ƒRƒ}ƒ“ƒh‚ğƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½DUDP‚ğ—˜—p‚µ‚Ü‚·D\n");
+            warningPause("ã‚³ãƒãƒ³ãƒ‰ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸï¼UDPã‚’åˆ©ç”¨ã—ã¾ã™ï¼\n");
             useTCP = false;
             break;
         }
@@ -296,11 +296,11 @@ public class OutputSettingsMenu
     {
         boolean isRcvCon = false;
         
-        printListTitle("ƒRƒlƒNƒVƒ‡ƒ“Ú‘±•ûŒü");
-        print("  [0] óM‘¤‚©‚çÚ‘±‚ğ‚©‚¯‚é\n");
-        print("  [1] ‘—M‘¤‚©‚çÚ‘±‚ğ‚©‚¯‚é\n");
+        printListTitle("ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ¥ç¶šæ–¹å‘");
+        print("  [0] å—ä¿¡å´ã‹ã‚‰æ¥ç¶šã‚’ã‹ã‘ã‚‹\n");
+        print("  [1] é€ä¿¡å´ã‹ã‚‰æ¥ç¶šã‚’ã‹ã‘ã‚‹\n");
         
-        int num = selectNumber("”Ô†");
+        int num = selectNumber("ç•ªå·");
         switch (num) {
         case 0:
             isRcvCon = true;
@@ -309,7 +309,7 @@ public class OutputSettingsMenu
             isRcvCon = false;
             break;
         default:
-            warningPause("ƒRƒ}ƒ“ƒh‚ğƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½DóM‘¤‚©‚çÚ‘±‚ğ‚©‚¯‚Ü‚·D\n");
+            warningPause("ã‚³ãƒãƒ³ãƒ‰ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸï¼å—ä¿¡å´ã‹ã‚‰æ¥ç¶šã‚’ã‹ã‘ã¾ã™ï¼\n");
             isRcvCon = true;
             break;
         }
@@ -320,47 +320,47 @@ public class OutputSettingsMenu
     //
     private ConsoleMenu setupStream()
     {
-        // SegmentIo ‚Ìo—Í‚ªİ’è‚³‚ê‚Ä‚¢‚é‚©‚ğŠm”F‚·‚éD
+        // SegmentIo ã®å‡ºåŠ›ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹ã‹ã‚’ç¢ºèªã™ã‚‹ï¼
         SegmentIo     segIo = ConsoleMenu.getSegmentIo();
         List<IoParam> list  = segIo.getOutputParamList();
         if (list.isEmpty()) {
-            // o—Í‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚Í OutputSettingsMenu ‚Ì‚Ü‚Ü
-            warningPause("o—Í‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñD\n");
+            // å‡ºåŠ›ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆã¯ OutputSettingsMenu ã®ã¾ã¾
+            warningPause("å‡ºåŠ›ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ï¼\n");
             return this;
         }
-        // ƒvƒŒƒrƒ…[‚ğ—LŒø‚É‚·‚éD
+        // ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ã‚’æœ‰åŠ¹ã«ã™ã‚‹ï¼
         segIo.setPreviewer();
         
-        // StreamPerformer ‚ğ¶¬‚·‚éD
+        // StreamPerformer ã‚’ç”Ÿæˆã™ã‚‹ï¼
         StreamPerformer pfmr;
         try {
             pfmr = StreamPerformer.newInstance(segIo);
             // SystemException, StreamException
             
-            // ExPerformerFrame ‚ğ EDT ã‚Å¶¬‚·‚éD
+            // ExPerformerFrame ã‚’ EDT ä¸Šã§ç”Ÿæˆã™ã‚‹ï¼
             SwingUtilities.invokeLater(() -> { new ExPerformerFrame(pfmr); });
         }
         catch (SystemException | StreamException ex) {
-            // ƒXƒgƒŠ[ƒ€¶¬‚É—áŠO‚ª”­¶‚µ‚½D
-            warning("ƒXƒgƒŠ[ƒ€‚ğ¶¬‚Å‚«‚Ü‚¹‚ñ(%s)D\n", ex.getMessage());
+            // ã‚¹ãƒˆãƒªãƒ¼ãƒ ç”Ÿæˆæ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼
+            warning("ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ç”Ÿæˆã§ãã¾ã›ã‚“(%s)ï¼\n", ex.getMessage());
             return this;
         }
-        // ƒXƒgƒŠ[ƒ€‚Ìˆ—‚ğŠJn‚·‚éD
+        // ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
         try {
             pfmr.open();	// StreamException
             pfmr.start();	// StreamException
         }
         catch (StreamException ex) {
-            // ƒXƒgƒŠ[ƒ€‚Ìˆ—ŠJn‚ÉƒGƒ‰[‚ª”­¶‚µ‚½D
-            warning("“üo—Íˆ—‚ğŠJn‚Å‚«‚Ü‚¹‚ñ(%s)D\n", ex.getMessage());
+            // ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®å‡¦ç†é–‹å§‹æ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸï¼
+            warning("å…¥å‡ºåŠ›å‡¦ç†ã‚’é–‹å§‹ã§ãã¾ã›ã‚“(%s)ï¼\n", ex.getMessage());
             return this;
         }
-        // ¶¬‚µ‚½ƒXƒgƒŠ[ƒ€‚Ìˆ—‚ªŠJn‚³‚ê‚½D
-        // ¶¬‚µ‚½ƒXƒgƒŠ[ƒ€‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğCConsoleMenu ‚Éİ’è‚µ‚Ä‚¨‚­D
+        // ç”Ÿæˆã—ãŸã‚¹ãƒˆãƒªãƒ¼ãƒ ã®å‡¦ç†ãŒé–‹å§‹ã•ã‚ŒãŸï¼
+        // ç”Ÿæˆã—ãŸã‚¹ãƒˆãƒªãƒ¼ãƒ ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ï¼ŒConsoleMenu ã«è¨­å®šã—ã¦ãŠãï¼
         ConsoleMenu.setSelectedStream(pfmr);
         
-        // V‚µ‚¢ StreamPerformer ‚ªƒZƒbƒgƒAƒbƒv‚Å‚«‚½ê‡C
-        // Ÿ‚Ìƒƒjƒ…[‚Æ‚È‚é StreamControlMenu ‚ğ•Ô‚·D
+        // æ–°ã—ã„ StreamPerformer ãŒã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã§ããŸå ´åˆï¼Œ
+        // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¨ãªã‚‹ StreamControlMenu ã‚’è¿”ã™ï¼
         return this.streamControlMenu;
     }
     
@@ -368,7 +368,7 @@ public class OutputSettingsMenu
     //
     private ConsoleMenu quit()
     {
-        // Ÿ‚Ìƒƒjƒ…[‚Æ‚È‚é SystemMenu ‚ğ•Ô‚·D
+        // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¨ãªã‚‹ SystemMenu ã‚’è¿”ã™ï¼
         return this.systemMenu;
     }
 }

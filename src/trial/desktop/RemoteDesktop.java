@@ -40,16 +40,16 @@ public class RemoteDesktop
         ActionListener
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String STR_FRAME_TITLE = "‰“ŠuƒfƒXƒNƒgƒbƒv‘€ì";
+    private static final String STR_FRAME_TITLE = "é éš”ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—æ“ä½œ";
     
-    private static final String STR_ACCEPTANCE  = "‰“Šu‘€ì‚ğó‚¯“ü‚ê‚é";
-    private static final String STR_NEW_REMOCON = "V‚µ‚¢‰“Šu‘€ì—pƒEƒBƒ“ƒhƒE‚ğ¶¬‚·‚é";
+    private static final String STR_ACCEPTANCE  = "é éš”æ“ä½œã‚’å—ã‘å…¥ã‚Œã‚‹";
+    private static final String STR_NEW_REMOCON = "æ–°ã—ã„é éš”æ“ä½œç”¨ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ç”Ÿæˆã™ã‚‹";
     
-    private static final String STR_OPEN_SERVER  = "‰“Šu‘€ì‚Ìó‚¯“ü‚ê‚ğŠJn‚µ‚Ü‚·D";
-    private static final String STR_CLOSE_SERVER = "‰“Šu‘€ì‚Ìó‚¯“ü‚ê‚ğI—¹‚µ‚Ü‚·D";
+    private static final String STR_OPEN_SERVER  = "é éš”æ“ä½œã®å—ã‘å…¥ã‚Œã‚’é–‹å§‹ã—ã¾ã™ï¼";
+    private static final String STR_CLOSE_SERVER = "é éš”æ“ä½œã®å—ã‘å…¥ã‚Œã‚’çµ‚äº†ã—ã¾ã™ï¼";
     
-    private static final String STR_ALREADY_IN_USE = "Šù‚É‰“Šu‘€ìó‚¯“ü‚êˆ—’†‚Å‚·D";
-    private static final String STR_NOT_RUNNING    = "‰“Šu‘€ìó‚¯“ü‚êˆ—‚Ís‚í‚ê‚Ä‚¢‚Ü‚¹‚ñD";
+    private static final String STR_ALREADY_IN_USE = "æ—¢ã«é éš”æ“ä½œå—ã‘å…¥ã‚Œå‡¦ç†ä¸­ã§ã™ï¼";
+    private static final String STR_NOT_RUNNING    = "é éš”æ“ä½œå—ã‘å…¥ã‚Œå‡¦ç†ã¯è¡Œã‚ã‚Œã¦ã„ã¾ã›ã‚“ï¼";
     
     private static final Dimension DIM_FRAME = new Dimension(640, 480);
     
@@ -74,7 +74,7 @@ public class RemoteDesktop
     {
         SwingUtilities.invokeLater(() -> {
             try {
-                // RemoteDesktop ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éD
+                // RemoteDesktop ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
                 new RemoteDesktop(args);
                 // SystemException
             }
@@ -143,14 +143,14 @@ public class RemoteDesktop
     private RemoteDesktop(String[] args)
         throws SystemException
     {
-        // GUI‚ğƒZƒbƒgƒAƒbƒv‚·‚éD
+        // GUIã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ï¼
         setupGui();
         
-        // MidField System ‚ğ‹N“®‚·‚éD
+        // MidField System ã‚’èµ·å‹•ã™ã‚‹ï¼
         this.mfs = MfsNode.initialize();	// SystemException
         this.mfs.activate();				// SystemException
         
-        // DesktopViewer ‚ÌƒŠƒXƒg‚ğ¶¬‚·‚éD
+        // DesktopViewer ã®ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.viewerList = new ArrayList<DesktopViewer>();
     }
     
@@ -158,11 +158,11 @@ public class RemoteDesktop
     //
     private void setupGui()
     {
-        // MessagePanel ‚ğ¶¬‚µCƒƒO‚Ìo—Íæ‚Æ‚µ‚Äİ’è‚·‚éD
+        // MessagePanel ã‚’ç”Ÿæˆã—ï¼Œãƒ­ã‚°ã®å‡ºåŠ›å…ˆã¨ã—ã¦è¨­å®šã™ã‚‹ï¼
         MessagePanel panel = new MessagePanel();
         Log.setLogPrinter(panel);
         
-        // ƒ{ƒ^ƒ“‚ÆƒRƒ“ƒgƒ[ƒ‹ƒ{ƒbƒNƒX‚ğ¶¬‚·‚éD
+        // ãƒœã‚¿ãƒ³ã¨ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒœãƒƒã‚¯ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
         JToggleButton btnAcceptance = new JToggleButton(STR_ACCEPTANCE);
         btnAcceptance.setActionCommand(STR_ACCEPTANCE);
         btnAcceptance.addActionListener(this);
@@ -175,26 +175,26 @@ public class RemoteDesktop
         box.add(btnAcceptance);
         box.add(btnControl);
         
-        // ‚±‚Ì JFrame ‚ÌƒRƒ“ƒeƒi‹æ‰æ‚É
-        // ƒƒbƒZ[ƒWƒpƒlƒ‹‚ÆƒRƒ“ƒgƒ[ƒ‹ƒ{ƒbƒNƒX‚ğ’Ç‰Á‚·‚éD
+        // ã“ã® JFrame ã®ã‚³ãƒ³ãƒ†ãƒŠåŒºç”»ã«
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ‘ãƒãƒ«ã¨ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ãƒœãƒƒã‚¯ã‚¹ã‚’è¿½åŠ ã™ã‚‹ï¼
         Container container = getContentPane();
         container.setLayout(new BorderLayout());
         container.add(box, BorderLayout.NORTH);
         container.add(panel, BorderLayout.CENTER);
         
-        // L&F ‚ğİ’è‚·‚éD
+        // L&F ã‚’è¨­å®šã™ã‚‹ï¼
         AppUtilities.setLookAndFeel(this);
         
-        // ƒ^ƒCƒgƒ‹‚ÆÅ¬ƒTƒCƒY‚ğİ’è‚·‚éD
+        // ã‚¿ã‚¤ãƒˆãƒ«ã¨æœ€å°ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ï¼
         setTitle(STR_FRAME_TITLE);
         setMinimumSize(DIM_FRAME);
         setPreferredSize(DIM_FRAME);
         pack();
         
-        // ‰æ–Ê’†‰›‚ÉƒtƒŒ[ƒ€‚ÌˆÊ’u‚ğ‡‚í‚¹‚éD
+        // ç”»é¢ä¸­å¤®ã«ãƒ•ãƒ¬ãƒ¼ãƒ ã®ä½ç½®ã‚’åˆã‚ã›ã‚‹ï¼
         AppUtilities.setLocationToCenter(this);
         
-        // I—¹ˆ—‚ğ“o˜^‚·‚éD
+        // çµ‚äº†å‡¦ç†ã‚’ç™»éŒ²ã™ã‚‹ï¼
         addWindowListener(new WindowAdapter()
         {
             @Override
@@ -203,7 +203,7 @@ public class RemoteDesktop
                 close();
             }
         });
-        // ‰Â‹ó‘Ô‚É‚·‚éD
+        // å¯è¦–çŠ¶æ…‹ã«ã™ã‚‹ï¼
         setVisible(true);
     }
     
@@ -211,35 +211,35 @@ public class RemoteDesktop
     //
     private void close()
     {
-        // “®ì’†‚Ì DesktopViewer ‚ª‚ ‚ê‚Î‘S‚ÄI—¹‚·‚éD
+        // å‹•ä½œä¸­ã® DesktopViewer ãŒã‚ã‚Œã°å…¨ã¦çµ‚äº†ã™ã‚‹ï¼
         for (DesktopViewer viewer : this.viewerList) {
             viewer.close();
         }
-        // DesktopServer ‚ª“®ì’†‚Å‚ ‚ê‚ÎI—¹‚·‚éD
+        // DesktopServer ãŒå‹•ä½œä¸­ã§ã‚ã‚Œã°çµ‚äº†ã™ã‚‹ï¼
         if (this.server != null) {
             Log.message(STR_CLOSE_SERVER);
             this.server.close();
         }
-        // MidField System ‚ğI—¹‚·‚éD
+        // MidField System ã‚’çµ‚äº†ã™ã‚‹ï¼
         this.mfs.shutdown();
         
-        // ‚±‚ÌƒtƒŒ[ƒ€‚ÌI—¹ˆ—‚ğÀs‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®çµ‚äº†å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         dispose();
     }
     
 // -----------------------------------------------------------------------------
-// PRIVATE METHOD: ActionEvent ƒnƒ“ƒhƒ‰
+// PRIVATE METHOD: ActionEvent ãƒãƒ³ãƒ‰ãƒ©
 // -----------------------------------------------------------------------------
     
     // - PRIVATE METHOD --------------------------------------------------------
     //
     private void evHn_Acceptance(JToggleButton btn)
     {
-        // ‰“Šu‘€ìó‚¯“ü‚ê—pƒgƒOƒ‹ƒ{ƒ^ƒ“‚ª‘I‘ğó‘Ô‚©‚Ç‚¤‚©‚ğŠm”F‚·‚éD
+        // é éš”æ“ä½œå—ã‘å…¥ã‚Œç”¨ãƒˆã‚°ãƒ«ãƒœã‚¿ãƒ³ãŒé¸æŠçŠ¶æ…‹ã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹ï¼
         if (btn.isSelected()) {
-            // ‰“Šu‘€ìó‚¯“ü‚ê—pƒgƒOƒ‹ƒ{ƒ^ƒ“‚ª‘I‘ğó‘Ô‚ÅC
-            // DesktopServer ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª‘¶İ‚µ‚È‚¢ê‡C
-            // DesktopServer ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éD
+            // é éš”æ“ä½œå—ã‘å…¥ã‚Œç”¨ãƒˆã‚°ãƒ«ãƒœã‚¿ãƒ³ãŒé¸æŠçŠ¶æ…‹ã§ï¼Œ
+            // DesktopServer ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå­˜åœ¨ã—ãªã„å ´åˆï¼Œ
+            // DesktopServer ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
             if (this.server == null) {
                 try {
                     Log.message(STR_OPEN_SERVER);
@@ -257,9 +257,9 @@ public class RemoteDesktop
             }
         }
         else {
-            // ‰“Šu‘€ìó‚¯“ü‚ê—pƒgƒOƒ‹ƒ{ƒ^ƒ“‚ª”ñ‘I‘ğó‘Ô‚ÅC
-            // DesktopServer ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª‘¶İ‚·‚éê‡C
-            // DesktopServer ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰ğ•ú‚·‚éD
+            // é éš”æ“ä½œå—ã‘å…¥ã‚Œç”¨ãƒˆã‚°ãƒ«ãƒœã‚¿ãƒ³ãŒéé¸æŠçŠ¶æ…‹ã§ï¼Œ
+            // DesktopServer ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå­˜åœ¨ã™ã‚‹å ´åˆï¼Œ
+            // DesktopServer ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è§£æ”¾ã™ã‚‹ï¼
             if (this.server != null) {
                 Log.message(STR_CLOSE_SERVER);
                 this.server.close();
@@ -276,7 +276,7 @@ public class RemoteDesktop
     //
     private void evHn_Control()
     {
-        // DesktopClient ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µCƒŠƒXƒg‚Ö’Ç‰Á‚·‚éD
+        // DesktopClient ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ï¼Œãƒªã‚¹ãƒˆã¸è¿½åŠ ã™ã‚‹ï¼
         DesktopViewer viewer = new DesktopViewer(this);
         this.viewerList.add(viewer);
     }

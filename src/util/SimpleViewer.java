@@ -23,8 +23,8 @@ public class SimpleViewer
         JFrame
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final int DEF_WIDTH  = 640;  // ƒrƒ…[ƒ‚ÌƒfƒtƒHƒ‹ƒg‚Ì• [pixel]
-    private static final int DEF_HEIGHT = 480;  // ƒrƒ…[ƒ‚ÌƒfƒtƒHƒ‹ƒg‚Ì‚‚³ [pixel]
+    private static final int DEF_WIDTH  = 640;  // ãƒ“ãƒ¥ãƒ¼ãƒ¯ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å¹… [pixel]
+    private static final int DEF_HEIGHT = 480;  // ãƒ“ãƒ¥ãƒ¼ãƒ¯ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®é«˜ã• [pixel]
     
 // =============================================================================
 // INSTANCE METHOD:
@@ -53,7 +53,7 @@ public class SimpleViewer
     //
     public SimpleViewer(String title, int width, int height)
     {
-        // GUI‚ğƒZƒbƒgƒAƒbƒv‚·‚éD
+        // GUIã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ï¼
         setupGui(title, width, height);
     }
     
@@ -89,32 +89,32 @@ public class SimpleViewer
     //
     private void setupGui(String title, int width, int height)
     {
-        // JFrame ‚Ìƒ^ƒCƒgƒ‹‚ÆI—¹ˆ—‚ğİ’è‚·‚éD
+        // JFrame ã®ã‚¿ã‚¤ãƒˆãƒ«ã¨çµ‚äº†å‡¦ç†ã‚’è¨­å®šã™ã‚‹ï¼
         setTitle(title);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
-        // JFrame ‚©‚ç Content Pane ‚ğæ‚èo‚µC”wŒiF‚ğÂ‚Éİ’è‚·‚éD
+        // JFrame ã‹ã‚‰ Content Pane ã‚’å–ã‚Šå‡ºã—ï¼ŒèƒŒæ™¯è‰²ã‚’é’ã«è¨­å®šã™ã‚‹ï¼
         Container container = getContentPane();
         container.setBackground(Color.BLUE);
         
-        // Content Pane ‚Ì„§ƒTƒCƒY‚ğC—^‚¦‚ç‚ê‚½•‚Æ‚‚³‚»‚ê‚¼‚ê‚Ì
-        // 4•ª‚Ì1 ‚Éİ’è‚µ‚½ã‚ÅC
-        // JFrame ‚ÌƒTƒCƒY‚ğ Content Pane ‚Ì„§ƒTƒCƒY‚É‡‚í‚¹‚éD
-        // Ÿ‚É JFrame ‚ÌƒTƒCƒY‚ğæ“¾‚µ‚ÄC‚»‚ê‚ğ JFrame ‚ÌÅ¬ƒTƒCƒY‚Æ‚µ‚Äİ’è‚·‚éD
+        // Content Pane ã®æ¨å¥¨ã‚µã‚¤ã‚ºã‚’ï¼Œä¸ãˆã‚‰ã‚ŒãŸå¹…ã¨é«˜ã•ãã‚Œãã‚Œã®
+        // 4åˆ†ã®1 ã«è¨­å®šã—ãŸä¸Šã§ï¼Œ
+        // JFrame ã®ã‚µã‚¤ã‚ºã‚’ Content Pane ã®æ¨å¥¨ã‚µã‚¤ã‚ºã«åˆã‚ã›ã‚‹ï¼
+        // æ¬¡ã« JFrame ã®ã‚µã‚¤ã‚ºã‚’å–å¾—ã—ã¦ï¼Œãã‚Œã‚’ JFrame ã®æœ€å°ã‚µã‚¤ã‚ºã¨ã—ã¦è¨­å®šã™ã‚‹ï¼
         container.setPreferredSize(new Dimension(width / 4, height / 4));
         pack();
         Dimension dim = getSize();
         setMinimumSize(dim);
         
-        // Content Pane ‚Ì„§ƒTƒCƒY‚ğC—^‚¦‚ç‚ê‚½•‚Æ‚‚³‚Éİ’è‚µC
-        // JFrame ‚ÌƒTƒCƒY‚ğ Content Pane ‚Ì„§ƒTƒCƒY‚É‡‚í‚¹‚éD
+        // Content Pane ã®æ¨å¥¨ã‚µã‚¤ã‚ºã‚’ï¼Œä¸ãˆã‚‰ã‚ŒãŸå¹…ã¨é«˜ã•ã«è¨­å®šã—ï¼Œ
+        // JFrame ã®ã‚µã‚¤ã‚ºã‚’ Content Pane ã®æ¨å¥¨ã‚µã‚¤ã‚ºã«åˆã‚ã›ã‚‹ï¼
         container.setPreferredSize(new Dimension(width, height));
         pack();
         
-        // JFrame ‚ğƒXƒNƒŠ[ƒ“‚Ì^’†‚É”z’u‚·‚éD
+        // JFrame ã‚’ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã®çœŸä¸­ã«é…ç½®ã™ã‚‹ï¼
         AppUtilities.setLocationToCenter(this);
         
-        // JFrame ‚ğ•\¦‚·‚éD
+        // JFrame ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         setVisible(true);
     }
 }

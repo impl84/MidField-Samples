@@ -20,7 +20,7 @@ public class SampleCodeInvoker
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
     
-    // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒNƒ‰ƒX–¼‚ÌƒfƒtƒHƒ‹ƒg’l
+    // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹åã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤
     private static final String SAMPLE_CLASS_NAME = "stream.DeviceToRendererEx";
     
 // =============================================================================
@@ -35,30 +35,30 @@ public class SampleCodeInvoker
     //
     public static void main(String[] args)
     {
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒNƒ‰ƒX–¼‚ðŒˆ‚ß‚éD
-        // ˆø”‚ª 1‚ÂˆÈã—L‚éê‡‚ÍCÅ‰‚Ìˆø”‚ðƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒNƒ‰ƒX–¼‚Æ‚·‚éD
-        // ˆø”‚Å—^‚¦‚ç‚ê‚Ä‚¢‚È‚¢ê‡‚ÍCƒfƒtƒHƒ‹ƒg’l‚ðŽg‚¤D
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹åã‚’æ±ºã‚ã‚‹ï¼Ž
+        // å¼•æ•°ãŒ 1ã¤ä»¥ä¸Šæœ‰ã‚‹å ´åˆã¯ï¼Œæœ€åˆã®å¼•æ•°ã‚’ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ã‚¯ãƒ©ã‚¹åã¨ã™ã‚‹ï¼Ž
+        // å¼•æ•°ã§ä¸Žãˆã‚‰ã‚Œã¦ã„ãªã„å ´åˆã¯ï¼Œãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’ä½¿ã†ï¼Ž
         String sampleClassName = SAMPLE_CLASS_NAME;
         if (args.length > 0) {
             sampleClassName = args[0];
         }
         SampleCodeInvoker invoker = null;
         try {
-            // SampleCodeInvoker ‚ð¶¬‚µCƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ðŠJŽn‚·‚éD
+            // SampleCodeInvoker ã‚’ç”Ÿæˆã—ï¼Œã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼Ž
             invoker = new SampleCodeInvoker(sampleClassName);
             // SystemException
             
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌI—¹‚Ìƒ^ƒCƒ~ƒ“ƒO‚ð‘Ò‚ÂD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®çµ‚äº†ã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’å¾…ã¤ï¼Ž
             invoker.waitForWindowClose();
             // IOException
         }
         catch (Exception ex) {
-            // SampleCodeInvoker ‚ÌŽÀs’†‚É—áŠO‚ª”­¶‚µ‚½D
-            System.out.println("¦SampleCodeInvoker ‚ÌŽÀs’†‚É—áŠO‚ª”­¶‚µ‚Ü‚µ‚½D");
+            // SampleCodeInvoker ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼Ž
+            System.out.println("â€»SampleCodeInvoker ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸï¼Ž");
             ex.printStackTrace();
         }
         finally {
-            // SampleCodeInvoker ‚ª¶¬‚³‚ê‚Ä‚¢‚éê‡‚ÍCI—¹ˆ—‚ðŽÀs‚·‚éD
+            // SampleCodeInvoker ãŒç”Ÿæˆã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ï¼Œçµ‚äº†å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼Ž
             if (invoker != null) {
                 invoker.close();
             }
@@ -74,10 +74,10 @@ public class SampleCodeInvoker
     // MidField System
     private final MfsNode mfs;
     
-    // ƒTƒ“ƒvƒ‹ƒR[ƒh
+    // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰
     private final AbstractSampleCode sample;
     
-    // ƒRƒ“ƒ\[ƒ‹‚ð—˜—p‚µ‚½s’PˆÊ‚Ì•¶Žš—ñ‚Ì“üo—Í
+    // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚’åˆ©ç”¨ã—ãŸè¡Œå˜ä½ã®æ–‡å­—åˆ—ã®å…¥å‡ºåŠ›
     private final ConsoleReader  reader;
     private final ConsolePrinter printer;
     
@@ -94,27 +94,27 @@ public class SampleCodeInvoker
     SampleCodeInvoker(String sampleClassName)
         throws SystemException
     {
-        // ƒRƒ“ƒ\[ƒ‹‚ð—˜—p‚µ‚½•¶Žš‚Ì“üo—Í‚Ì€”õ‚ð‚·‚éD
+        // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚’åˆ©ç”¨ã—ãŸæ–‡å­—ã®å…¥å‡ºåŠ›ã®æº–å‚™ã‚’ã™ã‚‹ï¼Ž
         this.reader = ConsoleReader.getInstance();
         this.printer = ConsolePrinter.getInstance();
         
         this.printer.printf(
-            "> SampleCodeInvoker ‚Ìˆ—‚ðŠJŽn‚µ‚Ü‚·D(%s)\n",
+            "> SampleCodeInvoker ã®å‡¦ç†ã‚’é–‹å§‹ã—ã¾ã™ï¼Ž(%s)\n",
             sampleClassName
         );
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚µC•ÛŽ‚·‚éD
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ï¼Œä¿æŒã™ã‚‹ï¼Ž
         this.sample = newSampleCode(sampleClassName);
         
-        // MidField System ‚ð‰Šú‰»‚µC‹N“®‚·‚éD
-        this.printer.println("> MidField System ‚ð‹N“®‚µ‚Ü‚·D");
+        // MidField System ã‚’åˆæœŸåŒ–ã—ï¼Œèµ·å‹•ã™ã‚‹ï¼Ž
+        this.printer.println("> MidField System ã‚’èµ·å‹•ã—ã¾ã™ï¼Ž");
         this.mfs = MfsNode.initialize();	// SystemException
         this.mfs.activate();				// SystemException
         
-        // “üo—Í\¬ƒc[ƒ‹‚ð¶¬‚·‚éD
+        // å…¥å‡ºåŠ›æ§‹æˆãƒ„ãƒ¼ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼Ž
         ConfigTool cfgTool = new ConfigTool(this.reader, this.printer);
         
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ðŠJŽn‚·‚éD
-        this.printer.println("> ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ðŠJŽn‚µ‚Ü‚·D");
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼Ž
+        this.printer.println("> ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’é–‹å§‹ã—ã¾ã™ï¼Ž");
         this.sample.open(cfgTool);
     }
     
@@ -124,7 +124,7 @@ public class SampleCodeInvoker
         throws IOException
     {
         while (this.sample.isRunning()) {
-            this.printer.println("> ƒEƒBƒ“ƒhƒE‚ð•Â‚¶‚½Œã‚É Enter ƒL[‚ª‰Ÿ‚³‚ê‚é‚Ü‚Å‘Ò‚¿‚Ü‚·D");
+            this.printer.println("> ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é–‰ã˜ãŸå¾Œã« Enter ã‚­ãƒ¼ãŒæŠ¼ã•ã‚Œã‚‹ã¾ã§å¾…ã¡ã¾ã™ï¼Ž");
             this.reader.readLine();
             // IOException
         }
@@ -134,15 +134,15 @@ public class SampleCodeInvoker
     //
     void close()
     {
-        // MidField System ‚ðI—¹‚·‚éD
+        // MidField System ã‚’çµ‚äº†ã™ã‚‹ï¼Ž
         if (MfsNode.isActive()) {
-            this.printer.println("> MidField System ‚ðI—¹‚µ‚Ü‚·D");
+            this.printer.println("> MidField System ã‚’çµ‚äº†ã—ã¾ã™ï¼Ž");
             this.mfs.shutdown();
         }
-        // •W€“ü—Í‚©‚ç‚Ì1s“Ç‚Ýž‚Ý‚É—˜—p‚µ‚½ ConsoleReader ‚ð‰ð•ú‚·‚éD
+        // æ¨™æº–å…¥åŠ›ã‹ã‚‰ã®1è¡Œèª­ã¿è¾¼ã¿ã«åˆ©ç”¨ã—ãŸ ConsoleReader ã‚’è§£æ”¾ã™ã‚‹ï¼Ž
         this.reader.release();
         
-        this.printer.println("> SampleCodeInvoker ‚Ìˆ—‚ðI—¹‚µ‚Ü‚·D");
+        this.printer.println("> SampleCodeInvoker ã®å‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ï¼Ž");
     }
     
 // -----------------------------------------------------------------------------
@@ -155,9 +155,9 @@ public class SampleCodeInvoker
     {
         AbstractSampleCode sample = null;
         
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬‚·‚éD
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼Ž
         try {
-            // ”­¶‚·‚é‰Â”\«‚Ì‚ ‚é—áŠO‚ÍˆÈ‰º‚Ì’Ê‚èD
+            // ç™ºç”Ÿã™ã‚‹å¯èƒ½æ€§ã®ã‚ã‚‹ä¾‹å¤–ã¯ä»¥ä¸‹ã®é€šã‚Šï¼Ž
             // forName():
             // ClassNotFoundException
             // getDeclaredConstructor():
@@ -171,14 +171,14 @@ public class SampleCodeInvoker
                 .newInstance();
         }
         catch (Exception ex) {
-            // ã‹LŠeŽí‚Ì—áŠO‚ª”­¶‚·‚é‰Â”\«‚ª‚ ‚éˆê•ûC‚±‚Ìƒƒ\ƒbƒh‚Æ‚µ‚Ä‚ÍC
-            // •s³‚Èˆø”C‚Ü‚½‚Í•s“KØ‚Èˆø”‚ª“n‚³‚ê‚½‚±‚Æ‚ð
-            // ŒÄ‚Ño‚µ‘¤‚ÉŽ¦‚·‚×‚«‚È‚Ì‚ÅC
-            // ”­¶‚µ‚½—áŠO‚ðŒ´ˆö‚Æ‚·‚é IllegalArgumentException ‚ð¶¬‚µ‚ÄC
-            // ‚»‚ê‚ð“Š‚°‚éD
+            // ä¸Šè¨˜å„ç¨®ã®ä¾‹å¤–ãŒç™ºç”Ÿã™ã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ä¸€æ–¹ï¼Œã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦ã¯ï¼Œ
+            // ä¸æ­£ãªå¼•æ•°ï¼Œã¾ãŸã¯ä¸é©åˆ‡ãªå¼•æ•°ãŒæ¸¡ã•ã‚ŒãŸã“ã¨ã‚’
+            // å‘¼ã³å‡ºã—å´ã«ç¤ºã™ã¹ããªã®ã§ï¼Œ
+            // ç™ºç”Ÿã—ãŸä¾‹å¤–ã‚’åŽŸå› ã¨ã™ã‚‹ IllegalArgumentException ã‚’ç”Ÿæˆã—ã¦ï¼Œ
+            // ãã‚Œã‚’æŠ•ã’ã‚‹ï¼Ž
             throw new IllegalArgumentException(ex);
         }
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ð•Ô‚·D
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™ï¼Ž
         return sample;
     }
 }

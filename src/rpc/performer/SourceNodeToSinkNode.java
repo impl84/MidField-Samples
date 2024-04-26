@@ -18,39 +18,39 @@ public class SourceNodeToSinkNode
 {
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ğƒRƒ“ƒ\[ƒ‹‚Éİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         RemoteOperator srcOp = null;
         RemoteOperator snkOp = null;
         
         try {
-            // ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚©‚ç•K—v‚ÈIPƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+            // ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°ã‹ã‚‰å¿…è¦ãªIPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             var srcAddr = args[0];
             var snkAddr = args[1];
             
-            // ¥Source Node ‚Æ Sink Node ‚Ö‚Ì‰“Šu‘€ì‚ğŠJn‚·‚éD
+            // â–¼Source Node ã¨ Sink Node ã¸ã®é éš”æ“ä½œã‚’é–‹å§‹ã™ã‚‹ï¼
             srcOp = new RemoteOperator(srcAddr, err -> System.err.println(err));
             snkOp = new RemoteOperator(snkAddr, err -> System.err.println(err));
             
-            // ¥’†Œp‹@”\‚ğƒZƒbƒgƒAƒbƒv‚µC’†Œpˆ—‚ğŠJn‚·‚éD
-            // (1) Source Node ‚ÌƒrƒfƒIƒJƒƒ‰‚Æƒ}ƒCƒN‚©‚çƒlƒbƒgƒ[ƒN‚Ö
-            // (2) Source Node “à‚Å‚Ì’†ŒpiƒvƒŒƒrƒ…[—L‚èj
-            // (3) Source Node ‚©‚ç Sink Node ‚Ö‚Ì’†ŒpiƒvƒŒƒrƒ…[—L‚èj
-            // (4) Sink Node ‚ÅÄ¶•\¦
+            // â–¼ä¸­ç¶™æ©Ÿèƒ½ã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã—ï¼Œä¸­ç¶™å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
+            // (1) Source Node ã®ãƒ“ãƒ‡ã‚ªã‚«ãƒ¡ãƒ©ã¨ãƒã‚¤ã‚¯ã‹ã‚‰ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã¸
+            // (2) Source Node å†…ã§ã®ä¸­ç¶™ï¼ˆãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼æœ‰ã‚Šï¼‰
+            // (3) Source Node ã‹ã‚‰ Sink Node ã¸ã®ä¸­ç¶™ï¼ˆãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼æœ‰ã‚Šï¼‰
+            // (4) Sink Node ã§å†ç”Ÿè¡¨ç¤º
             PerformerId pfmrId0 = srcOp.setupDeviceToNetwork();
             PerformerId pfmrId1 = srcOp.setupNetworkToNetwork(pfmrId0);
             PerformerId pfmrId2 = snkOp.setupNetworkToNetwork(pfmrId1);
             PerformerId pfmrId3 = snkOp.setupNetworkToRenderer(pfmrId2);
             
-            // ¥‚»‚ê‚¼‚ê‚Ì StreamPerofrmer ‚ğˆê’U’â~‚µ‚½Œã‚ÉŠJn‚·‚éD
+            // â–¼ãã‚Œãã‚Œã® StreamPerofrmer ã‚’ä¸€æ—¦åœæ­¢ã—ãŸå¾Œã«é–‹å§‹ã™ã‚‹ï¼
             stopAndStart(srcOp, pfmrId0);
             stopAndStart(srcOp, pfmrId1);
             stopAndStart(snkOp, pfmrId2);
             stopAndStart(snkOp, pfmrId3);
             
-            // ¥I—¹‚ğ‘Ò‚ÂD
-            System.out.print("> Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚¿‚Ü‚·D");
+            // â–¼çµ‚äº†ã‚’å¾…ã¤ï¼
+            System.out.print("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼");
             System.in.read();
         }
         catch (RemoteControlException ex) {
@@ -60,7 +60,7 @@ public class SourceNodeToSinkNode
             ex.printStackTrace();
         }
         finally {
-            // ¥Source Node ‚Æ Sink Node ‚Ö‚Ì‰“Šu‘€ì‚ğI—¹‚·‚éD
+            // â–¼Source Node ã¨ Sink Node ã¸ã®é éš”æ“ä½œã‚’çµ‚äº†ã™ã‚‹ï¼
             if (snkOp != null) {
                 snkOp.shutdownAll();
             }
@@ -74,8 +74,8 @@ public class SourceNodeToSinkNode
         throws InterruptedException,
             RemoteControlException
     {
-        // w’è‚³‚ê‚½ StreamPerformer ‚Ìˆ—‚ğ 5•bŒã‚Éˆê’U’â~‚µC
-        // ‚³‚ç‚É 5•bŒo‰ß‚µ‚½‚çŠJn‚·‚éD
+        // æŒ‡å®šã•ã‚ŒãŸ StreamPerformer ã®å‡¦ç†ã‚’ 5ç§’å¾Œã«ä¸€æ—¦åœæ­¢ã—ï¼Œ
+        // ã•ã‚‰ã« 5ç§’çµŒéã—ãŸã‚‰é–‹å§‹ã™ã‚‹ï¼
         Thread.sleep(5000);
         remOp.stopPerformer(pfmrId);
         

@@ -19,45 +19,45 @@ public class SimpleRpcClient
 {
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ðƒRƒ“ƒ\[ƒ‹‚ÉÝ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼Ž
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         RpcClient rpcClient = null;
         try {
-            Log.message("> SimpleRpcClient: RpcClient ‚Ìˆ—‚ðŠJŽn‚µ‚Ü‚·D");
+            Log.message("> SimpleRpcClient: RpcClient ã®å‡¦ç†ã‚’é–‹å§‹ã—ã¾ã™ï¼Ž");
             
-            // RpcClient ‚ð¶¬‚·‚éD
+            // RpcClient ã‚’ç”Ÿæˆã™ã‚‹ï¼Ž
             // (UnknownHostException, IOException)
             rpcClient = new RpcClient(
-                "127.0.0.1",    // RPCƒT[ƒo–¼‚Ü‚½‚ÍIPƒAƒhƒŒƒX(ƒ‹[ƒvƒoƒbƒNƒAƒhƒŒƒX)
-                60202,          // RPCƒT[ƒo‚Ìƒ|[ƒg”Ô†
-                false,          // JSONƒIƒuƒWƒFƒNƒg(•¶Žš—ñ)‚ð®Œ`‚·‚é‚©”Û‚©
-                true,           // JSONƒIƒuƒWƒFƒNƒg(•¶Žš—ñ)‚ðƒƒOo—Í‚·‚é‚©”Û‚©
-                listener        // InternalErrorListener ‚ÌŽÀ‘•
+                "127.0.0.1",    // RPCã‚µãƒ¼ãƒåã¾ãŸã¯IPã‚¢ãƒ‰ãƒ¬ã‚¹(ãƒ«ãƒ¼ãƒ—ãƒãƒƒã‚¯ã‚¢ãƒ‰ãƒ¬ã‚¹)
+                60202,          // RPCã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·
+                false,          // JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’æ•´å½¢ã™ã‚‹ã‹å¦ã‹
+                true,           // JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ã‹å¦ã‹
+                listener        // InternalErrorListener ã®å®Ÿè£…
             );
-            // RpcClient ‚Ìˆ—‚ðŠJŽn‚·‚éD
+            // RpcClient ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼Ž
             rpcClient.open();
             
-            // ƒƒ\ƒbƒh‚ðŒÄ‚Ño‚·D
+            // ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ï¼Ž
             SimpleClientMethod clientMethod = new SimpleClientMethod(rpcClient);
             String             result       = clientMethod.echo("hello");
-            Log.message("> SimpleRpcClient: echo ƒƒ\ƒbƒh‚ÌŒ‹‰ÊF" + result);
+            Log.message("> SimpleRpcClient: echo ãƒ¡ã‚½ãƒƒãƒ‰ã®çµæžœï¼š" + result);
         }
         catch (Exception ex) {
-            // RpcClient ‚Ì“®ì’†‚É—áŠO‚ª”­¶‚µ‚½D
-            Log.message("> SimpleRpcClient: RpcClient ‚ÌŽÀs’†‚É—áŠO‚ª”­¶‚µ‚Ü‚µ‚½D");
+            // RpcClient ã®å‹•ä½œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼Ž
+            Log.message("> SimpleRpcClient: RpcClient ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸï¼Ž");
             ex.printStackTrace();
         }
         finally {
-            // RpcClient ‚Ìˆ—‚ðI—¹‚·‚éD
+            // RpcClient ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼Ž
             if (rpcClient != null) {
-                Log.message("> SimpleRpcClient: RpcClient ‚Ìˆ—‚ðI—¹‚µ‚Ü‚·D");
+                Log.message("> SimpleRpcClient: RpcClient ã®å‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ï¼Ž");
                 rpcClient.close();
             }
         }
     }
     
-    // InternalErrorListenerFClientErrorListener ƒNƒ‰ƒX‚Æ‚µ‚Ä‚ÌŽÀ‘•
+    // InternalErrorListenerï¼šClientErrorListener ã‚¯ãƒ©ã‚¹ã¨ã—ã¦ã®å®Ÿè£…
     static InternalErrorListener listener = new ClientErrorListener();
     
     static class ClientErrorListener
@@ -71,7 +71,7 @@ public class SimpleRpcClient
         }
     }
     
-    // ¥ŽQlFInternalErrorListener ‚ÌŽÀ‘•i–³–¼ƒNƒ‰ƒXj    
+    // â–¼å‚è€ƒï¼šInternalErrorListener ã®å®Ÿè£…ï¼ˆç„¡åã‚¯ãƒ©ã‚¹ï¼‰    
     static InternalErrorListener listener_ex0 = new InternalErrorListener()
     {
         @Override
@@ -81,9 +81,9 @@ public class SimpleRpcClient
         }
     };
     
-    // ¥ŽQlFInternalErrorListener ‚ÌŽÀ‘•iƒ‰ƒ€ƒ_Ž®j
+    // â–¼å‚è€ƒï¼šInternalErrorListener ã®å®Ÿè£…ï¼ˆãƒ©ãƒ ãƒ€å¼ï¼‰
     static InternalErrorListener listener_ex1 = (error) -> { Log.error(error.toString()); };
     
-    // ¥ŽQlFInternalErrorListener ‚ÌŽÀ‘•i‰Â”\‚ÈŒÀ‚èÈ—ª‚µ‚½ƒ‰ƒ€ƒ_Ž®j
+    // â–¼å‚è€ƒï¼šInternalErrorListener ã®å®Ÿè£…ï¼ˆå¯èƒ½ãªé™ã‚Šçœç•¥ã—ãŸãƒ©ãƒ ãƒ€å¼ï¼‰
     static InternalErrorListener listener_ex2 = error -> Log.error(error.toString());
 }

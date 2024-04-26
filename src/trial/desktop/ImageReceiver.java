@@ -101,22 +101,22 @@ public class ImageReceiver
         throws SystemException,
             StreamException
     {
-        // SegmentIo ‚Ì“üo—Í‚ğİ’è‚·‚éD
+        // SegmentIo ã®å…¥å‡ºåŠ›ã‚’è¨­å®šã™ã‚‹ï¼
         SegmentIo segIo = new SegmentIo();
         segIo.addIncomingStream(inPrm);
         segIo.configureRenderer();
         
-        // Stream Performer ‚ğ¶¬‚·‚éD
+        // Stream Performer ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.pfmr = StreamPerformer.newInstance(segIo);
         // SystemException, StreamException
         
-        // ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ StreamEventListener ‚Æ‚µ‚Ä“o˜^‚·‚éD
+        // ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ StreamEventListener ã¨ã—ã¦ç™»éŒ²ã™ã‚‹ï¼
         this.pfmr.addStreamEventListener(this);
         
-        // VideoCanvas ‚ğæ“¾‚·‚éD
+        // VideoCanvas ã‚’å–å¾—ã™ã‚‹ï¼
         VideoCanvas vidCvs = this.pfmr.getVideoCanvas();
         
-        // VideoCanvas ‚ğ•Ô‚·D
+        // VideoCanvas ã‚’è¿”ã™ï¼
         return vidCvs;
     }
     
@@ -126,7 +126,7 @@ public class ImageReceiver
         throws StreamException
     {
         try {
-            // “üo—Íˆ—‚ğŠJn‚·‚éD
+            // å…¥å‡ºåŠ›å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             this.pfmr.open();
             // StreamException
             

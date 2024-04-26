@@ -18,36 +18,36 @@ public class StreamRelayChain
 {
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ğƒRƒ“ƒ\[ƒ‹‚Éİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         RemoteOperator remOp = null;
         
         try {
-            // ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚©‚ç•K—v‚ÈIPƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+            // ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°ã‹ã‚‰å¿…è¦ãªIPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             var srcAddr = args[0];
             
-            // ¥‰“Šu‘€ì‚ğŠJn‚·‚éD
+            // â–¼é éš”æ“ä½œã‚’é–‹å§‹ã™ã‚‹ï¼
             remOp = new RemoteOperator(srcAddr, err -> System.err.println(err));
             
-            // ¥’†Œp‹@”\‚ğƒZƒbƒgƒAƒbƒv‚µC’†Œpˆ—‚ğŠJn‚·‚éD
-            // (1) ƒrƒfƒIƒJƒƒ‰‚Æƒ}ƒCƒN‚©‚çƒlƒbƒgƒ[ƒN‚Ö
-            // (2) ’†ŒpiƒvƒŒƒrƒ…[—L‚èj
-            // (3) ’†ŒpiƒvƒŒƒrƒ…[—L‚èj
-            // (4) Ä¶•\¦
+            // â–¼ä¸­ç¶™æ©Ÿèƒ½ã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã—ï¼Œä¸­ç¶™å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
+            // (1) ãƒ“ãƒ‡ã‚ªã‚«ãƒ¡ãƒ©ã¨ãƒã‚¤ã‚¯ã‹ã‚‰ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã¸
+            // (2) ä¸­ç¶™ï¼ˆãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼æœ‰ã‚Šï¼‰
+            // (3) ä¸­ç¶™ï¼ˆãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼æœ‰ã‚Šï¼‰
+            // (4) å†ç”Ÿè¡¨ç¤º
             PerformerId pfmrId0 = remOp.setupDeviceToNetwork();
             PerformerId pfmrId1 = remOp.setupNetworkToNetwork(pfmrId0);
             PerformerId pfmrId2 = remOp.setupNetworkToNetwork(pfmrId1);
             PerformerId pfmrId3 = remOp.setupNetworkToRenderer(pfmrId2);
             
-            // ¥‚»‚ê‚¼‚ê‚Ì StreamPerofrmer ‚ğˆê’U’â~‚µ‚½Œã‚ÉŠJn‚·‚éD
+            // â–¼ãã‚Œãã‚Œã® StreamPerofrmer ã‚’ä¸€æ—¦åœæ­¢ã—ãŸå¾Œã«é–‹å§‹ã™ã‚‹ï¼
             stopAndStart(remOp, pfmrId0);
             stopAndStart(remOp, pfmrId1);
             stopAndStart(remOp, pfmrId2);
             stopAndStart(remOp, pfmrId3);
             
-            // ¥I—¹‚ğ‘Ò‚ÂD
-            System.out.print("> Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚¿‚Ü‚·D");
+            // â–¼çµ‚äº†ã‚’å¾…ã¤ï¼
+            System.out.print("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼");
             System.in.read();
         }
         catch (RemoteControlException ex) {
@@ -57,7 +57,7 @@ public class StreamRelayChain
             ex.printStackTrace();
         }
         finally {
-            // ¥‰“Šu‘€ì‚ğI—¹‚·‚éD
+            // â–¼é éš”æ“ä½œã‚’çµ‚äº†ã™ã‚‹ï¼
             if (remOp != null) {
                 remOp.shutdownAll();
             }
@@ -68,8 +68,8 @@ public class StreamRelayChain
         throws InterruptedException,
             RemoteControlException
     {
-        // w’è‚³‚ê‚½ StreamPerformer ‚Ìˆ—‚ğ 5•bŒã‚Éˆê’U’â~‚µC
-        // ‚³‚ç‚É 5•bŒo‰ß‚µ‚½‚çŠJn‚·‚éD
+        // æŒ‡å®šã•ã‚ŒãŸ StreamPerformer ã®å‡¦ç†ã‚’ 5ç§’å¾Œã«ä¸€æ—¦åœæ­¢ã—ï¼Œ
+        // ã•ã‚‰ã« 5ç§’çµŒéã—ãŸã‚‰é–‹å§‹ã™ã‚‹ï¼
         Thread.sleep(5000);
         remOp.stopPerformer(pfmrId);
         

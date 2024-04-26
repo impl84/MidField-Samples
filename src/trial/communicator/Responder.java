@@ -53,7 +53,7 @@ public class Responder
     {
         boolean handled = true;
         
-        // ƒƒbƒZ[ƒWƒ^ƒCƒv–ˆ‚Ìˆ—‚ğÀs‚·‚éD
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¿ã‚¤ãƒ—æ¯ã®å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         String type = inPkt.getMessageType();
         switch (type) {
         case ASYNC_INTERVIEW_REQUEST:
@@ -84,7 +84,7 @@ public class Responder
     @Override
     public void handleUnreachablePacket(CommPacket inPkt)
     {
-        this.printer.println("–¢“’BƒpƒPƒbƒgF" + inPkt.getMessageType());
+        this.printer.println("æœªåˆ°é”ãƒ‘ã‚±ãƒƒãƒˆï¼š" + inPkt.getMessageType());
     }
     
 // -----------------------------------------------------------------------------
@@ -97,7 +97,7 @@ public class Responder
     {
         this.printer = printer;
         
-        // PacketCommunicator ‚ğ¶¬‚·‚éD
+        // PacketCommunicator ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.comm = new PacketCommunicator(COMMUNICATOR_NAME, this);
     }
     
@@ -105,7 +105,7 @@ public class Responder
     //
     void close()
     {
-        // PacketCommunicator ‚ğíœ‚·‚éD
+        // PacketCommunicator ã‚’å‰Šé™¤ã™ã‚‹ï¼
         this.comm.close();
     }
     
@@ -117,21 +117,21 @@ public class Responder
     //
     private void msgHn_AsyncInterviewRequest(CommPacket reqPkt)
     {
-        // ‰“šƒpƒPƒbƒg‚Ìˆ¶æ‚Æ‚µ‚ÄC“ü—ÍƒpƒPƒbƒg‚Ì‘—MŒ³ID‚ğæ“¾‚·‚éD
+        // å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã®å®›å…ˆã¨ã—ã¦ï¼Œå…¥åŠ›ãƒ‘ã‚±ãƒƒãƒˆã®é€ä¿¡å…ƒIDã‚’å–å¾—ã™ã‚‹ï¼
         ObjectId peerId = reqPkt.getSourceObjectId();
         
-        // “ü—ÍƒpƒPƒbƒg‚©‚ç—v‹ƒƒbƒZ[ƒW‚ğæ“¾‚·‚éD
+        // å…¥åŠ›ãƒ‘ã‚±ãƒƒãƒˆã‹ã‚‰è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ï¼
         RequestMessage reqMsg = reqPkt.getPayload(RequestMessage.class);
         
-        // ‰“šƒpƒPƒbƒg‚Æ‰“šƒƒbƒZ[ƒW‚ğ¶¬‚·‚éD
+        // å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã¨å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ï¼
         CommPacket      resPkt = new CommPacket(ASYNC_INTERVIEW_RESPONSE, peerId);
         ResponseMessage resMsg = new ResponseMessage(
-            "‰ñ“šÒ",
-            reqMsg.getInterviewer() + "‚³‚ñ‚Å‚·‚ËC‚±‚ñ‚É‚¿‚ÍD"
+            "å›ç­”è€…",
+            reqMsg.getInterviewer() + "ã•ã‚“ã§ã™ã­ï¼Œã“ã‚“ã«ã¡ã¯ï¼"
         );
         resPkt.setPayload(resMsg);
         
-        // ‰“šƒpƒPƒbƒg‚ğ‘—M‚·‚éD
+        // å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ï¼
         this.comm.dispatchPacket(resPkt);
     }
     
@@ -139,24 +139,24 @@ public class Responder
     //
     private void msgHn_InterviewRequest(CommPacket reqPkt)
     {
-        // ‰“šƒpƒPƒbƒg‚Ìˆ¶æ‚Æ‚µ‚ÄC“ü—ÍƒpƒPƒbƒg‚Ì‘—MŒ³ID‚ğæ“¾‚·‚éD
+        // å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã®å®›å…ˆã¨ã—ã¦ï¼Œå…¥åŠ›ãƒ‘ã‚±ãƒƒãƒˆã®é€ä¿¡å…ƒIDã‚’å–å¾—ã™ã‚‹ï¼
         ObjectId peerId = reqPkt.getSourceObjectId();
         
-        // “ü—ÍƒpƒPƒbƒg‚©‚ç—v‹ƒƒbƒZ[ƒW‚ğæ“¾‚·‚éD
+        // å…¥åŠ›ãƒ‘ã‚±ãƒƒãƒˆã‹ã‚‰è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã™ã‚‹ï¼
         RequestMessage reqMsg = reqPkt.getPayload(RequestMessage.class);
         
-        // ‰“šƒpƒPƒbƒg‚Æ‰“šƒƒbƒZ[ƒW‚ğ¶¬‚·‚éD
+        // å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã¨å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ï¼
         CommPacket      resPkt = new CommPacket(INTERVIEW_RESPONSE, peerId);
         ResponseMessage resMsg = new ResponseMessage(
-            "‰ñ“šÒ",
-            reqMsg.getInterviewer() + "‚³‚ñ‚Å‚·‚ËC‚Ç‚¤‚à‚Í‚¶‚ß‚Ü‚µ‚ÄD"
+            "å›ç­”è€…",
+            reqMsg.getInterviewer() + "ã•ã‚“ã§ã™ã­ï¼Œã©ã†ã‚‚ã¯ã˜ã‚ã¾ã—ã¦ï¼"
         );
         resPkt.setPayload(resMsg);
         
-        // —v‹ƒpƒPƒbƒg“à‚Ì—v‹”Ô†‚ğC‰“š”Ô†‚Æ‚µ‚Äİ’è‚·‚éD
+        // è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆå†…ã®è¦æ±‚ç•ªå·ã‚’ï¼Œå¿œç­”ç•ªå·ã¨ã—ã¦è¨­å®šã™ã‚‹ï¼
         resPkt.setResponseNumber(reqPkt.getRequestNumber());
         
-        // ‰“šƒpƒPƒbƒg‚ğ‘—M‚·‚éD
+        // å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ï¼
         this.comm.dispatchPacket(resPkt);
     }
     
@@ -164,6 +164,6 @@ public class Responder
     //
     private void msgHn_UnsupportedMessage(CommPacket inPkt)
     {
-        this.printer.println("–¢‘Î‰ƒpƒPƒbƒgF" + inPkt.getMessageType());
+        this.printer.println("æœªå¯¾å¿œãƒ‘ã‚±ãƒƒãƒˆï¼š" + inPkt.getMessageType());
     }
 }

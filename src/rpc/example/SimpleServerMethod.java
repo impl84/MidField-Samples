@@ -18,14 +18,14 @@ public class SimpleServerMethod
 {
     public ResponseObject echo(RequestObject request)
     {
-        // RPC—v‹“à‚Ìƒpƒ‰ƒ[ƒ^(ƒGƒR[•¶š—ñ)‚ğæ“¾‚·‚éD
+        // RPCè¦æ±‚å†…ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿(ã‚¨ã‚³ãƒ¼æ–‡å­—åˆ—)ã‚’å–å¾—ã™ã‚‹ï¼
         String echoString = (String)request.getParams();
         
-        // ƒGƒR[•¶š—ñ‚ğŒ‹‰Ê‚Æ‚·‚éRPC‰“š‚ğ¶¬‚·‚éD
+        // ã‚¨ã‚³ãƒ¼æ–‡å­—åˆ—ã‚’çµæœã¨ã™ã‚‹RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.responseWithResult(
             request, echoString
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     

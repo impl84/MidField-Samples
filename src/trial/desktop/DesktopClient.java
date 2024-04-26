@@ -36,9 +36,9 @@ public class DesktopClient
     public static final String DESKTOP_CLIENT = "DesktopClient";
     
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String STR_UNREACHABLE     = "ƒT[ƒo‚Ö‘—M‚µ‚½ƒpƒPƒbƒg‚ª“’B‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½";
-    private static final String STR_CONTROL_REFUSED = "‰“Šu‘€ì—v‹‚ª‹‘”Û‚³‚ê‚Ü‚µ‚½D";
-    private static final String STR_ILLEGAL_MESSAGE = "•s³‚ÈƒƒbƒZ[ƒW‚ğóM‚µ‚Ü‚µ‚½D: %s from %s\n";
+    private static final String STR_UNREACHABLE     = "ã‚µãƒ¼ãƒã¸é€ä¿¡ã—ãŸãƒ‘ã‚±ãƒƒãƒˆãŒåˆ°é”ã§ãã¾ã›ã‚“ã§ã—ãŸ";
+    private static final String STR_CONTROL_REFUSED = "é éš”æ“ä½œè¦æ±‚ãŒæ‹’å¦ã•ã‚Œã¾ã—ãŸï¼";
+    private static final String STR_ILLEGAL_MESSAGE = "ä¸æ­£ãªãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ã¾ã—ãŸï¼: %s from %s\n";
     
 // =============================================================================
 // CLASS VARIABLE:
@@ -73,16 +73,16 @@ public class DesktopClient
     {
         boolean wasHandled = true;
         
-        // ƒpƒPƒbƒg‚©‚ç DesktopMessage ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éD
+        // ãƒ‘ã‚±ãƒƒãƒˆã‹ã‚‰ DesktopMessage ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
         DesktopMessage msg = pkt.getSerializableObject(DesktopMessage.class);
         if (msg == null) {
             wasHandled = false;
             return wasHandled;
         }
-        // ‘—MŒ³‚Ì ObjectId ‚ğæ“¾‚·‚éD
+        // é€ä¿¡å…ƒã® ObjectId ã‚’å–å¾—ã™ã‚‹ï¼
         ObjectId srcId = pkt.getSourceObjectId();
         
-        // ƒƒbƒZ[ƒWƒ^ƒCƒv–ˆ‚Ìˆ—‚ğÀs‚·‚éD
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¿ã‚¤ãƒ—æ¯ã®å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         String type = pkt.getMessageType();
         switch (type) {
         case CONTROL_ACCEPTED:
@@ -104,7 +104,7 @@ public class DesktopClient
     @Override
     public void handlePacketIoException(PacketIoException ex)
     {
-        // ƒpƒPƒbƒg“üo—Í‚ÉŠÖ‚·‚é—áŠOˆ—‚ğÀs‚·‚éD
+        // ãƒ‘ã‚±ãƒƒãƒˆå…¥å‡ºåŠ›ã«é–¢ã™ã‚‹ä¾‹å¤–å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         SwingUtilities.invokeLater(
             () -> this.viewer.handleIllegalMessage(ex)
         );
@@ -116,8 +116,8 @@ public class DesktopClient
     @Override
     public void handleUnreachablePacket(CommPacket inPkt)
     {
-        // PacketIoException ‚ğ¶¬‚µC
-        // ƒpƒPƒbƒg“üo—Í‚ÉŠÖ‚·‚é—áŠOˆ—‚ğÀs‚·‚éD
+        // PacketIoException ã‚’ç”Ÿæˆã—ï¼Œ
+        // ãƒ‘ã‚±ãƒƒãƒˆå…¥å‡ºåŠ›ã«é–¢ã™ã‚‹ä¾‹å¤–å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         PacketIoException ex = new PacketIoException(STR_UNREACHABLE, inPkt);
         SwingUtilities.invokeLater(
             () -> this.viewer.handleIllegalMessage(ex)
@@ -133,15 +133,15 @@ public class DesktopClient
     DesktopClient(DesktopViewer viewer, String svrAddr)
         throws SystemException
     {
-        // DesktopViewer ‚ÌQÆ‚ğ•Û‚·‚éD
+        // DesktopViewer ã®å‚ç…§ã‚’ä¿æŒã™ã‚‹ï¼
         this.viewer = viewer;
         
-        // PacketCommunicator ‚ğ¶¬‚·‚éD
+        // PacketCommunicator ã‚’ç”Ÿæˆã™ã‚‹ï¼
         String name = new String(DESKTOP_CLIENT + DesktopClient.instanceNumber++);
         this.comm = new PacketCommunicator(name, this);
         // SystemException
         
-        // ƒƒbƒZ[ƒW”z‘—æ‚Ì ObjectId ‚ğ¶¬‚·‚éD
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é…é€å…ˆã® ObjectId ã‚’ç”Ÿæˆã™ã‚‹ï¼
         MfsNode mfs       = MfsNode.getInstance();
         UUID    svrNodeId = mfs.resolveNodeId(svrAddr);
         // SystemException
@@ -153,7 +153,7 @@ public class DesktopClient
     //
     void startControl(String dstAddr)
     {
-        // ‰“Šu‘€ìŠJnƒƒbƒZ[ƒW‚ğ”z‘—‚·‚éD
+        // é éš”æ“ä½œé–‹å§‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é…é€ã™ã‚‹ï¼
         CommPacket     pkt = new CommPacket(START_CONTROL, this.svrId);
         DesktopMessage msg = new DesktopMessage(null);
         pkt.setSerializableObject(msg);
@@ -164,7 +164,7 @@ public class DesktopClient
     //
     void dispatchEvent(DesktopMessage.Action action, Serializable obj)
     {
-        // ‰“Šu‘€ìƒƒbƒZ[ƒW‚ğ”z‘—‚·‚éD
+        // é éš”æ“ä½œãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é…é€ã™ã‚‹ï¼
         CommPacket     pkt = new CommPacket(CONTROL_MESSAGE, this.svrId);
         DesktopMessage msg = new DesktopMessage(action, obj);
         pkt.setSerializableObject(msg);
@@ -175,7 +175,7 @@ public class DesktopClient
     //
     void stopControl()
     {
-        // ‰“Šu‘€ì’â~ƒƒbƒZ[ƒW‚ğ”z‘—‚·‚éD
+        // é éš”æ“ä½œåœæ­¢ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é…é€ã™ã‚‹ï¼
         CommPacket     pkt = new CommPacket(STOP_CONTROL, this.svrId);
         DesktopMessage msg = new DesktopMessage(null);
         pkt.setSerializableObject(msg);
@@ -228,8 +228,8 @@ public class DesktopClient
     //
     private void msgHn_UnsupportedMessage(String type, ObjectId srcId)
     {
-        // PacketIoException ‚ğ¶¬‚µC
-        // ƒpƒPƒbƒg“üo—Í‚ÉŠÖ‚·‚é—áŠOˆ—‚ğÀs‚·‚éD
+        // PacketIoException ã‚’ç”Ÿæˆã—ï¼Œ
+        // ãƒ‘ã‚±ãƒƒãƒˆå…¥å‡ºåŠ›ã«é–¢ã™ã‚‹ä¾‹å¤–å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         PacketIoException ex = new PacketIoException(
             String.format(STR_ILLEGAL_MESSAGE, type, srcId)
         );

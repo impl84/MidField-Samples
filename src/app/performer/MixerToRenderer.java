@@ -22,15 +22,15 @@ public class MixerToRenderer
         StreamPerformer mixerInput = null;
         
         try {
-            // args[0] ‚©‚çƒ~ƒLƒT[–¼‚ğæ“¾‚·‚éD
+            // args[0] ã‹ã‚‰ãƒŸã‚­ã‚µãƒ¼åã‚’å–å¾—ã™ã‚‹ï¼
             var mixerName = args[0];
             
-            // ¥MidField System ‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğ‹N“®‚·‚éD
+            // â–¼MidField System ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’èµ·å‹•ã™ã‚‹ï¼
             var mfsApp = MfsApplication.launch();
             
-            // ¥ƒ~ƒLƒT[‚ğ\¬‚µCˆ—‚ğŠJn‚·‚éD
-            // Eƒ~ƒLƒT[‚ÌƒtƒH[ƒ}ƒbƒg‚É‚ÍCƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ìİ’è’l‚ğ“K—p‚·‚éD
-            // Eo—Í‚ÍƒŒƒ“ƒ_ƒ‰D
+            // â–¼ãƒŸã‚­ã‚µãƒ¼ã‚’æ§‹æˆã—ï¼Œå‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
+            // ãƒ»ãƒŸã‚­ã‚µãƒ¼ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«ã¯ï¼Œã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šå€¤ã‚’é©ç”¨ã™ã‚‹ï¼
+            // ãƒ»å‡ºåŠ›ã¯ãƒ¬ãƒ³ãƒ€ãƒ©ï¼
             var mixerIo = new SegmentIo();
             mixerIo.configureStreamingMixer(mixerName);
             mixerIo.configureRenderer();
@@ -41,17 +41,17 @@ public class MixerToRenderer
             mixer.open();
             mixer.start();
             
-            // ¥ƒ~ƒLƒT[“ü—ÍiƒrƒfƒIƒJƒƒ‰‚Æƒ}ƒCƒNj‚ğ\¬‚µCˆ—‚ğŠJn‚·‚éD
+            // â–¼ãƒŸã‚­ã‚µãƒ¼å…¥åŠ›ï¼ˆãƒ“ãƒ‡ã‚ªã‚«ãƒ¡ãƒ©ã¨ãƒã‚¤ã‚¯ï¼‰ã‚’æ§‹æˆã—ï¼Œå‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             var devInfMgr = DeviceInfoManager.getInstance();
             
             var lsVidDev = devInfMgr.getVideoInputDeviceInfoList();
             if (lsVidDev.size() <= 0) {
-                System.out.println("¦—˜—p‰Â”\‚ÈƒrƒfƒI“ü—ÍƒfƒoƒCƒX‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»åˆ©ç”¨å¯èƒ½ãªãƒ“ãƒ‡ã‚ªå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             var lsAudDev = devInfMgr.getAudioInputDeviceInfoList();
             if (lsAudDev.size() <= 0) {
-                System.out.println("¦—˜—p‰Â”\‚ÈƒI[ƒfƒBƒI“ü—ÍƒfƒoƒCƒX‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»åˆ©ç”¨å¯èƒ½ãªã‚ªãƒ¼ãƒ‡ã‚£ã‚ªå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             var mixInIo = new SegmentIo();
@@ -63,8 +63,8 @@ public class MixerToRenderer
             mixerInput.open();
             mixerInput.start();
             
-            // ¥“üo—Íˆ—‚ğI—¹‚·‚éD
-            System.out.printf("> Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚¿‚Ü‚·D");
+            // â–¼å…¥å‡ºåŠ›å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
+            System.out.printf("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼");
             System.in.read();
         }
         catch (MfsException ex) {
@@ -74,7 +74,7 @@ public class MixerToRenderer
             ex.printStackTrace();
         }
         finally {
-            // ¥ƒ~ƒLƒT[“ü—Í‚Æƒ~ƒLƒT[‚Ì‘S‚Ä‚Ìˆ—‚ğI—¹‚·‚éD
+            // â–¼ãƒŸã‚­ã‚µãƒ¼å…¥åŠ›ã¨ãƒŸã‚­ã‚µãƒ¼ã®å…¨ã¦ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (mixerInput != null) {
                 mixerInput.delete();
             }

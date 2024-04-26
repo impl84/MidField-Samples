@@ -54,7 +54,7 @@ class DeviceToRendererEx
     void configureInput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException
     {
-        // SegmentIo ‚Ì“ü—Í‚ğ“ü—ÍƒfƒoƒCƒX‚Æ‚µ‚Ä\¬‚·‚éD
+        // SegmentIo ã®å…¥åŠ›ã‚’å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         cfgTool.configureInputDevice(segIo);
         // IOException
     }
@@ -66,7 +66,7 @@ class DeviceToRendererEx
     void configureOutput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException
     {
-        // SegmentIo ‚Ìo—Í‚ğƒŒƒ“ƒ_ƒ‰‚Æ‚µ‚Ä\¬‚·‚éD
+        // SegmentIo ã®å‡ºåŠ›ã‚’ãƒ¬ãƒ³ãƒ€ãƒ©ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         cfgTool.configureRenderer(segIo);
         // IOException
     }

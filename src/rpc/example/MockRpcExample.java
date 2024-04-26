@@ -81,32 +81,32 @@ public class MockRpcExample
     //
     private void exampleSimpleRpc()
     {
-        // ¡’Pƒ‚Èƒƒ\ƒbƒhŒÄ‚Ño‚µ‚Ì—áF
-        printTitle("’Pƒ‚Èƒƒ\ƒbƒhŒÄ‚Ño‚µ‚Ì—áF");
+        // â– å˜ç´”ãªãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ä¾‹ï¼š
+        printTitle("å˜ç´”ãªãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ä¾‹ï¼š");
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC—v‹‚ğ¶¬‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCè¦æ±‚ã‚’ç”Ÿæˆã™ã‚‹ï¼
         RequestObject request = RequestObject.createRequest("Mock.getBooleanResult", null);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC—v‹‚ğJSONŒ`®‚ÉƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
-        // (‚±‚ê‚ğƒT[ƒo‚Ö‘—M‚·‚éD)
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCè¦æ±‚ã‚’JSONå½¢å¼ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
+        // (ã“ã‚Œã‚’ã‚µãƒ¼ãƒã¸é€ä¿¡ã™ã‚‹ï¼)
         String jsonRequest = this.gson.toJson(request);
         printJsonString(jsonRequest);
         
-        // ƒT[ƒoFJSONŒ`®‚©‚çRPC—v‹‚ÖƒfƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šJSONå½¢å¼ã‹ã‚‰RPCè¦æ±‚ã¸ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
         request = this.gson.fromJson(jsonRequest, RequestObject.class);
         
-        // ƒT[ƒoFRPC—v‹‚ğˆ—‚µ‚ÄRPC‰“š‚ğ¶¬‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šRPCè¦æ±‚ã‚’å‡¦ç†ã—ã¦RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.booleanResponse(request, true);
         
-        // ƒT[ƒoFRPC‰“š‚ğJSONŒ`®‚ÉƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
-        // (‚±‚ê‚ğƒNƒ‰ƒCƒAƒ“ƒg‚Ö‘—M‚·‚éD)
+        // ã‚µãƒ¼ãƒï¼šRPCå¿œç­”ã‚’JSONå½¢å¼ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
+        // (ã“ã‚Œã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¸é€ä¿¡ã™ã‚‹ï¼)
         String jsonResponse = this.gson.toJson(response);
         printJsonString(jsonResponse);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFJSONŒ`®‚©‚çRPC‰“š‚ÖƒfƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šJSONå½¢å¼ã‹ã‚‰RPCå¿œç­”ã¸ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
         response = this.gson.fromJson(jsonResponse, ResponseObject.class);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC‰“š‚©‚çŒ‹‰Ê‚ğæ“¾‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCå¿œç­”ã‹ã‚‰çµæœã‚’å–å¾—ã™ã‚‹ï¼
         String result = (String)response.getResult();
         printResult(result);
     }
@@ -115,32 +115,32 @@ public class MockRpcExample
     //
     private void exampleErrorResponse()
     {
-        // ¡ƒGƒ‰[”­¶‚Ì—áF
-        printTitle("ƒGƒ‰[”­¶‚Ì—áF");
+        // â– ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæ™‚ã®ä¾‹ï¼š
+        printTitle("ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæ™‚ã®ä¾‹ï¼š");
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC—v‹‚ğ¶¬‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCè¦æ±‚ã‚’ç”Ÿæˆã™ã‚‹ï¼
         RequestObject request = RequestObject.createRequest("Mock.getMethodNotFound", null);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC—v‹‚ğJSONŒ`®‚ÉƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
-        // (‚±‚ê‚ğƒT[ƒo‚Ö‘—M‚·‚éD)
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCè¦æ±‚ã‚’JSONå½¢å¼ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
+        // (ã“ã‚Œã‚’ã‚µãƒ¼ãƒã¸é€ä¿¡ã™ã‚‹ï¼)
         String jsonRequest = this.gson.toJson(request);
         printJsonString(jsonRequest);
         
-        // ƒT[ƒoFJSONŒ`®‚©‚çRPC—v‹‚ÖƒfƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šJSONå½¢å¼ã‹ã‚‰RPCè¦æ±‚ã¸ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
         request = this.gson.fromJson(jsonRequest, RequestObject.class);
         
-        // ƒT[ƒoFRPC—v‹‚ğˆ—‚µ‚ÄRPC‰“š‚ğ¶¬‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šRPCè¦æ±‚ã‚’å‡¦ç†ã—ã¦RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.methodNotFound(request);
         
-        // ƒT[ƒoFRPC‰“š‚ğJSONŒ`®‚ÉƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
-        // (‚±‚ê‚ğƒNƒ‰ƒCƒAƒ“ƒg‚Ö‘—M‚·‚éD)
+        // ã‚µãƒ¼ãƒï¼šRPCå¿œç­”ã‚’JSONå½¢å¼ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
+        // (ã“ã‚Œã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¸é€ä¿¡ã™ã‚‹ï¼)
         String jsonResponse = this.gson.toJson(response);
         printJsonString(jsonResponse);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFJSONŒ`®‚©‚çRPC‰“š‚ÖƒfƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šJSONå½¢å¼ã‹ã‚‰RPCå¿œç­”ã¸ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
         response = this.gson.fromJson(jsonResponse, ResponseObject.class);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC‰“š‚©‚çŒ‹‰Ê‚ğæ“¾‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCå¿œç­”ã‹ã‚‰çµæœã‚’å–å¾—ã™ã‚‹ï¼
         String result = (String)response.getResult();
         printResult(result);
     }
@@ -149,35 +149,35 @@ public class MockRpcExample
     //
     private void exampleMethodWithStringParam()
     {
-        // ¡•¶š—ñ‚ğƒpƒ‰ƒ[ƒ^‚Æ‚·‚éRPC—v‹‚Æ‰“š‚Ì—áF
-        printTitle("•¶š—ñ‚ğƒpƒ‰ƒ[ƒ^‚Æ‚·‚éRPC—v‹‚Æ‰“š‚Ì—áF");
+        // â– æ–‡å­—åˆ—ã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã™ã‚‹RPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š
+        printTitle("æ–‡å­—åˆ—ã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã™ã‚‹RPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š");
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFƒpƒ‰ƒ[ƒ^•t‚«‚ÌRPC—v‹(ƒGƒR[—v‹)‚ğ¶¬‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ä»˜ãã®RPCè¦æ±‚(ã‚¨ã‚³ãƒ¼è¦æ±‚)ã‚’ç”Ÿæˆã™ã‚‹ï¼
         RequestObject request = RequestObject.createRequest("Mock.echo", "hello");
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC—v‹‚ğJSONŒ`®‚ÉƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
-        // (‚±‚ê‚ğƒT[ƒo‚Ö‘—M‚·‚éD)
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCè¦æ±‚ã‚’JSONå½¢å¼ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
+        // (ã“ã‚Œã‚’ã‚µãƒ¼ãƒã¸é€ä¿¡ã™ã‚‹ï¼)
         String jsonRequest = this.gson.toJson(request);
         printJsonString(jsonRequest);
         
-        // ƒT[ƒoFJSONŒ`®‚©‚çRPC—v‹‚ÖƒfƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šJSONå½¢å¼ã‹ã‚‰RPCè¦æ±‚ã¸ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
         request = this.gson.fromJson(jsonRequest, RequestObject.class);
         
-        // ƒT[ƒoFRPC—v‹“à‚Ìƒpƒ‰ƒ[ƒ^(ƒGƒR[•¶š—ñ)‚ğæ“¾‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šRPCè¦æ±‚å†…ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿(ã‚¨ã‚³ãƒ¼æ–‡å­—åˆ—)ã‚’å–å¾—ã™ã‚‹ï¼
         String echoString = (String)request.getParams();
         
-        // ƒT[ƒoFƒGƒR[•¶š—ñ‚ğŒ‹‰Ê‚Æ‚·‚éRPC‰“š‚ğ¶¬‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šã‚¨ã‚³ãƒ¼æ–‡å­—åˆ—ã‚’çµæœã¨ã™ã‚‹RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.responseWithResult(request, echoString);
         
-        // ƒT[ƒoFRPC‰“š‚ğJSONŒ`®‚ÉƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
-        // (‚±‚ê‚ğƒNƒ‰ƒCƒAƒ“ƒg‚Ö‘—M‚·‚éD)
+        // ã‚µãƒ¼ãƒï¼šRPCå¿œç­”ã‚’JSONå½¢å¼ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
+        // (ã“ã‚Œã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¸é€ä¿¡ã™ã‚‹ï¼)
         String jsonResponse = this.gson.toJson(response);
         printJsonString(jsonResponse);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFJSONŒ`®‚©‚çRPC‰“š‚ÖƒfƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šJSONå½¢å¼ã‹ã‚‰RPCå¿œç­”ã¸ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
         response = this.gson.fromJson(jsonResponse, ResponseObject.class);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC‰“š‚©‚çŒ‹‰Ê‚ğæ“¾‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCå¿œç­”ã‹ã‚‰çµæœã‚’å–å¾—ã™ã‚‹ï¼
         String result = (String)response.getResult();
         printResult(result);
     }
@@ -187,10 +187,10 @@ public class MockRpcExample
     @SuppressWarnings("unchecked")
     private void exampleMethodWithMapParam()
     {
-        // ¡•¡”‚Ìƒpƒ‰ƒ[ƒ^‚ğ”º‚¤RPC—v‹‚Æ‰“š‚Ì—áF
-        printTitle("•¡”‚Ìƒpƒ‰ƒ[ƒ^‚ğ”º‚¤RPC—v‹‚Æ‰“š‚Ì—áF");
+        // â– è¤‡æ•°ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ä¼´ã†RPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š
+        printTitle("è¤‡æ•°ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ä¼´ã†RPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š");
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC‚Ìˆø”‚Æ‚È‚éƒ}ƒbƒv‚ğ¶¬‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCã®å¼•æ•°ã¨ãªã‚‹ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
         int productNo = 1;
         int quantity  = 20;
         
@@ -198,21 +198,21 @@ public class MockRpcExample
         params.put("productNo", Integer.toString(productNo));
         params.put("quantity", Integer.toString(quantity));
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgF•¡”‚Ìƒpƒ‰ƒ[ƒ^‚ğ”º‚¤RPC—v‹‚ğ¶¬‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šè¤‡æ•°ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ä¼´ã†RPCè¦æ±‚ã‚’ç”Ÿæˆã™ã‚‹ï¼
         RequestObject request = RequestObject.createRequest("Mock.orderProducts", params);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC—v‹‚ğJSONŒ`®‚ÉƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
-        // (‚±‚ê‚ğƒT[ƒo‚Ö‘—M‚·‚éD)
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCè¦æ±‚ã‚’JSONå½¢å¼ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
+        // (ã“ã‚Œã‚’ã‚µãƒ¼ãƒã¸é€ä¿¡ã™ã‚‹ï¼)
         String jsonRequest = this.gson.toJson(request);
         printJsonString(jsonRequest);
         
-        // ƒT[ƒoFJSONŒ`®‚©‚çRPC—v‹‚ÖƒfƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šJSONå½¢å¼ã‹ã‚‰RPCè¦æ±‚ã¸ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
         request = this.gson.fromJson(jsonRequest, RequestObject.class);
         
-        // ƒT[ƒoFRPC—v‹“à‚Ìƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šRPCè¦æ±‚å†…ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ï¼
         params = (Map<String, Object>)request.getParams();
         
-        // ƒT[ƒoFRPC‰“š‚ÌŒ‹‰Ê‚ğ¶¬‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šRPCå¿œç­”ã®çµæœã‚’ç”Ÿæˆã™ã‚‹ï¼
         Map<String, Object> result = new LinkedHashMap<String, Object>();
         productNo = Integer.parseInt((String)params.get("productNo"));
         quantity = Integer.parseInt((String)params.get("quantity"));
@@ -224,18 +224,18 @@ public class MockRpcExample
         result.put("unitPrice", Integer.toString(unitPrice));
         result.put("totalPrice", Integer.toString(totalPrice));
         
-        // ƒT[ƒoFŒ‹‰Ê‚ğŠÜ‚ŞRPC‰“š‚ğ¶¬‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šçµæœã‚’å«ã‚€RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.responseWithResult(request, result);
         
-        // ƒT[ƒoFRPC‰“š‚ğJSONŒ`®‚ÉƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
-        // (‚±‚ê‚ğƒNƒ‰ƒCƒAƒ“ƒg‚Ö‘—M‚·‚éD)
+        // ã‚µãƒ¼ãƒï¼šRPCå¿œç­”ã‚’JSONå½¢å¼ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
+        // (ã“ã‚Œã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¸é€ä¿¡ã™ã‚‹ï¼)
         String jsonResponse = this.gson.toJson(response);
         printJsonString(jsonResponse);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFJSONŒ`®‚©‚çRPC‰“š‚ÖƒfƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šJSONå½¢å¼ã‹ã‚‰RPCå¿œç­”ã¸ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
         response = this.gson.fromJson(jsonResponse, ResponseObject.class);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC‰“š‚©‚çŒ‹‰Ê‚ğæ“¾‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCå¿œç­”ã‹ã‚‰çµæœã‚’å–å¾—ã™ã‚‹ï¼
         result = (Map<String, Object>)response.getResult();
         
         printResult(
@@ -253,22 +253,22 @@ public class MockRpcExample
     //
     private void exampleNotification()
     {
-        // ¡RPC—v‹(Notification)‚Ì—áF
-        printTitle("Notification ‚Ì—áF");
+        // â– RPCè¦æ±‚(Notification)ã®ä¾‹ï¼š
+        printTitle("Notification ã®ä¾‹ï¼š");
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC—v‹(Notification)‚ğ¶¬‚·‚éD
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCè¦æ±‚(Notification)ã‚’ç”Ÿæˆã™ã‚‹ï¼
         RequestObject request = RequestObject.createNotification("Mock.notification", null);
         
-        // ƒNƒ‰ƒCƒAƒ“ƒgFRPC—v‹‚ğJSONŒ`®‚ÉƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
-        // (‚±‚ê‚ğƒT[ƒo‚Ö‘—M‚·‚éD)
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆï¼šRPCè¦æ±‚ã‚’JSONå½¢å¼ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
+        // (ã“ã‚Œã‚’ã‚µãƒ¼ãƒã¸é€ä¿¡ã™ã‚‹ï¼)
         String jsonRequest = this.gson.toJson(request);
         printJsonString(jsonRequest);
         
-        // ƒT[ƒoFJSONŒ`®‚©‚çRPC—v‹‚ÖƒfƒVƒŠƒAƒ‰ƒCƒY‚·‚éD
+        // ã‚µãƒ¼ãƒï¼šJSONå½¢å¼ã‹ã‚‰RPCè¦æ±‚ã¸ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹ï¼
         request = this.gson.fromJson(jsonRequest, RequestObject.class);
         
-        // ƒT[ƒoFRPC—v‹(Notification)‚ğˆ—‚·‚éD
-        // (‚±‚±‚Å‚Í‰½‚à‚µ‚È‚¢DNotification ‚É‘Î‚µ‚Ä‚Í‰“š‚µ‚È‚¢D)
+        // ã‚µãƒ¼ãƒï¼šRPCè¦æ±‚(Notification)ã‚’å‡¦ç†ã™ã‚‹ï¼
+        // (ã“ã“ã§ã¯ä½•ã‚‚ã—ãªã„ï¼Notification ã«å¯¾ã—ã¦ã¯å¿œç­”ã—ãªã„ï¼)
     }
     
 // -----------------------------------------------------------------------------
@@ -280,7 +280,7 @@ public class MockRpcExample
     private void printTitle(String title)
     {
         Log.message(Log.LINE_SEPARATOR);
-        Log.message(" %s", title);
+        Log.message("â–¡%s", title);
         Log.message(Log.LINE_SEPARATOR);
     }
     
@@ -295,7 +295,7 @@ public class MockRpcExample
     //
     private void printResult(Object result)
     {
-        Log.message("¢result: %s", result);
+        Log.message("â–³result: %s", result);
         Log.message();
     }
 }

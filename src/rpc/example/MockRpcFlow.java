@@ -17,34 +17,34 @@ public class MockRpcFlow
     {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         
-        System.out.printf("¡1. ƒNƒ‰ƒCƒAƒ“ƒg‘¤‚Ìˆ—\n");
+        System.out.printf("â– 1. ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå´ã®å‡¦ç†\n");
         MockRequestObject request = new MockRequestObject("echo", "hello", "1");
-        System.out.printf("¥1-1 MockRequestObject ‚ğ¶¬F\n%s\n\n", request);
+        System.out.printf("â–¼1-1 MockRequestObject ã‚’ç”Ÿæˆï¼š\n%s\n\n", request);
         
         String requestObject = gson.toJson(request);
-        System.out.printf("¥1-2 MockRequestObject ‚©‚ç Request Object ‚ğ¶¬F\n%s\n\n", requestObject);
+        System.out.printf("â–¼1-2 MockRequestObject ã‹ã‚‰ Request Object ã‚’ç”Ÿæˆï¼š\n%s\n\n", requestObject);
         
-        System.out.printf("¥1-3 Request Object ‚ğƒNƒ‰ƒCƒAƒ“ƒg‚ªƒT[ƒo‚Ö‘—MF\n%s\n\n", requestObject);
+        System.out.printf("â–¼1-3 Request Object ã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒã‚µãƒ¼ãƒã¸é€ä¿¡ï¼š\n%s\n\n", requestObject);
         
-        System.out.printf("\n¡2. ƒT[ƒo‘¤‚Ìˆ—\n");
-        System.out.printf("¥2-1 Request Object ‚ğƒT[ƒo‚ªƒNƒ‰ƒCƒAƒ“ƒg‚©‚çóMF\n%s\n\n", requestObject);
+        System.out.printf("\nâ– 2. ã‚µãƒ¼ãƒå´ã®å‡¦ç†\n");
+        System.out.printf("â–¼2-1 Request Object ã‚’ã‚µãƒ¼ãƒãŒã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰å—ä¿¡ï¼š\n%s\n\n", requestObject);
         
         request = gson.fromJson(requestObject, MockRequestObject.class);
-        System.out.printf("¥2-2 Request Object ‚©‚ç MockRequestObject ‚ğ¶¬F\n%s\n\n", request);
+        System.out.printf("â–¼2-2 Request Object ã‹ã‚‰ MockRequestObject ã‚’ç”Ÿæˆï¼š\n%s\n\n", request);
         
         MockResponseObject response = new MockResponseObject("hello", null, "1");
-        System.out.printf("¥2-3 MockResponseObject ‚ğ¶¬F\n%s\n\n", response);
+        System.out.printf("â–¼2-3 MockResponseObject ã‚’ç”Ÿæˆï¼š\n%s\n\n", response);
         
         String responseObject = gson.toJson(response);
-        System.out.printf("¥2-4 MockResponseObject ‚©‚ç Response Object ‚ğ¶¬\n%s\n\n", responseObject);
+        System.out.printf("â–¼2-4 MockResponseObject ã‹ã‚‰ Response Object ã‚’ç”Ÿæˆ\n%s\n\n", responseObject);
         
-        System.out.printf("¥2-4 Response Object ‚ğƒT[ƒo‚ªƒNƒ‰ƒCƒAƒ“ƒg‚Ö‘—MF\n%s\n\n", responseObject);
+        System.out.printf("â–¼2-4 Response Object ã‚’ã‚µãƒ¼ãƒãŒã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¸é€ä¿¡ï¼š\n%s\n\n", responseObject);
         
-        System.out.printf("\n¡3. ƒNƒ‰ƒCƒAƒ“ƒg‘¤‚Ìˆ—\n");
-        System.out.printf("¥3-1 Response Object ‚ğƒNƒ‰ƒCƒAƒ“ƒg‚ªƒT[ƒo‚©‚çóMF\n%s\n\n", responseObject);
+        System.out.printf("\nâ– 3. ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå´ã®å‡¦ç†\n");
+        System.out.printf("â–¼3-1 Response Object ã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒã‚µãƒ¼ãƒã‹ã‚‰å—ä¿¡ï¼š\n%s\n\n", responseObject);
         
         response = gson.fromJson(responseObject, MockResponseObject.class);
-        System.out.printf("¥3-2 Response Object ‚©‚ç MockResponseObject ‚ğ¶¬F\n%s\n\n", response);
+        System.out.printf("â–¼3-2 Response Object ã‹ã‚‰ MockResponseObject ã‚’ç”Ÿæˆï¼š\n%s\n\n", response);
         
     }
 }

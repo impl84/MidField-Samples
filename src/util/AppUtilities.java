@@ -41,16 +41,16 @@ public class AppUtilities
     public static void setLookAndFeel(Component cmp)
     {
         try {
-            // L&F ‚ğİ’è‚·‚éD
+            // L&F ã‚’è¨­å®šã™ã‚‹ï¼
             UIManager.setLookAndFeel(LF_CLASS_NAME);
             // ClassNotFoundException, InstantiationException,
             // IllegalAccessException, UnsupportedLookAndFeelException
             
-            // L&F ‚Å—˜—p‚³‚ê‚éƒfƒtƒHƒ‹ƒgƒtƒHƒ“ƒg‚ğİ’è‚·‚éD
+            // L&F ã§åˆ©ç”¨ã•ã‚Œã‚‹ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ•ã‚©ãƒ³ãƒˆã‚’è¨­å®šã™ã‚‹ï¼
             UIDefaults uiDef = UIManager.getLookAndFeelDefaults();
             uiDef.put(LF_KEY_DEFAULT_FONT, FONT_GUI_DEFAULT);
             
-            // Swing ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒgƒcƒŠ[‚Éİ’è‚ğ”½‰f‚³‚¹‚éD
+            // Swing ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãƒ„ãƒªãƒ¼ã«è¨­å®šã‚’åæ˜ ã•ã›ã‚‹ï¼
             SwingUtilities.updateComponentTreeUI(cmp);
             
         }

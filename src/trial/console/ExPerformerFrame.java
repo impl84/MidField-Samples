@@ -70,28 +70,28 @@ public class ExPerformerFrame
     public void update(StreamEvent ev)
     {
         if (ev instanceof RendererStatusEvent) {
-            // Ä¶•\¦ƒXƒe[ƒ^ƒX‚ğ•\¦‚·‚éD
+            // å†ç”Ÿè¡¨ç¤ºã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹ï¼
             RendererStatus status = ((RendererStatusEvent)ev).getRendererStatus();
             this.mpRendererStatus.println(status.toString());
         }
         else if (ev instanceof IoStatusEvent) {
-            // “üo—ÍƒXƒe[ƒ^ƒX‚ğ•\¦‚·‚éD
+            // å…¥å‡ºåŠ›ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹ï¼
             IoStatus status = ((IoStatusEvent)ev).getIoStatus();
             this.mpIoStatus.println(status.toString());
         }
         else if (ev instanceof PerformerStateEvent) {
-            // StreamPerformer ‚Ìó‘Ôî•ñ‚ğ•\¦‚·‚éD
+            // StreamPerformer ã®çŠ¶æ…‹æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ï¼
             this.mpStreamEvent.println(ev.toString());
             
-            // StreamPerformer ‚Ìó‘Ô‚ª FINAL ‚Ö‘JˆÚ‚µ‚Ä‚¢‚éê‡‚ÍC
-            // ‚±‚Ì ExPerformerFrame ‚ğI—¹‚·‚éD
+            // StreamPerformer ã®çŠ¶æ…‹ãŒ FINAL ã¸é·ç§»ã—ã¦ã„ã‚‹å ´åˆã¯ï¼Œ
+            // ã“ã® ExPerformerFrame ã‚’çµ‚äº†ã™ã‚‹ï¼
             PerformerState curStat = ((PerformerStateEvent)ev).getCurrentState();
             if (curStat == PerformerState.FINAL) {
                 SwingUtilities.invokeLater(() -> dispose());
             }
         }
         else {
-            // ã‹LˆÈŠO‚Ì StreamEvent ‚ğ•\¦‚·‚éD
+            // ä¸Šè¨˜ä»¥å¤–ã® StreamEvent ã‚’è¡¨ç¤ºã™ã‚‹ï¼
             this.mpStreamEvent.println(ev.toString());
         }
     }
@@ -163,11 +163,11 @@ public class ExPerformerFrame
     //
     ExPerformerFrame(StreamPerformer stm)
     {
-        // GUI ‚ğƒZƒbƒgƒAƒbƒv‚·‚éD
+        // GUI ã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ï¼
         setupGui(stm);
         
-        // —^‚¦‚ç‚ê‚½ StreamPerformer ‚ğ•Û‚µC
-        // ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ StreamEventListener ‚Æ‚µ‚Ä’Ç‰Á‚·‚éD
+        // ä¸ãˆã‚‰ã‚ŒãŸ StreamPerformer ã‚’ä¿æŒã—ï¼Œ
+        // ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ StreamEventListener ã¨ã—ã¦è¿½åŠ ã™ã‚‹ï¼
         this.performer = stm;
         this.performer.addStreamEventListener(this);
     }
@@ -180,11 +180,11 @@ public class ExPerformerFrame
     //
     void setupGui(StreamPerformer stm)
     {
-        // JSplitPane ¶‰E‚Ìƒpƒlƒ‹‚ğ¶¬‚·‚éD
+        // JSplitPane å·¦å³ã®ãƒ‘ãƒãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼
         JPanel     pnlLeft  = createLeftPane(stm);
         JComponent pnlRight = createRightPane();
         
-        // JSplitPane ‚ğ¶¬‚µCContentPane ‚É”z’u‚·‚éD
+        // JSplitPane ã‚’ç”Ÿæˆã—ï¼ŒContentPane ã«é…ç½®ã™ã‚‹ï¼
         JSplitPane splitPane = new JSplitPane(
             JSplitPane.HORIZONTAL_SPLIT, pnlLeft, pnlRight
         );
@@ -192,7 +192,7 @@ public class ExPerformerFrame
         container.setLayout(new BorderLayout());
         container.add(splitPane, BorderLayout.CENTER);
         
-        // ‚±‚ÌƒtƒŒ[ƒ€‚ÉŠÖ‚·‚éŠeí‰Šúİ’è‚ğ‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã«é–¢ã™ã‚‹å„ç¨®åˆæœŸè¨­å®šã‚’ã™ã‚‹ï¼
         setTitle("Experimental Viewer for Stream Performer");
         setPreferredSize(DIM_PREF_FRAME);
         setMinimumSize(DIM_MIN_FRAME);
@@ -201,10 +201,10 @@ public class ExPerformerFrame
         addNotify();
         pack();
         
-        // JSplitPane ‚ÌƒfƒBƒoƒCƒ_‚ğ^’†‚Éİ’è‚·‚éD
+        // JSplitPane ã®ãƒ‡ã‚£ãƒã‚¤ãƒ€ã‚’çœŸä¸­ã«è¨­å®šã™ã‚‹ï¼
         splitPane.setDividerLocation(0.5);
         
-        // ‚±‚ÌƒtƒŒ[ƒ€‚ğƒXƒNƒŠ[ƒ“‚Ì’†‰›‚É•\¦‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã®ä¸­å¤®ã«è¡¨ç¤ºã™ã‚‹ï¼
         AppUtilities.setLocationToCenter(this);
         setVisible(true);
     }
@@ -213,16 +213,16 @@ public class ExPerformerFrame
     //
     private JPanel createLeftPane(StreamPerformer stm)
     {
-        // VideoCanvas ”z’u—p‚Ì JPanel ‚ğ¶¬‚·‚éD
+        // VideoCanvas é…ç½®ç”¨ã® JPanel ã‚’ç”Ÿæˆã™ã‚‹ï¼
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(new TitledBorder("Video Canvas"));
         
-        // —^‚¦‚ç‚ê‚½ StreamPerformer ‚Ì VideoCanvas ‚ğ¶‚Ìƒpƒlƒ‹‚É’Ç‰Á‚·‚éD
+        // ä¸ãˆã‚‰ã‚ŒãŸ StreamPerformer ã® VideoCanvas ã‚’å·¦ã®ãƒ‘ãƒãƒ«ã«è¿½åŠ ã™ã‚‹ï¼
         VideoCanvas vidCvs = stm.getVideoCanvas();
         if (vidCvs != null) {
             panel.add(vidCvs, BorderLayout.CENTER);
         }
-        // VideoCanvas ”z’u—p‚Ì JPanel ‚ğ•Ô‚·D
+        // VideoCanvas é…ç½®ç”¨ã® JPanel ã‚’è¿”ã™ï¼
         return panel;
     }
     
@@ -230,25 +230,25 @@ public class ExPerformerFrame
     //
     private JComponent createRightPane()
     {
-        // StreamEvent o—Í—p‚Ì MessagePanel ‚ğ¶¬‚·‚éD
+        // StreamEvent å‡ºåŠ›ç”¨ã® MessagePanel ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.mpStreamEvent = new MessagePanel();
         this.mpStreamEvent.setBorder(new TitledBorder("Stream Event"));
         
-        // RendererStatusEvent o—Í—p‚Ì MessagePanel ‚ğ¶¬‚·‚éD
+        // RendererStatusEvent å‡ºåŠ›ç”¨ã® MessagePanel ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.mpRendererStatus = new MessagePanel();
         this.mpRendererStatus.setBorder(new TitledBorder("Renderer Status"));
         
-        // IoStatusEvent o—Í—p‚Ì MessagePanel ‚ğ¶¬‚·‚éD
+        // IoStatusEvent å‡ºåŠ›ç”¨ã® MessagePanel ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.mpIoStatus = new MessagePanel();
         this.mpIoStatus.setBorder(new TitledBorder("I/O Status"));
         
-        // ŠeƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ”z’u‚·‚éD
+        // å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’é…ç½®ã™ã‚‹ï¼
         JPanel panel = new JPanel(new GridLayout(3, 1));
         panel.add(this.mpStreamEvent);
         panel.add(this.mpRendererStatus);
         panel.add(this.mpIoStatus);
         
-        // ŠeƒRƒ“ƒ|[ƒlƒ“ƒg‚ª”z’u‚³‚ê‚½ JPanel ‚ğ•Ô‚·D
+        // å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒé…ç½®ã•ã‚ŒãŸ JPanel ã‚’è¿”ã™ï¼
         return panel;
     }
 }

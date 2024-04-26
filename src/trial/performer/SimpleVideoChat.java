@@ -37,46 +37,46 @@ public class SimpleVideoChat
         ConsolePrinter     printer  = ConsolePrinter.getInstance();
         
         try {
-            // MidField System ‚ð‰Šú‰»‚·‚éD
+            // MidField System ã‚’åˆæœŸåŒ–ã™ã‚‹ï¼Ž
             mfs = MfsNode.initialize();		// SystemException
             
-            // MidField System ‚ð‹N“®‚·‚éD
+            // MidField System ã‚’èµ·å‹•ã™ã‚‹ï¼Ž
             mfs.activate();					// SystemException
             
-            // “üo—Í\¬ƒc[ƒ‹‚ð¶¬‚·‚éD
+            // å…¥å‡ºåŠ›æ§‹æˆãƒ„ãƒ¼ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼Ž
             ConfigTool cfgTool = new ConfigTool(reader, printer);
             
-            // ƒrƒfƒI‘—M—p‚ÌƒTƒ“ƒvƒ‹ƒR[ƒh‚ðŽÀs‚·‚éD
+            // ãƒ“ãƒ‡ã‚ªé€ä¿¡ç”¨ã®ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ï¼Ž
             sender = new DeviceToNetworkEx();
             sender.open(cfgTool);		// SystemException, StreamException
             
-            // ƒrƒfƒIŽóM—p‚ÌƒTƒ“ƒvƒ‹ƒR[ƒh‚ðŽÀs‚·‚éD
+            // ãƒ“ãƒ‡ã‚ªå—ä¿¡ç”¨ã®ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ï¼Ž
             receiver = new NetworkToRendererEx();
             receiver.open(cfgTool);
             
-            // EnterƒL[‚Ì“ü—Í‚ð‘Ò‚ÂD
-            System.out.print("> Enter ƒL[‚Ì“ü—Í‚ð‘Ò‚¿‚Ü‚·D");
+            // Enterã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¤ï¼Ž
+            System.out.print("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼Ž");
             reader.readLine();	// IOException
         }
         catch (SystemException ex) {
-            // MidField System ‚Ì“à•”ˆ—Žž‚É—áŠO‚ª”­¶‚µ‚½D
-            // —áŠO”­¶Žž‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ð•\Ž¦‚·‚éD
+            // MidField System ã®å†…éƒ¨å‡¦ç†æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼Ž
+            // ä¾‹å¤–ç™ºç”Ÿæ™‚ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹ï¼Ž
             ex.printStackTrace();
         }
         catch (IOException ex) {
-            // EnterƒL[“ü—ÍŽž‚É—áŠO‚ª”­¶‚µ‚½D‚Ü‚½‚Íã‹LˆÈŠO‚Ì—áŠO‚ª”­¶‚µ‚½D
-            // —áŠO”­¶Žž‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ð•\Ž¦‚·‚éD
+            // Enterã‚­ãƒ¼å…¥åŠ›æ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼Žã¾ãŸã¯ä¸Šè¨˜ä»¥å¤–ã®ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼Ž
+            // ä¾‹å¤–ç™ºç”Ÿæ™‚ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹ï¼Ž
             ex.printStackTrace();
         }
         finally {
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ðI—¹‚·‚éD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼Ž
             if (receiver != null) { receiver.close(); }
             if (sender != null) { sender.close(); }
             
-            // MidField System ‚ðI—¹‚·‚éD
+            // MidField System ã‚’çµ‚äº†ã™ã‚‹ï¼Ž
             if (mfs != null) { mfs.shutdown(); }
             
-            // •W€“ü—Í‚©‚ç‚Ì1s“Ç‚Ýž‚Ý‚É—˜—p‚µ‚½ ConsoleReader ‚ð‰ð•ú‚·‚éD
+            // æ¨™æº–å…¥åŠ›ã‹ã‚‰ã®1è¡Œèª­ã¿è¾¼ã¿ã«åˆ©ç”¨ã—ãŸ ConsoleReader ã‚’è§£æ”¾ã™ã‚‹ï¼Ž
             reader.release();
         }
     }

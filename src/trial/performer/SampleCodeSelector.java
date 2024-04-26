@@ -20,7 +20,7 @@ public class SampleCodeSelector
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
     
-    // selectSampleCode ƒƒ\ƒbƒh‚ÌŒ‹‰Ê‚ğ¦‚·’è”
+    // selectSampleCode ãƒ¡ã‚½ãƒƒãƒ‰ã®çµæœã‚’ç¤ºã™å®šæ•°
     private static final int END_OF_SELECTOR     = -1;
     private static final int INDEX_OUT_OF_BOUNDS = -2;
     
@@ -38,20 +38,20 @@ public class SampleCodeSelector
     {
         SampleCodeSelector selector = null;
         try {
-            // SampleCodeSelector ‚ğ¶¬‚·‚éD
+            // SampleCodeSelector ã‚’ç”Ÿæˆã™ã‚‹ï¼
             selector = new SampleCodeSelector();
             // SystemException
             
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌÀs‚ÆI—¹‚ğŒJ‚è•Ô‚·D
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å®Ÿè¡Œã¨çµ‚äº†ã‚’ç¹°ã‚Šè¿”ã™ï¼
             selector.mainLoop();
         }
         catch (Exception ex) {
-            // SampleCodeSelector ‚Ì“®ì’†‚É—áŠO‚ª”­¶‚µ‚½D
-            System.out.println("¦SampleCodeSelector ‚ÌÀs’†‚É—áŠO‚ª”­¶‚µ‚Ü‚µ‚½D");
+            // SampleCodeSelector ã®å‹•ä½œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼
+            System.out.println("â€»SampleCodeSelector ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸï¼");
             ex.printStackTrace();
         }
         finally {
-            // SampleCodeSelector ‚ª¶¬‚³‚ê‚Ä‚¢‚éê‡‚ÍCI—¹ˆ—‚ğÀs‚·‚éD
+            // SampleCodeSelector ãŒç”Ÿæˆã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ï¼Œçµ‚äº†å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
             if (selector != null) {
                 selector.close();
             }
@@ -67,13 +67,13 @@ public class SampleCodeSelector
     // MidField System
     private final MfsNode mfs;
     
-    // “üo—Í\¬ƒc[ƒ‹‚ğ¶¬‚·‚éD
+    // å…¥å‡ºåŠ›æ§‹æˆãƒ„ãƒ¼ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼
     private final ConfigTool cfgTool;
     
-    // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Æ‚µ‚ÄÀs‰Â”\‚ÈƒCƒ“ƒXƒ^ƒ“ƒX‚Ì”z—ñ
+    // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦å®Ÿè¡Œå¯èƒ½ãªã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®é…åˆ—
     private final AbstractSampleCode[] samples;
     
-    // ƒRƒ“ƒ\[ƒ‹‚ğ—˜—p‚µ‚½•¶š‚Ì“üo—Í
+    // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚’åˆ©ç”¨ã—ãŸæ–‡å­—ã®å…¥å‡ºåŠ›
     private final ConsoleReader  reader;
     private final ConsolePrinter printer;
     
@@ -90,21 +90,21 @@ public class SampleCodeSelector
     SampleCodeSelector()
         throws SystemException
     {
-        // ƒRƒ“ƒ\[ƒ‹‚ğ—˜—p‚µ‚½•¶š‚Ì“üo—Í‚Ì€”õ‚ğ‚·‚éD
+        // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã‚’åˆ©ç”¨ã—ãŸæ–‡å­—ã®å…¥å‡ºåŠ›ã®æº–å‚™ã‚’ã™ã‚‹ï¼
         this.reader = ConsoleReader.getInstance();
         this.printer = ConsolePrinter.getInstance();
         
-        this.printer.println("> SampleCodeSelector ‚Ìˆ—‚ğŠJn‚µ‚Ü‚·D");
+        this.printer.println("> SampleCodeSelector ã®å‡¦ç†ã‚’é–‹å§‹ã—ã¾ã™ï¼");
         
-        // MidField System ‚ğ‰Šú‰»‚µC‹N“®‚·‚éD
-        this.printer.println("> MidField System ‚ğ‹N“®‚µ‚Ü‚·D");
+        // MidField System ã‚’åˆæœŸåŒ–ã—ï¼Œèµ·å‹•ã™ã‚‹ï¼
+        this.printer.println("> MidField System ã‚’èµ·å‹•ã—ã¾ã™ï¼");
         this.mfs = MfsNode.initialize();	// SystemException
         this.mfs.activate();				// SystemException
         
-        // “üo—Í\¬ƒc[ƒ‹‚ğ¶¬‚·‚éD
+        // å…¥å‡ºåŠ›æ§‹æˆãƒ„ãƒ¼ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.cfgTool = new ConfigTool(this.reader, this.printer);
         
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Æ‚µ‚ÄÀs‰Â”\‚ÈƒCƒ“ƒXƒ^ƒ“ƒX‚ğ—v‘f‚Æ‚·‚é”z—ñ‚ğ¶¬‚·‚éD
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦å®Ÿè¡Œå¯èƒ½ãªã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¦ç´ ã¨ã™ã‚‹é…åˆ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.samples = new AbstractSampleCode[] {
             new DeviceToRendererEx(),
             new DeviceToNetworkEx(),
@@ -117,22 +117,22 @@ public class SampleCodeSelector
     //
     void mainLoop()
     {
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ğ‘I‘ğ‚µCŠJn‚Ü‚½‚Í’â~‚ğŒJ‚è•Ô‚·D
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã‚’é¸æŠã—ï¼Œé–‹å§‹ã¾ãŸã¯åœæ­¢ã‚’ç¹°ã‚Šè¿”ã™ï¼
         while (true) {
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒŠƒXƒg‚ğ•\¦‚·‚éD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ï¼
             printSampleCodeList();
             
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ğ‘I‘ğ‚·‚éD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã‚’é¸æŠã™ã‚‹ï¼
             int result = selectSampleCode();
             if (result == END_OF_SELECTOR) {
-                // I—¹”Ô†‚ª“ü—Í‚³‚ê‚½‚Ì‚Åƒ‹[ƒv‚ğ”²‚¯‚éD
+                // çµ‚äº†ç•ªå·ãŒå…¥åŠ›ã•ã‚ŒãŸã®ã§ãƒ«ãƒ¼ãƒ—ã‚’æŠœã‘ã‚‹ï¼
                 break;
             }
             else if (result == INDEX_OUT_OF_BOUNDS) {
-                // ”ÍˆÍŠO‚Ì”Ô†‚ª“ü—Í‚³‚ê‚½‚Ì‚ÅŸ‚Ìƒ‹[ƒv‚Ìˆ—‚É“ü‚éD
+                // ç¯„å›²å¤–ã®ç•ªå·ãŒå…¥åŠ›ã•ã‚ŒãŸã®ã§æ¬¡ã®ãƒ«ãƒ¼ãƒ—ã®å‡¦ç†ã«å…¥ã‚‹ï¼
                 continue;
             }
-            // “ü—Í‚³‚ê‚½”Ô†‚ÌƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ğŠJn‚Ü‚½‚ÍI—¹‚·‚éD
+            // å…¥åŠ›ã•ã‚ŒãŸç•ªå·ã®ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’é–‹å§‹ã¾ãŸã¯çµ‚äº†ã™ã‚‹ï¼
             changeRunningState(result);
         }
     }
@@ -141,18 +141,18 @@ public class SampleCodeSelector
     //
     void close()
     {
-        // MidField System ‚ğI—¹‚·‚éD
+        // MidField System ã‚’çµ‚äº†ã™ã‚‹ï¼
         if (MfsNode.isActive()) {
-            // ˆ—‚ğI—¹‚µ‚Ä‚¢‚È‚¢ƒTƒ“ƒvƒ‹ƒR[ƒh‚ª‚ ‚éê‡‚ÍI—¹‚³‚¹‚éD
+            // å‡¦ç†ã‚’çµ‚äº†ã—ã¦ã„ãªã„ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ãŒã‚ã‚‹å ´åˆã¯çµ‚äº†ã•ã›ã‚‹ï¼
             closeAllSampleCodes();
             
-            this.printer.println("> MidField System ‚ğI—¹‚µ‚Ü‚·D");
+            this.printer.println("> MidField System ã‚’çµ‚äº†ã—ã¾ã™ï¼");
             this.mfs.shutdown();
         }
-        // •W€“ü—Í‚©‚ç‚Ì1s“Ç‚İ‚İ‚É—˜—p‚µ‚½ ConsoleReader ‚ğ‰ğ•ú‚·‚éD
+        // æ¨™æº–å…¥åŠ›ã‹ã‚‰ã®1è¡Œèª­ã¿è¾¼ã¿ã«åˆ©ç”¨ã—ãŸ ConsoleReader ã‚’è§£æ”¾ã™ã‚‹ï¼
         this.reader.release();
         
-        this.printer.println("> SampleCodeSelector ‚Ìˆ—‚ğI—¹‚µ‚Ü‚·D");
+        this.printer.println("> SampleCodeSelector ã®å‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ï¼");
     }
     
 // -----------------------------------------------------------------------------
@@ -163,24 +163,24 @@ public class SampleCodeSelector
     //
     private void printSampleCodeList()
     {
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆê——‚ğ•\¦‚·‚éD
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ä¸€è¦§ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         this.printer.println("");
-        this.printer.println("¥ƒTƒ“ƒvƒ‹ƒR[ƒhˆê——F");
+        this.printer.println("â–¼ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ä¸€è¦§ï¼š");
         
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Æ‚µ‚ÄÀs‰Â”\‚ÈƒCƒ“ƒXƒ^ƒ“ƒX‚Ì”z—ñ‚ğ‘–¸‚·‚éD
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦å®Ÿè¡Œå¯èƒ½ãªã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®é…åˆ—ã‚’èµ°æŸ»ã™ã‚‹ï¼
         for (int n = 0; n < this.samples.length; n++) {
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             AbstractSampleCode sample = this.samples[n];
             
-            // “®ìó‘Ô‚É‰‚¶‚½o—Í•¶š—ñ‚ğŒˆ‚ß‚éD
+            // å‹•ä½œçŠ¶æ…‹ã«å¿œã˜ãŸå‡ºåŠ›æ–‡å­—åˆ—ã‚’æ±ºã‚ã‚‹ï¼
             String runningState = null;
             if (sample.isRunning()) {
-                runningState = "“®ì’†";
+                runningState = "å‹•ä½œä¸­";
             }
             else {
-                runningState = "’â~’†";
+                runningState = "åœæ­¢ä¸­";
             }
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ì”Ô†Eó‘ÔEà–¾‚ğo—Í‚·‚éD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ç•ªå·ãƒ»çŠ¶æ…‹ãƒ»èª¬æ˜ã‚’å‡ºåŠ›ã™ã‚‹ï¼
             this.printer.printf(
                 " [%02d] (%s) %s\n", n,
                 runningState,
@@ -195,47 +195,47 @@ public class SampleCodeSelector
     {
         int res = 0;
         
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ğ‘I‘ğ‚µCŠJn/’â~‚·‚éD
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã‚’é¸æŠã—ï¼Œé–‹å§‹/åœæ­¢ã™ã‚‹ï¼
         try {
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh”Ô†‚ğƒL[ƒ{[ƒh‚©‚çæ“¾‚·‚éD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ç•ªå·ã‚’ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã‹ã‚‰å–å¾—ã™ã‚‹ï¼
             this.printer.printf(
-                "> ”Ô†“ü—Í[0-%d: ÀsC%d: I—¹]F",
+                "> ç•ªå·å…¥åŠ›[0-%d: å®Ÿè¡Œï¼Œ%d: çµ‚äº†]ï¼š",
                 this.samples.length - 1, this.samples.length
             );
             String line = this.reader.readLine();	// IOException
             int    n    = Integer.parseInt(line);			// NumberFormatException
             
-            // “ü—Í‚³‚ê‚½’l‚Ì”ÍˆÍ‚ğŠm”F‚·‚éD
+            // å…¥åŠ›ã•ã‚ŒãŸå€¤ã®ç¯„å›²ã‚’ç¢ºèªã™ã‚‹ï¼
             if ((n >= 0) && (n < this.samples.length)) {
-                // ‘I‘ğ‚³‚ê‚½ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ì”z—ñ‚ÌƒCƒ“ƒfƒbƒNƒX’l‚ğ
-                // ƒŠƒUƒ‹ƒgƒR[ƒh‚Éİ’è‚·‚éD
+                // é¸æŠã•ã‚ŒãŸã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®é…åˆ—ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹å€¤ã‚’
+                // ãƒªã‚¶ãƒ«ãƒˆã‚³ãƒ¼ãƒ‰ã«è¨­å®šã™ã‚‹ï¼
                 res = n;
             }
             else if (n == this.samples.length) {
-                // I—¹‚ğˆÓ–¡‚·‚é”Ô†‚ª“ü—Í‚³‚ê‚½‚Ì‚ÅC
-                // ƒŠƒUƒ‹ƒgƒR[ƒh‚É END_OF_SELECTOR ‚ğİ’è‚·‚éD
-                this.printer.println("  ƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·D");
+                // çµ‚äº†ã‚’æ„å‘³ã™ã‚‹ç•ªå·ãŒå…¥åŠ›ã•ã‚ŒãŸã®ã§ï¼Œ
+                // ãƒªã‚¶ãƒ«ãƒˆã‚³ãƒ¼ãƒ‰ã« END_OF_SELECTOR ã‚’è¨­å®šã™ã‚‹ï¼
+                this.printer.println("  ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™ï¼");
                 res = END_OF_SELECTOR;
             }
             else {
-                // ƒŠƒUƒ‹ƒgƒR[ƒh‚É INDEX_OUT_OF_BOUNDS ‚ğİ’è‚·‚éD
-                this.printer.println("  ¦“KØ‚È”Ô†‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢D");
+                // ãƒªã‚¶ãƒ«ãƒˆã‚³ãƒ¼ãƒ‰ã« INDEX_OUT_OF_BOUNDS ã‚’è¨­å®šã™ã‚‹ï¼
+                this.printer.println("  â€»é©åˆ‡ãªç•ªå·ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼");
                 res = INDEX_OUT_OF_BOUNDS;
             }
         }
         catch (NumberFormatException ex) {
-            // NumberFormatException ‚ª”­¶‚µ‚½ê‡‚ÍC
-            // ƒŠƒUƒ‹ƒgƒR[ƒh‚É INDEX_OUT_OF_BOUNDS ‚ğİ’è‚·‚éD
+            // NumberFormatException ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ï¼Œ
+            // ãƒªã‚¶ãƒ«ãƒˆã‚³ãƒ¼ãƒ‰ã« INDEX_OUT_OF_BOUNDS ã‚’è¨­å®šã™ã‚‹ï¼
             this.printer.printf(
-                "  ¦“KØ‚È”Ô†‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢D(%s)\n",
+                "  â€»é©åˆ‡ãªç•ªå·ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼(%s)\n",
                 ex.getMessage()
             );
             res = INDEX_OUT_OF_BOUNDS;
         }
         catch (IOException ex) {
-            // IOException ‚ª”­¶‚µ‚½ê‡‚ÍC—áŠOƒƒbƒZ[ƒW‚ğ•\¦‚µ‚ÄC
-            // ƒŠƒUƒ‹ƒgƒR[ƒh‚É END_OF_SELECTOR ‚ğİ’è‚·‚éD
-            this.printer.println("¦ƒL[ƒ{[ƒh‚©‚ç‚Ì“ü—Íˆ—‚Å—áŠO‚ª”­¶‚µ‚Ü‚µ‚½D");
+            // IOException ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ï¼Œä¾‹å¤–ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ã¦ï¼Œ
+            // ãƒªã‚¶ãƒ«ãƒˆã‚³ãƒ¼ãƒ‰ã« END_OF_SELECTOR ã‚’è¨­å®šã™ã‚‹ï¼
+            this.printer.println("â€»ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã‹ã‚‰ã®å…¥åŠ›å‡¦ç†ã§ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸï¼");
             ex.printStackTrace();
             res = END_OF_SELECTOR;
         }
@@ -246,17 +246,17 @@ public class SampleCodeSelector
     //
     private void changeRunningState(int idx)
     {
-        // ‘I‘ğ‚³‚ê‚½ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éD
+        // é¸æŠã•ã‚ŒãŸã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
         AbstractSampleCode selectedSample = this.samples[idx];
         
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ì“®ìó‘Ô‚É‚æ‚èC
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ğŠJn‚Ü‚½‚ÍI—¹‚·‚éD
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‹•ä½œçŠ¶æ…‹ã«ã‚ˆã‚Šï¼Œ
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’é–‹å§‹ã¾ãŸã¯çµ‚äº†ã™ã‚‹ï¼
         if (selectedSample.isRunning()) {
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ğI—¹‚·‚éD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             selectedSample.close();
         }
         else {
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ğŠJn‚·‚éD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             selectedSample.open(this.cfgTool);
         }
     }
@@ -265,12 +265,12 @@ public class SampleCodeSelector
     //
     private void closeAllSampleCodes()
     {
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Æ‚µ‚ÄÀs‰Â”\‚ÈƒCƒ“ƒXƒ^ƒ“ƒX‚Ì”z—ñ‚ğ‘–¸‚·‚éD
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦å®Ÿè¡Œå¯èƒ½ãªã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®é…åˆ—ã‚’èµ°æŸ»ã™ã‚‹ï¼
         for (int n = 0; n < this.samples.length; n++) {
-            // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éD
+            // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             AbstractSampleCode sample = this.samples[n];
             
-            // ˆ—‚ğI—¹‚µ‚Ä‚¢‚È‚¢ƒTƒ“ƒvƒ‹ƒR[ƒh‚ª‚ ‚éê‡‚Íˆ—‚ğI—¹‚³‚¹‚éD
+            // å‡¦ç†ã‚’çµ‚äº†ã—ã¦ã„ãªã„ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ãŒã‚ã‚‹å ´åˆã¯å‡¦ç†ã‚’çµ‚äº†ã•ã›ã‚‹ï¼
             if (sample.isRunning()) {
                 sample.close();
             }

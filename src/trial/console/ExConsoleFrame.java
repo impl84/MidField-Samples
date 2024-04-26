@@ -67,9 +67,9 @@ public class ExConsoleFrame
     @Override
     public void update(SystemEvent ev)
     {
-        // MidField System “à•”‚Å”­¶‚µ‚½ƒCƒxƒ“ƒg‚Ìî•ñ‚ğ GUI ã‚É•\¦‚·‚éD
-        // ‚±‚Ìƒƒ\ƒbƒh‚Í MidField System “à•”‚Å—˜—p‚µ‚Ä‚¢‚éƒXƒŒƒbƒh‚©‚ç
-        // ŒÄ‚Î‚ê‚Ä‚¢‚é‚Ì‚ÅCGUI ã‚Ö‚Ì•\¦‚ÉŒW‚éˆ—‚Í EDT ‚ÉˆÏ÷‚·‚éD
+        // MidField System å†…éƒ¨ã§ç™ºç”Ÿã—ãŸã‚¤ãƒ™ãƒ³ãƒˆã®æƒ…å ±ã‚’ GUI ä¸Šã«è¡¨ç¤ºã™ã‚‹ï¼
+        // ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã¯ MidField System å†…éƒ¨ã§åˆ©ç”¨ã—ã¦ã„ã‚‹ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã‚‰
+        // å‘¼ã°ã‚Œã¦ã„ã‚‹ã®ã§ï¼ŒGUI ä¸Šã¸ã®è¡¨ç¤ºã«ä¿‚ã‚‹å‡¦ç†ã¯ EDT ã«å§”è­²ã™ã‚‹ï¼
         SwingUtilities.invokeLater(() -> updateOnEdt(ev));
     }
     
@@ -185,14 +185,14 @@ public class ExConsoleFrame
     //
     void setupGui()
     {
-        // ‚±‚ÌƒtƒŒ[ƒ€‘S‘Ì‚Ì Look and Feel ‚ğİ’è‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ å…¨ä½“ã® Look and Feel ã‚’è¨­å®šã™ã‚‹ï¼
         AppUtilities.setLookAndFeel(this);
         
-        // JSplitPane ¶‰E‚Ìƒpƒlƒ‹‚ğ¶¬‚·‚éD
+        // JSplitPane å·¦å³ã®ãƒ‘ãƒãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼
         JComponent pnlLeft  = createLeftPane();
         JComponent pnlRight = createRightPane();
         
-        // JSplitPane ‚ğ¶¬‚µCContentPane ‚É”z’u‚·‚éD
+        // JSplitPane ã‚’ç”Ÿæˆã—ï¼ŒContentPane ã«é…ç½®ã™ã‚‹ï¼
         JSplitPane splitPane = new JSplitPane(
             JSplitPane.HORIZONTAL_SPLIT, pnlLeft, pnlRight
         );
@@ -200,7 +200,7 @@ public class ExConsoleFrame
         container.setLayout(new BorderLayout());
         container.add(splitPane, BorderLayout.CENTER);
         
-        // ‚±‚ÌƒtƒŒ[ƒ€‚ÉŠÖ‚·‚éŠeí‰Šúİ’è‚ğ‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã«é–¢ã™ã‚‹å„ç¨®åˆæœŸè¨­å®šã‚’ã™ã‚‹ï¼
         setTitle("Experimental Console for MidField System");
         setPreferredSize(DIM_PREF_FRAME);
         setMinimumSize(DIM_MIN_FRAME);
@@ -208,10 +208,10 @@ public class ExConsoleFrame
         addWindowListener(this);
         pack();
         
-        // JSplitPane ‚ÌƒfƒBƒoƒCƒ_‚ğ^’†‚Éİ’è‚·‚éD
+        // JSplitPane ã®ãƒ‡ã‚£ãƒã‚¤ãƒ€ã‚’çœŸä¸­ã«è¨­å®šã™ã‚‹ï¼
         splitPane.setDividerLocation(0.5);
         
-        // ‚±‚ÌƒtƒŒ[ƒ€‚ğƒXƒNƒŠ[ƒ“‚Ì’†‰›‚É•\¦‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã®ä¸­å¤®ã«è¡¨ç¤ºã™ã‚‹ï¼
         AppUtilities.setLocationToCenter(this);
         setVisible(true);
     }
@@ -220,16 +220,16 @@ public class ExConsoleFrame
     //
     private JComponent createLeftPane()
     {
-        // ƒRƒ“ƒ\[ƒ‹o—Í—p‚Ì MessagePanel ‚ğ¶¬‚·‚éD
+        // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«å‡ºåŠ›ç”¨ã® MessagePanel ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.mpConsoleOut = new MessagePanel();
         this.mpConsoleOut.setBorder(new TitledBorder("Experimental Console"));
         
-        // ƒRƒ“ƒ\[ƒ‹“ü—Í—p‚ÌƒtƒB[ƒ‹ƒh‚ğ¶¬‚µC
-        // MessagePanel ‚Ì‰º•”‚É”z’u‚·‚éD
+        // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«å…¥åŠ›ç”¨ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ç”Ÿæˆã—ï¼Œ
+        // MessagePanel ã®ä¸‹éƒ¨ã«é…ç½®ã™ã‚‹ï¼
         this.ifConsoleIn = new InputField();
         this.mpConsoleOut.add(this.ifConsoleIn.getComponent(), BorderLayout.SOUTH);
         
-        // ƒRƒ“ƒ\[ƒ‹o—Í—p‚Ì MessagePanel ‚ğ•Ô‚·D
+        // ã‚³ãƒ³ã‚½ãƒ¼ãƒ«å‡ºåŠ›ç”¨ã® MessagePanel ã‚’è¿”ã™ï¼
         return this.mpConsoleOut;
     }
     
@@ -237,25 +237,25 @@ public class ExConsoleFrame
     //
     private JComponent createRightPane()
     {
-        // ƒƒOo—Í—p‚Ì MessagePanel ‚ğ¶¬‚·‚éD
+        // ãƒ­ã‚°å‡ºåŠ›ç”¨ã® MessagePanel ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.mpSystemLog = new MessagePanel();
         this.mpSystemLog.setBorder(new TitledBorder("MidField System Log"));
         
-        // SystemEvent •\¦—p‚Ì MessagePanel ‚ğ¶¬‚·‚éD
+        // SystemEvent è¡¨ç¤ºç”¨ã® MessagePanel ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.mpSystemEvent = new MessagePanel();
         this.mpSystemEvent.setBorder(new TitledBorder("System Event"));
         
-        // ‘Œ¹—˜—pó‹µ‚ğ•\¦‚·‚é MessagePanel ‚ğ¶¬‚·‚éD
+        // è³‡æºåˆ©ç”¨çŠ¶æ³ã‚’è¡¨ç¤ºã™ã‚‹ MessagePanel ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.mpResourceStatus = new MessagePanel();
         this.mpResourceStatus.setBorder(new TitledBorder("Resource Status"));
         
-        // ŠeƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ”z’u‚·‚éD
+        // å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’é…ç½®ã™ã‚‹ï¼
         JPanel panel = new JPanel(new GridLayout(3, 1));
         panel.add(this.mpSystemLog);
         panel.add(this.mpSystemEvent);
         panel.add(this.mpResourceStatus);
         
-        // ŠeƒRƒ“ƒ|[ƒlƒ“ƒg‚ª”z’u‚³‚ê‚½ JPanel ‚ğ•Ô‚·D
+        // å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒé…ç½®ã•ã‚ŒãŸ JPanel ã‚’è¿”ã™ï¼
         return panel;
     }
     

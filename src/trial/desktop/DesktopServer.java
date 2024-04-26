@@ -44,18 +44,18 @@ public class DesktopServer
     public static final String DESKTOP_SERVER = "DesktopServer";
     
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String STR_ACCEPT_CONTROL = "¦‰“Šu(%s)‚©‚ç‚ÌƒfƒXƒNƒgƒbƒv‘€ì‚ğŠJn‚µ‚Ü‚·D";
-    private static final String STR_REJECT_CONTROL = "¦‰“Šu(%s)‚©‚ç‚ÌƒfƒXƒNƒgƒbƒv‘€ì‚ğ‹‘”Û‚µ‚Ü‚·D";
-    private static final String STR_STOP_CONTROL   = "¦‰“Šu‚©‚ç‚ÌƒfƒXƒNƒgƒbƒv‘€ì‚ğI—¹‚µ‚Ü‚·D";
+    private static final String STR_ACCEPT_CONTROL = "â€»é éš”(%s)ã‹ã‚‰ã®ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—æ“ä½œã‚’é–‹å§‹ã—ã¾ã™ï¼";
+    private static final String STR_REJECT_CONTROL = "â€»é éš”(%s)ã‹ã‚‰ã®ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—æ“ä½œã‚’æ‹’å¦ã—ã¾ã™ï¼";
+    private static final String STR_STOP_CONTROL   = "â€»é éš”ã‹ã‚‰ã®ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—æ“ä½œã‚’çµ‚äº†ã—ã¾ã™ï¼";
     
-    private static final String STR_CANT_CREATE_ROBOT = "ƒfƒXƒNƒgƒbƒv‘€ì—p‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚Å‚«‚Ü‚¹‚ñD";
-    private static final String STR_UNREACHABLE       = "ƒNƒ‰ƒCƒAƒ“ƒg‚Ö‘—M‚µ‚½ƒpƒPƒbƒg‚ª“’B‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½";
-    private static final String STR_ILLEGAL_MESSAGE   = "•s³‚ÈƒƒbƒZ[ƒW‚ğóM‚µ‚Ü‚µ‚½D: %s from %s\n";
+    private static final String STR_CANT_CREATE_ROBOT = "ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—æ“ä½œç”¨ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã§ãã¾ã›ã‚“ï¼";
+    private static final String STR_UNREACHABLE       = "ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¸é€ä¿¡ã—ãŸãƒ‘ã‚±ãƒƒãƒˆãŒåˆ°é”ã§ãã¾ã›ã‚“ã§ã—ãŸ";
+    private static final String STR_ILLEGAL_MESSAGE   = "ä¸æ­£ãªãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ã¾ã—ãŸï¼: %s from %s\n";
     
     private static enum ControlState
     {
-        WAIT,		// ƒfƒXƒNƒgƒbƒv§Œäó“ü‘Ò‹@’†
-        CONTROLLED	// ƒfƒXƒNƒgƒbƒv§Œäó“ü’†
+        WAIT,		// ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡å—å…¥å¾…æ©Ÿä¸­
+        CONTROLLED	// ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡å—å…¥ä¸­
     }
     
 // =============================================================================
@@ -89,16 +89,16 @@ public class DesktopServer
     {
         boolean wasHandled = true;
         
-        // ƒpƒPƒbƒg‚©‚ç DesktopMessage ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éD
+        // ãƒ‘ã‚±ãƒƒãƒˆã‹ã‚‰ DesktopMessage ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
         DesktopMessage msg = pkt.getSerializableObject(DesktopMessage.class);
         if (msg == null) {
             wasHandled = false;
             return wasHandled;
         }
-        // ‘—MŒ³‚Ì ObjectId ‚ğæ“¾‚·‚éD
+        // é€ä¿¡å…ƒã® ObjectId ã‚’å–å¾—ã™ã‚‹ï¼
         ObjectId srcId = pkt.getSourceObjectId();
         
-        // ƒƒbƒZ[ƒWƒ^ƒCƒv–ˆ‚Ìˆ—‚ğÀs‚·‚éD
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¿ã‚¤ãƒ—æ¯ã®å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         String type = pkt.getMessageType();
         switch (type) {
         case START_CONTROL:
@@ -144,7 +144,7 @@ public class DesktopServer
     DesktopServer(JFrame frame)
         throws SystemException
     {
-        // PacketCommunicator ‚ğ¶¬‚·‚éD
+        // PacketCommunicator ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.comm = new PacketCommunicator(DESKTOP_SERVER, this);
         // SystemException
         
@@ -153,7 +153,7 @@ public class DesktopServer
         this.scaleX = transform.getScaleX();
         this.scaleY = transform.getScaleY();
         
-        // ƒfƒXƒNƒgƒbƒv‘€ì—p‚Ì Robot ‚ğ¶¬‚·‚éD
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—æ“ä½œç”¨ã® Robot ã‚’ç”Ÿæˆã™ã‚‹ï¼
         try {
             this.robot = new Robot();
         }
@@ -183,10 +183,10 @@ public class DesktopServer
     synchronized void stopControl()
     {
         if (this.state == ControlState.CONTROLLED) {
-            // ó‘Ô•ÏXFƒfƒXƒNƒgƒbƒv§Œäó“ü‘Ò‹@’†D
+            // çŠ¶æ…‹å¤‰æ›´ï¼šãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡å—å…¥å¾…æ©Ÿä¸­ï¼
             this.state = ControlState.WAIT;
             
-            // DesktopImageSender ‚ğI—¹‚·‚éD
+            // DesktopImageSender ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (this.imgSender != null) {
                 this.imgSender.close();
                 this.imgSender = null;
@@ -206,29 +206,29 @@ public class DesktopServer
         String       msgType = CONTROL_REFUSED;
         Serializable obj     = null;
         
-        // ƒ\[ƒXƒzƒXƒgƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+        // ã‚½ãƒ¼ã‚¹ãƒ›ã‚¹ãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
         UUID   nodeId    = srcId.getNodeId();
         String srcNodeId = nodeId.toString();
         
-        // ƒfƒXƒNƒgƒbƒv§Œä‚Ìó“ü‰Â”Û‚ğŠm”F‚·‚éD
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡ã®å—å…¥å¯å¦ã‚’ç¢ºèªã™ã‚‹ï¼
         boolean doAccept = checkAccept(inMsg);
         if (doAccept) {
-            // ƒfƒXƒNƒgƒbƒv§Œä‚ğó‚¯“ü‚ê‚éD
+            // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡ã‚’å—ã‘å…¥ã‚Œã‚‹ï¼
             try {
-                // DesktopImageSender ‚ğ¶¬‚·‚éD
+                // DesktopImageSender ã‚’ç”Ÿæˆã™ã‚‹ï¼
                 this.imgSender = new ImageSender(this);
                 // SystemException, StreamException
                 
-                // ó“üƒƒbƒZ[ƒW‚ğo—Í‚·‚éD
+                // å—å…¥ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ï¼
                 Log.message(STR_ACCEPT_CONTROL, srcNodeId);
                 
-                // ƒƒbƒZ[ƒWƒ^ƒCƒv‚Ìİ’è‚Æo—Íƒpƒ‰ƒ[ƒ^‚Ìæ“¾D
+                // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¿ã‚¤ãƒ—ã®è¨­å®šã¨å‡ºåŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å–å¾—ï¼
                 msgType = CONTROL_ACCEPTED;
                 obj = this.imgSender.getOutputParam();
             }
             catch (SystemException | StreamException ex) {
-                // DesktopImageSender ‚Ì¶¬‚É¸”s‚µ‚½‚Ì‚ÅC
-                // ƒfƒXƒNƒgƒbƒv§Œä‚ğ‹‘”Û‚·‚éD
+                // DesktopImageSender ã®ç”Ÿæˆã«å¤±æ•—ã—ãŸã®ã§ï¼Œ
+                // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡ã‚’æ‹’å¦ã™ã‚‹ï¼
                 Log.message(STR_REJECT_CONTROL, srcNodeId);
                 Log.message(ex);
                 msgType = CONTROL_REFUSED;
@@ -236,20 +236,20 @@ public class DesktopServer
             }
         }
         else {
-            // ƒfƒXƒNƒgƒbƒv§Œä‚ğ‹‘”Û‚·‚éD
+            // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡ã‚’æ‹’å¦ã™ã‚‹ï¼
             Log.message(STR_REJECT_CONTROL, srcNodeId);
             msgType = CONTROL_REFUSED;
             obj = null;
         }
-        // ƒfƒXƒNƒgƒbƒv§Œäó“ü—v‹‚É‘Î‚·‚é‰“š‚ğ•Ô‚·D
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡å—å…¥è¦æ±‚ã«å¯¾ã™ã‚‹å¿œç­”ã‚’è¿”ã™ï¼
         ObjectId       dstId = srcId;
         CommPacket     pkt   = new CommPacket(msgType, dstId);
         DesktopMessage msg   = new DesktopMessage(obj);
         pkt.setSerializableObject(msg);
         this.comm.dispatchPacket(pkt);
         
-        // ƒfƒXƒNƒgƒbƒv§Œä‚ğó‚¯“ü‚ê‚éê‡‚ÍC
-        // ó‘Ô•ÏXFƒfƒXƒNƒgƒbƒv§Œäó“ü’†D
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡ã‚’å—ã‘å…¥ã‚Œã‚‹å ´åˆã¯ï¼Œ
+        // çŠ¶æ…‹å¤‰æ›´ï¼šãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡å—å…¥ä¸­ï¼
         if (msgType.equals(CONTROL_ACCEPTED)) {
             this.state = ControlState.CONTROLLED;
         }
@@ -259,8 +259,8 @@ public class DesktopServer
     //
     private boolean checkAccept(DesktopMessage msg)
     {
-        // ƒfƒXƒNƒgƒbƒv§Œäó“ü‘Ò‹@’†‚Ìê‡‚ÍC‰“Šu§Œä‚ğó‚¯“ü‚ê‚éD
-        // ƒfƒXƒNƒgƒbƒv§Œäó“ü’†‚Ìê‡‚ÍC§Œä‚ğó‚¯“ü‚ê‚È‚¢D
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡å—å…¥å¾…æ©Ÿä¸­ã®å ´åˆã¯ï¼Œé éš”åˆ¶å¾¡ã‚’å—ã‘å…¥ã‚Œã‚‹ï¼
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡å—å…¥ä¸­ã®å ´åˆã¯ï¼Œåˆ¶å¾¡ã‚’å—ã‘å…¥ã‚Œãªã„ï¼
         return (this.state == ControlState.WAIT);
     }
     
@@ -283,11 +283,11 @@ public class DesktopServer
     //
     private void msgHn_ControlMessage(DesktopMessage msg)
     {
-        // ƒfƒXƒNƒgƒbƒv§Œäó“ü‘Ò‹@’†‚Ìê‡‚Í–ß‚éD
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åˆ¶å¾¡å—å…¥å¾…æ©Ÿä¸­ã®å ´åˆã¯æˆ»ã‚‹ï¼
         if (this.state == ControlState.WAIT) {
             return;
         }
-        // Action –ˆ‚Ìˆ—‚ğÀs‚·‚éD
+        // Action æ¯ã®å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         DesktopMessage.Action action = msg.getAction();
         Object                obj    = msg.getObject();
         

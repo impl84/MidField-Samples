@@ -32,24 +32,24 @@ public class ExperimentalConsole
     {
         ExperimentalConsole console = null;
         try {
-            // ExperimentalConsole ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éD
+            // ExperimentalConsole ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
             console = new ExperimentalConsole();
             // InvocationTargetException, InterruptedException,
             // SystemException
             
-            // ¶¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚É‚æ‚éˆ—‚ğŒJ‚è•Ô‚µÀs‚·‚éD
+            // ç”Ÿæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«ã‚ˆã‚‹å‡¦ç†ã‚’ç¹°ã‚Šè¿”ã—å®Ÿè¡Œã™ã‚‹ï¼
             console.mainLoop();
         }
         catch (InvocationTargetException | InterruptedException ex) {
-            // GUIƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒZƒbƒgƒAƒbƒv‚É¸”s‚µ‚½D
+            // GUIã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã«å¤±æ•—ã—ãŸï¼
             ex.printStackTrace();
         }
         catch (SystemException ex) {
-            // MidField System ‚Ì‹N“®‚É¸”s‚µ‚½D
+            // MidField System ã®èµ·å‹•ã«å¤±æ•—ã—ãŸï¼
             ex.printStackTrace();
         }
         finally {
-            // I—¹ˆ—‚ğ‚·‚éD
+            // çµ‚äº†å‡¦ç†ã‚’ã™ã‚‹ï¼
             if (console != null) {
                 console.close();
             }
@@ -79,19 +79,19 @@ public class ExperimentalConsole
             InterruptedException,
             SystemException
     {
-        // GUIƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒZƒbƒgƒAƒbƒv‚·‚éD
+        // GUIã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ï¼
         SwingUtilities.invokeAndWait(() -> { this.consoleFrame = setupGui(); });
         // InvocationTargetException,
         // InterruptedException
         
-        // MidField System ‚ğ‰Šú‰»‚·‚éD
+        // MidField System ã‚’åˆæœŸåŒ–ã™ã‚‹ï¼
         this.mfs = MfsNode.initialize();
         // SystemException
         
-        // ƒCƒxƒ“ƒgƒŠƒXƒi‚ğ“o˜^‚·‚éD
+        // ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠã‚’ç™»éŒ²ã™ã‚‹ï¼
         this.mfs.addSystemEventListener(this.consoleFrame);
         
-        // MidField System ‚ğ‹N“®‚·‚éD
+        // MidField System ã‚’èµ·å‹•ã™ã‚‹ï¼
         this.mfs.activate();
         // SystemException
     }
@@ -100,17 +100,17 @@ public class ExperimentalConsole
     //
     void mainLoop()
     {
-        // ConsoleMenu ‚ğŠg’£‚µ‚½ŠeƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX(ƒƒjƒ…[)‚ğ¶¬‚µC
-        // Å‰‚É—˜—p‚·‚éƒƒjƒ…[‚ÌQÆ‚ğæ“¾‚·‚éD
+        // ConsoleMenu ã‚’æ‹¡å¼µã—ãŸå„ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹(ãƒ¡ãƒ‹ãƒ¥ãƒ¼)ã‚’ç”Ÿæˆã—ï¼Œ
+        // æœ€åˆã«åˆ©ç”¨ã™ã‚‹ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®å‚ç…§ã‚’å–å¾—ã™ã‚‹ï¼
         ConsoleMenu menu = setupConsoleMenu();
         
-        // ƒƒjƒ…[–ˆ‚Ìˆ—‚ğŒJ‚è•Ô‚µÀs‚·‚éD
+        // ãƒ¡ãƒ‹ãƒ¥ãƒ¼æ¯ã®å‡¦ç†ã‚’ç¹°ã‚Šè¿”ã—å®Ÿè¡Œã™ã‚‹ï¼
         while (menu != null) {
             try {
-                // Œ»İ‚Ìƒƒjƒ…[‚É‚¨‚¯‚éƒAƒNƒVƒ‡ƒ“‚ğÀs‚µC
-                // Ÿ‚Ìƒƒjƒ…[‚ÌQÆ‚ğæ“¾‚·‚éD
-                // Ÿ‚Ìƒƒjƒ…[‚ÌQÆ‚ª null ‚Ìê‡‚ÍC
-                // ‚±‚Ìƒ‹[ƒv‚ğ”²‚¯‚éD
+                // ç¾åœ¨ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«ãŠã‘ã‚‹ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã—ï¼Œ
+                // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®å‚ç…§ã‚’å–å¾—ã™ã‚‹ï¼
+                // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®å‚ç…§ãŒ null ã®å ´åˆã¯ï¼Œ
+                // ã“ã®ãƒ«ãƒ¼ãƒ—ã‚’æŠœã‘ã‚‹ï¼
                 menu = menu.action();
             }
             catch (Exception ex) {
@@ -126,12 +126,12 @@ public class ExperimentalConsole
         if (MfsNode.isActive() == false) {
             return;
         }
-        // MidField System ‚É“o˜^‚µ‚½ƒCƒxƒ“ƒgƒŠƒXƒi‚Ìİ’è‚ğ‰ğœ‚µC
-        // MidField System ‚Ìˆ—‚ğI—¹‚·‚éD
+        // MidField System ã«ç™»éŒ²ã—ãŸã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠã®è¨­å®šã‚’è§£é™¤ã—ï¼Œ
+        // MidField System ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
         this.mfs.removeSystemEventListener(this.consoleFrame);
         this.mfs.shutdown();
         
-        // ExConsoleFrame ‚ğI—¹‚·‚éD
+        // ExConsoleFrame ã‚’çµ‚äº†ã™ã‚‹ï¼
         if (this.consoleFrame != null) {
             SwingUtilities.invokeLater(() -> this.consoleFrame.dispose());
         }
@@ -145,19 +145,19 @@ public class ExperimentalConsole
     //
     private ExConsoleFrame setupGui()
     {
-        // ExConsoleFrame ‚ğ¶¬‚·‚éD
+        // ExConsoleFrame ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ExConsoleFrame frame = new ExConsoleFrame();
         
-        // ExperimentalConsole ‚Ì“ü—ÍŒ³‚ğİ’è‚·‚éD
+        // ExperimentalConsole ã®å…¥åŠ›å…ƒã‚’è¨­å®šã™ã‚‹ï¼
         ConsoleMenu.setLineReader(frame.getLineReader());
         
-        // ExperimentalConsole ‚Ìo—Íæ‚ğİ’è‚·‚éD
+        // ExperimentalConsole ã®å‡ºåŠ›å…ˆã‚’è¨­å®šã™ã‚‹ï¼
         ConsoleMenu.setLogPrinter(frame.getConsolePrinter());
         
-        // MidField System ‚ÌƒƒO‚Ìo—Íæ‚ğİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°ã®å‡ºåŠ›å…ˆã‚’è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(frame.getSystemLogPrinter());
         
-        // ExConsoleFrame ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚·D
+        // ExConsoleFrame ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™ï¼
         return frame;
     }
     
@@ -165,19 +165,19 @@ public class ExperimentalConsole
     //
     private ConsoleMenu setupConsoleMenu()
     {
-        // Šeƒƒjƒ…[‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éD
+        // å„ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
         SystemMenu         sysMenu = new SystemMenu();
         InputSettingsMenu  inMenu  = new InputSettingsMenu();
         OutputSettingsMenu outMenu = new OutputSettingsMenu();
         StreamControlMenu  stmMenu = new StreamControlMenu();
         
-        // Šeƒƒjƒ…[‚©‚ç‘JˆÚ‚·‚éƒƒjƒ…[‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğİ’è‚·‚éD
+        // å„ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‹ã‚‰é·ç§»ã™ã‚‹ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¨­å®šã™ã‚‹ï¼
         sysMenu.setStateInstance(inMenu, stmMenu);
         inMenu.setStateInstance(sysMenu, outMenu);
         outMenu.setStateInstanue(sysMenu, stmMenu);
         stmMenu.setStateInstance(sysMenu);
         
-        // ‰Šúƒƒjƒ…[‚Æ‚µ‚Ä SystemMenu ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚·D
+        // åˆæœŸãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¨ã—ã¦ SystemMenu ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™ï¼
         return sysMenu;
     }
 }

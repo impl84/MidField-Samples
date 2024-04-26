@@ -40,7 +40,7 @@ public class CltStreamPerformer
     //
     public RequestObject newInstance(String[] args)
     {
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], null);
         return rpcReq;
     }
@@ -49,7 +49,7 @@ public class CltStreamPerformer
     //
     public RequestObject start(String[] args)
     {
-        // start ƒRƒ}ƒ“ƒh—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // start ã‚³ãƒãƒ³ãƒ‰è¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         return newRpcCommandRequest(args);
     }
     
@@ -57,7 +57,7 @@ public class CltStreamPerformer
     //
     public RequestObject stop(String[] args)
     {
-        // stop ƒRƒ}ƒ“ƒh—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // stop ã‚³ãƒãƒ³ãƒ‰è¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         return newRpcCommandRequest(args);
     }
     
@@ -65,7 +65,7 @@ public class CltStreamPerformer
     //
     public RequestObject delete(String[] args)
     {
-        // delete ƒRƒ}ƒ“ƒh—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // delete ã‚³ãƒãƒ³ãƒ‰è¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         return newRpcCommandRequest(args);
     }
     
@@ -79,15 +79,15 @@ public class CltStreamPerformer
     {
         Map<String, Object> map = null;
         
-        // RPC—v‹‚É•K—v‚Æ‚È‚éˆø”‚Ì”‚ğŠm”F‚·‚éD
+        // RPCè¦æ±‚ã«å¿…è¦ã¨ãªã‚‹å¼•æ•°ã®æ•°ã‚’ç¢ºèªã™ã‚‹ï¼
         if (args.length >= 2) {
-            // RPC—v‹—p‚Ìƒ}ƒbƒv‚ğ¶¬‚·‚éD
+            // RPCè¦æ±‚ç”¨ã®ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             map = new TreeMap<String, Object>();
             
-            // StreamPerformer ‚ÌƒCƒ“ƒfƒbƒNƒX”Ô†‚ğƒ}ƒbƒv‚Éİ’è‚·‚éD
+            // StreamPerformer ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç•ªå·ã‚’ãƒãƒƒãƒ—ã«è¨­å®šã™ã‚‹ï¼
             map.put(PERFORMER_ID, args[1]);
         }
-        // RPC—v‹‚ğ¶¬‚µ‚Ä•Ô‚·D
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã—ã¦è¿”ã™ï¼
         RequestObject rpcReq = RequestObject.createRequest(args[0], map);
         return rpcReq;
     }

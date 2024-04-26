@@ -173,12 +173,12 @@ class CommandBox
     //
     private void evHn_Send()
     {
-        // ƒRƒ}ƒ“ƒh‚ğæ“¾‚·‚éD
+        // ã‚³ãƒãƒ³ãƒ‰ã‚’å–å¾—ã™ã‚‹ï¼
         String command = this.cmdFld.getText();
         if (command == null) {
             return;
         }
-        // æ“¾‚µ‚½ƒRƒ}ƒ“ƒh‚ğRPC—v‹‚É•ÏŠ·‚µ‚ÄƒT[ƒo‚Ö‘—M‚·‚éD
+        // å–å¾—ã—ãŸã‚³ãƒãƒ³ãƒ‰ã‚’RPCè¦æ±‚ã«å¤‰æ›ã—ã¦ã‚µãƒ¼ãƒã¸é€ä¿¡ã™ã‚‹ï¼
         this.remocon.sendCommand(command);
     }
 }

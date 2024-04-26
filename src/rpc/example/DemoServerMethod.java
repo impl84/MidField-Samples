@@ -27,7 +27,7 @@ public class DemoServerMethod
 // =============================================================================
     
 // -----------------------------------------------------------------------------
-// PUBLIC METHOD: RPC—v‹ˆ—‚Ì—á
+// PUBLIC METHOD: RPCè¦æ±‚å‡¦ç†ã®ä¾‹
 // -----------------------------------------------------------------------------
     
     // - PUBLIC METHOD ---------------------------------------------------------
@@ -36,11 +36,11 @@ public class DemoServerMethod
     {
         boolean result = true;
         
-        // Boolean ’l‚ğŒ‹‰Ê‚Æ‚·‚éRPC‰“š‚ğ¶¬‚·‚éD
+        // Boolean å€¤ã‚’çµæœã¨ã™ã‚‹RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.booleanResponse(
             request, result
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -50,11 +50,11 @@ public class DemoServerMethod
     {
         boolean isSuccess = true;
         
-        // "success" (‚Ü‚½‚Í "failure") ‚ğŒ‹‰Ê‚Æ‚·‚éRPC‰“š‚ğ¶¬‚·‚éD
+        // "success" (ã¾ãŸã¯ "failure") ã‚’çµæœã¨ã™ã‚‹RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.successResponse(
             request, isSuccess
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -64,11 +64,11 @@ public class DemoServerMethod
     {
         Object result = new String("Any resulting object.");
         
-        // ‰½‚ç‚©‚ÌƒIƒuƒWƒFƒNƒg‚ğŒ‹‰Ê‚Æ‚·‚éRPC‰“š‚ğ¶¬‚·‚éD
+        // ä½•ã‚‰ã‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’çµæœã¨ã™ã‚‹RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.responseWithResult(
             request, result
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -80,11 +80,11 @@ public class DemoServerMethod
             "Invalid JSON was received by the server."
                 + "An error occurred on the server while parsing the JSON text."
         );
-        // ‰ğÍƒGƒ‰[”­¶‚ÌRPC‰“š‚ğ¶¬‚·‚éD
+        // è§£æã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæ™‚ã®RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.parseError(
             data
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -92,11 +92,11 @@ public class DemoServerMethod
     //
     public ResponseObject getInvalidRequest(RequestObject request)
     {
-        // –³Œø‚ÈƒŠƒNƒGƒXƒg‚ğóM‚µ‚½ê‡‚ÌRPC‰“š‚ğ¶¬‚·‚éD
+        // ç„¡åŠ¹ãªãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’å—ä¿¡ã—ãŸå ´åˆã®RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.invalidRequest(
             request
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -104,11 +104,11 @@ public class DemoServerMethod
     //
     public ResponseObject getMethodNotFound(RequestObject request)
     {
-        // ƒƒ\ƒbƒh‚ª‘¶İ‚µ‚È‚¢/—˜—p‚Å‚«‚È‚¢ê‡‚ÌRPC‰“š‚ğ¶¬‚·‚éD
+        // ãƒ¡ã‚½ãƒƒãƒ‰ãŒå­˜åœ¨ã—ãªã„/åˆ©ç”¨ã§ããªã„å ´åˆã®RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.methodNotFound(
             request
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -118,11 +118,11 @@ public class DemoServerMethod
     {
         String data = new String("Invalid method parameter(s).");
         
-        // ƒƒ\ƒbƒh‚Ìƒpƒ‰ƒ[ƒ^‚ª–³Œø‚Èê‡‚ÌRPC‰“š‚ğ¶¬‚·‚éD
+        // ãƒ¡ã‚½ãƒƒãƒ‰ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒç„¡åŠ¹ãªå ´åˆã®RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.invalidParams(
             request, data
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -132,11 +132,11 @@ public class DemoServerMethod
     {
         String data = new String("Internal JSON-RPC error.");
         
-        // “à•”ƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÌRPC‰“š‚ğ¶¬‚·‚éD
+        // å†…éƒ¨ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã®RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.internalError(
             request, data
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -146,11 +146,11 @@ public class DemoServerMethod
     {
         String data = new String("Reserved for implementation-defined server-errors.");
         
-        // ƒT[ƒo‘¤‚Å‰½‚ç‚©‚ÌƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÌRPC‰“š‚ğ¶¬‚·‚éD
+        // ã‚µãƒ¼ãƒå´ã§ä½•ã‚‰ã‹ã®ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã®RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.serverError(
             request, data
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -158,14 +158,14 @@ public class DemoServerMethod
     //
     public ResponseObject echo(RequestObject request)
     {
-        // RPC—v‹“à‚Ìƒpƒ‰ƒ[ƒ^(ƒGƒR[•¶š—ñ)‚ğæ“¾‚·‚éD
+        // RPCè¦æ±‚å†…ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿(ã‚¨ã‚³ãƒ¼æ–‡å­—åˆ—)ã‚’å–å¾—ã™ã‚‹ï¼
         String echoString = (String)request.getParams();
         
-        // ƒGƒR[•¶š—ñ‚ğŒ‹‰Ê‚Æ‚·‚éRPC‰“š‚ğ¶¬‚·‚éD
+        // ã‚¨ã‚³ãƒ¼æ–‡å­—åˆ—ã‚’çµæœã¨ã™ã‚‹RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.responseWithResult(
             request, echoString
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -173,11 +173,11 @@ public class DemoServerMethod
     //
     public ResponseObject orderProducts(RequestObject request)
     {
-        // RPC—v‹“à‚Ìƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éD
+        // RPCè¦æ±‚å†…ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ï¼
         @SuppressWarnings("unchecked")
         Map<String, Object> params = (Map<String, Object>)request.getParams();
         
-        // RPC‰“š‚ÌŒ‹‰Ê‚ğ¶¬‚·‚éD
+        // RPCå¿œç­”ã®çµæœã‚’ç”Ÿæˆã™ã‚‹ï¼
         Map<String, Object> result = new LinkedHashMap<String, Object>();
         
         int productNo  = Integer.parseInt((String)params.get("productNo"));
@@ -190,11 +190,11 @@ public class DemoServerMethod
         result.put("unitPrice", Integer.toString(unitPrice));
         result.put("totalPrice", Integer.toString(totalPrice));
         
-        // Œ‹‰Ê‚ğŠÜ‚ŞRPC‰“š‚ğ¶¬‚·‚éD
+        // çµæœã‚’å«ã‚€RPCå¿œç­”ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ResponseObject response = ResponseObject.responseWithResult(
             request, result
         );
-        // RPC‰“š‚ğ•Ô‚·D
+        // RPCå¿œç­”ã‚’è¿”ã™ï¼
         return response;
     }
     
@@ -202,7 +202,7 @@ public class DemoServerMethod
     //
     public ResponseObject notification(RequestObject request)
     {
-        // Notification ‚Ìê‡‚ÍCnull ‚ğ•Ô‚·D
+        // Notification ã®å ´åˆã¯ï¼Œnull ã‚’è¿”ã™ï¼
         ResponseObject response = null;
         return response;
     }

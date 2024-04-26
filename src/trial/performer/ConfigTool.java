@@ -31,7 +31,7 @@ class ConfigTool
     
     // - PRIVATE VARIABLE ------------------------------------------------------
     
-    // s’PˆÊ‚Ì•¶š—ñ“üo—Í—pƒCƒ“ƒ^[ƒtƒF[ƒX
+    // è¡Œå˜ä½ã®æ–‡å­—åˆ—å…¥å‡ºåŠ›ç”¨ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
     private final LineReader reader;
     private final LogPrinter printer;
     
@@ -52,96 +52,96 @@ class ConfigTool
     }
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // SegmentIo ‚Ì“ü—Í(ƒfƒoƒCƒX)‚ğ\¬‚·‚éD
+    // SegmentIo ã®å…¥åŠ›(ãƒ‡ãƒã‚¤ã‚¹)ã‚’æ§‹æˆã™ã‚‹ï¼
     //
     void configureInputDevice(SegmentIo segIo)
         throws IOException
     {
-        // ƒrƒfƒI‚ÆƒI[ƒfƒBƒI‚Ì“ü—ÍƒfƒoƒCƒXî•ñƒŠƒXƒg‚ğæ“¾‚·‚éD
+        // ãƒ“ãƒ‡ã‚ªã¨ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã®å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹æƒ…å ±ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         DeviceInfoManager devInfMgr = DeviceInfoManager.getInstance();
         List<DeviceInfo>  lsVidDev  = devInfMgr.getVideoInputDeviceInfoList();
         List<DeviceInfo>  lsAudDev  = devInfMgr.getAudioInputDeviceInfoList();
         
-        // ƒrƒfƒI‚ÆƒI[ƒfƒBƒI‚Ì“ü—ÍƒfƒoƒCƒXî•ñ‚ğ‘I‘ğ‚·‚éD
-        // i‚±‚±‚Å‚ÍÅ‰‚Ì—v‘f‚ğ‘I‘ğ‚·‚éDj
+        // ãƒ“ãƒ‡ã‚ªã¨ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã®å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹æƒ…å ±ã‚’é¸æŠã™ã‚‹ï¼
+        // ï¼ˆã“ã“ã§ã¯æœ€åˆã®è¦ç´ ã‚’é¸æŠã™ã‚‹ï¼ï¼‰
         DeviceInfo vidDev = lsVidDev.get(0);
         DeviceInfo audDev = lsAudDev.get(0);
         
-        // “ü—ÍƒfƒoƒCƒX‚Ìo—ÍƒtƒH[ƒ}ƒbƒg‚ğŒˆ‚ß‚éD
-        // i‚±‚±‚Å‚ÍƒfƒtƒHƒ‹ƒg‚ÌƒtƒH[ƒ}ƒbƒg‚ğ—˜—p‚·‚éDj
+        // å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ã®å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æ±ºã‚ã‚‹ï¼
+        // ï¼ˆã“ã“ã§ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’åˆ©ç”¨ã™ã‚‹ï¼ï¼‰
         StreamFormat vidFmt = vidDev.getPreferredOutputFormat();
         StreamFormat audFmt = audDev.getPreferredOutputFormat();
         
-        // Segment I/O ‚Ì“ü—Í‚ğ“ü—ÍƒfƒoƒCƒXî•ñ‚Æo—ÍƒtƒH[ƒ}ƒbƒg‚Å\¬‚·‚éD
+        // Segment I/O ã®å…¥åŠ›ã‚’å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹æƒ…å ±ã¨å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§æ§‹æˆã™ã‚‹ï¼
         segIo.configureInputDevice(vidDev, vidFmt, audDev, audFmt);
     }
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // SegmentIo ‚Ì“ü—Í(óMƒXƒgƒŠ[ƒ€)‚ğ\¬‚·‚éD
+    // SegmentIo ã®å…¥åŠ›(å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ )ã‚’æ§‹æˆã™ã‚‹ï¼
     //
     void configureIncomingStream(SegmentIo segIo)
         throws IOException
     {
-        // ‘—MƒzƒXƒg–¼/IPƒAƒhƒŒƒX‚ğƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚©‚çæ“¾‚·‚éD
-        this.printer.printf("  ‘—MƒzƒXƒg–¼/IPƒAƒhƒŒƒXF");
+        // é€ä¿¡ãƒ›ã‚¹ãƒˆå/IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‹ã‚‰å–å¾—ã™ã‚‹ï¼
+        this.printer.printf("  é€ä¿¡ãƒ›ã‚¹ãƒˆå/IPã‚¢ãƒ‰ãƒ¬ã‚¹ï¼š");
         String srcAddr = this.reader.readLine();
         // IOException
         
-        // ƒXƒgƒŠ[ƒ€î•ñƒŠƒXƒg‚ğ‘—MƒzƒXƒg‚©‚çæ“¾‚·‚éD
+        // ã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±ãƒªã‚¹ãƒˆã‚’é€ä¿¡ãƒ›ã‚¹ãƒˆã‹ã‚‰å–å¾—ã™ã‚‹ï¼
         StreamInfoManager stmInfMgr = StreamInfoManager.getInstance();
         List<StreamInfo>  lsStmInf  = stmInfMgr.fetchSourceStreamInfoList(srcAddr);
         if (lsStmInf.size() <= 0) {
-            throw new IOException("  ¦óM‰Â”\‚ÈƒXƒgƒŠ[ƒ€‚ª‚ ‚è‚Ü‚¹‚ñD");
+            throw new IOException("  â€»å—ä¿¡å¯èƒ½ãªã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
         }
-        // ‘—MƒzƒXƒg‚Ìo—ÍƒXƒgƒŠ[ƒ€î•ñ‚ğ‘I‘ği‚±‚±‚Å‚ÍÅ‰‚Ì—v‘f‚ğ‘I‘ğj‚µC
-        // SegmentIo ‚Ì“ü—Í‚Æ‚µ‚Ä\¬‚·‚éD
+        // é€ä¿¡ãƒ›ã‚¹ãƒˆã®å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±ã‚’é¸æŠï¼ˆã“ã“ã§ã¯æœ€åˆã®è¦ç´ ã‚’é¸æŠï¼‰ã—ï¼Œ
+        // SegmentIo ã®å…¥åŠ›ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         StreamInfo stmInf = lsStmInf.get(0);
         segIo.configureIncomingStream(stmInf);
     }
     
 // -----------------------------------------------------------------------------
-// PACKAGE METHOD: SegmentIo ‚Ìo—Í‚ğ\¬‚·‚éƒƒ\ƒbƒh
+// PACKAGE METHOD: SegmentIo ã®å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 // -----------------------------------------------------------------------------
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // SegmentIo ‚Ìo—Í(ƒŒƒ“ƒ_ƒ‰)‚ğ\¬‚·‚éD
+    // SegmentIo ã®å‡ºåŠ›(ãƒ¬ãƒ³ãƒ€ãƒ©)ã‚’æ§‹æˆã™ã‚‹ï¼
     //
     void configureRenderer(SegmentIo segIo)
         throws IOException
     {
-        // o—Í‚ğƒfƒtƒHƒ‹ƒgƒŒƒ“ƒ_ƒ‰‚Æ‚µ‚Ä\¬‚·‚éD
+        // å‡ºåŠ›ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ¬ãƒ³ãƒ€ãƒ©ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         segIo.configureRenderer();
         
-        // ƒ‰ƒCƒuƒ\[ƒXƒIƒvƒVƒ‡ƒ“‚ğ—LŒø‚É‚·‚éD
+        // ãƒ©ã‚¤ãƒ–ã‚½ãƒ¼ã‚¹ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æœ‰åŠ¹ã«ã™ã‚‹ï¼
         segIo.setLiveSource(true);
     }
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // SegmentIo ‚Ìo—Í(‘—MƒXƒgƒŠ[ƒ€)‚ğ\¬‚·‚éD
+    // SegmentIo ã®å‡ºåŠ›(é€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ )ã‚’æ§‹æˆã™ã‚‹ï¼
     //
     void configureOutgoingStream(SegmentIo segIo)
         throws IOException
     {
-        // o—Í‰Â”\‚ÈƒtƒH[ƒ}ƒbƒgî•ñƒŠƒXƒg‚ğæ“¾‚·‚éD
+        // å‡ºåŠ›å¯èƒ½ãªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         List<StreamFormat> lsOutVidFmt = segIo.getOutputVideoFormatList();
         List<StreamFormat> lsOutAudFmt = segIo.getOutputAudioFormatList();
         
-        // o—ÍƒtƒH[ƒ}ƒbƒgî•ñ‚ğæ“¾‚·‚éDi‚±‚±‚Å‚ÍÅ‰‚Ì—v‘f‚ğ‘I‘ğj
+        // å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ï¼ï¼ˆã“ã“ã§ã¯æœ€åˆã®è¦ç´ ã‚’é¸æŠï¼‰
         StreamFormat vidFmt = lsOutVidFmt.get(0);
         StreamFormat audFmt = lsOutAudFmt.get(0);
         
-        // ‘I‘ğ‚µ‚½ƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ÆƒvƒƒgƒRƒ‹‚ğo—Í‚Æ‚µ‚Ä\¬‚·‚éD
+        // é¸æŠã—ãŸãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã¨ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã‚’å‡ºåŠ›ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         segIo.configureOutgoingStream(vidFmt, audFmt);
         
-        // ƒgƒ‰ƒ“ƒXƒ|[ƒgƒvƒƒgƒRƒ‹‚Ìİ’è‚ğs‚¤D
+        // ãƒˆãƒ©ãƒ³ã‚¹ãƒãƒ¼ãƒˆãƒ—ãƒ­ãƒˆã‚³ãƒ«ã®è¨­å®šã‚’è¡Œã†ï¼
         segIo.setTransportProtocol(
-            ProtocolType.TCP,		// TCP‚ğ—˜—p‚·‚éD
-            ConnectionMode.PASSIVE	// ƒRƒlƒNƒVƒ‡ƒ“Ú‘±—v‹‚ğó‚¯“ü‚ê‚éD
+            ProtocolType.TCP,		// TCPã‚’åˆ©ç”¨ã™ã‚‹ï¼
+            ConnectionMode.PASSIVE	// ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ¥ç¶šè¦æ±‚ã‚’å—ã‘å…¥ã‚Œã‚‹ï¼
         );
-        // ƒvƒŒƒrƒ…[ƒ\‚ğ—˜—p‚·‚é‚½‚ß‚ÌƒIƒvƒVƒ‡ƒ“‚ğ—LŒø‚É‚·‚éD
+        // ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ãƒ¯â€”ã‚’åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æœ‰åŠ¹ã«ã™ã‚‹ï¼
         segIo.setPreviewer();
         
-        // ƒ‰ƒCƒuƒ\[ƒXƒIƒvƒVƒ‡ƒ“‚ğ—LŒø‚É‚·‚éD
+        // ãƒ©ã‚¤ãƒ–ã‚½ãƒ¼ã‚¹ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æœ‰åŠ¹ã«ã™ã‚‹ï¼
         segIo.setLiveSource(true);
     }
 }

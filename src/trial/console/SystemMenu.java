@@ -18,13 +18,13 @@ public class SystemMenu
         ConsoleMenu
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String MENU_TITLE  = "¡ƒVƒXƒeƒ€  “ü—Íİ’è  o—Íİ’è  ƒXƒgƒŠ[ƒ€‘€ì";
+    private static final String MENU_TITLE  = "â– ã‚·ã‚¹ãƒ†ãƒ  â–¡å…¥åŠ›è¨­å®š â–¡å‡ºåŠ›è¨­å®š â–¡ã‚¹ãƒˆãƒªãƒ¼ãƒ æ“ä½œ";
     private static final String MENU_PROMPT = "sys";
     
-    private static final String TRANSITION_TO_INPUT = "ƒXƒgƒŠ[ƒ€“üo—Íİ’è ¨  “ü—Íİ’è";
-    private static final String SHOW_STREAM_LIST    = "ƒXƒgƒŠ[ƒ€ˆê——•\¦";
-    private static final String SELECT_STREAM       = "ƒXƒgƒŠ[ƒ€‘I‘ğ       ¨  ƒXƒgƒŠ[ƒ€‘€ì";
-    private static final String EXIT                = "I—¹";
+    private static final String TRANSITION_TO_INPUT = "ã‚¹ãƒˆãƒªãƒ¼ãƒ å…¥å‡ºåŠ›è¨­å®š â†’ â–¡å…¥åŠ›è¨­å®š";
+    private static final String SHOW_STREAM_LIST    = "ã‚¹ãƒˆãƒªãƒ¼ãƒ ä¸€è¦§è¡¨ç¤º";
+    private static final String SELECT_STREAM       = "ã‚¹ãƒˆãƒªãƒ¼ãƒ é¸æŠ       â†’ â–¡ã‚¹ãƒˆãƒªãƒ¼ãƒ æ“ä½œ";
+    private static final String EXIT                = "çµ‚äº†";
     
 // =============================================================================
 // INSTANCE VARIABLE:
@@ -97,12 +97,12 @@ public class SystemMenu
     //
     private ConsoleMenu transitionToInput()
     {
-        // SegmentIo ‚Éİ’è‚³‚ê‚Ä‚¢‚é“üo—Íî•ñ‚ğíœ‚·‚éD
+        // SegmentIo ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å…¥å‡ºåŠ›æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹ï¼
         SegmentIo segIo = ConsoleMenu.getSegmentIo();
         segIo.removeInputParams();
         segIo.removeOutputParams();
         
-        // Ÿ‚Ìƒƒjƒ…[‚Æ‚È‚é InputSettingsMenu ‚ğ•Ô‚·D
+        // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¨ãªã‚‹ InputSettingsMenu ã‚’è¿”ã™ï¼
         return this.inputSeggingsMenu;
     }
     
@@ -110,40 +110,40 @@ public class SystemMenu
     //
     private ConsoleMenu selectStream()
     {
-        // ƒXƒgƒŠ[ƒ€‚ª‘I‘ğ‚³‚ê‚½ê‡C
-        // Ÿ‚Ìƒƒjƒ…[‚Í StreamControlMenu ‚Æ‚È‚éD
+        // ã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒé¸æŠã•ã‚ŒãŸå ´åˆï¼Œ
+        // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¯ StreamControlMenu ã¨ãªã‚‹ï¼
         ConsoleMenu nextMenu = this.streamControlMenu;
         
-        // “®ì’†‚Ì StreamPerformer ‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éD
+        // å‹•ä½œä¸­ã® StreamPerformer ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         List<StreamPerformer> lsPfmr = StreamPerformer.getStreamPerformerList();
         int                   size   = lsPfmr.size();
         if (size > 0) {
-            // ƒŠƒXƒg‚ğˆê——•\¦‚µ‚ÄCƒXƒgƒŠ[ƒ€”Ô†‚Ì“ü—Í‚ğ‘Ò‚ÂD
+            // ãƒªã‚¹ãƒˆã‚’ä¸€è¦§è¡¨ç¤ºã—ã¦ï¼Œã‚¹ãƒˆãƒªãƒ¼ãƒ ç•ªå·ã®å…¥åŠ›ã‚’å¾…ã¤ï¼
             printStreamPerformerList(lsPfmr);
-            int num = selectNumber("ƒXƒgƒŠ[ƒ€”Ô†");
+            int num = selectNumber("ã‚¹ãƒˆãƒªãƒ¼ãƒ ç•ªå·");
             if ((num >= 0) && (num < size)) {
-                // “ü—Í‚³‚ê‚½ƒXƒgƒŠ[ƒ€”Ô†‚Ì StreamPerformer ‚ğæ“¾‚·‚éD
+                // å…¥åŠ›ã•ã‚ŒãŸã‚¹ãƒˆãƒªãƒ¼ãƒ ç•ªå·ã® StreamPerformer ã‚’å–å¾—ã™ã‚‹ï¼
                 StreamPerformer pfmr = lsPfmr.get(num);
                 
-                // Ÿ‚Ìƒƒjƒ…[‚Å‚ ‚é StreamControlMenu ‚Å
-                // æ“¾‚µ‚½ StreamPerformer ‚ğ—˜—p‚Å‚«‚é‚æ‚¤C
-                // ConsoleMenu ‚ÌƒNƒ‰ƒX•Ï”‚Éİ’è‚µ‚Ä‚¨‚­D
+                // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã§ã‚ã‚‹ StreamControlMenu ã§
+                // å–å¾—ã—ãŸ StreamPerformer ã‚’åˆ©ç”¨ã§ãã‚‹ã‚ˆã†ï¼Œ
+                // ConsoleMenu ã®ã‚¯ãƒ©ã‚¹å¤‰æ•°ã«è¨­å®šã—ã¦ãŠãï¼
                 ConsoleMenu.setSelectedStream(pfmr);
             }
             else {
-                // “ü—Í‚³‚ê‚½ƒXƒgƒŠ[ƒ€”Ô†‚Ì StreamPerformer ‚Í–³‚¢D
-                // Ÿ‚Ìƒƒjƒ…[‚Í SystemMenu ‚Ì‚Ü‚ÜD
-                warningPause("ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½D\n");
+                // å…¥åŠ›ã•ã‚ŒãŸã‚¹ãƒˆãƒªãƒ¼ãƒ ç•ªå·ã® StreamPerformer ã¯ç„¡ã„ï¼
+                // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¯ SystemMenu ã®ã¾ã¾ï¼
+                warningPause("ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸï¼\n");
                 nextMenu = this;
             }
         }
         else {
-            // “®ì’†‚Ì StreamPerformer ‚Í–³‚¢D
-            // Ÿ‚Ìƒƒjƒ…[‚Í SystemMenu ‚Ì‚Ü‚ÜD
-            warningPause("‘I‘ğ‚Å‚«‚éƒXƒgƒŠ[ƒ€‚ª‚ ‚è‚Ü‚¹‚ñD\n");
+            // å‹•ä½œä¸­ã® StreamPerformer ã¯ç„¡ã„ï¼
+            // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¯ SystemMenu ã®ã¾ã¾ï¼
+            warningPause("é¸æŠã§ãã‚‹ã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒã‚ã‚Šã¾ã›ã‚“ï¼\n");
             nextMenu = this;
         }
-        // Ÿ‚Ìƒƒjƒ…[‚ğ•Ô‚·D
+        // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’è¿”ã™ï¼
         return nextMenu;
     }
     
@@ -158,12 +158,12 @@ public class SystemMenu
             
             print("\n");
             print(
-                "–ƒXƒgƒŠ[ƒ€[%s] ````````````````````````````\n",
+                "ï¼Šã‚¹ãƒˆãƒªãƒ¼ãƒ [%s] ã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œ\n",
                 Integer.toString(i)
             );
-            printIoParamList("“ü—Íİ’è", segIo.getInputParamList());
-            printIoParamList("o—Íİ’è", segIo.getOutputParamList());
-            print("````````````````````````````````````\n");
+            printIoParamList("å…¥åŠ›è¨­å®š", segIo.getInputParamList());
+            printIoParamList("å‡ºåŠ›è¨­å®š", segIo.getOutputParamList());
+            print("ã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œã€œ\n");
         }
     }
     
@@ -171,14 +171,14 @@ public class SystemMenu
     //
     private ConsoleMenu showStreamList()
     {
-        // “®ì’†‚Ì StreamPerformer ‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éD
+        // å‹•ä½œä¸­ã® StreamPerformer ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         List<StreamPerformer> lsPfmr = StreamPerformer.getStreamPerformerList();
         int                   size   = lsPfmr.size();
         if (size <= 0) {
-            warningPause("ƒXƒgƒŠ[ƒ€‚ª‚ ‚è‚Ü‚¹‚ñD\n");
+            warningPause("ã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒã‚ã‚Šã¾ã›ã‚“ï¼\n");
             return this;
         }
-        // æ“¾‚µ‚½ƒŠƒXƒg‚ğ•\¦‚·‚éD
+        // å–å¾—ã—ãŸãƒªã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ï¼
         printStreamPerformerList(lsPfmr);
         pause();
         
@@ -189,8 +189,8 @@ public class SystemMenu
     //
     private ConsoleMenu exit()
     {
-        // Ÿ‚Ìƒƒjƒ…[‚Í–³‚¢D
-        // ConsoleMenu ‚É‚æ‚éˆ—‚ÌI—¹‚ğ¦‚· null ‚ğ•Ô‚·D
+        // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¯ç„¡ã„ï¼
+        // ConsoleMenu ã«ã‚ˆã‚‹å‡¦ç†ã®çµ‚äº†ã‚’ç¤ºã™ null ã‚’è¿”ã™ï¼
         return null;
     }
 }

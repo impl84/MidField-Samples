@@ -38,12 +38,12 @@ public class ImageSender
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
     
-    // ƒfƒXƒNƒgƒbƒvƒCƒ[ƒW‚ğƒLƒƒƒvƒ`ƒƒ‚·‚éÛ‚ÌƒtƒŒ[ƒ€ƒŒ[ƒg
-    // i’l‚Í 2.0/4.0/8.0/16.0 ‚Ì‚¢‚¸‚ê‚©Dj
+    // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ã‚­ãƒ£ãƒ—ãƒãƒ£ã™ã‚‹éš›ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆ
+    // ï¼ˆå€¤ã¯ 2.0/4.0/8.0/16.0 ã®ã„ãšã‚Œã‹ï¼ï¼‰
     private static final double DEF_FRAME_RATE = 4.0;
     
-    private static final String STR_FILTER_NOT_FOUND   = "“KØ‚ÈƒfƒXƒNƒgƒbƒvƒLƒƒƒvƒ`ƒƒƒtƒBƒ‹ƒ^‚ª‚ ‚è‚Ü‚¹‚ñD";
-    private static final String STR_NO_SUITABLE_FORMAT = "“KØ‚ÈƒLƒƒƒvƒ`ƒƒƒtƒH[ƒ}ƒbƒg‚ª‚ ‚è‚Ü‚¹‚ñD";
+    private static final String STR_FILTER_NOT_FOUND   = "é©åˆ‡ãªãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚­ãƒ£ãƒ—ãƒãƒ£ãƒ•ã‚£ãƒ«ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“ï¼";
+    private static final String STR_NO_SUITABLE_FORMAT = "é©åˆ‡ãªã‚­ãƒ£ãƒ—ãƒãƒ£ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒã‚ã‚Šã¾ã›ã‚“ï¼";
     
 // =============================================================================
 // INSTANCE VARIABLE:
@@ -107,25 +107,25 @@ public class ImageSender
     {
         this.server = server;
         
-        // ƒfƒXƒNƒgƒbƒvƒCƒ[ƒWƒLƒƒƒvƒ`ƒƒ—p DeviceInfo ‚ğæ“¾‚·‚éD
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚­ãƒ£ãƒ—ãƒãƒ£ç”¨ DeviceInfo ã‚’å–å¾—ã™ã‚‹ï¼
         DeviceInfo devInf = getDesktopImageSource();
         // SystemException
         
-        // “KØ‚ÈƒtƒH[ƒ}ƒbƒg‚ğæ“¾‚·‚éD
+        // é©åˆ‡ãªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         StreamFormat capFmt = getSuitableCaptureFormat(devInf);
         // SystemException
         
-        // “ü—ÍƒfƒoƒCƒX‚Å SegmentIo ‚Ì“ü—Í‚ğ\¬‚·‚éD
+        // å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ã§ SegmentIo ã®å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
         SegmentIo segIo = new SegmentIo();
         segIo.configureInputDevice(devInf, capFmt, null, null);
         
-        // o—Í‰Â”\‚ÈƒtƒH[ƒ}ƒbƒgî•ñƒŠƒXƒg‚ğæ“¾‚·‚éD
+        // å‡ºåŠ›å¯èƒ½ãªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         List<StreamFormat> lsOutFmt = segIo.getOutputVideoFormatList();
         
-        // o—ÍƒtƒH[ƒ}ƒbƒgî•ñ‚ğæ“¾‚·‚éDi‚±‚±‚Å‚ÍÅ‰‚Ì—v‘f‚ğ‘I‘ğj
+        // å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ï¼ï¼ˆã“ã“ã§ã¯æœ€åˆã®è¦ç´ ã‚’é¸æŠï¼‰
         VideoFormat outFmt = (VideoFormat)lsOutFmt.get(0);
         
-        // SegmentIo ‚Ìo—Í‚ğİ’è‚·‚éD
+        // SegmentIo ã®å‡ºåŠ›ã‚’è¨­å®šã™ã‚‹ï¼
         ProtocolType   type = ProtocolType.TCP;
         ConnectionMode mode = ConnectionMode.PASSIVE;
         
@@ -133,7 +133,7 @@ public class ImageSender
         segIo.setTransportProtocol(type, mode);
         segIo.setPrivateOutput(true);
         
-        // Stream Performer ‚Ì¶¬‚Æ“üo—Íˆ—‚ÌŠJnD
+        // Stream Performer ã®ç”Ÿæˆã¨å…¥å‡ºåŠ›å‡¦ç†ã®é–‹å§‹ï¼
         setupPerformer(segIo);
         // SystemException, StreamException
     }
@@ -168,7 +168,7 @@ public class ImageSender
         DeviceInfoManager devMgr    = DeviceInfoManager.getInstance();
         DeviceInfo        dskImgSrc = devMgr.getDefaultDesktopImageSource();
         if (dskImgSrc == null) {
-            // IOƒfƒoƒCƒXƒŠƒXƒg‚Ì’†‚ÉƒtƒBƒ‹ƒ^‚ª–³‚¢D
+            // IOãƒ‡ãƒã‚¤ã‚¹ãƒªã‚¹ãƒˆã®ä¸­ã«ãƒ•ã‚£ãƒ«ã‚¿ãŒç„¡ã„ï¼
             throw new SystemException(STR_FILTER_NOT_FOUND);
         }
         return dskImgSrc;
@@ -181,7 +181,7 @@ public class ImageSender
     {
         StreamFormat fmt = null;
         
-        // æ“¾‚µ‚½ƒtƒŒ[ƒ€ƒŒ[ƒg‚ÌƒtƒH[ƒ}ƒbƒg‚ğ’T‚·D
+        // å–å¾—ã—ãŸãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æ¢ã™ï¼
         List<StreamFormat> lsStmFmt = devInf.getOutputFormatList();
         for (StreamFormat stmFmt : lsStmFmt) {
             if ((stmFmt instanceof VideoFormat) == false) {
@@ -191,13 +191,13 @@ public class ImageSender
             VideoFormat vidFmt    = (VideoFormat)stmFmt;
             double      frameRate = vidFmt.getFrameRate();
             if (frameRate == DEF_FRAME_RATE) {
-                // “KØ‚ÈƒtƒH[ƒ}ƒbƒg‚ª‘¶İ‚·‚éê‡F
+                // é©åˆ‡ãªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒå­˜åœ¨ã™ã‚‹å ´åˆï¼š
                 fmt = vidFmt;
                 break;
             }
         }
         if (fmt == null) {
-            // “KØ‚ÈƒtƒH[ƒ}ƒbƒg‚ª‘¶İ‚µ‚È‚¢ê‡F
+            // é©åˆ‡ãªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒå­˜åœ¨ã—ãªã„å ´åˆï¼š
             throw new SystemException(STR_NO_SUITABLE_FORMAT);
         }
         return fmt;
@@ -211,18 +211,18 @@ public class ImageSender
     {
         this.pfmr = null;
         try {
-            // SegmentIo ‚ğ‚à‚Æ‚ÉCStream Performer ‚ğ¶¬‚·‚éD
+            // SegmentIo ã‚’ã‚‚ã¨ã«ï¼ŒStream Performer ã‚’ç”Ÿæˆã™ã‚‹ï¼
             this.pfmr = StreamPerformer.newInstance(segIo);
             // SystemException,StreamException
             
-            // ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ StreamEventListener ‚Æ‚µ‚Ä“o˜^‚·‚éD
+            // ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ StreamEventListener ã¨ã—ã¦ç™»éŒ²ã™ã‚‹ï¼
             this.pfmr.addStreamEventListener(this);
             
-            // “üo—Íˆ—‚ğŠJn‚·‚éD
+            // å…¥å‡ºåŠ›å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             this.pfmr.open();		// StreamException
             this.pfmr.start();		// StreamException
             
-            // SegmentIo ‚©‚ço—Íƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚éD
+            // SegmentIo ã‹ã‚‰å‡ºåŠ›ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹ï¼
             segIo = this.pfmr.getSegmentIo();
             List<IoParam> lsOutPrm = segIo.getOutputParamList();
             this.outParam = lsOutPrm.get(0);
@@ -277,8 +277,8 @@ public class ImageSender
     private void evHn_FlowUpdate(FlowUpdateEvent ev)
     {
         if (ev.getPerformerInfo().isActive() == false) {
-            // óMƒXƒgƒŠ[ƒ€‚ªk‘Ş‚µ‚½‚Ì‚ÅC
-            // ƒfƒXƒNƒgƒbƒvƒLƒƒƒvƒ`ƒƒˆ—‚ğI—¹‚³‚¹‚éD
+            // å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒç¸®é€€ã—ãŸã®ã§ï¼Œ
+            // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚­ãƒ£ãƒ—ãƒãƒ£å‡¦ç†ã‚’çµ‚äº†ã•ã›ã‚‹ï¼
             this.server.stopControl();
         }
     }

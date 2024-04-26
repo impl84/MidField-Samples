@@ -37,9 +37,9 @@ class ServerAddressPanel
     // - PACKAGE CONSTANT VALUE ------------------------------------------------
     static enum ConnectionState
     {
-        IDLE,           // ƒAƒCƒhƒ‹ó‘Ô
-        CONNECTING,     // ƒRƒlƒNƒVƒ‡ƒ“Šm—§ˆ—ó‘Ô
-        CONTROLLING     // §Œäó‘Ô
+        IDLE,           // ã‚¢ã‚¤ãƒ‰ãƒ«çŠ¶æ…‹
+        CONNECTING,     // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç¢ºç«‹å‡¦ç†çŠ¶æ…‹
+        CONTROLLING     // åˆ¶å¾¡çŠ¶æ…‹
     }
     
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
@@ -226,15 +226,15 @@ class ServerAddressPanel
     //
     void evHn_StartControl()
     {
-        // Ú‘±æƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+        // æ¥ç¶šå…ˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
         String address = getSelectedAddress();
         if (address == null) {
             return;
         }
-        // ƒRƒlƒNƒVƒ‡ƒ“ƒAƒhƒŒƒXƒpƒlƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éD
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ï¼
         setState(ConnectionState.CONNECTING);
         
-        // RPCƒNƒ‰ƒCƒAƒ“ƒg‚Ìˆ—‚ğŠJn‚·‚éD
+        // RPCã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
         this.remocon.startRemoteControl(address);
     }
     
@@ -244,19 +244,19 @@ class ServerAddressPanel
     {
         String dstAddr = this.addrFld.getText();
         if ((dstAddr == null) || (dstAddr.length() == 0)) {
-            // ƒAƒhƒŒƒX‚ª“ü—Í‚³‚ê‚Ä‚¢‚È‚¢D
+            // ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒå…¥åŠ›ã•ã‚Œã¦ã„ãªã„ï¼
             PopupMessage.warning(this.remocon, STR_PLEASE_INPUT);
             dstAddr = null;
             return dstAddr;
         }
-        // “ü—Í‚³‚ê‚½ƒAƒhƒŒƒX‚ğŠm”F‚·‚éD
+        // å…¥åŠ›ã•ã‚ŒãŸã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ç¢ºèªã™ã‚‹ï¼
         try {
             InetAddress.getByName(dstAddr);
             // UnknownHostException
             return dstAddr;
         }
         catch (UnknownHostException ex) {
-            // “ü—Í‚³‚ê‚½ƒAƒhƒŒƒX‚ª•s³D
+            // å…¥åŠ›ã•ã‚ŒãŸã‚¢ãƒ‰ãƒ¬ã‚¹ãŒä¸æ­£ï¼
             PopupMessage.warning(
                 this.remocon, String.format(STR_INVALID_ADDR, dstAddr)
             );
@@ -269,7 +269,7 @@ class ServerAddressPanel
     //
     void evHn_StopControl()
     {
-        // RPCƒNƒ‰ƒCƒAƒ“ƒg‚Ìˆ—‚ğ’â~‚·‚éD
+        // RPCã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®å‡¦ç†ã‚’åœæ­¢ã™ã‚‹ï¼
         this.remocon.stopRemoteControl();
     }
 }

@@ -23,51 +23,51 @@ public class NetworkToNetwork
         StreamPerformer pfmr = null;
         
         try {
-            // ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚©‚ç‘—MŒ³‚ÌIPƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+            // ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°ã‹ã‚‰é€ä¿¡å…ƒã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             var senderAddr = args[0];
             
-            // ¥MidField System ‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğ‹N“®‚·‚éD
+            // â–¼MidField System ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’èµ·å‹•ã™ã‚‹ï¼
             var mfsApp = MfsApplication.launch();
             
-            // ¥óMƒXƒgƒŠ[ƒ€‚Å“ü—Í‚ğ\¬‚·‚éD
-            // E‘—MŒ³‚ª‘—M‚µ‚Ä‚¢‚éƒXƒgƒŠ[ƒ€‚ğ‘I‘ğ‚µ‚Äİ’è‚·‚éD
+            // â–¼å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+            // ãƒ»é€ä¿¡å…ƒãŒé€ä¿¡ã—ã¦ã„ã‚‹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é¸æŠã—ã¦è¨­å®šã™ã‚‹ï¼
             var stmInfMgr = StreamInfoManager.getInstance();
             var lsStmInf  = stmInfMgr.fetchSourceStreamInfoList(senderAddr);
             if (lsStmInf.size() <= 0) {
-                System.out.println("¦óM‰Â”\‚ÈƒXƒgƒŠ[ƒ€‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»å—ä¿¡å¯èƒ½ãªã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             var segIo = new SegmentIo();
             segIo.configureIncomingStream(lsStmInf.get(0));
             
-            // ¥‘—MƒXƒgƒŠ[ƒ€‚Åo—Í‚ğ\¬‚·‚éD
-            // E‘—MƒtƒH[ƒ}ƒbƒg‚ğ‘I‘ğ‚µ‚Äİ’è‚·‚éD
-            // ETCP‚ğ—˜—p‚µCƒRƒlƒNƒVƒ‡ƒ“Ú‘±—v‹‚ğó‚¯“ü‚ê‚éD
-            // E„§ƒvƒŒƒrƒ…[ƒ\‚ğ—˜—p‚·‚éD
+            // â–¼é€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+            // ãƒ»é€ä¿¡ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’é¸æŠã—ã¦è¨­å®šã™ã‚‹ï¼
+            // ãƒ»TCPã‚’åˆ©ç”¨ã—ï¼Œã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ¥ç¶šè¦æ±‚ã‚’å—ã‘å…¥ã‚Œã‚‹ï¼
+            // ãƒ»æ¨å¥¨ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ãƒ¯â€”ã‚’åˆ©ç”¨ã™ã‚‹ï¼
             var lsVidFmt = segIo.getOutputVideoFormatList();
             if (lsVidFmt.size() <= 0) {
-                System.out.println("¦‘—M‰Â”\‚ÈƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»é€ä¿¡å¯èƒ½ãªãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             var lsAudFmt = segIo.getOutputAudioFormatList();
             if (lsAudFmt.size() <= 0) {
-                System.out.println("¦‘—M‰Â”\‚ÈƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»é€ä¿¡å¯èƒ½ãªã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             segIo.configureOutgoingStream(lsVidFmt.get(0), lsAudFmt.get(0));
             segIo.setTransportProtocol(ProtocolType.TCP, ConnectionMode.PASSIVE);
             segIo.setPreferredPreviewer();
             
-            // ¥StreamPerformer ‚ğ¶¬‚µCUI‚Ö’Ç‰Á‚·‚éD
+            // â–¼StreamPerformer ã‚’ç”Ÿæˆã—ï¼ŒUIã¸è¿½åŠ ã™ã‚‹ï¼
             pfmr = StreamPerformer.newInstance(segIo);
             mfsApp.addStreamPerformer(pfmr);
             
-            // ¥StreamPerformer ‚Ì“üo—Íˆ—‚ğŠJn‚·‚éD
+            // â–¼StreamPerformer ã®å…¥å‡ºåŠ›å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             pfmr.open();
             pfmr.start();
             
-            // ¥StreamPerformer ‚Ì“üo—Íˆ—‚ğI—¹‚·‚éD
-            System.out.print("> Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚¿‚Ü‚·D");
+            // â–¼StreamPerformer ã®å…¥å‡ºåŠ›å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
+            System.out.print("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼");
             System.in.read();
             
             pfmr.stop();
@@ -80,7 +80,7 @@ public class NetworkToNetwork
             ex.printStackTrace();
         }
         finally {
-            // ¥StreamPerformer ‚Ì‘S‚Ä‚Ìˆ—‚ğI—¹‚·‚éD
+            // â–¼StreamPerformer ã®å…¨ã¦ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (pfmr != null) {
                 pfmr.delete();
             }

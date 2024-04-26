@@ -44,15 +44,15 @@ class CommandParser
     //
     CommandParser()
     {
-        // ƒRƒ}ƒ“ƒh‚ğ RequestObject ƒCƒ“ƒXƒ^ƒ“ƒX‚É•ÏŠ·‚·‚é‚½‚ß‚Ì
-        // ƒp[ƒTƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éD
+        // ã‚³ãƒãƒ³ãƒ‰ã‚’ RequestObject ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«å¤‰æ›ã™ã‚‹ãŸã‚ã®
+        // ãƒ‘ãƒ¼ã‚µã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
         CltMfsNode           cltMfsNode = new CltMfsNode();
         CltDeviceInfoManager cltDiMgr   = new CltDeviceInfoManager();
         CltStreamInfoManager cltSiMgr   = new CltStreamInfoManager();
         CltSegmentIo         cltSegIo   = new CltSegmentIo();
         CltStreamPerformer   cltStmPfmr = new CltStreamPerformer();
         
-        // ƒp[ƒTƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ”z—ñ‚É‚·‚éD
+        // ãƒ‘ãƒ¼ã‚µã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’é…åˆ—ã«ã™ã‚‹ï¼
         Object[] parserInstanceArray = {
             cltMfsNode,
             cltDiMgr,
@@ -60,11 +60,11 @@ class CommandParser
             cltSegIo,
             cltStmPfmr,
         };
-        // ƒp[ƒT—pƒƒ\ƒbƒh–¼‚ğƒL[‚Æ‚µC
-        // InvocableMethod ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ’l‚Æ‚·‚éƒ}ƒbƒv‚ğ¶¬‚·‚éD
+        // ãƒ‘ãƒ¼ã‚µç”¨ãƒ¡ã‚½ãƒƒãƒ‰åã‚’ã‚­ãƒ¼ã¨ã—ï¼Œ
+        // InvocableMethod ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å€¤ã¨ã™ã‚‹ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.methodMap = new TreeMap<String, InvocableMethod>();
         
-        // ƒp[ƒTƒNƒ‰ƒX‚Ìƒƒ\ƒbƒh‚ğƒ}ƒbƒv‚É“o˜^‚·‚éD
+        // ãƒ‘ãƒ¼ã‚µã‚¯ãƒ©ã‚¹ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ãƒãƒƒãƒ—ã«ç™»éŒ²ã™ã‚‹ï¼
         for (int i = 0; i < parserInstanceArray.length; i++) {
             registerMethod(parserInstanceArray[i], this.methodMap);
         }
@@ -84,30 +84,30 @@ class CommandParser
         throws InvocationTargetException,
             IllegalAccessException
     {
-        // ƒRƒ}ƒ“ƒh‚ğƒZƒpƒŒ[ƒ^‚Å‹æØ‚èC•¶š—ñ‚Ì”z—ñ‚É‚·‚éD
+        // ã‚³ãƒãƒ³ãƒ‰ã‚’ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã§åŒºåˆ‡ã‚Šï¼Œæ–‡å­—åˆ—ã®é…åˆ—ã«ã™ã‚‹ï¼
         String[] args = command.split(ARG_SEPARATOR);
         if ((args == null) || (args.length < 1)) {
-            // RPC—v‹‚É•ÏŠ·‚Å‚«‚éî•ñ‚Í–³‚¢‚ªC
-            // RequestObject ‚ğ¶¬‚µC
-            // ‚»‚ê‚ğRPC—v‹(JSON•¶š—ñ)‚É•ÏŠ·‚µ‚Ä–ß‚éD
+            // RPCè¦æ±‚ã«å¤‰æ›ã§ãã‚‹æƒ…å ±ã¯ç„¡ã„ãŒï¼Œ
+            // RequestObject ã‚’ç”Ÿæˆã—ï¼Œ
+            // ãã‚Œã‚’RPCè¦æ±‚(JSONæ–‡å­—åˆ—)ã«å¤‰æ›ã—ã¦æˆ»ã‚‹ï¼
             RequestObject rpcReq = requestNothing();
             return rpcReq;
         }
-        // ƒRƒ}ƒ“ƒh“à‚Ìƒƒ\ƒbƒh–¼‚É‘Î‰‚·‚é InvocableMethod ƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚éD
+        // ã‚³ãƒãƒ³ãƒ‰å†…ã®ãƒ¡ã‚½ãƒƒãƒ‰åã«å¯¾å¿œã™ã‚‹ InvocableMethod ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
         String          methodName = args[0];
         InvocableMethod method     = this.methodMap.get(methodName);
         if (method == null) {
-            // ƒƒ\ƒbƒh–¼‚©‚çƒƒ\ƒbƒhƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚Å‚«‚È‚¢‚ªC
-            // RequestObject ‚ğ¶¬‚µC
-            // ‚»‚ê‚ğRPC—v‹(JSON•¶š—ñ)‚É•ÏŠ·‚µ‚Ä–ß‚éD
+            // ãƒ¡ã‚½ãƒƒãƒ‰åã‹ã‚‰ãƒ¡ã‚½ãƒƒãƒ‰ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã§ããªã„ãŒï¼Œ
+            // RequestObject ã‚’ç”Ÿæˆã—ï¼Œ
+            // ãã‚Œã‚’RPCè¦æ±‚(JSONæ–‡å­—åˆ—)ã«å¤‰æ›ã—ã¦æˆ»ã‚‹ï¼
             RequestObject rpcReq = unknownMethod(methodName);
             return rpcReq;
         }
-        // ‘Î‰‚·‚éƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µCRPC—v‹‚ğ¶¬‚·‚éD
+        // å¯¾å¿œã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ï¼ŒRPCè¦æ±‚ã‚’ç”Ÿæˆã™ã‚‹ï¼
         RequestObject rpcReq = (RequestObject)method.invoke(args);
         // InvocationTargetException, IllegalAccessException
         
-        // RPC—v‹‚ğ•Ô‚·D
+        // RPCè¦æ±‚ã‚’è¿”ã™ï¼
         return rpcReq;
     }
     
@@ -119,48 +119,48 @@ class CommandParser
     //
     private void registerMethod(Object parserObject, Map<String, InvocableMethod> map)
     {
-        // ƒp[ƒTƒIƒuƒWƒFƒNƒg‚ÌƒNƒ‰ƒXƒIƒuƒWƒFƒNƒg‚ğæ“¾‚·‚éD
+        // ãƒ‘ãƒ¼ã‚µã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¯ãƒ©ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         Class<?> parserClass = parserObject.getClass();
         
-        // ƒp[ƒTƒNƒ‰ƒX“à‚Ìƒƒ\ƒbƒh‚Ì”z—ñ‚ğæ“¾‚·‚éD
+        // ãƒ‘ãƒ¼ã‚µã‚¯ãƒ©ã‚¹å†…ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ï¼
         Method[] methods = parserClass.getMethods();
         
-        // ƒp[ƒTƒNƒ‰ƒX“à‚Ìƒƒ\ƒbƒh‚ğ‘–¸‚·‚éD
+        // ãƒ‘ãƒ¼ã‚µã‚¯ãƒ©ã‚¹å†…ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’èµ°æŸ»ã™ã‚‹ï¼
         for (int i = 0; i < methods.length; i++) {
-            // ‚±‚Ìƒƒ\ƒbƒh‚ªC—^‚¦‚ç‚ê‚½ƒp[ƒTƒNƒ‰ƒX“à‚Å’è‹`‚³‚ê‚Ä‚¢‚é
-            // ƒƒ\ƒbƒh‚Å‚ ‚é‚±‚Æ‚ğŠm”F‚·‚éD
+            // ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒï¼Œä¸ãˆã‚‰ã‚ŒãŸãƒ‘ãƒ¼ã‚µã‚¯ãƒ©ã‚¹å†…ã§å®šç¾©ã•ã‚Œã¦ã„ã‚‹
+            // ãƒ¡ã‚½ãƒƒãƒ‰ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹ï¼
             Class<?> declaringClass = methods[i].getDeclaringClass();
             if (parserClass.equals(declaringClass) == false) {
                 continue;
             }
-            // ‚±‚Ìƒƒ\ƒbƒh‚ª public ‚Å‚ ‚é‚©‚ğŠm”F‚·‚éD
+            // ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒ public ã§ã‚ã‚‹ã‹ã‚’ç¢ºèªã™ã‚‹ï¼
             if ((methods[i].getModifiers() & Modifier.PUBLIC) != 1) {
                 continue;
             }
-            // ‚±‚Ìƒƒ\ƒbƒh‚ª RequestObject ‚ğ•Ô‚·‚±‚Æ‚ğŠm”F‚·‚éD
+            // ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒ RequestObject ã‚’è¿”ã™ã“ã¨ã‚’ç¢ºèªã™ã‚‹ï¼
             Class<?> returnType = methods[i].getReturnType();
             if (returnType.equals(RequestObject.class) == false) {
                 continue;
             }
-            // ‚±‚Ìƒƒ\ƒbƒh‚Ìˆø”‚ª 1‚Â‚Å‚ ‚é‚±‚Æ‚ğŠm”F‚·‚éD
+            // ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ãŒ 1ã¤ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹ï¼
             Class<?>[] paramTypes = methods[i].getParameterTypes();
             if (paramTypes.length != 1) {
                 continue;
             }
-            // ˆø”‚ÌŒ^‚ª String[] ‚Å‚ ‚é‚±‚Æ‚ğŠm”F‚·‚éD
+            // å¼•æ•°ã®å‹ãŒ String[] ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèªã™ã‚‹ï¼
             Class<?> paramClass = paramTypes[0];
             if (paramClass.equals(String[].class) == false) {
                 continue;
             }
-            // “o˜^‚·‚éƒƒ\ƒbƒh‚ÌƒNƒ‰ƒX–¼‚Æ‚µ‚ÄC
-            // uCltv‚Ån‚Ü‚éƒNƒ‰ƒX–¼‚ÌuCltv(3•¶š)‚ğæ‚èœ‚¢‚½•¶š—ñ‚ğ¶¬‚·‚éD
+            // ç™»éŒ²ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚¯ãƒ©ã‚¹åã¨ã—ã¦ï¼Œ
+            // ã€ŒCltã€ã§å§‹ã¾ã‚‹ã‚¯ãƒ©ã‚¹åã®ã€ŒCltã€(3æ–‡å­—)ã‚’å–ã‚Šé™¤ã„ãŸæ–‡å­—åˆ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
             String name = declaringClass.getSimpleName().substring(3);
             
-            // ƒNƒ‰ƒX–¼•t‚«‚Ìƒƒ\ƒbƒh–¼‚ğ¶¬‚·‚éD
+            // ã‚¯ãƒ©ã‚¹åä»˜ãã®ãƒ¡ã‚½ãƒƒãƒ‰åã‚’ç”Ÿæˆã™ã‚‹ï¼
             name = name.concat(STR_DOT);
             name = name.concat(methods[i].getName());
             
-            // ƒƒ\ƒbƒh‚Æ InvocableMethod ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğƒ}ƒbƒv‚Ö“o˜^‚·‚éD
+            // ãƒ¡ã‚½ãƒƒãƒ‰ã¨ InvocableMethod ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ãƒãƒƒãƒ—ã¸ç™»éŒ²ã™ã‚‹ï¼
             InvocableMethod method = new InvocableMethod(methods[i], parserObject);
             map.put(name, method);
         }
@@ -170,10 +170,10 @@ class CommandParser
     //
     private RequestObject requestNothing()
     {
-        // ƒƒ\ƒbƒh–¼‚ª–³‚¢RPC—v‹‚ğ¶¬‚·‚éD
+        // ãƒ¡ã‚½ãƒƒãƒ‰åãŒç„¡ã„RPCè¦æ±‚ã‚’ç”Ÿæˆã™ã‚‹ï¼
         RequestObject rpcReq = RequestObject.createRequest(null, null);
         
-        // RPC—v‹‚ğ•Ô‚·D
+        // RPCè¦æ±‚ã‚’è¿”ã™ï¼
         return rpcReq;
     }
     
@@ -181,10 +181,10 @@ class CommandParser
     //
     private RequestObject unknownMethod(String methodName)
     {
-        // RPC—v‹‚ğ¶¬‚·‚éD
+        // RPCè¦æ±‚ã‚’ç”Ÿæˆã™ã‚‹ï¼
         RequestObject rpcReq = RequestObject.createRequest(methodName, null);
         
-        // RPC—v‹‚ğ•Ô‚·D
+        // RPCè¦æ±‚ã‚’è¿”ã™ï¼
         return rpcReq;
     }
 }

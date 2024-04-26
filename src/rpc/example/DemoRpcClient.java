@@ -32,41 +32,41 @@ public class DemoRpcClient
     //
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ğƒRƒ“ƒ\[ƒ‹‚Éİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         RpcClient rpcClient = null;
         try {
-            Log.message("> DemoRpcClient: RpcClient ‚Ìˆ—‚ğŠJn‚µ‚Ü‚·D");
+            Log.message("> DemoRpcClient: RpcClient ã®å‡¦ç†ã‚’é–‹å§‹ã—ã¾ã™ï¼");
             
-            // InternalErrorListener ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+            // InternalErrorListener ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
             InternalErrorListener listener = error -> Log.error(error.toString());
             
-            // RpcClient ‚ğ¶¬‚·‚éD
+            // RpcClient ã‚’ç”Ÿæˆã™ã‚‹ï¼
             // (UnknownHostException, IOException)
             rpcClient = new RpcClient(
-                SERVER_NAME,    // RPCƒT[ƒo–¼‚Ü‚½‚ÍIPƒAƒhƒŒƒX
-                SERVER_PORT,    // RPCƒT[ƒo‚Ìƒ|[ƒg”Ô†
-                false,          // JSONƒIƒuƒWƒFƒNƒg(•¶š—ñ)‚ğ®Œ`‚·‚é‚©”Û‚©
-                true,           // JSONƒIƒuƒWƒFƒNƒg(•¶š—ñ)‚ğƒƒOo—Í‚·‚é‚©”Û‚©
+                SERVER_NAME,    // RPCã‚µãƒ¼ãƒåã¾ãŸã¯IPã‚¢ãƒ‰ãƒ¬ã‚¹
+                SERVER_PORT,    // RPCã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·
+                false,          // JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’æ•´å½¢ã™ã‚‹ã‹å¦ã‹
+                true,           // JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ã‹å¦ã‹
                 listener        // InternalErrorListener
             );
-            // RpcClient ‚Ìˆ—‚ğŠJn‚·‚éD
+            // RpcClient ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             rpcClient.open();
             
-            // ƒNƒ‰ƒCƒAƒ“ƒg‘¤‚Ìƒƒ\ƒbƒh‚Ì—á‚ğÀs‚·‚éD
+            // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆå´ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®ä¾‹ã‚’å®Ÿè¡Œã™ã‚‹ï¼
             DemoClientMethod clientMethod = new DemoClientMethod(rpcClient);
             clientMethod.invokeAll();
         }
         catch (Exception ex) {
-            // RpcClient ‚Ì“®ì’†‚É—áŠO‚ª”­¶‚µ‚½D
-            Log.message("> DemoRpcClient: RpcClient ‚ÌÀs’†‚É—áŠO‚ª”­¶‚µ‚Ü‚µ‚½D");
+            // RpcClient ã®å‹•ä½œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸï¼
+            Log.message("> DemoRpcClient: RpcClient ã®å®Ÿè¡Œä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸï¼");
             ex.printStackTrace();
         }
         finally {
-            // RpcClient ‚Ìˆ—‚ğI—¹‚·‚éD
+            // RpcClient ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (rpcClient != null) {
-                Log.message("> DemoRpcClient: RpcClient ‚Ìˆ—‚ğI—¹‚µ‚Ü‚·D");
+                Log.message("> DemoRpcClient: RpcClient ã®å‡¦ç†ã‚’çµ‚äº†ã—ã¾ã™ï¼");
                 rpcClient.close();
             }
         }

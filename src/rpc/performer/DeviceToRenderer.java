@@ -19,49 +19,49 @@ public class DeviceToRenderer
 {
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ğƒRƒ“ƒ\[ƒ‹‚Éİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         MfsRemote       mfsRmt = null;
         StreamPerformer pfmr   = null;
         
         try {
-            // ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚©‚çƒT[ƒo‚ÌIPƒAƒhƒŒƒX‚Æƒ|[ƒg”Ô†‚ğæ“¾‚·‚éD
+            // ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°ã‹ã‚‰ã‚µãƒ¼ãƒã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ï¼
             var serverAddr = args[0];
             int serverPort = Integer.parseInt(args[1]);
             
-            // ¥ƒT[ƒo‚ÆÚ‘±‚µC‰“Šu‘€ì‚ğŠJn‚·‚éD
+            // â–¼ã‚µãƒ¼ãƒã¨æ¥ç¶šã—ï¼Œé éš”æ“ä½œã‚’é–‹å§‹ã™ã‚‹ï¼
             mfsRmt = new MfsRemote(serverAddr, serverPort, err -> System.err.println(err));
             mfsRmt.initializeRemoteControl();
             
-            // ¥ƒrƒfƒI‚ÆƒI[ƒfƒBƒIƒfƒoƒCƒX‚Å“ü—Í‚ğ\¬‚·‚éD
-            // E“ü—ÍƒfƒoƒCƒX‚ğ‘I‘ğ‚µ‚Äİ’è‚·‚éD
+            // â–¼ãƒ“ãƒ‡ã‚ªã¨ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ‡ãƒã‚¤ã‚¹ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+            // ãƒ»å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ã‚’é¸æŠã—ã¦è¨­å®šã™ã‚‹ï¼
             var devInfMgr = mfsRmt.getDeviceInfoManager();
             
             var lsVidDev = devInfMgr.getVideoInputDeviceInfoList();
             if (lsVidDev.size() <= 0) {
-                System.out.println("¦—˜—p‰Â”\‚ÈƒrƒfƒI“ü—ÍƒfƒoƒCƒX‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»åˆ©ç”¨å¯èƒ½ãªãƒ“ãƒ‡ã‚ªå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             var lsAudDev = devInfMgr.getAudioInputDeviceInfoList();
             if (lsAudDev.size() <= 0) {
-                System.out.println("¦—˜—p‰Â”\‚ÈƒI[ƒfƒBƒI“ü—ÍƒfƒoƒCƒX‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»åˆ©ç”¨å¯èƒ½ãªã‚ªãƒ¼ãƒ‡ã‚£ã‚ªå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             var segIo = mfsRmt.newSegmentIo();
             segIo.configureInputDevice(lsVidDev.get(0), lsAudDev.get(0));
             
-            // ¥„§ƒŒƒ“ƒ_ƒ‰‚Åo—Í‚ğ\¬‚·‚éD
+            // â–¼æ¨å¥¨ãƒ¬ãƒ³ãƒ€ãƒ©ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
             segIo.configurePreferredRenderer();
             
-            // ¥RcStreamPerformer ‚ğ¶¬‚·‚éD
+            // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã™ã‚‹ï¼
             pfmr = mfsRmt.newStreamPerformer(segIo);
             
-            // ¥RcStreamPerformer ‚Ì“üo—Íˆ—‚ğŠJn‚·‚éD
+            // â–¼RcStreamPerformer ã®å…¥å‡ºåŠ›å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             pfmr.start();
             
-            // ¥RcStreamPerformer ‚Ì“üo—Íˆ—‚ğI—¹‚·‚éD
-            System.out.print("> Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚¿‚Ü‚·D");
+            // â–¼RcStreamPerformer ã®å…¥å‡ºåŠ›å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
+            System.out.print("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼");
             System.in.read();
             
             pfmr.stop();
@@ -73,11 +73,11 @@ public class DeviceToRenderer
             ex.printStackTrace();
         }
         finally {
-            // ¥RcStreamPerformer ‚Ì‘S‚Ä‚Ìˆ—‚ğI—¹‚·‚éD
+            // â–¼RcStreamPerformer ã®å…¨ã¦ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (pfmr != null) {
                 pfmr.delete();
             }
-            // ¥ƒT[ƒo‚ÆØ’f‚µC‰“Šu‘€ì‚ğI—¹‚·‚éD
+            // â–¼ã‚µãƒ¼ãƒã¨åˆ‡æ–­ã—ï¼Œé éš”æ“ä½œã‚’çµ‚äº†ã™ã‚‹ï¼
             if (mfsRmt != null) {
                 mfsRmt.shutdownRemoteControl();
             }

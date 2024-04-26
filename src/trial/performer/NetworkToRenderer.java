@@ -28,47 +28,47 @@ public class NetworkToRenderer
 {
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ğƒRƒ“ƒ\[ƒ‹‚Éİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         MfsNode         mfs  = null;
         StreamPerformer pfmr = null;
         
         try {
-            // ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚©‚ç‘—MŒ³‚ÌIPƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+            // ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°ã‹ã‚‰é€ä¿¡å…ƒã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             String senderAddr = args[0];
             
-            // ¥MidField System ‚ğ‰Šú‰»‚µC‹N“®‚·‚éD
+            // â–¼MidField System ã‚’åˆæœŸåŒ–ã—ï¼Œèµ·å‹•ã™ã‚‹ï¼
             mfs = MfsNode.initialize();
             mfs.activate();
             
-            // ¥óMƒXƒgƒŠ[ƒ€‚Å“ü—Í‚ğ\¬‚·‚éD
-            // E‘—MŒ³‚ª‘—M‚µ‚Ä‚¢‚éƒXƒgƒŠ[ƒ€‚ğ‘I‘ğ‚µ‚Äİ’è‚·‚éD
+            // â–¼å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+            // ãƒ»é€ä¿¡å…ƒãŒé€ä¿¡ã—ã¦ã„ã‚‹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é¸æŠã—ã¦è¨­å®šã™ã‚‹ï¼
             StreamInfoManager stmInfMgr = StreamInfoManager.getInstance();
             List<StreamInfo>  lsStmInf  = stmInfMgr.fetchSourceStreamInfoList(senderAddr);
             if (lsStmInf.size() <= 0) {
-                System.out.println("¦óM‰Â”\‚ÈƒXƒgƒŠ[ƒ€‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»å—ä¿¡å¯èƒ½ãªã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             SegmentIo segIo = new SegmentIo();
             segIo.configureIncomingStream(lsStmInf.get(0));
             
-            // ¥o—Í‚ğƒŒƒ“ƒ_ƒ‰‚Æ‚µ‚Ä\¬‚·‚éD
+            // â–¼å‡ºåŠ›ã‚’ãƒ¬ãƒ³ãƒ€ãƒ©ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
             segIo.configureRenderer();
             
-            // ¥StreamPerformer ‚ğ¶¬‚µC‚»‚Ì“à•”‚É‚ ‚é VideoCanvas ‚ğæ‚èo‚·D
-            //   ‚»‚ÌŒãCVideoCanvas ‚ğ•\¦‚·‚é‚½‚ß‚Ì SimpleViewer ‚ğ¶¬‚µ‚Ä•\¦‚·‚éD
+            // â–¼StreamPerformer ã‚’ç”Ÿæˆã—ï¼Œãã®å†…éƒ¨ã«ã‚ã‚‹ VideoCanvas ã‚’å–ã‚Šå‡ºã™ï¼
+            //   ãã®å¾Œï¼ŒVideoCanvas ã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã® SimpleViewer ã‚’ç”Ÿæˆã—ã¦è¡¨ç¤ºã™ã‚‹ï¼
             pfmr = StreamPerformer.newInstance(segIo);
             VideoCanvas vidCvs = pfmr.getVideoCanvas();
             SwingUtilities.invokeAndWait(() -> {
                 new SimpleViewer("Network to Renderer", vidCvs);
             });
-            // ¥StreamPerformer ‚Ì“üo—Íˆ—‚ğŠJn‚·‚éD
+            // â–¼StreamPerformer ã®å…¥å‡ºåŠ›å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             pfmr.open();
             pfmr.start();
             
-            // ¥StreamPerformer ‚Ì“üo—Íˆ—‚ğI—¹‚·‚éD
-            System.out.print("> Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚¿‚Ü‚·D");
+            // â–¼StreamPerformer ã®å…¥å‡ºåŠ›å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
+            System.out.print("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼");
             System.in.read();
             
             pfmr.stop();
@@ -81,11 +81,11 @@ public class NetworkToRenderer
             ex.printStackTrace();
         }
         finally {
-            // ¥StreamPerformer ‚Ì‘S‚Ä‚Ìˆ—‚ğI—¹‚·‚éD
+            // â–¼StreamPerformer ã®å…¨ã¦ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (pfmr != null) {
                 pfmr.delete();
             }
-            // ¥MidField System ‚ğI—¹‚·‚éD
+            // â–¼MidField System ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (mfs != null) {
                 mfs.shutdown();
             }

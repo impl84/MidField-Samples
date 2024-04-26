@@ -54,7 +54,7 @@ class NetworkToRendererEx
     void configureInput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException
     {
-        // SegmentIo ‚Ì“ü—Í‚ğóMƒXƒgƒŠ[ƒ€‚Æ‚µ‚Ä\¬‚·‚éD
+        // SegmentIo ã®å…¥åŠ›ã‚’å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         cfgTool.configureIncomingStream(segIo);
         // IOException
     }
@@ -66,7 +66,7 @@ class NetworkToRendererEx
     void configureOutput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException
     {
-        // SegmentIo ‚Ìo—Í‚ğƒŒƒ“ƒ_ƒ‰‚Æ‚µ‚Ä\¬‚·‚éD
+        // SegmentIo ã®å‡ºåŠ›ã‚’ãƒ¬ãƒ³ãƒ€ãƒ©ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         cfgTool.configureRenderer(segIo);
         // IOException
     }

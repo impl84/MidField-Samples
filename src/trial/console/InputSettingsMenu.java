@@ -23,15 +23,15 @@ public class InputSettingsMenu
         ConsoleMenu
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String MENU_TITLE  = " ƒVƒXƒeƒ€ ¡“ü—Íİ’è  o—Íİ’è  ƒXƒgƒŠ[ƒ€‘€ì";
+    private static final String MENU_TITLE  = "â–¡ã‚·ã‚¹ãƒ†ãƒ  â– å…¥åŠ›è¨­å®š â–¡å‡ºåŠ›è¨­å®š â–¡ã‚¹ãƒˆãƒªãƒ¼ãƒ æ“ä½œ";
     private static final String MENU_PROMPT = " in";
     
-    private static final String ADD_CAPTURE_DEVICE         = "“ü—ÍƒfƒoƒCƒX’Ç‰Á";
-    private static final String REFRESH_SOURCE_STREAM_INFO = "óMƒXƒgƒŠ[ƒ€î•ñûW";
-    private static final String CONFIGURE_INCOMING_STREAM  = "óMƒXƒgƒŠ[ƒ€’Ç‰Á";
-    private static final String TRANSITION_TO_OUTPUT       = "o—Íİ’è       ¨  o—Íİ’è";
-    private static final String SHOW_SEGMENT_IO            = "“üo—Íİ’è•\¦";
-    private static final String QUIT                       = "İ’èƒLƒƒƒ“ƒZƒ‹ ¨  ƒVƒXƒeƒ€";
+    private static final String ADD_CAPTURE_DEVICE         = "å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹è¿½åŠ ";
+    private static final String REFRESH_SOURCE_STREAM_INFO = "å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±åé›†";
+    private static final String CONFIGURE_INCOMING_STREAM  = "å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ è¿½åŠ ";
+    private static final String TRANSITION_TO_OUTPUT       = "å‡ºåŠ›è¨­å®š       â†’ â–¡å‡ºåŠ›è¨­å®š";
+    private static final String SHOW_SEGMENT_IO            = "å…¥å‡ºåŠ›è¨­å®šè¡¨ç¤º";
+    private static final String QUIT                       = "è¨­å®šã‚­ãƒ£ãƒ³ã‚»ãƒ« â†’ â–¡ã‚·ã‚¹ãƒ†ãƒ ";
     
 // =============================================================================
 // INSTANCE VARIABLE:
@@ -109,47 +109,47 @@ public class InputSettingsMenu
     {
         SegmentIo segIo = ConsoleMenu.getSegmentIo();
         
-        // “ü—ÍƒfƒoƒCƒXî•ñƒŠƒXƒg‚ğæ“¾‚·‚éD
+        // å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹æƒ…å ±ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         DeviceInfoManager devMgr   = DeviceInfoManager.getInstance();
         List<DeviceInfo>  lsDevInf = devMgr.getDeviceInfoList();
         int               size     = lsDevInf.size();
         if (size <= 0) {
-            warningPause("—˜—p‰Â”\‚È“ü—ÍƒfƒoƒCƒX‚ª‚ ‚è‚Ü‚¹‚ñD\n");
+            warningPause("åˆ©ç”¨å¯èƒ½ãªå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚Šã¾ã›ã‚“ï¼\n");
             return this;
         }
-        // “ü—ÍƒfƒoƒCƒXî•ñƒŠƒXƒg‚ÌŠe—v‘f‚ğ•\¦‚·‚éD
+        // å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹æƒ…å ±ãƒªã‚¹ãƒˆã®å„è¦ç´ ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         printDeviceInfoList(lsDevInf);
         
-        // “ü—ÍƒfƒoƒCƒXî•ñƒŠƒXƒg‚Ì—v‘f”Ô†‚ğ‘I‘ğ‚·‚éD
-        int num = selectNumber("“ü—ÍƒfƒoƒCƒX”Ô†");
+        // å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹æƒ…å ±ãƒªã‚¹ãƒˆã®è¦ç´ ç•ªå·ã‚’é¸æŠã™ã‚‹ï¼
+        int num = selectNumber("å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ç•ªå·");
         if (num >= size) {
-            warningPause("ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½D\n");
+            warningPause("ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸï¼\n");
             return this;
         }
-        // ‘I‘ğ‚³‚ê‚½“ü—ÍƒfƒoƒCƒXî•ñ‚ğæ“¾‚·‚éD
+        // é¸æŠã•ã‚ŒãŸå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹æƒ…å ±ã‚’å–å¾—ã™ã‚‹ï¼
         DeviceInfo devInf = lsDevInf.get(num);
         
-        // ‘I‘ğ‚³‚ê‚½“ü—ÍƒfƒoƒCƒXî•ñ‚©‚ço—ÍƒtƒH[ƒ}ƒbƒgî•ñƒŠƒXƒg‚ğæ“¾‚·‚éD
+        // é¸æŠã•ã‚ŒãŸå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹æƒ…å ±ã‹ã‚‰å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         List<StreamFormat> lsStmFmt = devInf.getOutputFormatList();
         size = lsStmFmt.size();
         if (size <= 0) {
-            warningPause("—˜—p‰Â”\‚Èo—ÍƒtƒH[ƒ}ƒbƒg‚ª‚ ‚è‚Ü‚¹‚ñD\n");
+            warningPause("åˆ©ç”¨å¯èƒ½ãªå‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒã‚ã‚Šã¾ã›ã‚“ï¼\n");
             return this;
         }
-        // o—ÍƒtƒH[ƒ}ƒbƒgî•ñƒŠƒXƒg‚ÌŠe—v‘f‚ğ•\¦‚·‚éD
+        // å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ãƒªã‚¹ãƒˆã®å„è¦ç´ ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         printStreamFormatList(lsStmFmt);
         
-        // o—ÍƒtƒH[ƒ}ƒbƒgî•ñƒŠƒXƒg‚Ì—v‘f”Ô†‚ğ‘I‘ğ‚·‚éD
-        num = selectNumber("ƒtƒH[ƒ}ƒbƒg”Ô†");
+        // å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ãƒªã‚¹ãƒˆã®è¦ç´ ç•ªå·ã‚’é¸æŠã™ã‚‹ï¼
+        num = selectNumber("ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆç•ªå·");
         if (num >= size) {
-            warningPause("ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½D\n");
+            warningPause("ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸï¼\n");
             return this;
         }
-        // ‘I‘ğ‚µ‚½o—ÍƒtƒH[ƒ}ƒbƒgî•ñ‚ğæ“¾‚·‚éD
+        // é¸æŠã—ãŸå‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã‚’å–å¾—ã™ã‚‹ï¼
         StreamFormat stmFmt = lsStmFmt.get(num);
         
-        // “ü—ÍƒfƒoƒCƒXEo—ÍƒtƒH[ƒ}ƒbƒgî•ñ‚ğ SegmentIo ‚Ö’Ç‰Á‚µC
-        // Œ»İ‚Ì SegmentIo ‚Ì“üo—Íî•ñ‚ğ•\¦‚·‚éD
+        // å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãƒ»å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæƒ…å ±ã‚’ SegmentIo ã¸è¿½åŠ ã—ï¼Œ
+        // ç¾åœ¨ã® SegmentIo ã®å…¥å‡ºåŠ›æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         segIo.addInputDevice(devInf, stmFmt);
         showSegmentIo();
         
@@ -160,16 +160,16 @@ public class InputSettingsMenu
     //
     private ConsoleMenu refreshSourceStreamInfo()
     {
-        // ƒ\[ƒXƒzƒXƒg–¼‚ğİ’è‚·‚éD
-        // ¦ƒXƒy[ƒX‹æØ‚è‚Å•¡”w’è‰Â
+        // ã‚½ãƒ¼ã‚¹ãƒ›ã‚¹ãƒˆåã‚’è¨­å®šã™ã‚‹ï¼
+        // â€»ã‚¹ãƒšãƒ¼ã‚¹åŒºåˆ‡ã‚Šã§è¤‡æ•°æŒ‡å®šå¯
         print("\n");
-        message("‘—MŒ³ƒzƒXƒg–¼/IPƒAƒhƒŒƒX‚ğ“ü—Í‚µ‚Ä‰º‚³‚¢D\n");
-        print("  •¡”w’è‚·‚éê‡‚ÍƒXƒy[ƒX‚Å‹æØ‚Á‚Ä“ü—Í‚µ‚Ä‰º‚³‚¢D\n");
-        String   buf      = getLine("‘—MŒ³ƒzƒXƒg–¼/IPƒAƒhƒŒƒX");
+        message("é€ä¿¡å…ƒãƒ›ã‚¹ãƒˆå/IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„ï¼\n");
+        print("  è¤‡æ•°æŒ‡å®šã™ã‚‹å ´åˆã¯ã‚¹ãƒšãƒ¼ã‚¹ã§åŒºåˆ‡ã£ã¦å…¥åŠ›ã—ã¦ä¸‹ã•ã„ï¼\n");
+        String   buf      = getLine("é€ä¿¡å…ƒãƒ›ã‚¹ãƒˆå/IPã‚¢ãƒ‰ãƒ¬ã‚¹");
         String[] srcAddrs = buf.split("\\s+");
         
-        // ‘—MŒ³ƒXƒgƒŠ[ƒ€î•ñ—v‹ƒpƒPƒbƒg‚ğ‘—M‚·‚éD
-        messagePause("‘—MŒ³ƒXƒgƒŠ[ƒ€î•ñ—v‹ƒpƒPƒbƒg‚ğ‘—M‚µ‚Ü‚·D\n");
+        // é€ä¿¡å…ƒã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ï¼
+        messagePause("é€ä¿¡å…ƒã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã—ã¾ã™ï¼\n");
         StreamInfoManager manager = StreamInfoManager.getInstance();
         manager.refreshSourceStreamInfoList(srcAddrs);
         
@@ -182,25 +182,25 @@ public class InputSettingsMenu
     {
         SegmentIo segIo = ConsoleMenu.getSegmentIo();
         
-        // ‘—MŒ³ƒXƒgƒŠ[ƒ€î•ñ‚ÌƒŠƒXƒg‚ğæ“¾‚·‚éD
+        // é€ä¿¡å…ƒã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±ã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         StreamInfoManager manager  = StreamInfoManager.getInstance();
         List<StreamInfo>  lsStmInf = manager.getSourceStreamInfoList();
         int               size     = lsStmInf.size();
         if (size <= 0) {
-            warningPause("óM‰Â”\‚ÈƒXƒgƒŠ[ƒ€‚ª‚ ‚è‚Ü‚¹‚ñD\n");
+            warningPause("å—ä¿¡å¯èƒ½ãªã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒã‚ã‚Šã¾ã›ã‚“ï¼\n");
             return this;
         }
-        // ‘—MŒ³ƒXƒgƒŠ[ƒ€î•ñ‚Ì”z—ñ‚ÌŠe—v‘f‚ğ•\¦‚·‚éD
-        printStreamInfoList("óM‚Å‚«‚éƒXƒgƒŠ[ƒ€ˆê——", lsStmInf);
+        // é€ä¿¡å…ƒã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±ã®é…åˆ—ã®å„è¦ç´ ã‚’è¡¨ç¤ºã™ã‚‹ï¼
+        printStreamInfoList("å—ä¿¡ã§ãã‚‹ã‚¹ãƒˆãƒªãƒ¼ãƒ ä¸€è¦§", lsStmInf);
         
-        // ‘—MŒ³ƒXƒgƒŠ[ƒ€î•ñ‚Ì”z—ñ—v‘f”Ô†‚ğ‘I‘ğ‚·‚éD
-        int num = selectNumber("ƒXƒgƒŠ[ƒ€”Ô†");
+        // é€ä¿¡å…ƒã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±ã®é…åˆ—è¦ç´ ç•ªå·ã‚’é¸æŠã™ã‚‹ï¼
+        int num = selectNumber("ã‚¹ãƒˆãƒªãƒ¼ãƒ ç•ªå·");
         if (num >= size) {
-            warningPause("ƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½D\n");
+            warningPause("ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸï¼\n");
             return this;
         }
-        // ‘I‘ğ‚³‚ê‚½‘—MŒ³ƒXƒgƒŠ[ƒ€î•ñ‚ğ SegmentIo ‚Ì“ü—Í‚Æ‚µ‚Äİ’è‚µC
-        // Œ»İ‚Ì SegmentIo ‚Ì“üo—Íî•ñ‚ğ•\¦‚·‚éD
+        // é¸æŠã•ã‚ŒãŸé€ä¿¡å…ƒã‚¹ãƒˆãƒªãƒ¼ãƒ æƒ…å ±ã‚’ SegmentIo ã®å…¥åŠ›ã¨ã—ã¦è¨­å®šã—ï¼Œ
+        // ç¾åœ¨ã® SegmentIo ã®å…¥å‡ºåŠ›æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         StreamInfo stmInf = lsStmInf.get(num);
         segIo.configureIncomingStream(stmInf);
         showSegmentIo();
@@ -217,12 +217,12 @@ public class InputSettingsMenu
         
         List<IoParam> list = segIo.getInputParamList();
         if (list.isEmpty()) {
-            // “ü—Í‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢ê‡CŸ‚Ìƒƒjƒ…[‚Í InputSettingsMenu ‚Ì‚Ü‚ÜD
-            warningPause("“ü—Í‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñD\n");
+            // å…¥åŠ›ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„å ´åˆï¼Œæ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¯ InputSettingsMenu ã®ã¾ã¾ï¼
+            warningPause("å…¥åŠ›ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ï¼\n");
             nextMenu = this;
         }
         else {
-            // “ü—Í‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡CŸ‚Ìƒƒjƒ…[‚Í OutputSettingsMenu ‚É‚È‚éD
+            // å…¥åŠ›ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆï¼Œæ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¯ OutputSettingsMenu ã«ãªã‚‹ï¼
             nextMenu = this.outputSettingsMenu;
         }
         return nextMenu;
@@ -232,7 +232,7 @@ public class InputSettingsMenu
     //
     private ConsoleMenu quit()
     {
-        // Ÿ‚Ìƒƒjƒ…[‚Æ‚È‚é SystemMenu ‚ğ•Ô‚·D
+        // æ¬¡ã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¨ãªã‚‹ SystemMenu ã‚’è¿”ã™ï¼
         return this.systemMenu;
     }
 }

@@ -17,14 +17,14 @@ public class StreamControlMenu
         ConsoleMenu
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String MENU_TITLE  = " ƒVƒXƒeƒ€  “ü—Íİ’è  o—Íİ’è ¡ƒXƒgƒŠ[ƒ€‘€ì";
+    private static final String MENU_TITLE  = "â–¡ã‚·ã‚¹ãƒ†ãƒ  â–¡å…¥åŠ›è¨­å®š â–¡å‡ºåŠ›è¨­å®š â– ã‚¹ãƒˆãƒªãƒ¼ãƒ æ“ä½œ";
     private static final String MENU_PROMPT = "stm";
     
-    private static final String START_STREAM   = "“üo—Íˆ—ŠJn/ÄŠJ";
-    private static final String STOP_STREAM    = "“üo—Íˆ—’â~";
-    private static final String DELETE_STREAM  = "ƒXƒgƒŠ[ƒ€íœ";
-    private static final String SHOW_STREAM_IO = "“üo—Íİ’è•\¦";
-    private static final String QUIT           = "ƒXƒgƒŠ[ƒ€‘€ìI—¹ ¨  ƒVƒXƒeƒ€";
+    private static final String START_STREAM   = "å…¥å‡ºåŠ›å‡¦ç†é–‹å§‹/å†é–‹";
+    private static final String STOP_STREAM    = "å…¥å‡ºåŠ›å‡¦ç†åœæ­¢";
+    private static final String DELETE_STREAM  = "ã‚¹ãƒˆãƒªãƒ¼ãƒ å‰Šé™¤";
+    private static final String SHOW_STREAM_IO = "å…¥å‡ºåŠ›è¨­å®šè¡¨ç¤º";
+    private static final String QUIT           = "ã‚¹ãƒˆãƒªãƒ¼ãƒ æ“ä½œçµ‚äº† â†’ â–¡ã‚·ã‚¹ãƒ†ãƒ ";
     
 // =============================================================================
 // INSTANCE VARIABLE:
@@ -96,12 +96,12 @@ public class StreamControlMenu
     private ConsoleMenu startStream()
     {
         try {
-            // Œ»İ‘I‘ğ‚³‚ê‚Ä‚¢‚é StreamPerformer ‚Ìˆ—‚ğŠJn‚·‚éD
+            // ç¾åœ¨é¸æŠã•ã‚Œã¦ã„ã‚‹ StreamPerformer ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             StreamPerformer pfmr = ConsoleMenu.getSelectedStream();
             pfmr.start();
         }
         catch (StreamException ex) {
-            warningPause("“üo—Íˆ—‚ğŠJn‚Å‚«‚Ü‚¹‚ñ(%s)D\n", ex.getMessage());
+            warningPause("å…¥å‡ºåŠ›å‡¦ç†ã‚’é–‹å§‹ã§ãã¾ã›ã‚“(%s)ï¼\n", ex.getMessage());
         }
         return this;
     }
@@ -111,12 +111,12 @@ public class StreamControlMenu
     private ConsoleMenu stopStream()
     {
         try {
-            // Œ»İ‘I‘ğ‚³‚ê‚Ä‚¢‚é StreamPerformer ‚Ìˆ—‚ğ’â~‚·‚éD
+            // ç¾åœ¨é¸æŠã•ã‚Œã¦ã„ã‚‹ StreamPerformer ã®å‡¦ç†ã‚’åœæ­¢ã™ã‚‹ï¼
             StreamPerformer pfmr = ConsoleMenu.getSelectedStream();
             pfmr.stop();
         }
         catch (StreamException ex) {
-            warningPause("“üo—Íˆ—‚ğ’â~‚Å‚«‚Ü‚¹‚ñ(%s)D\n", ex.getMessage());
+            warningPause("å…¥å‡ºåŠ›å‡¦ç†ã‚’åœæ­¢ã§ãã¾ã›ã‚“(%s)ï¼\n", ex.getMessage());
         }
         return this;
     }
@@ -125,11 +125,11 @@ public class StreamControlMenu
     //
     private ConsoleMenu deleteStream()
     {
-        // Œ»İ‘I‘ğ‚³‚ê‚Ä‚¢‚é StreamPerformer ‚ğíœ‚·‚éD
+        // ç¾åœ¨é¸æŠã•ã‚Œã¦ã„ã‚‹ StreamPerformer ã‚’å‰Šé™¤ã™ã‚‹ï¼
         StreamPerformer pfmr = ConsoleMenu.getSelectedStream();
         pfmr.delete();
         
-        // Ÿ‚Ìó‘Ô‚Æ‚È‚é SystemMenu ‚ğ•Ô‚·D
+        // æ¬¡ã®çŠ¶æ…‹ã¨ãªã‚‹ SystemMenu ã‚’è¿”ã™ï¼
         return this.systemMenu;
     }
     
@@ -137,7 +137,7 @@ public class StreamControlMenu
     //
     private ConsoleMenu showStreamIo()
     {
-        // Œ»İ‘I‘ğ‚³‚ê‚Ä‚¢‚é StreamPerformer ‚Ì SegmentIo ‚Ì“üo—Íî•ñ‚ğ•\¦‚·‚éD
+        // ç¾åœ¨é¸æŠã•ã‚Œã¦ã„ã‚‹ StreamPerformer ã® SegmentIo ã®å…¥å‡ºåŠ›æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         StreamPerformer pfmr  = ConsoleMenu.getSelectedStream();
         SegmentIo       segIo = pfmr.getSegmentIo();
         printSegmentIo(segIo);
@@ -149,7 +149,7 @@ public class StreamControlMenu
     //
     private ConsoleMenu quit()
     {
-        // Ÿ‚Ìó‘Ô‚Æ‚È‚é SystemMenu ‚ğ•Ô‚·D
+        // æ¬¡ã®çŠ¶æ…‹ã¨ãªã‚‹ SystemMenu ã‚’è¿”ã™ï¼
         return this.systemMenu;
     }
 }

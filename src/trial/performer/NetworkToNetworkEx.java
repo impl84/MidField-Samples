@@ -54,7 +54,7 @@ class NetworkToNetworkEx
     void configureInput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException
     {
-        // SegmentIo ‚Ì“ü—Í‚ğóMƒXƒgƒŠ[ƒ€‚Æ‚µ‚Ä\¬‚·‚éD
+        // SegmentIo ã®å…¥åŠ›ã‚’å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         cfgTool.configureIncomingStream(segIo);
         // IOException
     }
@@ -66,7 +66,7 @@ class NetworkToNetworkEx
     void configureOutput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException
     {
-        // SegentIo ‚Ìo—Í‚ğ‘—MƒXƒgƒŠ[ƒ€‚Æ‚µ‚Ä\¬‚·‚éD
+        // SegentIo ã®å‡ºåŠ›ã‚’é€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
         cfgTool.configureOutgoingStream(segIo);
         // IOException
     }

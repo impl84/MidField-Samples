@@ -34,10 +34,10 @@ abstract class AbstractSampleCode
     // StreamPerformer
     private StreamPerformer pfmr = null;
     
-    // ƒrƒfƒI‚ğ•\¦‚·‚é‚½‚ß‚Ìƒrƒ…[ƒ
+    // ãƒ“ãƒ‡ã‚ªã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã®ãƒ“ãƒ¥ãƒ¼ãƒ¯
     private SimpleViewer viewer = null;
     
-    // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ì“®ìó‘Ô(true:“®ì’†Cfalse:’â~’†)
+    // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‹•ä½œçŠ¶æ…‹(true:å‹•ä½œä¸­ï¼Œfalse:åœæ­¢ä¸­)
     private boolean isRunning = false;
     
 // =============================================================================
@@ -68,8 +68,8 @@ abstract class AbstractSampleCode
     @Override
     public void windowClosing(WindowEvent ev)
     {
-        // SimpleViewer ‚ğ•Â‚¶‚æ‚¤‚Æ‚µ‚Ä‚¢‚éó‘ÔD
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚àI—¹‚·‚éD
+        // SimpleViewer ã‚’é–‰ã˜ã‚ˆã†ã¨ã—ã¦ã„ã‚‹çŠ¶æ…‹ï¼
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚‚çµ‚äº†ã™ã‚‹ï¼
         closeSampleCode();
     }
     
@@ -113,7 +113,7 @@ abstract class AbstractSampleCode
     }
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ì“®ìó‘Ô(true:“®ì’†Cfalse:’â~’†)‚ğ•Ô‚·D
+    // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‹•ä½œçŠ¶æ…‹(true:å‹•ä½œä¸­ï¼Œfalse:åœæ­¢ä¸­)ã‚’è¿”ã™ï¼
     //
     boolean isRunning()
     {
@@ -121,45 +121,45 @@ abstract class AbstractSampleCode
     }
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ğŠJn‚·‚éD
+    // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
     //
     void open(ConfigTool cfgTool)
     {
-        // “®ìó‘Ô‚ğŠm”F‚·‚éD
+        // å‹•ä½œçŠ¶æ…‹ã‚’ç¢ºèªã™ã‚‹ï¼
         if (this.isRunning) {
             return;
         }
-        // Stream Performer ‚ğ¶¬‚µC“üo—Íˆ—‚ğÀs‚·‚éD
+        // Stream Performer ã‚’ç”Ÿæˆã—ï¼Œå…¥å‡ºåŠ›å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         try {
-            // SegmentIo ‚ğ¶¬‚·‚éDD
+            // SegmentIo ã‚’ç”Ÿæˆã™ã‚‹ï¼ï¼
             SegmentIo segIo = new SegmentIo();
             
-            // SegmentIo ‚Ì“üo—Í‚ğ\¬‚·‚éDD
+            // SegmentIo ã®å…¥å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼ï¼
             configureInput(cfgTool, segIo);		// IOException
             configureOutput(cfgTool, segIo);	// IOException
             
-            // SegmentIo ‚ğ‚à‚Æ‚ÉCStreamPerformer ‚ğ¶¬‚·‚éD
+            // SegmentIo ã‚’ã‚‚ã¨ã«ï¼ŒStreamPerformer ã‚’ç”Ÿæˆã™ã‚‹ï¼
             this.pfmr = StreamPerformer.newInstance(segIo);
             // SystemException, StreamException
             
-            // ƒrƒ…[ƒ‚ğƒZƒbƒgƒAƒbƒv‚·‚éD
+            // ãƒ“ãƒ¥ãƒ¼ãƒ¯ã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ï¼
             SwingUtilities.invokeAndWait(() -> setupSimpleViewer());
             // InterruptedException, InvocationTargetException
             
-            // “üo—Íˆ—‚ğŠJn‚·‚éD
+            // å…¥å‡ºåŠ›å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             this.pfmr.open();		// StreamException
             this.pfmr.start();		// StreamException
             
-            // “®ìó‘Ô‚ğ true ‚É‚·‚éD
+            // å‹•ä½œçŠ¶æ…‹ã‚’ true ã«ã™ã‚‹ï¼
             this.isRunning = true;
         }
         catch (Exception ex) {
-            // —áŠO”­¶‚ÌƒƒbƒZ[ƒW‚ğo—Í‚·‚éD
-            System.out.println("¦ƒTƒ“ƒvƒ‹ƒR[ƒhÀs‚É—áŠO‚ª”­¶‚µ‚Ü‚µ‚½D");
+            // ä¾‹å¤–ç™ºç”Ÿæ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ï¼
+            System.out.println("â€»ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰å®Ÿè¡Œæ™‚ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸï¼");
             ex.printStackTrace();
             
-            // StreamPerformer ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª¶¬‚³‚ê‚Ä‚¢‚éê‡‚ÍC
-            // StreamPerformer ‚ğI—¹‚·‚éD
+            // StreamPerformer ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒç”Ÿæˆã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ï¼Œ
+            // StreamPerformer ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (this.pfmr != null) {
                 this.pfmr.delete();
                 this.pfmr = null;
@@ -168,30 +168,30 @@ abstract class AbstractSampleCode
     }
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ğI—¹‚·‚éD
+    // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
     //
     void close()
     {
-        // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ğI—¹‚·‚éD
+        // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
         closeSampleCode();
         
-        // SimpleViewer ‚ğ•Â‚¶‚éD
+        // SimpleViewer ã‚’é–‰ã˜ã‚‹ï¼
         SwingUtilities.invokeLater(() -> this.viewer.dispose());
     }
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // ƒTƒ“ƒvƒ‹ƒR[ƒh‚ÌŠT—và–¾‚ğæ“¾‚·‚éD
+    // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®æ¦‚è¦èª¬æ˜ã‚’å–å¾—ã™ã‚‹ï¼
     //
     abstract String getDescription();
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // SegmentIo ‚Ì“ü—Í‚ğ\¬‚·‚éD
+    // SegmentIo ã®å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
     //
     abstract void configureInput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException;
     
     // - PACKAGE METHOD --------------------------------------------------------
-    // SegmentIo ‚Ìo—Í‚ğ\¬‚·‚éD
+    // SegmentIo ã®å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
     //
     abstract void configureOutput(ConfigTool cfgTool, SegmentIo segIo)
         throws IOException;
@@ -201,47 +201,47 @@ abstract class AbstractSampleCode
 // -----------------------------------------------------------------------------
     
     // - PRIVATE METHOD --------------------------------------------------------
-    // ¦EDTã‚ÅÀs‚³‚ê‚éD
+    // â€»EDTä¸Šã§å®Ÿè¡Œã•ã‚Œã‚‹ï¼
     //
     private void setupSimpleViewer()
     {
-        // SimpleViewer ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éD
+        // SimpleViewer ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.viewer = new SimpleViewer(getDescription());
         
-        // ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ SimpleViewer ‚Ì WindowListener ‚Æ‚µ‚Ä“o˜^‚·‚éD
+        // ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ SimpleViewer ã® WindowListener ã¨ã—ã¦ç™»éŒ²ã™ã‚‹ï¼
         this.viewer.addWindowListener(this);
         
-        // StreamPerformer ‚ª‰f‘œ•\¦‚É—˜—p‚·‚é VideoCanvas ‚ğæ“¾‚µC
-        // SimpleViewer ƒrƒ…[ƒ‚É’Ç‰Á‚·‚éD
+        // StreamPerformer ãŒæ˜ åƒè¡¨ç¤ºã«åˆ©ç”¨ã™ã‚‹ VideoCanvas ã‚’å–å¾—ã—ï¼Œ
+        // SimpleViewer ãƒ“ãƒ¥ãƒ¼ãƒ¯ã«è¿½åŠ ã™ã‚‹ï¼
         VideoCanvas vidCvs = this.pfmr.getVideoCanvas();
         this.viewer.addVideoCanvas(vidCvs);
     }
     
     // - PRIVATE METHOD --------------------------------------------------------
-    // ƒTƒ“ƒvƒ‹ƒR[ƒh‚Ìˆ—‚ğI—¹‚·‚éD
+    // ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
     //
     private synchronized void closeSampleCode()
     {
-        // “®ìó‘Ô‚ğŠm”F‚·‚éD
+        // å‹•ä½œçŠ¶æ…‹ã‚’ç¢ºèªã™ã‚‹ï¼
         if (this.isRunning == false) {
             return;
         }
         try {
-            // “üo—Íˆ—‚ğI—¹‚·‚éD
+            // å…¥å‡ºåŠ›å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             this.pfmr.stop();	// StreamException
             this.pfmr.close();
         }
         catch (StreamException ex) {
-            // —áŠO”­¶‚ÌƒXƒ^ƒbƒNƒgƒŒ[ƒX‚ğo—Í‚·‚éD
+            // ä¾‹å¤–ç™ºç”Ÿæ™‚ã®ã‚¹ã‚¿ãƒƒã‚¯ãƒˆãƒ¬ãƒ¼ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹ï¼
             ex.printStackTrace();
         }
         finally {
-            // StreamPerformer ‚ğI—¹‚·‚éD
+            // StreamPerformer ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (this.pfmr != null) {
                 this.pfmr.delete();
                 this.pfmr = null;
             }
-            // “®ìó‘Ô‚ğ false ‚É‚·‚éD
+            // å‹•ä½œçŠ¶æ…‹ã‚’ false ã«ã™ã‚‹ï¼
             this.isRunning = false;
         }
     }

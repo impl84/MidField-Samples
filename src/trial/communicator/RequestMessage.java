@@ -54,7 +54,7 @@ class RequestMessage
     }
     
     // - CONSTRUCTOR -----------------------------------------------------------
-    // ˆø”–³‚µ‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^ (GsonƒVƒŠƒAƒ‰ƒCƒY‘Î‰ž)
+    // å¼•æ•°ç„¡ã—ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ (Gsonã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºå¯¾å¿œ)
     //
     RequestMessage()
     {

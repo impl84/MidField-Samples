@@ -62,8 +62,8 @@ public class DemoClientMethod
     //
     private void exampleSimpleRpc()
     {
-        // ¡’Pƒ‚Èƒƒ\ƒbƒhŒÄ‚Ño‚µ‚Ì—áF
-        printTitle("’Pƒ‚Èƒƒ\ƒbƒhŒÄ‚Ño‚µ‚Ì—áF");
+        // â– å˜ç´”ãªãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ä¾‹ï¼š
+        printTitle("å˜ç´”ãªãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—ã®ä¾‹ï¼š");
         
         Object result = invoke("Demo.getBooleanResult", null);
         printResult(result);
@@ -79,8 +79,8 @@ public class DemoClientMethod
     //
     private void exampleErrorResponse()
     {
-        // ¡ŠeíƒGƒ‰[”­¶‚Ì—áF
-        printTitle("ŠeíƒGƒ‰[”­¶‚Ì—áF");
+        // â– å„ç¨®ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæ™‚ã®ä¾‹ï¼š
+        printTitle("å„ç¨®ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæ™‚ã®ä¾‹ï¼š");
         
         Object result = invoke("Demo.getParseError", null);
         printResult(result);
@@ -108,8 +108,8 @@ public class DemoClientMethod
     //
     private void exampleUsingFuture()
     {
-        // ¡Future<ResponseObject> ‚ğ—˜—p‚µ‚½RPC—v‹‚Æ‰“š‚Ì—áF
-        printTitle("Future<ResponseObject> ‚ğ—˜—p‚µ‚½RPC—v‹‚Æ‰“š‚Ì—áF");
+        // â– Future<ResponseObject> ã‚’åˆ©ç”¨ã—ãŸRPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š
+        printTitle("Future<ResponseObject> ã‚’åˆ©ç”¨ã—ãŸRPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š");
         
         Future<ResponseObject> future0 = sendRequest("Demo.getBooleanResult", null);
         Future<ResponseObject> future1 = sendRequest("Demo.getSuccessResult", null);
@@ -125,8 +125,8 @@ public class DemoClientMethod
     //
     private void exampleMethodWithStringParam()
     {
-        // ¡•¶š—ñ‚ğƒpƒ‰ƒ[ƒ^‚Æ‚·‚éRPC—v‹‚Æ‰“š‚Ì—áF
-        printTitle("•¶š—ñ‚ğƒpƒ‰ƒ[ƒ^‚Æ‚·‚éRPC—v‹‚Æ‰“š‚Ì—áF");
+        // â– æ–‡å­—åˆ—ã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã™ã‚‹RPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š
+        printTitle("æ–‡å­—åˆ—ã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã™ã‚‹RPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š");
         
         String result = (String)invoke("Demo.echo", "hello");
         printResult(result);
@@ -136,10 +136,10 @@ public class DemoClientMethod
     //
     private void exampleMethodWithMapParam()
     {
-        // ¡•¡”‚Ìƒpƒ‰ƒ[ƒ^‚ğ”º‚¤RPC—v‹‚Æ‰“š‚Ì—áF
-        printTitle("•¡”‚Ìƒpƒ‰ƒ[ƒ^‚ğ”º‚¤RPC—v‹‚Æ‰“š‚Ì—áF");
+        // â– è¤‡æ•°ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ä¼´ã†RPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š
+        printTitle("è¤‡æ•°ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ä¼´ã†RPCè¦æ±‚ã¨å¿œç­”ã®ä¾‹ï¼š");
         
-        // RPC‚Ìˆø”‚Æ‚È‚éƒ}ƒbƒv‚ğ¶¬‚·‚éD
+        // RPCã®å¼•æ•°ã¨ãªã‚‹ãƒãƒƒãƒ—ã‚’ç”Ÿæˆã™ã‚‹ï¼
         Map<String, Object> params = new LinkedHashMap<String, Object>();
         
         int productNo = 1;
@@ -170,8 +170,8 @@ public class DemoClientMethod
     //
     private void exampleNotification()
     {
-        // ¡RPC—v‹(Notification)‚Ì—áF
-        printTitle("Notification ‚Ì—áF");
+        // â– RPCè¦æ±‚(Notification)ã®ä¾‹ï¼š
+        printTitle("Notification ã®ä¾‹ï¼š");
         
         notify("Demo.notification", null);
     }
@@ -186,17 +186,17 @@ public class DemoClientMethod
     {
         Object result = null;
         try {
-            Log.message("¥invoke: %s(%s)", method, params);
+            Log.message("â–¼invoke: %s(%s)", method, params);
             
-            // ƒT[ƒo‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µCRPC‰“š‚ğæ“¾‚·‚éD
+            // ã‚µãƒ¼ãƒã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ï¼ŒRPCå¿œç­”ã‚’å–å¾—ã™ã‚‹ï¼
             // (InterruptedException, ExecutionException, TimeoutException)            
             ResponseObject response = this.rpcClient.invoke(method, params, 2000);
             
-            // Œ‹‰Ê‚ª null ‚Ìê‡‚ÍƒGƒ‰[î•ñ‚ğo—Í‚·‚éD
+            // çµæœãŒ null ã®å ´åˆã¯ã‚¨ãƒ©ãƒ¼æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ï¼
             result = response.getResult();
             if (result == null) {
                 ErrorObject error = response.getError();
-                Log.message("¢ error: %s", error);
+                Log.message("â–³ error: %s", error);
             }
         }
         catch (Exception ex) {
@@ -209,9 +209,9 @@ public class DemoClientMethod
     //
     private Future<ResponseObject> sendRequest(String method, Object params)
     {
-        Log.message("¥request: %s(%s)", method, params);
+        Log.message("â–¼request: %s(%s)", method, params);
         
-        // RPC—v‹‚ğƒT[ƒo‚Ö‘—‚éD
+        // RPCè¦æ±‚ã‚’ã‚µãƒ¼ãƒã¸é€ã‚‹ï¼
         Future<ResponseObject> future = this.rpcClient.request(method, params);
         return future;
     }
@@ -222,15 +222,15 @@ public class DemoClientMethod
     {
         Object result = null;
         try {
-            // RPC‰“š‚ğæ“¾‚·‚éD
+            // RPCå¿œç­”ã‚’å–å¾—ã™ã‚‹ï¼
             // (InterruptedException, ExecutionException, TimeoutException)
             ResponseObject response = future.get(2000, TimeUnit.MILLISECONDS);
             
-            // Œ‹‰Ê‚ª null ‚Ìê‡‚ÍƒGƒ‰[î•ñ‚ğo—Í‚·‚éD
+            // çµæœãŒ null ã®å ´åˆã¯ã‚¨ãƒ©ãƒ¼æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ï¼
             result = response.getResult();
             if (result == null) {
                 ErrorObject error = response.getError();
-                Log.message("¢ error: %s", error);
+                Log.message("â–³ error: %s", error);
             }
         }
         catch (Exception ex) {
@@ -243,9 +243,9 @@ public class DemoClientMethod
     //
     private void notify(String method, Object params)
     {
-        Log.message("Ÿnotify: %s(%s)", method, params);
+        Log.message("â—†notify: %s(%s)", method, params);
         
-        // RPC—v‹(Notification)‚ğƒT[ƒo‚Ö‘—‚éD
+        // RPCè¦æ±‚(Notification)ã‚’ã‚µãƒ¼ãƒã¸é€ã‚‹ï¼
         this.rpcClient.notification(method, params);
     }
     
@@ -258,7 +258,7 @@ public class DemoClientMethod
     private void printTitle(String title)
     {
         Log.message(Log.LINE_SEPARATOR);
-        Log.message(" %s", title);
+        Log.message("â–¡%s", title);
         Log.message(Log.LINE_SEPARATOR);
     }
     
@@ -266,7 +266,7 @@ public class DemoClientMethod
     //
     private void printResult(Object result)
     {
-        Log.message("¢result: %s", result);
+        Log.message("â–³result: %s", result);
         Log.message();
     }
 }

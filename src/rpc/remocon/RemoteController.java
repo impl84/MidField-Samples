@@ -57,12 +57,12 @@ public class RemoteController
     
     private static final int ROW_RESULT_MESSAGES = 160;
     
-    // RpcClient ‚Éİ’è‚·‚é InternalErrorListener
+    // RpcClient ã«è¨­å®šã™ã‚‹ InternalErrorListener
     private static final InternalErrorListener HANDLER = (err) -> {
-        // RPC‰“šˆ—‚É”­¶‚µ‚½ƒGƒ‰[î•ñ‚ğo—Í‚·‚éD
+        // RPCå¿œç­”å‡¦ç†æ™‚ã«ç™ºç”Ÿã—ãŸã‚¨ãƒ©ãƒ¼æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ï¼
         Log.error(err.getMessage());
         
-        // ResponseObject ‚ÆŒ´ˆö‚Æ‚È‚Á‚Ä‚¢‚é Throwable ‚ª—L‚ê‚Îo—Í‚·‚éD
+        // ResponseObject ã¨åŸå› ã¨ãªã£ã¦ã„ã‚‹ Throwable ãŒæœ‰ã‚Œã°å‡ºåŠ›ã™ã‚‹ï¼
         if (err.hasResponseObject()) {
             Log.error(err.getResponseObject().toString());
         }
@@ -92,10 +92,10 @@ public class RemoteController
     public static void launch(String[] args)
     {
         try {
-            // RemoteController ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éD
+            // RemoteController ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ï¼
             RemoteController controller = new RemoteController(args);
             
-            // GUI‚ğƒZƒbƒgƒAƒbƒv‚·‚éD
+            // GUIã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ï¼
             controller.setupGui();
         }
         catch (Exception ex) {
@@ -131,7 +131,7 @@ public class RemoteController
         if (address == null) {
             return;
         }
-        // RpcClient ‚ÌŠJnˆ—‚ğ TaskExecutor ‚ÌƒXƒŒƒbƒh‚ÅÀs‚·‚éD
+        // RpcClient ã®é–‹å§‹å‡¦ç†ã‚’ TaskExecutor ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã§å®Ÿè¡Œã™ã‚‹ï¼
         this.executor.execute(() -> openRpcClient(address));
     }
     
@@ -139,10 +139,10 @@ public class RemoteController
     //
     void stopRemoteControl()
     {
-        // ƒT[ƒoƒAƒhƒŒƒXƒpƒlƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éD
+        // ã‚µãƒ¼ãƒã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ï¼
         this.svrAddrPnl.setState(ConnectionState.IDLE);
         
-        // RpcClient ‚Ì’â~ˆ—‚ğ TaskExecutor ‚ÌƒXƒŒƒbƒh‚ÅÀs‚·‚éD
+        // RpcClient ã®åœæ­¢å‡¦ç†ã‚’ TaskExecutor ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã§å®Ÿè¡Œã™ã‚‹ï¼
         this.executor.execute(() -> closeRpcClient());
     }
     
@@ -160,27 +160,27 @@ public class RemoteController
         if (this.rpcClient == null) {
             return;
         }
-        // ‰“ŠuƒRƒ}ƒ“ƒh‚ğJSON•¶š—ñ(RPC—v‹)‚Ö•ÏŠ·‚·‚éD
+        // é éš”ã‚³ãƒãƒ³ãƒ‰ã‚’JSONæ–‡å­—åˆ—(RPCè¦æ±‚)ã¸å¤‰æ›ã™ã‚‹ï¼
         RequestObject request;
         try {
             request = this.parser.parseCommand(command);
             // InvocationTargetException, IllegalAccessException
         }
         catch (Exception ex) {
-            // —áŠO‚ª”­¶‚µ‚½ê‡‚ÍƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Ä–ß‚éD
+            // ä¾‹å¤–ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ã¦æˆ»ã‚‹ï¼
             PopupMessage.warning(this, ex);
             return;
         }
-        // RPC—v‹‚ª null ‚Ìê‡‚Í–ß‚éD
+        // RPCè¦æ±‚ãŒ null ã®å ´åˆã¯æˆ»ã‚‹ï¼
         if (request == null) {
             return;
         }
-        // ‰“ŠuƒRƒ}ƒ“ƒh‚ğ•\¦‚·‚éD
+        // é éš”ã‚³ãƒãƒ³ãƒ‰ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         Log.message(LINE_SEPARATOR);
         Log.message(LINE_HEADER + command);
         Log.message(LINE_SEPARATOR);
         
-        // TaskExecutor ‚ÌƒXƒŒƒbƒh‚©‚ç RPC—v‹‚ğƒT[ƒo‚Ö‘—M‚·‚éD
+        // TaskExecutor ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã‹ã‚‰ RPCè¦æ±‚ã‚’ã‚µãƒ¼ãƒã¸é€ä¿¡ã™ã‚‹ï¼
         this.executor.execute(() -> send(request));
     }
     
@@ -192,10 +192,10 @@ public class RemoteController
     //
     private RemoteController(String[] args)
     {
-        // ƒRƒ}ƒ“ƒhƒnƒ“ƒhƒ‰‚ğ¶¬‚·‚éD
+        // ã‚³ãƒãƒ³ãƒ‰ãƒãƒ³ãƒ‰ãƒ©ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.parser = new CommandParser();
         
-        // TaskExecutor ‚ğ¶¬‚·‚éD
+        // TaskExecutor ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.executor = new TaskExecutor(
             Executors.newSingleThreadExecutor(), STR_PROGRAM_NAME
         );
@@ -205,49 +205,49 @@ public class RemoteController
     //
     private void setupGui()
     {
-        // ƒRƒ}ƒ“ƒhƒŠƒXƒgƒpƒlƒ‹‚ğ¶¬‚·‚éD
+        // ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆãƒ‘ãƒãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼
         Set<String>      nameSet   = this.parser.getMethodNameSet();
         String[]         cmdArray  = nameSet.toArray(new String[0]);
         CommandListPanel cmdLstPnl = new CommandListPanel(this, cmdArray);
         
-        // ƒT[ƒoƒAƒhƒŒƒX“ü—Í—pƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ¶¬‚·‚éD
+        // ã‚µãƒ¼ãƒã‚¢ãƒ‰ãƒ¬ã‚¹å…¥åŠ›ç”¨ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.svrAddrPnl = new ServerAddressPanel(this);
         
-        // ƒRƒ}ƒ“ƒh“ü—ÍE‘—M—pƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ¶¬‚·‚éD
+        // ã‚³ãƒãƒ³ãƒ‰å…¥åŠ›ãƒ»é€ä¿¡ç”¨ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.cmdBox = new CommandBox(this);
         
-        // o—Í—pƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ¶¬‚µCLogPrinter ‚Æ‚µ‚Äİ’è‚·‚éD
+        // å‡ºåŠ›ç”¨ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç”Ÿæˆã—ï¼ŒLogPrinter ã¨ã—ã¦è¨­å®šã™ã‚‹ï¼
         MessagePanel msgPnl = new MessagePanel(ROW_RESULT_MESSAGES);
         msgPnl.setBorder(BDR_EMPTY_8);
         Log.setLogPrinter(msgPnl);
         
-        // ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒŒƒCƒAƒEƒg‚·‚éD
+        // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã™ã‚‹ï¼
         cmdLstPnl.add(this.svrAddrPnl, BorderLayout.NORTH);
         msgPnl.add(this.cmdBox, BorderLayout.NORTH);
         setLayout(new BorderLayout());
         add(cmdLstPnl, BorderLayout.WEST);
         add(msgPnl, BorderLayout.CENTER);
         
-        // ƒtƒŒ[ƒ€ƒTƒCƒY‚ğİ’è‚·‚éD
+        // ãƒ•ãƒ¬ãƒ¼ãƒ ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ï¼
         setMinimumSize(new Dimension(MIN_FRAME_WIDTH, MIN_FRAME_HEIGHT));
         setPreferredSize(new Dimension(PRE_FRAME_WIDTH, PRE_FRAME_HEIGHT));
         setSize(PRE_FRAME_WIDTH, PRE_FRAME_HEIGHT);
         
-        // ƒtƒŒ[ƒ€‚Ìƒ^ƒCƒgƒ‹‚ğİ’è‚·‚éD
+        // ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’è¨­å®šã™ã‚‹ï¼
         setTitle(STR_PROGRAM_NAME);
         
-        // L&F ‚ğİ’è‚·‚éD
+        // L&F ã‚’è¨­å®šã™ã‚‹ï¼
         AppUtilities.setLookAndFeel(this);
         
-        // ‚±‚ÌƒtƒŒ[ƒ€‚Ì„§ƒTƒCƒY‚ğİ’è‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®æ¨å¥¨ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ï¼
         pack();
         Dimension curSize = getSize();
         setPreferredSize(curSize);
         
-        // ‰Šú•\¦ˆÊ’u‚ğİ’è‚·‚éD
+        // åˆæœŸè¡¨ç¤ºä½ç½®ã‚’è¨­å®šã™ã‚‹ï¼
         AppUtilities.setLocationToCenter(this);
         
-        // I—¹ˆ—‚ğ“o˜^‚·‚éD
+        // çµ‚äº†å‡¦ç†ã‚’ç™»éŒ²ã™ã‚‹ï¼
         addWindowListener(new WindowAdapter()
         {
             @Override
@@ -256,7 +256,7 @@ public class RemoteController
                 RemoteController.this.closing();
             }
         });
-        // ‰Â‹ó‘Ô‚É‚·‚éD
+        // å¯è¦–çŠ¶æ…‹ã«ã™ã‚‹ï¼
         setVisible(true);
     }
     
@@ -264,16 +264,16 @@ public class RemoteController
     //
     private void closing()
     {
-        // §Œä’†‚Å‚ ‚ê‚ÎC
-        // RpcClient ‚Ì’â~ˆ—‚ğÀs‚·‚éD
+        // åˆ¶å¾¡ä¸­ã§ã‚ã‚Œã°ï¼Œ
+        // RpcClient ã®åœæ­¢å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         if (this.svrAddrPnl.isControllingState()) {
             stopRemoteControl();
         }
-        // TaskExecutor ‚ğƒVƒƒƒbƒgƒ_ƒEƒ“‚·‚éD
+        // TaskExecutor ã‚’ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ã™ã‚‹ï¼
         if (this.executor != null) {
             this.executor.shutdownAndAwaitTermination();
         }
-        // ‚±‚ÌƒtƒŒ[ƒ€‚ÌI—¹ˆ—‚ğÀs‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®çµ‚äº†å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         dispose();
     }
     
@@ -287,25 +287,25 @@ public class RemoteController
     {
         int portNum = RPC_PORT_NUMBER;
         try {
-            // RpcClient ‚ğ¶¬‚·‚éD
+            // RpcClient ã‚’ç”Ÿæˆã™ã‚‹ï¼
             this.rpcClient = new RpcClient(
-                address,	// RPCƒT[ƒo–¼‚Ü‚½‚ÍIPƒAƒhƒŒƒX
-                portNum,	// RPCƒT[ƒo‚Ìƒ|[ƒg”Ô†
-                true,		// JSONƒIƒuƒWƒFƒNƒg(•¶š—ñ)‚ğ®Œ`‚·‚é‚©”Û‚©
-                true,		// JSONƒIƒuƒWƒFƒNƒg(•¶š—ñ)‚ğƒƒOo—Í‚·‚é‚©”Û‚©
-                HANDLER		// InternalErrorListener ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+                address,	// RPCã‚µãƒ¼ãƒåã¾ãŸã¯IPã‚¢ãƒ‰ãƒ¬ã‚¹
+                portNum,	// RPCã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆç•ªå·
+                true,		// JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’æ•´å½¢ã™ã‚‹ã‹å¦ã‹
+                true,		// JSONã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(æ–‡å­—åˆ—)ã‚’ãƒ­ã‚°å‡ºåŠ›ã™ã‚‹ã‹å¦ã‹
+                HANDLER		// InternalErrorListener ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
             );	// UnknownHostException
             
-            // RpcClient ‚Ìˆ—‚ğŠJn‚·‚éD
+            // RpcClient ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             this.rpcClient.open();
             // IOException
             
-            // GUI‚Ìˆ—F
+            // GUIã®å‡¦ç†ï¼š
             SwingUtilities.invokeLater(() -> {
-                // ƒT[ƒoƒAƒhƒŒƒXƒpƒlƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éD
+                // ã‚µãƒ¼ãƒã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ï¼
                 this.svrAddrPnl.setState(ConnectionState.CONTROLLING);
                 
-                // ƒtƒŒ[ƒ€‚Ìƒ^ƒCƒgƒ‹‚ğ•ÏX‚·‚éD
+                // ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å¤‰æ›´ã™ã‚‹ï¼
                 setTitle(String.format(STR_TITLE_FORMAT, address));
             });
         }
@@ -316,9 +316,9 @@ public class RemoteController
             );
             PopupMessage.warning(this, msg);
             
-            // GUI‚Ìˆ—F
+            // GUIã®å‡¦ç†ï¼š
             SwingUtilities.invokeLater(() -> {
-                // ƒT[ƒoƒAƒhƒŒƒXƒpƒlƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éD
+                // ã‚µãƒ¼ãƒã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ï¼
                 this.svrAddrPnl.setState(ConnectionState.IDLE);
             });
         }
@@ -328,11 +328,11 @@ public class RemoteController
     //
     private void closeRpcClient()
     {
-        // RpcClient ‚Ìˆ—‚ğI—¹‚·‚éD
+        // RpcClient ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
         if (this.rpcClient != null) {
             this.rpcClient.close();
         }
-        // Še•Ï”‚ğƒNƒŠƒA‚µ‚Ä‚¨‚­D
+        // å„å¤‰æ•°ã‚’ã‚¯ãƒªã‚¢ã—ã¦ãŠãï¼
         this.rpcClient = null;
     }
     
@@ -344,10 +344,10 @@ public class RemoteController
     //
     private void send(RequestObject request)
     {
-        // RPC—v‹‚ğƒT[ƒo‚Ö‘—M‚·‚éD
+        // RPCè¦æ±‚ã‚’ã‚µãƒ¼ãƒã¸é€ä¿¡ã™ã‚‹ï¼
         Future<ResponseObject> future = this.rpcClient.request(request);
         
-        // TaskExecutor ‚ÌƒXƒŒƒbƒh‚Å RPC‰“š‚ğ‘Ò‚ÂD
+        // TaskExecutor ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã§ RPCå¿œç­”ã‚’å¾…ã¤ï¼
         this.executor.execute(() -> receive(future));
     }
     
@@ -356,7 +356,7 @@ public class RemoteController
     private void receive(Future<ResponseObject> future)
     {
         try {
-            // RPC‰“š‚ğ‘Ò‚ÂD
+            // RPCå¿œç­”ã‚’å¾…ã¤ï¼
             future.get(2000, TimeUnit.MILLISECONDS);
             // InterruptedException, ExecutionException, TimeoutException
         }

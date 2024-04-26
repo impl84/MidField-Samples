@@ -21,61 +21,61 @@ public class NetworkToNetwork
 {
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ğƒRƒ“ƒ\[ƒ‹‚Éİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         MfsRemote       mfsRmt = null;
         StreamPerformer pfmr   = null;
         
         try {
-            // ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚©‚çƒT[ƒo‚ÌIPƒAƒhƒŒƒX‚Æƒ|[ƒg”Ô†C
-            // ‹y‚Ñ‘—MŒ³‚ÌIPƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+            // ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°ã‹ã‚‰ã‚µãƒ¼ãƒã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ãƒãƒ¼ãƒˆç•ªå·ï¼Œ
+            // åŠã³é€ä¿¡å…ƒã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             var serverAddr = args[0];
             int serverPort = Integer.parseInt(args[1]);
             var senderAddr = args[2];
             
-            // ¥ƒT[ƒo‚ÆÚ‘±‚µC‰“Šu‘€ì‚ğŠJn‚·‚éD
+            // â–¼ã‚µãƒ¼ãƒã¨æ¥ç¶šã—ï¼Œé éš”æ“ä½œã‚’é–‹å§‹ã™ã‚‹ï¼
             mfsRmt = new MfsRemote(serverAddr, serverPort, err -> System.err.println(err));
             mfsRmt.initializeRemoteControl();
             
-            // ¥óMƒXƒgƒŠ[ƒ€‚Å“ü—Í‚ğ\¬‚·‚éD
-            // E‘—MŒ³‚ª‘—M‚µ‚Ä‚¢‚éƒXƒgƒŠ[ƒ€‚ğ‘I‘ğ‚µ‚Äİ’è‚·‚éD
+            // â–¼å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å…¥åŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+            // ãƒ»é€ä¿¡å…ƒãŒé€ä¿¡ã—ã¦ã„ã‚‹ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’é¸æŠã—ã¦è¨­å®šã™ã‚‹ï¼
             var stmInfMgr = mfsRmt.getStreamInfoManager();
             var lsStmInf  = stmInfMgr.fetchSourceStreamInfoList(senderAddr);
             if (lsStmInf.size() <= 0) {
-                System.out.println("¦óM‰Â”\‚ÈƒXƒgƒŠ[ƒ€‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»å—ä¿¡å¯èƒ½ãªã‚¹ãƒˆãƒªãƒ¼ãƒ ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
-            // RcSegmentIo ‚Ì“ü—Í‚ğóMƒXƒgƒŠ[ƒ€‚Æ‚µ‚Ä\¬‚·‚éD
+            // RcSegmentIo ã®å…¥åŠ›ã‚’å—ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã¨ã—ã¦æ§‹æˆã™ã‚‹ï¼
             var segIo = mfsRmt.newSegmentIo();
             segIo.configureIncomingStream(lsStmInf.get(0));
             
-            // ¥‘—MƒXƒgƒŠ[ƒ€‚Åo—Í‚ğ\¬‚·‚éD
-            // E‘—MƒtƒH[ƒ}ƒbƒg‚ğ‘I‘ğ‚µ‚Äİ’è‚·‚éD
-            // ETCP‚ğ—˜—p‚µCƒRƒlƒNƒVƒ‡ƒ“Ú‘±—v‹‚ğó‚¯“ü‚ê‚éD
-            // E„§ƒvƒŒƒrƒ…[ƒ\‚ğ—˜—p‚·‚éD
+            // â–¼é€ä¿¡ã‚¹ãƒˆãƒªãƒ¼ãƒ ã§å‡ºåŠ›ã‚’æ§‹æˆã™ã‚‹ï¼
+            // ãƒ»é€ä¿¡ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’é¸æŠã—ã¦è¨­å®šã™ã‚‹ï¼
+            // ãƒ»TCPã‚’åˆ©ç”¨ã—ï¼Œã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³æ¥ç¶šè¦æ±‚ã‚’å—ã‘å…¥ã‚Œã‚‹ï¼
+            // ãƒ»æ¨å¥¨ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ãƒ¯â€”ã‚’åˆ©ç”¨ã™ã‚‹ï¼
             var lsVidFmt = segIo.getOutputVideoFormatList();
             if (lsVidFmt.size() <= 0) {
-                System.out.println("¦‘—M‰Â”\‚ÈƒrƒfƒIƒtƒH[ƒ}ƒbƒg‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»é€ä¿¡å¯èƒ½ãªãƒ“ãƒ‡ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             var lsAudFmt = segIo.getOutputAudioFormatList();
             if (lsAudFmt.size() <= 0) {
-                System.out.println("¦‘—M‰Â”\‚ÈƒI[ƒfƒBƒIƒtƒH[ƒ}ƒbƒg‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»é€ä¿¡å¯èƒ½ãªã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             segIo.configureOutgoingStream(lsVidFmt.get(0), lsAudFmt.get(0));
             segIo.setTransportProtocol(ProtocolType.TCP, ConnectionMode.PASSIVE);
             segIo.setPreferredPreviewer();
             
-            // ¥RcStreamPerformer ‚ğ¶¬‚·‚éD
+            // â–¼RcStreamPerformer ã‚’ç”Ÿæˆã™ã‚‹ï¼
             pfmr = mfsRmt.newStreamPerformer(segIo);
             
-            // ¥RcStreamPerformer ‚Ì“üo—Íˆ—‚ğŠJn‚·‚éD
+            // â–¼RcStreamPerformer ã®å…¥å‡ºåŠ›å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             pfmr.start();
             
-            // ¥RcStreamPerformer ‚Ì“üo—Íˆ—‚ğI—¹‚·‚éD
-            System.out.print("> Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚¿‚Ü‚·D");
+            // â–¼RcStreamPerformer ã®å…¥å‡ºåŠ›å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
+            System.out.print("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼");
             System.in.read();
             
             pfmr.stop();
@@ -87,11 +87,11 @@ public class NetworkToNetwork
             ex.printStackTrace();
         }
         finally {
-            // ¥RcStreamPerformer ‚Ì‘S‚Ä‚Ìˆ—‚ğI—¹‚·‚éD
+            // â–¼RcStreamPerformer ã®å…¨ã¦ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (pfmr != null) {
                 pfmr.delete();
             }
-            // ¥ƒT[ƒo‚ÆØ’f‚µC‰“Šu‘€ì‚ğI—¹‚·‚éD
+            // â–¼ã‚µãƒ¼ãƒã¨åˆ‡æ–­ã—ï¼Œé éš”æ“ä½œã‚’çµ‚äº†ã™ã‚‹ï¼
             if (mfsRmt != null) {
                 mfsRmt.shutdownRemoteControl();
             }

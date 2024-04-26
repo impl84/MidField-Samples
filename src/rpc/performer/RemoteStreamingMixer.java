@@ -18,7 +18,7 @@ public class RemoteStreamingMixer
 {
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ğƒRƒ“ƒ\[ƒ‹‚Éİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         RemoteOperator srcOp = null;
@@ -26,31 +26,31 @@ public class RemoteStreamingMixer
         RemoteOperator snkOp = null;
         
         try {
-            // ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚©‚ç•K—v‚ÈIPƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+            // ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°ã‹ã‚‰å¿…è¦ãªIPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             var srcAddr   = args[0];
             var mixAddr   = args[1];
             var snkAddr   = args[2];
             var mixerName = args[3];
             
-            // ¥Source NodeCMixer NodeCSink Node ‚Ö‚Ì‰“Šu‘€ì‚ğŠJn‚·‚éD
+            // â–¼Source Nodeï¼ŒMixer Nodeï¼ŒSink Node ã¸ã®é éš”æ“ä½œã‚’é–‹å§‹ã™ã‚‹ï¼
             srcOp = new RemoteOperator(srcAddr, err -> System.err.println(err));
             mixOp = new RemoteOperator(mixAddr, err -> System.err.println(err));
             snkOp = new RemoteOperator(snkAddr, err -> System.err.println(err));
             
-            // ¥ƒ~ƒLƒT[‚Ìˆ—‚ğŠJn‚·‚éD
+            // â–¼ãƒŸã‚­ã‚µãƒ¼ã®å‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             PerformerId mixerId = mixOp.setupMixerToNetwork(mixerName);
             
-            // ¥ƒ~ƒLƒT[‚Ìo—Í‚ğƒlƒbƒgƒ[ƒNŒo—R‚ÅóM‚µ‚ÄÄ¶•\¦‚ğŠJn‚·‚éD
+            // â–¼ãƒŸã‚­ã‚µãƒ¼ã®å‡ºåŠ›ã‚’ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯çµŒç”±ã§å—ä¿¡ã—ã¦å†ç”Ÿè¡¨ç¤ºã‚’é–‹å§‹ã™ã‚‹ï¼
             snkOp.setupNetworkToRenderer(mixerId);
             
-            // ¥ƒ~ƒLƒT[‚Ö‚Ì“ü—Í‚Æ‚È‚é‰f‘œ‚Ì‘—M‚ğŠJn‚·‚éD
+            // â–¼ãƒŸã‚­ã‚µãƒ¼ã¸ã®å…¥åŠ›ã¨ãªã‚‹æ˜ åƒã®é€ä¿¡ã‚’é–‹å§‹ã™ã‚‹ï¼
             PerformerId sourceId = srcOp.setupDeviceToNetwork();
             
-            // ¥‰f‘œ‚ğóM‚µ‚ÄCƒ~ƒLƒT[‚Ö‚Ì“ü—Í‚Æ‚·‚éD
+            // â–¼æ˜ åƒã‚’å—ä¿¡ã—ã¦ï¼ŒãƒŸã‚­ã‚µãƒ¼ã¸ã®å…¥åŠ›ã¨ã™ã‚‹ï¼
             mixOp.setupNetworkToMixer(sourceId, mixerId);
             
-            // ¥I—¹‚ğ‘Ò‚ÂD
-            System.out.print("> Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚¿‚Ü‚·D");
+            // â–¼çµ‚äº†ã‚’å¾…ã¤ï¼
+            System.out.print("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼");
             System.in.read();
         }
         catch (RemoteControlException ex) {
@@ -60,7 +60,7 @@ public class RemoteStreamingMixer
             ex.printStackTrace();
         }
         finally {
-            // ¥‘S‚Ä‚Ì‰“Šu‘€ì‚ğI—¹‚·‚éD
+            // â–¼å…¨ã¦ã®é éš”æ“ä½œã‚’çµ‚äº†ã™ã‚‹ï¼
             if (srcOp != null) {
                 srcOp.shutdownAll();
             }

@@ -26,14 +26,14 @@ public class SimpleClientMethod
     {
         Object result = null;
         try {
-            // ƒT[ƒo‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µCRPC‰“š‚ğæ“¾‚·‚éD
+            // ã‚µãƒ¼ãƒã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ï¼ŒRPCå¿œç­”ã‚’å–å¾—ã™ã‚‹ï¼
             // (InterruptedException, ExecutionException, TimeoutException)
             ResponseObject response = this.rpcClient.invoke(
-                "Simple.echo",  // ŒÄ‚Ño‚·ƒƒ\ƒbƒh–¼
-                echoString,     // ƒƒ\ƒbƒh‚Ìˆø”
-                2000            // ‰“šæ“¾‚Ü‚Å‚Ìƒ^ƒCƒ€ƒAƒEƒgŠÔ
+                "Simple.echo",  // å‘¼ã³å‡ºã™ãƒ¡ã‚½ãƒƒãƒ‰å
+                echoString,     // ãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°
+                2000            // å¿œç­”å–å¾—ã¾ã§ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæ™‚é–“
             );
-            // Œ‹‰Ê‚ª null ‚Ìê‡‚ÍƒGƒ‰[î•ñ‚ğo—Í‚·‚éD
+            // çµæœãŒ null ã®å ´åˆã¯ã‚¨ãƒ©ãƒ¼æƒ…å ±ã‚’å‡ºåŠ›ã™ã‚‹ï¼
             result = response.getResult();
             if (result == null) {
                 ErrorObject error = response.getError();

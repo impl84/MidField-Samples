@@ -57,7 +57,7 @@ public class Interviewer
     {
         boolean handled = true;
         
-        // ƒƒbƒZ[ƒWƒ^ƒCƒv–ˆ‚Ìˆ—‚ğÀs‚·‚éD
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¿ã‚¤ãƒ—æ¯ã®å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         String type = inPkt.getMessageType();
         switch (type) {
         case ASYNC_INTERVIEW_RESPONSE:
@@ -85,7 +85,7 @@ public class Interviewer
     @Override
     public void handleUnreachablePacket(CommPacket inPkt)
     {
-        this.printer.println("–¢“’BƒpƒPƒbƒgF" + inPkt.getMessageType());
+        this.printer.println("æœªåˆ°é”ãƒ‘ã‚±ãƒƒãƒˆï¼š" + inPkt.getMessageType());
     }
     
 // -----------------------------------------------------------------------------
@@ -98,10 +98,10 @@ public class Interviewer
     {
         this.printer = printer;
         
-        // PacketCommunicator ‚ğ¶¬‚·‚éD
+        // PacketCommunicator ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.comm = new PacketCommunicator(COMMUNICATOR_NAME, this);
         
-        // ƒƒbƒZ[ƒW‚Ìˆ¶æ‚Æ‚È‚é ObjectId ‚ğ¶¬‚·‚éD
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å®›å…ˆã¨ãªã‚‹ ObjectId ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.peerId = new ObjectId(Responder.COMMUNICATOR_NAME, peerAddr);
     }
     
@@ -109,18 +109,18 @@ public class Interviewer
     //
     void asyncInterview()
     {
-        // —v‹ƒpƒPƒbƒg‚Æ—v‹ƒƒbƒZ[ƒW‚ğ¶¬‚·‚éD
+        // è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã¨è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ï¼
         CommPacket     reqPkt = new CommPacket(ASYNC_INTERVIEW_REQUEST, this.peerId);
         RequestMessage reqMsg = new RequestMessage(
-            "ƒCƒ“ƒ^ƒrƒ…ƒA[‚`",
-            "‚±‚ñ‚É‚¿‚ÍD"
+            "ã‚¤ãƒ³ã‚¿ãƒ“ãƒ¥ã‚¢ãƒ¼ï¼¡",
+            "ã“ã‚“ã«ã¡ã¯ï¼"
         );
         reqPkt.setPayload(reqMsg);
         
-        // —v‹ƒƒbƒZ[ƒW‚ğƒRƒ“ƒ\[ƒ‹‚Öo—Í‚·‚éD
+        // è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã¸å‡ºåŠ›ã™ã‚‹ï¼
         this.printer.println(reqMsg);
         
-        // —v‹ƒpƒPƒbƒg‚ğ‘—M‚·‚éD
+        // è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã™ã‚‹ï¼
         this.comm.dispatchPacket(reqPkt);
     }
     
@@ -129,23 +129,23 @@ public class Interviewer
     void interview()
     {
         try {
-            // —v‹ƒpƒPƒbƒg‚Æ—v‹ƒƒbƒZ[ƒW‚ğ¶¬‚·‚éD
+            // è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã¨è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”Ÿæˆã™ã‚‹ï¼
             CommPacket     reqPkt = new CommPacket(INTERVIEW_REQUEST, this.peerId);
             RequestMessage reqMsg = new RequestMessage(
-                "ƒCƒ“ƒ^ƒrƒ…ƒA[‚a",
-                "‚Í‚¶‚ß‚Ü‚µ‚ÄD"
+                "ã‚¤ãƒ³ã‚¿ãƒ“ãƒ¥ã‚¢ãƒ¼ï¼¢",
+                "ã¯ã˜ã‚ã¾ã—ã¦ï¼"
             );
             reqPkt.setPayload(reqMsg);
             
-            // —v‹ƒƒbƒZ[ƒW‚ğƒRƒ“ƒ\[ƒ‹‚Öo—Í‚·‚éD
+            // è¦æ±‚ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã¸å‡ºåŠ›ã™ã‚‹ï¼
             this.printer.println(reqMsg);
             
-            // —v‹ƒpƒPƒbƒg‚ğ‘—M‚µ‚ÄC‰“šƒpƒPƒbƒg‚ğóM‚·‚éD
+            // è¦æ±‚ãƒ‘ã‚±ãƒƒãƒˆã‚’é€ä¿¡ã—ã¦ï¼Œå¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã‚’å—ä¿¡ã™ã‚‹ï¼
             CommPacket resPkt = this.comm.dispatchRequest(reqPkt, INTERVIEW_RESPONSE);
             // SystemException (PacketIoException, RemoteException),
             // TimeoutException, InterruptedException
             
-            // ‰“šƒpƒPƒbƒg‚©‚ç‰“šƒƒbƒZ[ƒW‚ğæ“¾‚µ‚Ä•\¦‚·‚éD
+            // å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã‹ã‚‰å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã—ã¦è¡¨ç¤ºã™ã‚‹ï¼
             ResponseMessage resMsg = resPkt.getPayload(ResponseMessage.class);
             this.printer.println(resMsg);
         }
@@ -160,7 +160,7 @@ public class Interviewer
     //
     void close()
     {
-        // PacketCommunicator ‚ğíœ‚·‚éD
+        // PacketCommunicator ã‚’å‰Šé™¤ã™ã‚‹ï¼
         this.comm.close();
     }
     
@@ -172,7 +172,7 @@ public class Interviewer
     //
     private void msgHn_AsyncInterviewResponse(CommPacket resPkt)
     {
-        // ‰“šƒpƒPƒbƒg‚©‚ç‰“šƒƒbƒZ[ƒW‚ğæ“¾‚µ‚Ä•\¦‚·‚éD
+        // å¿œç­”ãƒ‘ã‚±ãƒƒãƒˆã‹ã‚‰å¿œç­”ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—ã—ã¦è¡¨ç¤ºã™ã‚‹ï¼
         ResponseMessage resMsg = resPkt.getPayload(ResponseMessage.class);
         this.printer.println(resMsg);
     }
@@ -181,6 +181,6 @@ public class Interviewer
     //
     private void msgHn_UnsupportedMessage(CommPacket inPkt)
     {
-        this.printer.println("–¢‘Î‰ƒpƒPƒbƒgF" + inPkt.getMessageType());
+        this.printer.println("æœªå¯¾å¿œãƒ‘ã‚±ãƒƒãƒˆï¼š" + inPkt.getMessageType());
     }
 }

@@ -35,22 +35,22 @@ public class HostAddressPanel
         InputMethodListener
 {
     // - PUBLIC CONSTANT VALUE -------------------------------------------------
-    public static final String STR_START_CONTROL = "ŠJn";
-    public static final String STR_STOP_CONTROL  = "’â~";
+    public static final String STR_START_CONTROL = "é–‹å§‹";
+    public static final String STR_STOP_CONTROL  = "åœæ­¢";
     
-    public static final String STR_PLEASE_INPUT = "ƒzƒXƒg–¼ / IPƒAƒhƒŒƒX‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢D";
-    public static final String STR_INVALID_ADDR = "%s ‚Ö‚ÌÚ‘±‚É¸”s‚µ‚Ü‚µ‚½D";
+    public static final String STR_PLEASE_INPUT = "ãƒ›ã‚¹ãƒˆå / IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼";
+    public static final String STR_INVALID_ADDR = "%s ã¸ã®æ¥ç¶šã«å¤±æ•—ã—ã¾ã—ãŸï¼";
     
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String STR_REMOTE_HOST = "  ƒzƒXƒg–¼/IPƒAƒhƒŒƒX : ";
+    private static final String STR_REMOTE_HOST = "  ãƒ›ã‚¹ãƒˆå/IPã‚¢ãƒ‰ãƒ¬ã‚¹ : ";
     
     private static final Dimension PREF_DIM_ADDRESS_FIELD = new Dimension(160, 24);
     
     private static enum ConnectionState
     {
-        IDLE,		// ƒAƒCƒhƒ‹ó‘Ô
-        CONNECTING,	// ƒRƒlƒNƒVƒ‡ƒ“Šm—§ˆ—ó‘Ô
-        CONTROLLING	// ‰“Šu‘€ìó‘Ô
+        IDLE,		// ã‚¢ã‚¤ãƒ‰ãƒ«çŠ¶æ…‹
+        CONNECTING,	// ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç¢ºç«‹å‡¦ç†çŠ¶æ…‹
+        CONTROLLING	// é éš”æ“ä½œçŠ¶æ…‹
     }
     
 // =============================================================================
@@ -105,20 +105,20 @@ public class HostAddressPanel
     {
         String dstAddr = this.txtAddr.getText();
         if ((dstAddr == null) || (dstAddr.length() == 0)) {
-            // ƒAƒhƒŒƒX‚ª“ü—Í‚³‚ê‚Ä‚¢‚È‚¢D
+            // ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒå…¥åŠ›ã•ã‚Œã¦ã„ãªã„ï¼
             Dialog.warning(this.baseComp, STR_PLEASE_INPUT);
             dstAddr = null;
             return dstAddr;
         }
         // ---------------------------------------------------------------------
         try {
-            // “ü—Í‚³‚ê‚Ä‚¢‚éƒAƒhƒŒƒX‚ÌŠm”FD
+            // å…¥åŠ›ã•ã‚Œã¦ã„ã‚‹ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ç¢ºèªï¼
             InetAddress.getByName(dstAddr);
             // UnknownHostException
             return dstAddr;
         }
         catch (UnknownHostException ex) {
-            // “ü—Í‚³‚ê‚Ä‚¢‚éƒAƒhƒŒƒX‚ª•s³D
+            // å…¥åŠ›ã•ã‚Œã¦ã„ã‚‹ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒä¸æ­£ï¼
             Dialog.warning(
                 this.baseComp, String.format(STR_INVALID_ADDR, dstAddr)
             );

@@ -76,14 +76,14 @@ public class Dialog
     //
     private static void popup(Component parent, String title, String msg)
     {
-        // ƒ_ƒCƒAƒƒO‚Ìƒ^ƒCƒv‚ğŒˆ‚ß‚éD
+        // ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã‚¿ã‚¤ãƒ—ã‚’æ±ºã‚ã‚‹ï¼
         int type = switch (title) {
         case STR_TITLE_MESSAGE -> JOptionPane.INFORMATION_MESSAGE;
         case STR_TITLE_WARNING -> JOptionPane.WARNING_MESSAGE;
         case STR_TITLE_ERROR -> JOptionPane.ERROR_MESSAGE;
         default -> JOptionPane.PLAIN_MESSAGE;
         };
-        // ƒ_ƒCƒAƒƒO‚ğ•\¦‚·‚éD
+        // ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã™ã‚‹ï¼
         if (SwingUtilities.isEventDispatchThread()) {
             showDialog(parent, title, type, msg);
         }

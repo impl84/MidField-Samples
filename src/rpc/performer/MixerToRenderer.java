@@ -20,7 +20,7 @@ public class MixerToRenderer
 {
     public static void main(String[] args)
     {
-        // MidField System ‚ÌƒƒOo—Íæ‚ğƒRƒ“ƒ\[ƒ‹‚Éİ’è‚·‚éD
+        // MidField System ã®ãƒ­ã‚°å‡ºåŠ›å…ˆã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«è¨­å®šã™ã‚‹ï¼
         Log.setLogPrinter(ConsolePrinter.getInstance());
         
         MfsRemote       mfsRmt     = null;
@@ -28,18 +28,18 @@ public class MixerToRenderer
         StreamPerformer mixerInput = null;
         
         try {
-            // ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“ˆø”‚©‚çƒT[ƒo‚ÌIPƒAƒhƒŒƒX‚Æƒ|[ƒg”Ô†‚ğæ“¾‚·‚éD
+            // ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³å¼•æ•°ã‹ã‚‰ã‚µãƒ¼ãƒã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã¨ãƒãƒ¼ãƒˆç•ªå·ã‚’å–å¾—ã™ã‚‹ï¼
             var serverAddr = args[0];
             int serverPort = Integer.parseInt(args[1]);
             var mixerName  = args[2];
             
-            // ¥ƒT[ƒo‚ÆÚ‘±‚µC‰“Šu‘€ì‚ğŠJn‚·‚éD
+            // â–¼ã‚µãƒ¼ãƒã¨æ¥ç¶šã—ï¼Œé éš”æ“ä½œã‚’é–‹å§‹ã™ã‚‹ï¼
             mfsRmt = new MfsRemote(serverAddr, serverPort, err -> System.err.println(err));
             mfsRmt.initializeRemoteControl();
             
-            // ¥ƒ~ƒLƒT[‚ğ\¬‚µCˆ—‚ğŠJn‚·‚éD
-            // Eƒ~ƒLƒT[‚ÌƒtƒH[ƒ}ƒbƒg‚É‚ÍCƒVƒXƒeƒ€ƒvƒƒpƒeƒB‚Ìİ’è’l‚ğ“K—p‚·‚éD
-            // Eo—Í‚ÍƒŒƒ“ƒ_ƒ‰D
+            // â–¼ãƒŸã‚­ã‚µãƒ¼ã‚’æ§‹æˆã—ï¼Œå‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
+            // ãƒ»ãƒŸã‚­ã‚µãƒ¼ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«ã¯ï¼Œã‚·ã‚¹ãƒ†ãƒ ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è¨­å®šå€¤ã‚’é©ç”¨ã™ã‚‹ï¼
+            // ãƒ»å‡ºåŠ›ã¯ãƒ¬ãƒ³ãƒ€ãƒ©ï¼
             var mixerIo = mfsRmt.newSegmentIo();
             mixerIo.configureStreamingMixer(mixerName);
             mixerIo.configureRenderer();
@@ -47,17 +47,17 @@ public class MixerToRenderer
             mixer = mfsRmt.newStreamPerformer(mixerIo);
             mixer.start();
             
-            // ¥ƒ~ƒLƒT[“ü—ÍiƒrƒfƒIƒJƒƒ‰‚Æƒ}ƒCƒNj‚ğ\¬‚µCˆ—‚ğŠJn‚·‚éD
+            // â–¼ãƒŸã‚­ã‚µãƒ¼å…¥åŠ›ï¼ˆãƒ“ãƒ‡ã‚ªã‚«ãƒ¡ãƒ©ã¨ãƒã‚¤ã‚¯ï¼‰ã‚’æ§‹æˆã—ï¼Œå‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             var devInfMgr = mfsRmt.getDeviceInfoManager();
             
             var lsVidDev = devInfMgr.getVideoInputDeviceInfoList();
             if (lsVidDev.size() <= 0) {
-                System.out.println("¦—˜—p‰Â”\‚ÈƒrƒfƒI“ü—ÍƒfƒoƒCƒX‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»åˆ©ç”¨å¯èƒ½ãªãƒ“ãƒ‡ã‚ªå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             var lsAudDev = devInfMgr.getAudioInputDeviceInfoList();
             if (lsAudDev.size() <= 0) {
-                System.out.println("¦—˜—p‰Â”\‚ÈƒI[ƒfƒBƒI“ü—ÍƒfƒoƒCƒX‚ª‚ ‚è‚Ü‚¹‚ñD");
+                System.out.println("â€»åˆ©ç”¨å¯èƒ½ãªã‚ªãƒ¼ãƒ‡ã‚£ã‚ªå…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             SegmentIo mixInIo = mfsRmt.newSegmentIo();
@@ -66,12 +66,12 @@ public class MixerToRenderer
             mixerInput = mfsRmt.newStreamPerformer(mixInIo);
             mixerInput.start();
             
-            // ¥“üo—Íˆ—‚ğI—¹‚·‚éD
-            System.out.printf("> Enter ƒL[‚Ì“ü—Í‚ğ‘Ò‚¿‚Ü‚·D");
+            // â–¼å…¥å‡ºåŠ›å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
+            System.out.printf("> Enter ã‚­ãƒ¼ã®å…¥åŠ›ã‚’å¾…ã¡ã¾ã™ï¼");
             System.in.read();
             
-            // ¡¡¡¡‚Æ‚è‚ ‚¦‚¸‚±‚Ì‚Ü‚Ü‚É‚µ‚Ä‚¨‚¢‚ÄC
-            // —áŠO‚Ì“`‚¦•û‚ğ‰ü—Ç‚·‚éD¡¡¡¡
+            // â– â– â– â– ã¨ã‚Šã‚ãˆãšã“ã®ã¾ã¾ã«ã—ã¦ãŠã„ã¦ï¼Œ
+            // ä¾‹å¤–ã®ä¼ãˆæ–¹ã‚’æ”¹è‰¯ã™ã‚‹ï¼â– â– â– â– 
             mixerInput.stop();
             mixer.stop();
         }
@@ -82,14 +82,14 @@ public class MixerToRenderer
             ex.printStackTrace();
         }
         finally {
-            // ¥ƒ~ƒLƒT[“ü—Í‚Æƒ~ƒLƒT[‚Ì‘S‚Ä‚Ìˆ—‚ğI—¹‚·‚éD
+            // â–¼ãƒŸã‚­ã‚µãƒ¼å…¥åŠ›ã¨ãƒŸã‚­ã‚µãƒ¼ã®å…¨ã¦ã®å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹ï¼
             if (mixerInput != null) {
                 mixerInput.delete();
             }
             if (mixer != null) {
                 mixer.delete();
             }
-            // ¥ƒT[ƒo‚ÆØ’f‚µC‰“Šu‘€ì‚ğI—¹‚·‚éD
+            // â–¼ã‚µãƒ¼ãƒã¨åˆ‡æ–­ã—ï¼Œé éš”æ“ä½œã‚’çµ‚äº†ã™ã‚‹ï¼
             if (mfsRmt != null) {
                 mfsRmt.shutdownRemoteControl();
             }

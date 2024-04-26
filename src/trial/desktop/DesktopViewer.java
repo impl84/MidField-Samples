@@ -66,12 +66,12 @@ public class DesktopViewer
         ActionListener
 {
     // - PRIVATE CONSTANT VALUE ------------------------------------------------
-    private static final String TITLE_REMOTE_DESKTOP = "‰“ŠuƒfƒXƒNƒgƒbƒv";
+    private static final String TITLE_REMOTE_DESKTOP = "é éš”ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—";
     private static final String STR_TITLE_FORMAT     = TITLE_REMOTE_DESKTOP + " (%s)";
     
-    private static final String STR_FRAME_RATE    = "  Ä¶ƒtƒŒ[ƒ€ƒŒ[ƒg : %.2f [fps] ";
-    private static final String STR_BIT_RATE      = "  óMƒrƒbƒgƒŒ[ƒg : %.2f [Mbps] ";
-    private static final String STR_PKT_LOSS_RATE = "  óMƒpƒPƒbƒgƒƒX—¦ : %.2f [%%] ";
+    private static final String STR_FRAME_RATE    = "  å†ç”Ÿãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆ : %.2f [fps] ";
+    private static final String STR_BIT_RATE      = "  å—ä¿¡ãƒ“ãƒƒãƒˆãƒ¬ãƒ¼ãƒˆ : %.2f [Mbps] ";
+    private static final String STR_PKT_LOSS_RATE = "  å—ä¿¡ãƒ‘ã‚±ãƒƒãƒˆãƒ­ã‚¹ç‡ : %.2f [%%] ";
     
     private static final int FRAME_WIDTH  = 640;
     private static final int FRAME_HEIGHT = 480;
@@ -258,18 +258,18 @@ public class DesktopViewer
     //
     void close()
     {
-        // ‰“Šu‘€ìó‘Ô‚©‚Ç‚¤‚©‚ğŠm”F‚·‚éD
+        // é éš”æ“ä½œçŠ¶æ…‹ã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹ï¼
         if (this.pnlConAddr.isControllingState()) {
-            // ‰“Šu‘€ì‚ğ’â~‚·‚éD
+            // é éš”æ“ä½œã‚’åœæ­¢ã™ã‚‹ï¼
             this.client.stopControl();
             
-            // ImageReceiver ‚ÌI—¹ˆ—‚ğÀs‚·‚éD
+            // ImageReceiver ã®çµ‚äº†å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
             this.imgReciever.close();
             
-            // ‰“Šu‘€ì‚ğI—¹‚·‚éD
+            // é éš”æ“ä½œã‚’çµ‚äº†ã™ã‚‹ï¼
             this.client.close();
         }
-        // ‚±‚ÌƒtƒŒ[ƒ€‚ğI—¹‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’çµ‚äº†ã™ã‚‹ï¼
         dispose();
     }
     
@@ -278,12 +278,12 @@ public class DesktopViewer
     void controlAccepted(IoParam inPrm)
     {
         try {
-            // ImageReceiver ‚ğ¶¬‚µ‚ÄCVideoCanvas ‚ğæ“¾‚·‚éD
+            // ImageReceiver ã‚’ç”Ÿæˆã—ã¦ï¼ŒVideoCanvas ã‚’å–å¾—ã™ã‚‹ï¼
             this.imgReciever = new ImageReceiver(this);
             VideoCanvas vidCvs = this.imgReciever.createVideoCanvas(inPrm);
             // SystemException, StreamException
             
-            // VideoCanvas ‚ÌƒZƒbƒgƒAƒbƒvD
+            // VideoCanvas ã®ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ï¼
             vidCvs.enableInputMethods(false);
             
             vidCvs.addKeyListener(this);
@@ -291,19 +291,19 @@ public class DesktopViewer
             vidCvs.addMouseMotionListener(this);
             vidCvs.addMouseWheelListener(this);
             
-            // ƒfƒXƒNƒgƒbƒv‹æ‰æ‚ÌƒZƒbƒgƒAƒbƒvD
+            // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åŒºç”»ã®ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ï¼
             newDesktopPane(vidCvs, inPrm);
             
-            // ƒRƒlƒNƒVƒ‡ƒ“ƒAƒhƒŒƒXƒpƒlƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éD
+            // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ï¼
             this.pnlConAddr.changeToControllingState();
             
-            // ƒtƒŒ[ƒ€‚Ìƒ^ƒCƒgƒ‹‚ğ•ÏX‚·‚éD
+            // ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å¤‰æ›´ã™ã‚‹ï¼
             setTitle(
                 String.format(
                     STR_TITLE_FORMAT, this.pnlConAddr.getSelectedAddress()
                 )
             );
-            // ƒfƒXƒNƒgƒbƒvƒCƒ[ƒW‚ÌóMÄ¶ˆ—‚ğŠJn‚·‚éD
+            // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã‚¤ãƒ¡ãƒ¼ã‚¸ã®å—ä¿¡å†ç”Ÿå‡¦ç†ã‚’é–‹å§‹ã™ã‚‹ï¼
             this.imgReciever.start();
             // StreamException
         }
@@ -317,27 +317,27 @@ public class DesktopViewer
     //
     void handleIllegalMessage(PacketIoException ex)
     {
-        // ƒAƒCƒhƒ‹ó‘Ô‚Å‚ ‚ê‚Î–ß‚éD
+        // ã‚¢ã‚¤ãƒ‰ãƒ«çŠ¶æ…‹ã§ã‚ã‚Œã°æˆ»ã‚‹ï¼
         if (this.pnlConAddr.isIdleState()) {
             return;
         }
-        // ‰“Šu‘€ì’†‚Å‚ ‚ê‚Î ImageReceiver ‚Ìˆ—‚ğI—¹‚µC
-        // ƒfƒXƒNƒgƒbƒv‹æ‰æ‚ğíœ‚·‚éD
+        // é éš”æ“ä½œä¸­ã§ã‚ã‚Œã° ImageReceiver ã®å‡¦ç†ã‚’çµ‚äº†ã—ï¼Œ
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åŒºç”»ã‚’å‰Šé™¤ã™ã‚‹ï¼
         if (this.pnlConAddr.isControllingState()) {
             this.imgReciever.close();
             deleteDesktopPane();
         }
-        // ƒtƒŒ[ƒ€‚Ìƒ^ƒCƒgƒ‹‚ğ•ÏX‚·‚éD
+        // ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å¤‰æ›´ã™ã‚‹ï¼
         setTitle(TITLE_REMOTE_DESKTOP);
         
-        // ƒRƒlƒNƒVƒ‡ƒ“ƒAƒhƒŒƒXƒpƒlƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éD
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ï¼
         this.pnlConAddr.changeToIdleState();
         
-        // ƒƒbƒZ[ƒWƒpƒlƒ‹‚Ì’l‚ğ‰Šú‰»‚·‚éD
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ‘ãƒãƒ«ã®å€¤ã‚’åˆæœŸåŒ–ã™ã‚‹ï¼
         updatePlayoutStatus(0.0);
         updateConnectionStatus(0, 0.0);
         
-        // ƒpƒPƒbƒg“üo—Í—áŠO‚ÉŠÖ‚·‚éŒx‚ğo—Í‚·‚éD
+        // ãƒ‘ã‚±ãƒƒãƒˆå…¥å‡ºåŠ›ä¾‹å¤–ã«é–¢ã™ã‚‹è­¦å‘Šã‚’å‡ºåŠ›ã™ã‚‹ï¼
         Log.warning(ex);
         Dialog.warning(this, ex);
     }
@@ -346,11 +346,11 @@ public class DesktopViewer
     //
     void controlRefused(String msg)
     {
-        // ó“ü‹‘”Û‚ÉŠÖ‚·‚éƒƒbƒZ[ƒW‚ğo—Í‚·‚éD
+        // å—å…¥æ‹’å¦ã«é–¢ã™ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ï¼
         Log.warning(msg);
         Dialog.warning(this, msg);
         
-        // ƒRƒlƒNƒVƒ‡ƒ“ƒAƒhƒŒƒXƒpƒlƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éD
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ï¼
         this.pnlConAddr.changeToIdleState();
     }
     
@@ -393,28 +393,28 @@ public class DesktopViewer
     //
     void setupGui()
     {
-        // ƒRƒlƒNƒVƒ‡ƒ“ƒAƒhƒŒƒXƒpƒlƒ‹‚ğ¶¬‚·‚éD
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼
         this.pnlConAddr = new HostAddressPanel(this, this);
         
-        // ƒƒbƒZ[ƒWo—ÍƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ¶¬‚·‚éD
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡ºåŠ›ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç”Ÿæˆã™ã‚‹ï¼
         Container msgComp = setupMessageComponents();
         
-        // ‚±‚ÌƒtƒŒ[ƒ€‚É“üo—ÍƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’Ç‰Á‚·‚éD
+        // ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã«å…¥å‡ºåŠ›ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹ï¼
         setLayout(new BorderLayout());
         add(this.pnlConAddr, BorderLayout.NORTH);
         add(msgComp, BorderLayout.SOUTH);
         
-        // ƒ^ƒCƒgƒ‹C”wŒiFCƒTƒCƒY‚ğİ’è‚·‚éD
+        // ã‚¿ã‚¤ãƒˆãƒ«ï¼ŒèƒŒæ™¯è‰²ï¼Œã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ï¼
         setTitle(TITLE_REMOTE_DESKTOP);
         setBackground(Color.BLUE);
         setMinimumSize(DIM_FRAME);
         setPreferredSize(DIM_FRAME);
         pack();
         
-        // ‰æ–Ê’†‰›‚ÉƒtƒŒ[ƒ€‚ÌˆÊ’u‚ğ‡‚í‚¹‚éD
+        // ç”»é¢ä¸­å¤®ã«ãƒ•ãƒ¬ãƒ¼ãƒ ã®ä½ç½®ã‚’åˆã‚ã›ã‚‹ï¼
         AppUtilities.setLocationToCenter(this);
         
-        // I—¹ˆ—‚ğ“o˜^‚·‚éD
+        // çµ‚äº†å‡¦ç†ã‚’ç™»éŒ²ã™ã‚‹ï¼
         addWindowListener(new WindowAdapter()
         {
             @Override
@@ -424,7 +424,7 @@ public class DesktopViewer
                 close();
             }
         });
-        // ‰Â‹ó‘Ô‚É‚·‚éD
+        // å¯è¦–çŠ¶æ…‹ã«ã™ã‚‹ï¼
         setVisible(true);
     }
     
@@ -437,24 +437,24 @@ public class DesktopViewer
     
     // - PRIVATE METHOD --------------------------------------------------------
     //
-    // 2017/9/6 KeyEvent ‚ğ¶¬‚µ’¼‚·D
-    // KeyEvent ‚Í Serializable ‚ğÀ‘•‚µ‚Ä‚¢‚é‚ªCKeyEvent ‚Ì’†‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é
-    // ƒ\[ƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì VideoCanvas ‚É‚æ‚èCƒVƒŠƒAƒ‰ƒCƒY‚·‚éÛC
-    // —áŠO‚ª”­¶‚·‚éD
-    // VideoCanvas ‚à Serializable ‚ğÀ‘•‚µ‚Ä‚¢‚é‚ªC“à•”‚ÉƒVƒŠƒAƒ‰ƒCƒY‚Å‚«‚È‚¢
-    // ƒCƒ“ƒXƒ^ƒ“ƒX‚Ö‚ÌQÆ‚ğ•Û‚µ‚Ä‚¢‚é‚à‚Ì‚Æv‚í‚ê‚éD
-    // “®ìãCƒ\[ƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚ª VideoCanvas ‚Å‚ ‚é•K—v‚Í–³‚¢‚Ì‚ÅC
-    // ƒ_ƒ~[‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒ\[ƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚·‚éƒCƒxƒ“ƒg‚ğ¶¬‚µC
-    // ‚»‚ê‚ğƒVƒŠƒAƒ‰ƒCƒY‚µ‚Ä‰“Šu‚Ö‘—M‚·‚é‚±‚Æ‚É‚µ‚½D
+    // 2017/9/6 KeyEvent ã‚’ç”Ÿæˆã—ç›´ã™ï¼
+    // KeyEvent ã¯ Serializable ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ãŒï¼ŒKeyEvent ã®ä¸­ã«å«ã¾ã‚Œã¦ã„ã‚‹
+    // ã‚½ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã® VideoCanvas ã«ã‚ˆã‚Šï¼Œã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã™ã‚‹éš›ï¼Œ
+    // ä¾‹å¤–ãŒç™ºç”Ÿã™ã‚‹ï¼
+    // VideoCanvas ã‚‚ Serializable ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ãŒï¼Œå†…éƒ¨ã«ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã§ããªã„
+    // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¸ã®å‚ç…§ã‚’ä¿æŒã—ã¦ã„ã‚‹ã‚‚ã®ã¨æ€ã‚ã‚Œã‚‹ï¼
+    // å‹•ä½œä¸Šï¼Œã‚½ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒ VideoCanvas ã§ã‚ã‚‹å¿…è¦ã¯ç„¡ã„ã®ã§ï¼Œ
+    // ãƒ€ãƒŸãƒ¼ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ã™ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç”Ÿæˆã—ï¼Œ
+    // ãã‚Œã‚’ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ã¦é éš”ã¸é€ä¿¡ã™ã‚‹ã“ã¨ã«ã—ãŸï¼
     //
-    // MouseEvent ‚Å‚à“¯—l‚É”­¶‚·‚é‚Æl‚¦‚ç‚ê‚é‚ªC
-    // MouseEvent ‚Å‚Í”­¶‚µ‚È‚¢DKeyEvent ‚Å‚à MouseEvent ‚Å‚àC
-    // ƒ\[ƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚Í“¯‚¶‚­ VideoCanvas ‚È‚Ì‚¾‚ªC
-    // ‚¨‚»‚ç‚­C“à•”‚Å•Û‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚Ö‚ÌQÆ‚Éˆá‚¢‚ª‚ ‚é‚Æv‚í‚ê‚éD
+    // MouseEvent ã§ã‚‚åŒæ§˜ã«ç™ºç”Ÿã™ã‚‹ã¨è€ƒãˆã‚‰ã‚Œã‚‹ãŒï¼Œ
+    // MouseEvent ã§ã¯ç™ºç”Ÿã—ãªã„ï¼KeyEvent ã§ã‚‚ MouseEvent ã§ã‚‚ï¼Œ
+    // ã‚½ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯åŒã˜ã VideoCanvas ãªã®ã ãŒï¼Œ
+    // ãŠãã‚‰ãï¼Œå†…éƒ¨ã§ä¿æŒã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¸ã®å‚ç…§ã«é•ã„ãŒã‚ã‚‹ã¨æ€ã‚ã‚Œã‚‹ï¼
     //
-    // ‚±‚ÌŒ»Û‚ÍCˆÈ‘O‚Í KeyEvent ‚Å‚à”­¶‚µ‚È‚©‚Á‚½D
-    // ¡ŒãCMouseEvent ‚Å‚à”­¶‚·‚é‰Â”\«‚ğl—¶‚µ‚ÄCMouseEvent ‚Å‚à
-    // ƒ_ƒ~[‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒ\[ƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚·‚é‚æ‚¤C³‚ğ‰Á‚¦‚½D
+    // ã“ã®ç¾è±¡ã¯ï¼Œä»¥å‰ã¯ KeyEvent ã§ã‚‚ç™ºç”Ÿã—ãªã‹ã£ãŸï¼
+    // ä»Šå¾Œï¼ŒMouseEvent ã§ã‚‚ç™ºç”Ÿã™ã‚‹å¯èƒ½æ€§ã‚’è€ƒæ…®ã—ã¦ï¼ŒMouseEvent ã§ã‚‚
+    // ãƒ€ãƒŸãƒ¼ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ã™ã‚‹ã‚ˆã†ä¿®æ­£ã‚’åŠ ãˆãŸï¼
     //
     private KeyEvent reCreateKeyEvent(KeyEvent ev)
     {
@@ -473,21 +473,21 @@ public class DesktopViewer
     // - PRIVATE METHOD --------------------------------------------------------
     //
     // 2017/9/6
-    // KeyEvent “¯—lCƒ_ƒ~[‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒ\[ƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚µ‚Ä
-    // —˜—p‚·‚é‚æ‚¤C³D
+    // KeyEvent åŒæ§˜ï¼Œãƒ€ãƒŸãƒ¼ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ã—ã¦
+    // åˆ©ç”¨ã™ã‚‹ã‚ˆã†ä¿®æ­£ï¼
     //
-    // 2009/1/20 MouseEvent ‚ğ¶¬‚µ’¼‚·D
-    // Windows Vista ‚Å‚ÍCVideoCanvas ‚Ìƒ}ƒEƒXÀ•Wæ“¾‚É•s‹ï‡‚ª‚ ‚éD
-    // mousePressed() ‚Æ mouseMoved() ‚Ìˆø”‚Æ‚È‚é MouseEvent ‚©‚çæ“¾
-    // ‚Å‚«‚é‘Š‘ÎÀ•W’l‚Æâ‘ÎÀ•W’l‚ª‚ ‚Á‚Ä‚¢‚È‚¢Dâ‘ÎÀ•W—p‚Ì•Ï”‚É
-    // ‘Š‘ÎÀ•W’l‚ªŠi”[‚³‚ê‚Ä‚¢‚éD‘Š‘ÎÀ•W—p‚Ì•Ï”‚É‚Í•s–¾‚È’l‚ªŠi”[
-    // ‚³‚ê‚Ä‚¢‚éD‘¼‚ÌƒŠƒXƒi[ƒƒ\ƒbƒh‚Å‚Í–â‘è‚È‚¢D
-    // Windows XP ‚Å‚Í”­¶‚µ‚È‚¢D
-    // Java ‚Ìƒo[ƒWƒ‡ƒ“‚Í 1.6.0 update 7D
-    // Java ‚Ì•s‹ï‡‚Å‚Í‚È‚¢‚©‚Æv‚í‚êC‚¢‚¸‚ê‰ü‘P‚³‚ê‚é‚©‚Æ‚àv‚¤‚ªC
-    // ‚±‚Ì‚Ü‚Ü‚Å‚Íg‚¦‚È‚¢D
-    // •K—v‚Æ‚È‚é‘Š‘ÎÀ•W’l‚ÍC‰º‹L‚Ì•û–@‚Å‚àæ“¾‚Å‚«‚éD
-    // “––ÊC‚±‚Ìƒƒ\ƒbƒh‚ğg‚¢¶¬‚µ’¼‚µ‚½ƒ}ƒEƒXƒCƒxƒ“ƒg‚ğ—˜—p‚·‚éD
+    // 2009/1/20 MouseEvent ã‚’ç”Ÿæˆã—ç›´ã™ï¼
+    // Windows Vista ã§ã¯ï¼ŒVideoCanvas ã®ãƒã‚¦ã‚¹åº§æ¨™å–å¾—ã«ä¸å…·åˆãŒã‚ã‚‹ï¼
+    // mousePressed() ã¨ mouseMoved() ã®å¼•æ•°ã¨ãªã‚‹ MouseEvent ã‹ã‚‰å–å¾—
+    // ã§ãã‚‹ç›¸å¯¾åº§æ¨™å€¤ã¨çµ¶å¯¾åº§æ¨™å€¤ãŒã‚ã£ã¦ã„ãªã„ï¼çµ¶å¯¾åº§æ¨™ç”¨ã®å¤‰æ•°ã«
+    // ç›¸å¯¾åº§æ¨™å€¤ãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹ï¼ç›¸å¯¾åº§æ¨™ç”¨ã®å¤‰æ•°ã«ã¯ä¸æ˜ãªå€¤ãŒæ ¼ç´
+    // ã•ã‚Œã¦ã„ã‚‹ï¼ä»–ã®ãƒªã‚¹ãƒŠãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰ã§ã¯å•é¡Œãªã„ï¼
+    // Windows XP ã§ã¯ç™ºç”Ÿã—ãªã„ï¼
+    // Java ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¯ 1.6.0 update 7ï¼
+    // Java ã®ä¸å…·åˆã§ã¯ãªã„ã‹ã¨æ€ã‚ã‚Œï¼Œã„ãšã‚Œæ”¹å–„ã•ã‚Œã‚‹ã‹ã¨ã‚‚æ€ã†ãŒï¼Œ
+    // ã“ã®ã¾ã¾ã§ã¯ä½¿ãˆãªã„ï¼
+    // å¿…è¦ã¨ãªã‚‹ç›¸å¯¾åº§æ¨™å€¤ã¯ï¼Œä¸‹è¨˜ã®æ–¹æ³•ã§ã‚‚å–å¾—ã§ãã‚‹ï¼
+    // å½“é¢ï¼Œã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ã„ç”Ÿæˆã—ç›´ã—ãŸãƒã‚¦ã‚¹ã‚¤ãƒ™ãƒ³ãƒˆã‚’åˆ©ç”¨ã™ã‚‹ï¼
     //
     private MouseEvent reCreateMouseEvent(MouseEvent ev)
     {
@@ -536,49 +536,49 @@ public class DesktopViewer
         int vidWidth  = vidCvs.getWidth();
         int vidHeight = vidCvs.getHeight();
         
-        // ƒXƒNƒ[ƒ‹‹æ‰æ‚ğ¶¬‚·‚éD
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åŒºç”»ã‚’ç”Ÿæˆã™ã‚‹ï¼
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setWheelScrollingEnabled(false);
-        scrollPane.setSize(1, 1); // ¦‰æ–Ê•\¦‚Ìƒtƒ‰ƒbƒVƒ…‘Î‰D
+        scrollPane.setSize(1, 1); // â€»ç”»é¢è¡¨ç¤ºæ™‚ã®ãƒ•ãƒ©ãƒƒã‚·ãƒ¥å¯¾å¿œï¼
         
-        // VideoCanvas ‚Ì¶‰E‚É‰„‚Ñ‚éŒĞ‚ğ•t‚¯‚éD
+        // VideoCanvas ã®å·¦å³ã«å»¶ã³ã‚‹ç³Šã‚’ä»˜ã‘ã‚‹ï¼
         Box horBox = Box.createHorizontalBox();
         horBox.add(Box.createHorizontalGlue());
         horBox.add(scrollPane);
         horBox.add(Box.createHorizontalGlue());
         
-        // horBox ‚Ìã‰º‚É‰„‚Ñ‚éŒĞ‚ğ•t‚¯CƒfƒXƒNƒgƒbƒv‹æ‰æ‚Æ‚·‚éD
+        // horBox ã®ä¸Šä¸‹ã«å»¶ã³ã‚‹ç³Šã‚’ä»˜ã‘ï¼Œãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åŒºç”»ã¨ã™ã‚‹ï¼
         this.desktopPane = Box.createVerticalBox();
         this.desktopPane.add(Box.createVerticalGlue());
         this.desktopPane.add(horBox);
         this.desktopPane.add(Box.createVerticalGlue());
         
-        // ƒfƒXƒNƒgƒbƒv‹æ‰æ‚ğ‚±‚ÌƒtƒŒ[ƒ€‚É’Ç‰Á‚·‚éD
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åŒºç”»ã‚’ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã«è¿½åŠ ã™ã‚‹ï¼
         add(this.desktopPane, BorderLayout.CENTER);
-        validate(); // ‚±‚±‚ÅƒXƒNƒ[ƒ‹ƒo[‚Ì•‚Æ‚‚³‚ªŒˆ‚Ü‚éD
+        validate(); // ã“ã“ã§ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®å¹…ã¨é«˜ã•ãŒæ±ºã¾ã‚‹ï¼
         
-        // ƒXƒNƒ[ƒ‹‹æ‰æ‚Ì„§EÅ‘åƒTƒCƒY‚ğZo‚·‚éD
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åŒºç”»ã®æ¨å¥¨ãƒ»æœ€å¤§ã‚µã‚¤ã‚ºã‚’ç®—å‡ºã™ã‚‹ï¼
         int width  = scrollPane.getVScrollbarWidth();
         int height = scrollPane.getHScrollbarHeight();
         width /= 4;
         height /= 4;
         Dimension dim = new Dimension(vidWidth + width, vidHeight + height);
         
-        // ƒXƒNƒ[ƒ‹‹æ‰æ‚ÌŠeƒTƒCƒY‚ğİ’è‚·‚éD
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åŒºç”»ã®å„ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹ï¼
         scrollPane.setMinimumSize(DIM_MIN);
         scrollPane.setPreferredSize(dim);
         scrollPane.setMaximumSize(dim);
         
-        // ƒXƒNƒ[ƒ‹‹æ‰æ‚É VideoCanvas ‚ğ’Ç‰Á‚·‚éD
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åŒºç”»ã« VideoCanvas ã‚’è¿½åŠ ã™ã‚‹ï¼
         scrollPane.add(vidCvs);
-        validate(); // ƒXƒNƒ[ƒ‹‹æ‰æ‚ÌƒTƒCƒY‚É‰‚¶‚ÄƒŒƒCƒAƒEƒg‚ğ’²®‚·‚éD
+        validate(); // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«åŒºç”»ã®ã‚µã‚¤ã‚ºã«å¿œã˜ã¦ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’èª¿æ•´ã™ã‚‹ï¼
     }
     
     // - PRIVATE METHOD --------------------------------------------------------
     //
     private void deleteDesktopPane()
     {
-        // ƒfƒXƒNƒgƒbƒv‹æ‰æ‚ğ‚±‚ÌƒtƒŒ[ƒ€‚©‚çíœ‚·‚éD
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åŒºç”»ã‚’ã“ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‹ã‚‰å‰Šé™¤ã™ã‚‹ï¼
         remove(this.desktopPane);
         validate();
         repaint();
@@ -591,17 +591,17 @@ public class DesktopViewer
     void evHn_StartControl()
     {
         try {
-            // Ú‘±æƒAƒhƒŒƒX‚ğæ“¾‚·‚éD
+            // æ¥ç¶šå…ˆã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—ã™ã‚‹ï¼
             String strAddr = this.pnlConAddr.getSelectedAddress();
             if (strAddr == null) {
                 return;
             }
-            // DesktopClient ‚ğ¶¬‚µCŠJnƒCƒxƒ“ƒg‚ğ”z‘—‚·‚éD
+            // DesktopClient ã‚’ç”Ÿæˆã—ï¼Œé–‹å§‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’é…é€ã™ã‚‹ï¼
             this.client = new DesktopClient(this, strAddr);
             // SystemException
             this.client.startControl(strAddr);
             
-            // ƒRƒlƒNƒVƒ‡ƒ“ƒAƒhƒŒƒXƒpƒlƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éD
+            // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ï¼
             this.pnlConAddr.changeToConnectingState();
         }
         catch (Exception ex) {
@@ -613,23 +613,23 @@ public class DesktopViewer
     //
     void evHn_StopControl()
     {
-        // ImageReceiver ‚ÌI—¹ˆ—‚ğÀs‚·‚éD
+        // ImageReceiver ã®çµ‚äº†å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹ï¼
         this.imgReciever.close();
         
-        // ƒtƒŒ[ƒ€‚Ìƒ^ƒCƒgƒ‹‚ğ•ÏX‚·‚éD
+        // ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å¤‰æ›´ã™ã‚‹ï¼
         setTitle(TITLE_REMOTE_DESKTOP);
         
-        // ƒRƒlƒNƒVƒ‡ƒ“ƒAƒhƒŒƒXƒpƒlƒ‹‚Ìó‘Ô‚ğ•ÏX‚·‚éD
+        // ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚¢ãƒ‰ãƒ¬ã‚¹ãƒ‘ãƒãƒ«ã®çŠ¶æ…‹ã‚’å¤‰æ›´ã™ã‚‹ï¼
         this.pnlConAddr.changeToIdleState();
         
-        // ƒƒbƒZ[ƒWƒpƒlƒ‹‚Ì’l‚ğ‰Šú‰»‚·‚éD
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒ‘ãƒãƒ«ã®å€¤ã‚’åˆæœŸåŒ–ã™ã‚‹ï¼
         updatePlayoutStatus(0.0);
         updateConnectionStatus(0, 0.0);
         
-        // ƒfƒXƒNƒgƒbƒv‹æ‰æ‚ğíœ‚·‚éD
+        // ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—åŒºç”»ã‚’å‰Šé™¤ã™ã‚‹ï¼
         deleteDesktopPane();
         
-        // ’â~ƒCƒxƒ“ƒg‚ğ”z‘—‚·‚éD
+        // åœæ­¢ã‚¤ãƒ™ãƒ³ãƒˆã‚’é…é€ã™ã‚‹ï¼
         this.client.stopControl();
     }
 }
