@@ -1,9 +1,9 @@
 
 package rpc.example;
 
-import com.midfield_system.rpc.api.Registerable;
-import com.midfield_system.rpc.api.RequestObject;
-import com.midfield_system.rpc.api.ResponseObject;
+import com.midfield_system.json_rpc.api.Registerable;
+import com.midfield_system.json_rpc.api.RequestObject;
+import com.midfield_system.json_rpc.api.ResponseObject;
 
 /**
  * 

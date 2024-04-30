@@ -2,8 +2,8 @@
 package rpc.performer;
 
 import com.midfield_system.api.util.Log;
-import com.midfield_system.rpc.api.client.PerformerId;
-import com.midfield_system.rpc.api.client.RemoteControlException;
+import com.midfield_system.json_rpc.client.PerformerId;
+import com.midfield_system.json_rpc.client.RemoteControlException;
 
 import util.ConsolePrinter;
 

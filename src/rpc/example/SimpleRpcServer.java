@@ -2,9 +2,9 @@
 package rpc.example;
 
 import com.midfield_system.api.util.Log;
-import com.midfield_system.rpc.api.Registerable;
-import com.midfield_system.rpc.api.RegisterableArrayFactory;
-import com.midfield_system.rpc.api.RpcServer;
+import com.midfield_system.json_rpc.api.Registerable;
+import com.midfield_system.json_rpc.api.RegisterableArrayFactory;
+import com.midfield_system.json_rpc.api.RpcServer;
 
 import util.ConsolePrinter;
 

@@ -1,12 +1,12 @@
 
 package rpc.remocon;
 
-import static com.midfield_system.rpc.api.server.ParamName.PERFORMER_ID;
+import static com.midfield_system.json_rpc.server.ParamName.PERFORMER_ID;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.midfield_system.rpc.api.RequestObject;
+import com.midfield_system.json_rpc.api.RequestObject;
 
 /**
  * 

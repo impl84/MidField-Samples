@@ -1,21 +1,21 @@
 
 package rpc.remocon;
 
-import static com.midfield_system.rpc.api.server.ParamName.AUDIO_DEVICE_INDEX;
-import static com.midfield_system.rpc.api.server.ParamName.AUDIO_FORMAT_INDEX;
-import static com.midfield_system.rpc.api.server.ParamName.CONNECTION_MODE;
-import static com.midfield_system.rpc.api.server.ParamName.IS_LIVE_SOURCE;
-import static com.midfield_system.rpc.api.server.ParamName.MIXER_NAME;
-import static com.midfield_system.rpc.api.server.ParamName.MULTICAST_ADDRESS;
-import static com.midfield_system.rpc.api.server.ParamName.PROTOCOL_TYPE;
-import static com.midfield_system.rpc.api.server.ParamName.STREAM_INFO_INDEX;
-import static com.midfield_system.rpc.api.server.ParamName.VIDEO_DEVICE_INDEX;
-import static com.midfield_system.rpc.api.server.ParamName.VIDEO_FORMAT_INDEX;
+import static com.midfield_system.json_rpc.server.ParamName.AUDIO_DEVICE_INDEX;
+import static com.midfield_system.json_rpc.server.ParamName.AUDIO_FORMAT_INDEX;
+import static com.midfield_system.json_rpc.server.ParamName.CONNECTION_MODE;
+import static com.midfield_system.json_rpc.server.ParamName.IS_LIVE_SOURCE;
+import static com.midfield_system.json_rpc.server.ParamName.MIXER_NAME;
+import static com.midfield_system.json_rpc.server.ParamName.MULTICAST_ADDRESS;
+import static com.midfield_system.json_rpc.server.ParamName.PROTOCOL_TYPE;
+import static com.midfield_system.json_rpc.server.ParamName.STREAM_INFO_INDEX;
+import static com.midfield_system.json_rpc.server.ParamName.VIDEO_DEVICE_INDEX;
+import static com.midfield_system.json_rpc.server.ParamName.VIDEO_FORMAT_INDEX;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.midfield_system.rpc.api.RequestObject;
+import com.midfield_system.json_rpc.api.RequestObject;
 
 /**
  * 

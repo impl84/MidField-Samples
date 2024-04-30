@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import com.midfield_system.rpc.api.RequestObject;
-import com.midfield_system.rpc.core.InvocableMethod;
+import com.midfield_system.json_rpc.api.RequestObject;
+import com.midfield_system.json_rpc.core.InvocableMethod;
 
 /**
  * 

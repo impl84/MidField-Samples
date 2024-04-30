@@ -2,9 +2,9 @@
 package rpc.performer;
 
 import com.midfield_system.api.util.Log;
-import com.midfield_system.rpc.api.client.MfsRemote;
-import com.midfield_system.rpc.api.client.RemoteControlException;
-import com.midfield_system.rpc.api.client.StreamPerformer;
+import com.midfield_system.json_rpc.client.MfsRemote;
+import com.midfield_system.json_rpc.client.RemoteControlException;
+import com.midfield_system.json_rpc.client.StreamPerformer;
 
 import util.ConsolePrinter;
 
@@ -31,7 +31,9 @@ public class DeviceToRenderer
             int serverPort = Integer.parseInt(args[1]);
             
             // ▼サーバと接続し，遠隔操作を開始する．
-            mfsRmt = new MfsRemote(serverAddr, serverPort, err -> System.err.println(err));
+            mfsRmt = new MfsRemote(
+                serverAddr, serverPort, err -> System.err.println(err)
+            );
             mfsRmt.initializeRemoteControl();
             
             // ▼ビデオとオーディオデバイスで入力を構成する．

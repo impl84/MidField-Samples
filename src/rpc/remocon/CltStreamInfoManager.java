@@ -1,12 +1,12 @@
 
 package rpc.remocon;
 
-import static com.midfield_system.rpc.api.server.ParamName.SOURCE_NODE_ADDRESS;
+import static com.midfield_system.json_rpc.server.ParamName.SOURCE_NODE_ADDRESS;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.midfield_system.rpc.api.RequestObject;
+import com.midfield_system.json_rpc.api.RequestObject;
 
 /**
  * 

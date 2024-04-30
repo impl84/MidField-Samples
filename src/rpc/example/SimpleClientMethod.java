@@ -2,9 +2,9 @@
 package rpc.example;
 
 import com.midfield_system.api.util.Log;
-import com.midfield_system.rpc.api.ErrorObject;
-import com.midfield_system.rpc.api.ResponseObject;
-import com.midfield_system.rpc.api.RpcClient;
+import com.midfield_system.json_rpc.api.ErrorObject;
+import com.midfield_system.json_rpc.api.ResponseObject;
+import com.midfield_system.json_rpc.api.RpcClient;
 
 /**
  * 

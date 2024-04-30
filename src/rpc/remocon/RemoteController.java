@@ -19,10 +19,10 @@ import javax.swing.SwingUtilities;
 
 import com.midfield_system.api.util.Log;
 import com.midfield_system.api.util.TaskExecutor;
-import com.midfield_system.rpc.api.RequestObject;
-import com.midfield_system.rpc.api.ResponseObject;
-import com.midfield_system.rpc.api.RpcClient;
-import com.midfield_system.rpc.api.InternalErrorListener;
+import com.midfield_system.json_rpc.api.InternalErrorListener;
+import com.midfield_system.json_rpc.api.RequestObject;
+import com.midfield_system.json_rpc.api.ResponseObject;
+import com.midfield_system.json_rpc.api.RpcClient;
 import com.midfield_system.ui.misc.MessagePanel;
 import com.midfield_system.ui.misc.PopupMessage;
 

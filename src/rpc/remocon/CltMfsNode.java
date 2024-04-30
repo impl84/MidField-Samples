@@ -1,7 +1,7 @@
 
 package rpc.remocon;
 
-import com.midfield_system.rpc.api.RequestObject;
+import com.midfield_system.json_rpc.api.RequestObject;
 
 /**
  * 

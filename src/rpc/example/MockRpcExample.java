@@ -8,8 +8,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.midfield_system.api.util.Constants;
 import com.midfield_system.api.util.Log;
-import com.midfield_system.rpc.api.RequestObject;
-import com.midfield_system.rpc.api.ResponseObject;
+import com.midfield_system.json_rpc.api.RequestObject;
+import com.midfield_system.json_rpc.api.ResponseObject;
 
 import util.ConsolePrinter;
 

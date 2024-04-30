@@ -8,12 +8,12 @@ import java.util.Map;
 
 import com.midfield_system.api.stream.ConnectionMode;
 import com.midfield_system.api.stream.ProtocolType;
-import com.midfield_system.rpc.api.InternalErrorListener;
-import com.midfield_system.rpc.api.client.MfsRemote;
-import com.midfield_system.rpc.api.client.PerformerId;
-import com.midfield_system.rpc.api.client.RemoteControlException;
-import com.midfield_system.rpc.api.client.SegmentIo;
-import com.midfield_system.rpc.api.client.StreamPerformer;
+import com.midfield_system.json_rpc.api.InternalErrorListener;
+import com.midfield_system.json_rpc.client.MfsRemote;
+import com.midfield_system.json_rpc.client.PerformerId;
+import com.midfield_system.json_rpc.client.RemoteControlException;
+import com.midfield_system.json_rpc.client.SegmentIo;
+import com.midfield_system.json_rpc.client.StreamPerformer;
 
 /**
  * 
