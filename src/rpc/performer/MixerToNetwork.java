@@ -41,7 +41,7 @@ public class MixerToNetwork
             
             // ▼ミキサーを構成し，処理を開始する．
             // ・ミキサーのフォーマットには，システムプロパティの設定値を適用する．
-            // ・出力はレンダラ．
+            // ・出力はネットワーク
             var mixerIo = mfsRmt.newSegmentIo();
             mixerIo.configureStreamingMixer(mixerName);
             
