@@ -20,6 +20,7 @@ import java.util.UUID;
 
 import javax.swing.JFrame;
 
+import com.midfield_system.api.log.Log;
 import com.midfield_system.api.stream.StreamException;
 import com.midfield_system.api.system.CommPacket;
 import com.midfield_system.api.system.CommPacketHandler;
@@ -27,7 +28,6 @@ import com.midfield_system.api.system.ObjectId;
 import com.midfield_system.api.system.PacketCommunicator;
 import com.midfield_system.api.system.PacketIoException;
 import com.midfield_system.api.system.SystemException;
-import com.midfield_system.api.util.Log;
 
 /*----------------------------------------------------------------------------*/
 /**

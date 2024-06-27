@@ -17,7 +17,7 @@ import java.util.concurrent.TimeoutException;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import com.midfield_system.api.util.Log;
+import com.midfield_system.api.log.Log;
 import com.midfield_system.api.util.TaskExecutor;
 import com.midfield_system.json_rpc.api.InternalErrorListener;
 import com.midfield_system.json_rpc.api.RequestObject;

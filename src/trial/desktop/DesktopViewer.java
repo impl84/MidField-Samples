@@ -36,12 +36,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import com.midfield_system.api.log.Log;
 import com.midfield_system.api.stream.IoParam;
 import com.midfield_system.api.stream.StreamException;
 import com.midfield_system.api.system.PacketIoException;
 import com.midfield_system.api.system.SystemException;
 import com.midfield_system.api.util.Constants;
-import com.midfield_system.api.util.Log;
 import com.midfield_system.api.viewer.VideoCanvas;
 
 import util.AppUtilities;

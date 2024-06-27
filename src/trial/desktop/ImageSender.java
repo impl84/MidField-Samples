@@ -3,6 +3,7 @@ package trial.desktop;
 
 import java.util.List;
 
+import com.midfield_system.api.log.Log;
 import com.midfield_system.api.stream.ConnectionMode;
 import com.midfield_system.api.stream.DeviceInfo;
 import com.midfield_system.api.stream.DeviceInfoManager;
@@ -23,7 +24,6 @@ import com.midfield_system.api.stream.event.StreamEvent;
 import com.midfield_system.api.stream.event.StreamEventListener;
 import com.midfield_system.api.stream.event.StreamExceptionEvent;
 import com.midfield_system.api.system.SystemException;
-import com.midfield_system.api.util.Log;
 
 /*----------------------------------------------------------------------------*/
 /**

@@ -4,6 +4,7 @@ package trial.performer;
 import java.io.IOException;
 import java.util.List;
 
+import com.midfield_system.api.log.LogPrinter;
 import com.midfield_system.api.stream.ConnectionMode;
 import com.midfield_system.api.stream.DeviceInfo;
 import com.midfield_system.api.stream.DeviceInfoManager;
@@ -11,7 +12,6 @@ import com.midfield_system.api.stream.ProtocolType;
 import com.midfield_system.api.stream.SegmentIo;
 import com.midfield_system.api.stream.StreamFormat;
 import com.midfield_system.api.stream.StreamInfoManager;
-import com.midfield_system.api.util.LogPrinter;
 import com.midfield_system.protocol.StreamInfo;
 
 import util.LineReader;

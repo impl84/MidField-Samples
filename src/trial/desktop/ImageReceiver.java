@@ -3,6 +3,7 @@ package trial.desktop;
 
 import javax.swing.SwingUtilities;
 
+import com.midfield_system.api.log.Log;
 import com.midfield_system.api.stream.IoParam;
 import com.midfield_system.api.stream.RendererStatus;
 import com.midfield_system.api.stream.SegmentIo;
@@ -18,7 +19,6 @@ import com.midfield_system.api.stream.event.StreamEvent;
 import com.midfield_system.api.stream.event.StreamEventListener;
 import com.midfield_system.api.stream.event.StreamExceptionEvent;
 import com.midfield_system.api.system.SystemException;
-import com.midfield_system.api.util.Log;
 import com.midfield_system.api.viewer.VideoCanvas;
 import com.midfield_system.protocol.IoStatus;
 

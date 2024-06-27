@@ -5,13 +5,13 @@ import java.util.List;
 
 import javax.swing.SwingUtilities;
 
+import com.midfield_system.api.log.Log;
 import com.midfield_system.api.stream.DeviceInfo;
 import com.midfield_system.api.stream.DeviceInfoManager;
 import com.midfield_system.api.stream.SegmentIo;
 import com.midfield_system.api.stream.StreamPerformer;
 import com.midfield_system.api.system.MfsException;
 import com.midfield_system.api.system.MfsNode;
-import com.midfield_system.api.util.Log;
 import com.midfield_system.api.viewer.VideoCanvas;
 
 import util.ConsolePrinter;

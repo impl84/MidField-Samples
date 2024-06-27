@@ -1,7 +1,7 @@
 
 package rpc.example;
 
-import com.midfield_system.api.util.Log;
+import com.midfield_system.api.log.Log;
 import com.midfield_system.json_rpc.api.InternalError;
 import com.midfield_system.json_rpc.api.InternalErrorListener;
 import com.midfield_system.json_rpc.api.RpcClient;

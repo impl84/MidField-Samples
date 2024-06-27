@@ -1,9 +1,9 @@
 
 package rpc.performer;
 
+import com.midfield_system.api.log.Log;
 import com.midfield_system.api.stream.ConnectionMode;
 import com.midfield_system.api.stream.ProtocolType;
-import com.midfield_system.api.util.Log;
 import com.midfield_system.json_rpc.client.MfsRemote;
 import com.midfield_system.json_rpc.client.RemoteControlException;
 import com.midfield_system.json_rpc.client.SegmentIo;

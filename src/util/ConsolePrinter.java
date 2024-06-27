@@ -1,7 +1,7 @@
 
 package util;
 
-import com.midfield_system.api.util.LogPrinter;
+import com.midfield_system.api.log.LogPrinter;
 
 /**
  * 

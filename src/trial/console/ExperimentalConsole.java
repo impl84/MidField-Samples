@@ -5,9 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.SwingUtilities;
 
+import com.midfield_system.api.log.Log;
 import com.midfield_system.api.system.MfsNode;
 import com.midfield_system.api.system.SystemException;
-import com.midfield_system.api.util.Log;
 
 /**
  * 

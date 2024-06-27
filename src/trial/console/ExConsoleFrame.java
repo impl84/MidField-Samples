@@ -15,11 +15,11 @@ import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
 
+import com.midfield_system.api.log.LogPrinter;
 import com.midfield_system.api.system.event.ResourceStatusEvent;
 import com.midfield_system.api.system.event.ScreenSaverStatusEvent;
 import com.midfield_system.api.system.event.SystemEvent;
 import com.midfield_system.api.system.event.SystemEventListener;
-import com.midfield_system.api.util.LogPrinter;
 import com.midfield_system.ui.misc.MessagePanel;
 
 import util.AppUtilities;
