@@ -1,8 +1,6 @@
 
 package grpc.performer;
 
-import com.midfield_system.api.log.BlockingQueueLogHandler;
-import com.midfield_system.api.log.MfsLogger;
 import com.midfield_system.grpc.v1.server.MfsGrpcServer;
 import com.midfield_system.midfield.MfsApplication;
 
@@ -20,22 +18,6 @@ public class ExampleExecutor
         if (args.length > 0) {
             exampleNumber = Integer.parseInt(args[0]);
         }
-        
-        var handler = new BlockingQueueLogHandler();
-        var logger  = MfsLogger.getLogger();
-        logger.addHandler(handler);
-        Runnable task = () -> {
-            while (true) {
-                String message = handler.getMessage();
-                if (message != null) {
-                    System.out.print(message);
-                }
-                else {
-                    break;
-                }
-            }
-        };
-        new Thread(task).start();
         
         MfsGrpcExample example = null;
         try {
@@ -63,8 +45,6 @@ public class ExampleExecutor
             if (example != null) {
                 example.shutdown();
             }
-            logger.removeHandler(handler);
-            handler.close();
         }
     }
 }

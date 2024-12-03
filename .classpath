@@ -30,7 +30,7 @@
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/jsr305-3.0.2.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/MfsCore.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/MfsGrpc.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/MfsGrpc.jar" sourcepath="/11_MidField-gRPC"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/MfsUi.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/MidField.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/perfmark-api-0.26.0.jar"/>
