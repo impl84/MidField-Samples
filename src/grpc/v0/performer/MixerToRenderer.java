@@ -1,28 +1,25 @@
 
-package grpc.performer;
+package grpc.v0.performer;
 
 import java.io.IOException;
 
-import com.midfield_system.grpc.v1.ConfigureInputDeviceRequest;
-import com.midfield_system.grpc.v1.ConfigureMixerInputRequest;
-import com.midfield_system.grpc.v1.ConfigureOutgoingStreamRequest;
-import com.midfield_system.grpc.v1.ConfigureStreamingMixerRequest;
-import com.midfield_system.grpc.v1.ConnectionMode;
-import com.midfield_system.grpc.v1.CreateStreamPerformerRequest;
-import com.midfield_system.grpc.v1.DeleteSegmentIoRequest;
-import com.midfield_system.grpc.v1.DeviceInfoProviderGrpc;
-import com.midfield_system.grpc.v1.DeviceInfoProviderGrpc.DeviceInfoProviderBlockingStub;
-import com.midfield_system.grpc.v1.ListDeviceInfoRequest;
-import com.midfield_system.grpc.v1.ListOutgoingStreamFormatRequest;
-import com.midfield_system.grpc.v1.MediaType;
-import com.midfield_system.grpc.v1.OperationRequest;
-import com.midfield_system.grpc.v1.ProtocolType;
-import com.midfield_system.grpc.v1.SegmentIoGrpc;
-import com.midfield_system.grpc.v1.SegmentIoGrpc.SegmentIoBlockingStub;
-import com.midfield_system.grpc.v1.StreamPerformerGrpc;
-import com.midfield_system.grpc.v1.StreamPerformerGrpc.StreamPerformerBlockingStub;
+import com.midfield_system.grpc.v0.ConfigureInputDeviceRequest;
+import com.midfield_system.grpc.v0.ConfigureMixerInputRequest;
+import com.midfield_system.grpc.v0.ConfigureRendererRequest;
+import com.midfield_system.grpc.v0.ConfigureStreamingMixerRequest;
+import com.midfield_system.grpc.v0.CreateStreamPerformerRequest;
+import com.midfield_system.grpc.v0.DeleteSegmentIoRequest;
+import com.midfield_system.grpc.v0.DeviceInfoProviderGrpc;
+import com.midfield_system.grpc.v0.DeviceInfoProviderGrpc.DeviceInfoProviderBlockingStub;
+import com.midfield_system.grpc.v0.ListDeviceInfoRequest;
+import com.midfield_system.grpc.v0.MediaType;
+import com.midfield_system.grpc.v0.OperationRequest;
+import com.midfield_system.grpc.v0.SegmentIoGrpc;
+import com.midfield_system.grpc.v0.SegmentIoGrpc.SegmentIoBlockingStub;
+import com.midfield_system.grpc.v0.StreamPerformerGrpc;
+import com.midfield_system.grpc.v0.StreamPerformerGrpc.StreamPerformerBlockingStub;
 
-public class MixerToNetwork
+public class MixerToRenderer
     extends
         MfsGrpcExample
 {
@@ -32,7 +29,7 @@ public class MixerToNetwork
     private final StreamPerformerBlockingStub    performer;
     private final SegmentIoBlockingStub          segment;
     
-    MixerToNetwork(String serverAddress, int portNumber)
+    MixerToRenderer(String serverAddress, int portNumber)
     {
         super(serverAddress, portNumber);
         
@@ -52,19 +49,9 @@ public class MixerToNetwork
                 .setMixerName(MIXER_NAME)
                 .build()
         );
-        var outFmtRes = this.segment.listOutgoingStreamFormat(
-            ListOutgoingStreamFormatRequest.newBuilder()
+        this.segment.configureRenderer(
+            ConfigureRendererRequest.newBuilder()
                 .setSegmentIoId(mixSegIoId)
-                .build()
-        );
-        this.segment.configureOutgoingStream(
-            ConfigureOutgoingStreamRequest.newBuilder()
-                .setSegmentIoId(mixSegIoId)
-                .setVideoFormatIndex(outFmtRes.getDefaultVideoFormatIndex())
-                .setAudioFormatIndex(outFmtRes.getDefaultAudioFormatIndex())
-                .setProtocolType(ProtocolType.TCP)
-                .setConnectionMode(ConnectionMode.PASSIVE)
-                .setPreviewable(true)
                 .build()
         );
         var mixPerfId = this.performer.createStreamPerformer(

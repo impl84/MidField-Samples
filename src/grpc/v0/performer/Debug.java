@@ -1,15 +1,15 @@
 
-package grpc.performer;
+package grpc.v0.performer;
 
 import java.util.List;
 
-import com.midfield_system.grpc.v1.AudioFormat;
-import com.midfield_system.grpc.v1.DeviceInfo;
-import com.midfield_system.grpc.v1.Format;
-import com.midfield_system.grpc.v1.Format.FormatTypeCase;
-import com.midfield_system.grpc.v1.StreamFormat;
-import com.midfield_system.grpc.v1.VideoFormat;
-import com.midfield_system.grpc.v1.WmvFormat;
+import com.midfield_system.grpc.v0.AudioFormat;
+import com.midfield_system.grpc.v0.DeviceInfo;
+import com.midfield_system.grpc.v0.Format;
+import com.midfield_system.grpc.v0.Format.FormatTypeCase;
+import com.midfield_system.grpc.v0.StreamFormat;
+import com.midfield_system.grpc.v0.VideoFormat;
+import com.midfield_system.grpc.v0.WmvFormat;
 
 public class Debug
 {

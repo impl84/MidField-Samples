@@ -1,24 +1,24 @@
 
-package grpc.performer;
+package grpc.v0.performer;
 
 import java.io.IOException;
 
-import com.midfield_system.grpc.v1.ConfigureInputDeviceRequest;
-import com.midfield_system.grpc.v1.ConfigureOutgoingStreamRequest;
-import com.midfield_system.grpc.v1.ConnectionMode;
-import com.midfield_system.grpc.v1.CreateStreamPerformerRequest;
-import com.midfield_system.grpc.v1.DeleteSegmentIoRequest;
-import com.midfield_system.grpc.v1.DeviceInfoProviderGrpc;
-import com.midfield_system.grpc.v1.DeviceInfoProviderGrpc.DeviceInfoProviderBlockingStub;
-import com.midfield_system.grpc.v1.ListDeviceInfoRequest;
-import com.midfield_system.grpc.v1.ListOutgoingStreamFormatRequest;
-import com.midfield_system.grpc.v1.MediaType;
-import com.midfield_system.grpc.v1.OperationRequest;
-import com.midfield_system.grpc.v1.ProtocolType;
-import com.midfield_system.grpc.v1.SegmentIoGrpc;
-import com.midfield_system.grpc.v1.SegmentIoGrpc.SegmentIoBlockingStub;
-import com.midfield_system.grpc.v1.StreamPerformerGrpc;
-import com.midfield_system.grpc.v1.StreamPerformerGrpc.StreamPerformerBlockingStub;
+import com.midfield_system.grpc.v0.ConfigureInputDeviceRequest;
+import com.midfield_system.grpc.v0.ConfigureOutgoingStreamRequest;
+import com.midfield_system.grpc.v0.ConnectionMode;
+import com.midfield_system.grpc.v0.CreateStreamPerformerRequest;
+import com.midfield_system.grpc.v0.DeleteSegmentIoRequest;
+import com.midfield_system.grpc.v0.DeviceInfoProviderGrpc;
+import com.midfield_system.grpc.v0.DeviceInfoProviderGrpc.DeviceInfoProviderBlockingStub;
+import com.midfield_system.grpc.v0.ListDeviceInfoRequest;
+import com.midfield_system.grpc.v0.ListOutgoingStreamFormatRequest;
+import com.midfield_system.grpc.v0.MediaType;
+import com.midfield_system.grpc.v0.OperationRequest;
+import com.midfield_system.grpc.v0.ProtocolType;
+import com.midfield_system.grpc.v0.SegmentIoGrpc;
+import com.midfield_system.grpc.v0.SegmentIoGrpc.SegmentIoBlockingStub;
+import com.midfield_system.grpc.v0.StreamPerformerGrpc;
+import com.midfield_system.grpc.v0.StreamPerformerGrpc.StreamPerformerBlockingStub;
 
 public class DeviceToNetwork
     extends

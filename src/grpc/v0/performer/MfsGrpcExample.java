@@ -1,15 +1,15 @@
 
-package grpc.performer;
+package grpc.v0.performer;
 
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
-import com.midfield_system.grpc.v1.ActivateOperationRequest;
-import com.midfield_system.grpc.v1.DeactivateOperationRequest;
-import com.midfield_system.grpc.v1.MfsNodeGrpc;
-import com.midfield_system.grpc.v1.MfsNodeGrpc.MfsNodeBlockingStub;
-import com.midfield_system.grpc.v1.NodeEvent;
-import com.midfield_system.grpc.v1.ReportNodeEventRequest;
+import com.midfield_system.grpc.v0.ActivateOperationRequest;
+import com.midfield_system.grpc.v0.DeactivateOperationRequest;
+import com.midfield_system.grpc.v0.MfsNodeGrpc;
+import com.midfield_system.grpc.v0.MfsNodeGrpc.MfsNodeBlockingStub;
+import com.midfield_system.grpc.v0.NodeEvent;
+import com.midfield_system.grpc.v0.ReportNodeEventRequest;
 
 import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
@@ -127,9 +127,6 @@ abstract class MfsGrpcExample
             switch (response.getEventTypeCase()) {
             case LOG_MESSAGE_EVENT:
                 System.out.print(response.getLogMessageEvent().getMessage());
-                break;
-            case NODE_STATE_EVENT:
-                System.out.println(response.getNodeStateEvent().getDescription());
                 break;
             case NODE_METRICS_EVENT:
                 System.out.println(response.getNodeMetricsEvent().getDescription());
