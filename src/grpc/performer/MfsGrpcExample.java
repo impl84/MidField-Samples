@@ -128,9 +128,6 @@ abstract class MfsGrpcExample
             case LOG_MESSAGE_EVENT:
                 System.out.print(response.getLogMessageEvent().getMessage());
                 break;
-            case NODE_STATE_EVENT:
-                System.out.println(response.getNodeStateEvent().getDescription());
-                break;
             case NODE_METRICS_EVENT:
                 System.out.println(response.getNodeMetricsEvent().getDescription());
                 break;
