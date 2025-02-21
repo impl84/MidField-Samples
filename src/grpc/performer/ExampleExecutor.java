@@ -1,7 +1,7 @@
 
 package grpc.performer;
 
-import com.midfield_system.grpc.v1.server.MfsGrpcServer;
+import com.midfield_system.grpc.v0.server.MfsGrpcServer;
 import com.midfield_system.midfield.MfsApplication;
 
 public class ExampleExecutor

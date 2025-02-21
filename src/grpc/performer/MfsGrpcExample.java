@@ -4,12 +4,12 @@ package grpc.performer;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
-import com.midfield_system.grpc.v1.ActivateOperationRequest;
-import com.midfield_system.grpc.v1.DeactivateOperationRequest;
-import com.midfield_system.grpc.v1.MfsNodeGrpc;
-import com.midfield_system.grpc.v1.MfsNodeGrpc.MfsNodeBlockingStub;
-import com.midfield_system.grpc.v1.NodeEvent;
-import com.midfield_system.grpc.v1.ReportNodeEventRequest;
+import com.midfield_system.grpc.v0.ActivateOperationRequest;
+import com.midfield_system.grpc.v0.DeactivateOperationRequest;
+import com.midfield_system.grpc.v0.MfsNodeGrpc;
+import com.midfield_system.grpc.v0.MfsNodeGrpc.MfsNodeBlockingStub;
+import com.midfield_system.grpc.v0.NodeEvent;
+import com.midfield_system.grpc.v0.ReportNodeEventRequest;
 
 import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;

@@ -3,18 +3,18 @@ package grpc.performer;
 
 import java.io.IOException;
 
-import com.midfield_system.grpc.v1.ConfigureIncomingStreamRequest;
-import com.midfield_system.grpc.v1.ConfigureRendererRequest;
-import com.midfield_system.grpc.v1.CreateStreamPerformerRequest;
-import com.midfield_system.grpc.v1.DeleteSegmentIoRequest;
-import com.midfield_system.grpc.v1.ListStreamInfoRequest;
-import com.midfield_system.grpc.v1.OperationRequest;
-import com.midfield_system.grpc.v1.SegmentIoGrpc;
-import com.midfield_system.grpc.v1.SegmentIoGrpc.SegmentIoBlockingStub;
-import com.midfield_system.grpc.v1.StreamInfoProviderGrpc;
-import com.midfield_system.grpc.v1.StreamInfoProviderGrpc.StreamInfoProviderBlockingStub;
-import com.midfield_system.grpc.v1.StreamPerformerGrpc;
-import com.midfield_system.grpc.v1.StreamPerformerGrpc.StreamPerformerBlockingStub;
+import com.midfield_system.grpc.v0.ConfigureIncomingStreamRequest;
+import com.midfield_system.grpc.v0.ConfigureRendererRequest;
+import com.midfield_system.grpc.v0.CreateStreamPerformerRequest;
+import com.midfield_system.grpc.v0.DeleteSegmentIoRequest;
+import com.midfield_system.grpc.v0.ListStreamInfoRequest;
+import com.midfield_system.grpc.v0.OperationRequest;
+import com.midfield_system.grpc.v0.SegmentIoGrpc;
+import com.midfield_system.grpc.v0.SegmentIoGrpc.SegmentIoBlockingStub;
+import com.midfield_system.grpc.v0.StreamInfoProviderGrpc;
+import com.midfield_system.grpc.v0.StreamInfoProviderGrpc.StreamInfoProviderBlockingStub;
+import com.midfield_system.grpc.v0.StreamPerformerGrpc;
+import com.midfield_system.grpc.v0.StreamPerformerGrpc.StreamPerformerBlockingStub;
 
 public class NetworkToRenderer
     extends
