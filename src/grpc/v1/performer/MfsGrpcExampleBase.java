@@ -64,8 +64,7 @@ abstract class MfsGrpcExampleBase
         }
         catch (InterruptedException ex) {
             ex.printStackTrace();
-        }
-        
+        }   
     }
     
     protected ManagedChannel getManagedChannel()
@@ -83,7 +82,7 @@ abstract class MfsGrpcExampleBase
                 System.out.print(response.getLogMessageEvent().getEventMessage());
                 break;
             case NODE_METRICS_EVENT:
-                System.out.println(response.getNodeMetricsEvent().getEventMessage());
+//                System.out.println(response.getNodeMetricsEvent().getEventMessage());
                 break;
             case NODE_EXCEPTION_EVENT:
                 System.out.println(response.getNodeExceptionEvent().getEventMessage());
