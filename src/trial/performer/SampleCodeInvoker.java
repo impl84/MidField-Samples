@@ -3,11 +3,10 @@ package trial.performer;
 
 import java.io.IOException;
 
+import com.midfield_system.api.log.ConsolePrinter;
+import com.midfield_system.api.log.ConsoleReader;
 import com.midfield_system.api.system.MfsNode;
 import com.midfield_system.api.system.SystemException;
-
-import util.ConsolePrinter;
-import util.ConsoleReader;
 
 /**
  * 
