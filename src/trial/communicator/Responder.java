@@ -6,13 +6,12 @@ import static trial.communicator.TwoWayCommunication.ASYNC_INTERVIEW_RESPONSE;
 import static trial.communicator.TwoWayCommunication.INTERVIEW_REQUEST;
 import static trial.communicator.TwoWayCommunication.INTERVIEW_RESPONSE;
 
+import com.midfield_system.api.log.ConsolePrinter;
 import com.midfield_system.api.system.CommPacket;
 import com.midfield_system.api.system.CommPacketHandler;
 import com.midfield_system.api.system.ObjectId;
 import com.midfield_system.api.system.PacketCommunicator;
 import com.midfield_system.api.system.PacketIoException;
-
-import util.ConsolePrinter;
 
 /**
  * 

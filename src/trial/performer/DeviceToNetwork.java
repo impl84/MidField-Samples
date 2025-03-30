@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.SwingUtilities;
 
+import com.midfield_system.api.log.ConsolePrinter;
 import com.midfield_system.api.log.Log;
 import com.midfield_system.api.stream.ConnectionMode;
 import com.midfield_system.api.stream.DeviceInfo;
@@ -17,7 +18,6 @@ import com.midfield_system.api.system.MfsException;
 import com.midfield_system.api.system.MfsNode;
 import com.midfield_system.api.viewer.VideoCanvas;
 
-import util.ConsolePrinter;
 import util.SimpleViewer;
 
 /**

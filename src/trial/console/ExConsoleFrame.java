@@ -15,6 +15,7 @@ import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.TitledBorder;
 
+import com.midfield_system.api.log.LineReader;
 import com.midfield_system.api.log.LogPrinter;
 import com.midfield_system.api.system.event.ResourceStatusEvent;
 import com.midfield_system.api.system.event.ScreenSaverStatusEvent;
@@ -24,7 +25,6 @@ import com.midfield_system.ui.misc.MessagePanel;
 
 import util.AppUtilities;
 import util.InputField;
-import util.LineReader;
 
 /**
  * 

@@ -9,7 +9,6 @@ public class ExampleExecutor
     private static final int    PORT_NUMBER    = MfsGrpcServer.DEFAULT_PORT_NUMBER;
     private static final String SERVER_ADDRESS = "localhost";
     
-    @SuppressWarnings("unused")
     private static final String SOURCE_ADDRESS = "172.16.126.178";
     
     public static void main(String[] args)
