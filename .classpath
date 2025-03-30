@@ -9,33 +9,33 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/00_MidField-Core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/01_MidField-Ui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/10_MidField-Application"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/animal-sniffer-annotations-1.23.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/animal-sniffer-annotations-1.24.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/annotations-4.1.1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/checker-qual-3.37.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/error_prone_annotations-2.23.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/failureaccess-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/checker-qual-3.43.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/error_prone_annotations-2.30.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/failureaccess-1.0.2.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/FlickView.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-api-1.63.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-context-1.63.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-core-1.63.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-netty-shaded-1.63.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-protobuf-1.63.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-protobuf-lite-1.63.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-services-1.63.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-stub-1.63.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-util-1.63.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/gson-2.10.1.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/guava-32.1.3-jre.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/j2objc-annotations-2.8.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-api-1.75.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-context-1.75.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-core-1.75.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-netty-shaded-1.75.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-protobuf-1.75.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-protobuf-lite-1.75.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-services-1.75.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-stub-1.75.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/grpc-util-1.75.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/gson-2.11.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/guava-33.3.1-jre.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/j2objc-annotations-3.0.0.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/jsr305-3.0.2.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/MfsCore.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/MfsGrpc.jar" sourcepath="/11_MidField-gRPC"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/MfsUi.jar"/>
 	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/MidField.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/perfmark-api-0.26.0.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/protobuf-java-3.25.1.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/protobuf-java-util-3.25.1.jar"/>
-	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/proto-google-common-protos-2.29.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/perfmark-api-0.27.0.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/proto-google-common-protos-2.59.2.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/protobuf-java-3.25.8.jar"/>
+	<classpathentry kind="lib" path="C:/Development/MidField-Development/Lib/protobuf-java-util-3.25.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

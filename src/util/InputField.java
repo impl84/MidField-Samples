@@ -10,6 +10,8 @@ import java.util.concurrent.LinkedBlockingQueue;
 import javax.swing.JComponent;
 import javax.swing.JTextField;
 
+import com.midfield_system.api.log.LineReader;
+
 /**
  * 
  * Sample code for MidField API
