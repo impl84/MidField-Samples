@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import com.midfield_system.api.log.LineReader;
 import com.midfield_system.api.log.LogPrinter;
 import com.midfield_system.api.stream.DeviceInfo;
 import com.midfield_system.api.stream.IoParam;
@@ -13,8 +14,6 @@ import com.midfield_system.api.stream.SegmentIo;
 import com.midfield_system.api.stream.StreamFormat;
 import com.midfield_system.api.stream.StreamPerformer;
 import com.midfield_system.protocol.StreamInfo;
-
-import util.LineReader;
 
 /**
  * 

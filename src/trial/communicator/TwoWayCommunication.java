@@ -1,11 +1,10 @@
 
 package trial.communicator;
 
+import com.midfield_system.api.log.ConsolePrinter;
+import com.midfield_system.api.log.ConsoleReader;
 import com.midfield_system.api.system.MfsNode;
 import com.midfield_system.api.system.SystemProperty;
-
-import util.ConsolePrinter;
-import util.ConsoleReader;
 
 /**
  * 
