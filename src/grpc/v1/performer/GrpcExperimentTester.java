@@ -100,14 +100,14 @@ public class GrpcExperimentTester
             }
         };
         
-        var requestObserver = this.stub
-            .experimentalRequestStream(responseObserver);
+        var requestObserver = this.stub.experimentalRequestStream(responseObserver);
         
         for (int i = 0; i < 5; i++) {
             var request = ExperimentalRequest
                 .newBuilder()
                 .setRequestMessage("Request message " + i)
                 .build();
+            
             requestObserver.onNext(request);
         }
         
@@ -116,6 +116,11 @@ public class GrpcExperimentTester
     
     private void callExperimentalResponseStream()
     {
+        var request = ExperimentalRequest
+            .newBuilder()
+            .setRequestMessage("Request message")
+            .build();
+        
         var responseObserver = new StreamObserver<ExperimentalResponse>()
         {
             @Override
@@ -137,22 +142,17 @@ public class GrpcExperimentTester
             }
         };
         
-        var request = ExperimentalRequest
-            .newBuilder()
-            .setRequestMessage("Request message")
-            .build();
-        
         this.stub.experimentalResponseStream(request, responseObserver);
     }
     
     private void callExperimentalRoundTrip()
     {
-        var response = this.blockingStub.experimentalRoundTrip(
-            ExperimentalRequest
-                .newBuilder()
-                .setRequestMessage("Request message")
-                .build()
-        );
+        var request = ExperimentalRequest
+            .newBuilder()
+            .setRequestMessage("Request message")
+            .build();
+        
+        var response = this.blockingStub.experimentalRoundTrip(request);
         System.out.println("blockingStub: " + response.getResponseMessage());
         
         var responseObserver = new StreamObserver<ExperimentalResponse>()
@@ -172,14 +172,10 @@ public class GrpcExperimentTester
             @Override
             public void onNext(ExperimentalResponse value)
             {
-                System.out.println("stub: Received response: " + value.getResponseMessage());
+                System.out
+                    .println("stub: Received response: " + value.getResponseMessage());
             }
         };
-        
-        var request = ExperimentalRequest
-            .newBuilder()
-            .setRequestMessage("Request message")
-            .build();
         
         this.stub.experimentalRoundTrip(request, responseObserver);
     }
