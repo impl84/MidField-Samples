@@ -153,6 +153,34 @@ public class GrpcExperimentTester
                 .setRequestMessage("Request message")
                 .build()
         );
-        System.out.println(response.getResponseMessage());
+        System.out.println("blockingStub: " + response.getResponseMessage());
+        
+        var responseObserver = new StreamObserver<ExperimentalResponse>()
+        {
+            @Override
+            public void onCompleted()
+            {
+                System.out.println("stub: Round trip completed.");
+            }
+            
+            @Override
+            public void onError(Throwable t)
+            {
+                System.err.println("stub: Error: " + t.getMessage());
+            }
+            
+            @Override
+            public void onNext(ExperimentalResponse value)
+            {
+                System.out.println("stub: Received response: " + value.getResponseMessage());
+            }
+        };
+        
+        var request = ExperimentalRequest
+            .newBuilder()
+            .setRequestMessage("Request message")
+            .build();
+        
+        this.stub.experimentalRoundTrip(request, responseObserver);
     }
 }
