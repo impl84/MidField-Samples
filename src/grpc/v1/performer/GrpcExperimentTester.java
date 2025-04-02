@@ -121,24 +121,32 @@ public class GrpcExperimentTester
             .setRequestMessage("Request message")
             .build();
         
+        // Blocking call
+        var iterator = this.blockingStub.experimentalResponseStream(request);
+        while (iterator.hasNext()) {
+            var response = iterator.next();
+            System.out.println("blockingStub: " + response.getResponseMessage());
+        }
+        
+        // Non-blocking call
         var responseObserver = new StreamObserver<ExperimentalResponse>()
         {
             @Override
             public void onCompleted()
             {
-                System.out.println("Stream completed.");
+                System.out.println("stub: Stream completed.");
             }
             
             @Override
             public void onError(Throwable t)
             {
-                System.err.println("Error: " + t.getMessage());
+                System.err.println("stub: Error: " + t.getMessage());
             }
             
             @Override
             public void onNext(ExperimentalResponse value)
             {
-                System.out.println("Received response: " + value.getResponseMessage());
+                System.out.println("stub: Received response: " + value.getResponseMessage());
             }
         };
         
@@ -152,9 +160,11 @@ public class GrpcExperimentTester
             .setRequestMessage("Request message")
             .build();
         
+        // Blocking call
         var response = this.blockingStub.experimentalRoundTrip(request);
         System.out.println("blockingStub: " + response.getResponseMessage());
         
+        // Non-blocking call
         var responseObserver = new StreamObserver<ExperimentalResponse>()
         {
             @Override
