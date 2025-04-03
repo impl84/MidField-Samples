@@ -11,6 +11,7 @@ import com.midfield_system.grpc.v1.GrpcExperimentGrpc;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc.GrpcExperimentBlockingStub;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc.GrpcExperimentStub;
 
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
 public class GrpcExperimentTester
@@ -110,7 +111,17 @@ public class GrpcExperimentTester
             
             requestObserver.onNext(request);
         }
-        
+/*
+        try {
+            Thread.sleep(2000); // Simulate some delay
+        }
+        catch (InterruptedException ex) {
+            Thread.currentThread().interrupt(); // Restore interrupt flag
+        }
+        requestObserver.onError(
+            Status.ABORTED.withDescription("■Simulated error").asRuntimeException()
+        );
+*/
         requestObserver.onCompleted();
     }
     
