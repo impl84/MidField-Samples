@@ -35,11 +35,11 @@ public class GrpcExperimentTester
         try (
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))
         ) {
-            System.out.println("> GrpcExperimentTester#execute() を開始します．");
+            System.out.println("[clt] > GrpcExperimentTester#execute() を開始します．");
             
             this.interactiveLoop(reader);
             
-            System.out.println("> GrpcExperimentTester#execute() を終了します．");
+            System.out.println("[clt] > GrpcExperimentTester#execute() を終了します．");
         }
         catch (IOException ex) {
             ex.printStackTrace();
@@ -51,7 +51,7 @@ public class GrpcExperimentTester
         while (true) {
             try {
                 System.out.println(
-                    "Enter a command (1: Request Stream, 2: Response Stream, 3: Round Trip, q: Quit): "
+                    "[clt] Enter a command (1: Request Stream, 2: Response Stream, 3: Round Trip, q: Quit): "
                 );
                 String command = reader.readLine();
                 
@@ -66,10 +66,10 @@ public class GrpcExperimentTester
                     callExperimentalRoundTrip();
                     break;
                 case "q":
-                    System.out.println("Exiting...");
+                    System.out.println("[clt] Exiting...");
                     return;
                 default:
-                    System.out.println("Invalid command. Please try again.");
+                    System.out.println("[clt] Invalid command. Please try again.");
                 }
             }
             catch (IOException ex) {
@@ -85,58 +85,67 @@ public class GrpcExperimentTester
             @Override
             public void onCompleted()
             {
-                System.out.println("Stream completed.");
+                System.out.println("[clt] Stream completed.");
             }
             
             @Override
             public void onError(Throwable t)
             {
-                System.err.println("Error: " + t.getMessage());
+                System.err.println("[clt] Error: " + t.getMessage());
             }
             
             @Override
             public void onNext(ExperimentalResponse value)
             {
-                System.out.println("Received response: " + value.getResponseMessage());
+                System.out.println("[clt] Received response: " + value.getResponseMessage());
             }
         };
         
         var requestObserver = this.stub.experimentalRequestStream(responseObserver);
         
-        for (int i = 0; i < 5; i++) {
-            var request = ExperimentalRequest
-                .newBuilder()
-                .setRequestMessage("Request message " + i)
-                .build();
-            
-            requestObserver.onNext(request);
-        }
-/*
         try {
-            Thread.sleep(2000); // Simulate some delay
+            for (int i = 0; i < 5; i++) {
+                var request = ExperimentalRequest
+                    .newBuilder()
+                    .setRequestMessage("[clt] Request message " + i)
+                    .build();
+                
+                requestObserver.onNext(request);
+                System.out.println("[clt] 　　" + request.getRequestMessage());
+            }
+            System.out.println("[clt] ■■■■#0");
+/*
+ * try {
+ * Thread.sleep(2000); // Simulate some delay
+ * }
+ * catch (InterruptedException ex) {
+ * Thread.currentThread().interrupt(); // Restore interrupt flag
+ * }
+ * requestObserver.onError(
+ * Status.ABORTED.withDescription("■Simulated error").asRuntimeException()
+ * );
+ */
+            requestObserver.onCompleted();
+            System.out.println("[clt] ■■■■#1");
         }
-        catch (InterruptedException ex) {
-            Thread.currentThread().interrupt(); // Restore interrupt flag
+        catch (Throwable ex) {
+            // Handle error
+            System.err.println("[clt] Throwable: " + ex.getMessage());
         }
-        requestObserver.onError(
-            Status.ABORTED.withDescription("■Simulated error").asRuntimeException()
-        );
-*/
-        requestObserver.onCompleted();
     }
     
     private void callExperimentalResponseStream()
     {
         var request = ExperimentalRequest
             .newBuilder()
-            .setRequestMessage("Request message")
+            .setRequestMessage("[clt] Request message")
             .build();
         
         // Blocking call
         var iterator = this.blockingStub.experimentalResponseStream(request);
         while (iterator.hasNext()) {
             var response = iterator.next();
-            System.out.println("blockingStub: " + response.getResponseMessage());
+            System.out.println("[clt] blockingStub: " + response.getResponseMessage());
         }
         
         // Non-blocking call
@@ -145,19 +154,20 @@ public class GrpcExperimentTester
             @Override
             public void onCompleted()
             {
-                System.out.println("stub: Stream completed.");
+                System.out.println("[clt] stub: Stream completed.");
             }
             
             @Override
             public void onError(Throwable t)
             {
-                System.err.println("stub: Error: " + t.getMessage());
+                System.err.println("[clt] stub: Error: " + t.getMessage());
             }
             
             @Override
             public void onNext(ExperimentalResponse value)
             {
-                System.out.println("stub: Received response: " + value.getResponseMessage());
+                System.out
+                    .println("[clt] stub: Received response: " + value.getResponseMessage());
             }
         };
         
@@ -168,12 +178,12 @@ public class GrpcExperimentTester
     {
         var request = ExperimentalRequest
             .newBuilder()
-            .setRequestMessage("Request message")
+            .setRequestMessage("[clt] Request message")
             .build();
         
         // Blocking call
         var response = this.blockingStub.experimentalRoundTrip(request);
-        System.out.println("blockingStub: " + response.getResponseMessage());
+        System.out.println("[clt] blockingStub: " + response.getResponseMessage());
         
         // Non-blocking call
         var responseObserver = new StreamObserver<ExperimentalResponse>()
@@ -181,20 +191,20 @@ public class GrpcExperimentTester
             @Override
             public void onCompleted()
             {
-                System.out.println("stub: Round trip completed.");
+                System.out.println("[clt] stub: Round trip completed.");
             }
             
             @Override
             public void onError(Throwable t)
             {
-                System.err.println("stub: Error: " + t.getMessage());
+                System.err.println("[clt] stub: Error: " + t.getMessage());
             }
             
             @Override
             public void onNext(ExperimentalResponse value)
             {
                 System.out
-                    .println("stub: Received response: " + value.getResponseMessage());
+                    .println("[clt] stub: Received response: " + value.getResponseMessage());
             }
         };
         
