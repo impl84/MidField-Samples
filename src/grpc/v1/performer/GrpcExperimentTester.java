@@ -10,8 +10,8 @@ import com.midfield_system.grpc.v1.ExperimentalResponse;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc.GrpcExperimentBlockingStub;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc.GrpcExperimentStub;
+import com.midfield_system.grpc.v1.server.impl.RoundTripResponseStreamObserver;
 
-import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
 public class GrpcExperimentTester
@@ -72,7 +72,7 @@ public class GrpcExperimentTester
                     System.out.println("[clt] Invalid command. Please try again.");
                 }
             }
-            catch (IOException ex) {
+            catch (Throwable ex) {
                 ex.printStackTrace();
             }
         }
@@ -97,7 +97,8 @@ public class GrpcExperimentTester
             @Override
             public void onNext(ExperimentalResponse value)
             {
-                System.out.println("[clt] Received response: " + value.getResponseMessage());
+                System.out
+                    .println("[clt] Received response: " + value.getResponseMessage());
             }
         };
         
@@ -167,7 +168,9 @@ public class GrpcExperimentTester
             public void onNext(ExperimentalResponse value)
             {
                 System.out
-                    .println("[clt] stub: Received response: " + value.getResponseMessage());
+                    .println(
+                        "[clt] stub: Received response: " + value.getResponseMessage()
+                    );
             }
         };
         
@@ -176,38 +179,56 @@ public class GrpcExperimentTester
     
     private void callExperimentalRoundTrip()
     {
-        var request = ExperimentalRequest
-            .newBuilder()
-            .setRequestMessage("[clt] Request message")
-            .build();
+        var successRequest = ExperimentalRequest.newBuilder()
+            .setRequestMessage("success").build();
         
-        // Blocking call
-        var response = this.blockingStub.experimentalRoundTrip(request);
-        System.out.println("[clt] blockingStub: " + response.getResponseMessage());
+        var errorRequest = ExperimentalRequest.newBuilder()
+            .setRequestMessage("error").build();
+        
+        var timeoutRequest = ExperimentalRequest.newBuilder()
+            .setRequestMessage("timeout").build();
         
         // Non-blocking call
-        var responseObserver = new StreamObserver<ExperimentalResponse>()
-        {
-            @Override
-            public void onCompleted()
-            {
-                System.out.println("[clt] stub: Round trip completed.");
-            }
-            
-            @Override
-            public void onError(Throwable t)
-            {
-                System.err.println("[clt] stub: Error: " + t.getMessage());
-            }
-            
-            @Override
-            public void onNext(ExperimentalResponse value)
-            {
-                System.out
-                    .println("[clt] stub: Received response: " + value.getResponseMessage());
-            }
-        };
+        System.out.println("[clt] ▼Non-Blocking Call");
+        var responseObserver = new RoundTripResponseStreamObserver();
+        this.stub.experimentalRoundTrip(errorRequest, responseObserver);
+        this.stub.experimentalRoundTrip(timeoutRequest, responseObserver);
+        this.stub.experimentalRoundTrip(successRequest, responseObserver);
+        this.stub.experimentalRoundTrip(successRequest, responseObserver);
+        this.stub.experimentalRoundTrip(successRequest, responseObserver);
+        this.stub.experimentalRoundTrip(successRequest, responseObserver);
         
-        this.stub.experimentalRoundTrip(request, responseObserver);
+        // Blocking call
+        System.out.println("[clt] ▼Blocking Call");
+        try {
+            System.out.println(
+                "[clt] blockingStub: "
+                    + this.blockingStub.experimentalRoundTrip(errorRequest)
+                        .getResponseMessage()
+            );
+        }
+        catch (Throwable ex) {
+            System.err.println("[clt] blockingStub: " + ex.getMessage());
+        }
+        System.out.println(
+            "[clt] blockingStub: "
+                + this.blockingStub.experimentalRoundTrip(timeoutRequest)
+                    .getResponseMessage()
+        );
+        System.out.println(
+            "[clt] blockingStub: "
+                + this.blockingStub.experimentalRoundTrip(successRequest)
+                    .getResponseMessage()
+        );
+        System.out.println(
+            "[clt] blockingStub: "
+                + this.blockingStub.experimentalRoundTrip(successRequest)
+                    .getResponseMessage()
+        );
+        System.out.println(
+            "[clt] blockingStub: "
+                + this.blockingStub.experimentalRoundTrip(successRequest)
+                    .getResponseMessage()
+        );
     }
 }
