@@ -24,8 +24,8 @@ public class GrpcExperimentTester
     {
         int    portNumber    = MfsGrpcServer.DEFAULT_PORT_NUMBER;
         String serverAddress = "localhost";
-
-        MfsNode mfsNode = null;
+        
+        MfsNode            mfsNode = null;
         MfsGrpcExampleBase example = null;
         try {
             //MfsApplication.launch();
@@ -48,7 +48,7 @@ public class GrpcExperimentTester
     
     private final GrpcExperimentBlockingStub blockingStub;
     
-    private final GrpcExperimentStub         stub;
+    private final GrpcExperimentStub stub;
     
     GrpcExperimentTester(String serverAddress, int portNumber)
     {
@@ -142,8 +142,15 @@ public class GrpcExperimentTester
         // Blocking call
         var iterator = this.blockingStub.experimentalResponseStream(request);
         while (iterator.hasNext()) {
-            var response = iterator.next();
-            System.out.println("[clt] blockingStub: " + response.getResponseMessage());
+            try {
+                var response = iterator.next();
+                System.out
+                    .println("[clt] blockingStub: " + response.getResponseMessage());
+            }
+            catch (Throwable ex) {
+                System.err.println("[clt] blockingStub: " + ex.getMessage());
+                break;
+            }
         }
         
         // Non-blocking call
