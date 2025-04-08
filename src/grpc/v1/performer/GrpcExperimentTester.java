@@ -5,11 +5,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.midfield_system.api.system.MfsNode;
 import com.midfield_system.grpc.v1.ExperimentalRequest;
 import com.midfield_system.grpc.v1.ExperimentalResponse;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc.GrpcExperimentBlockingStub;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc.GrpcExperimentStub;
+import com.midfield_system.grpc.v1.server.MfsGrpcServer;
 import com.midfield_system.grpc.v1.server.impl.RoundTripResponseStreamObserver;
 
 import io.grpc.stub.StreamObserver;
@@ -18,7 +20,34 @@ public class GrpcExperimentTester
     extends
         MfsGrpcExampleBase
 {
+    public static void main(String[] args)
+    {
+        int    portNumber    = MfsGrpcServer.DEFAULT_PORT_NUMBER;
+        String serverAddress = "localhost";
+
+        MfsNode mfsNode = null;
+        MfsGrpcExampleBase example = null;
+        try {
+            //MfsApplication.launch();
+            mfsNode = MfsNode.initialize(false);
+            mfsNode.activate();
+            MfsGrpcServer.launch(args, null);
+            
+            example = new GrpcExperimentTester(serverAddress, portNumber);
+            example.execute();
+        }
+        catch (Throwable th) {
+            th.printStackTrace();
+        }
+        finally {
+            example.shutdown();
+            mfsNode.shutdown();
+            System.out.println("[clt] > GrpcExperimentTester の終了完了");
+        }
+    }
+    
     private final GrpcExperimentBlockingStub blockingStub;
+    
     private final GrpcExperimentStub         stub;
     
     GrpcExperimentTester(String serverAddress, int portNumber)
@@ -43,38 +72,6 @@ public class GrpcExperimentTester
         }
         catch (IOException ex) {
             ex.printStackTrace();
-        }
-    }
-    
-    private void interactiveLoop(BufferedReader reader)
-    {
-        while (true) {
-            try {
-                System.out.println(
-                    "[clt] Enter a command (1: Request Stream, 2: Response Stream, 3: Round Trip, q: Quit): "
-                );
-                String command = reader.readLine();
-                
-                switch (command) {
-                case "1":
-                    callExperimentalRequestStream();
-                    break;
-                case "2":
-                    callExperimentalResponseStream();
-                    break;
-                case "3":
-                    callExperimentalRoundTrip();
-                    break;
-                case "q":
-                    System.out.println("[clt] Exiting...");
-                    return;
-                default:
-                    System.out.println("[clt] Invalid command. Please try again.");
-                }
-            }
-            catch (Throwable ex) {
-                ex.printStackTrace();
-            }
         }
     }
     
@@ -230,5 +227,37 @@ public class GrpcExperimentTester
                 + this.blockingStub.experimentalRoundTrip(successRequest)
                     .getResponseMessage()
         );
+    }
+    
+    private void interactiveLoop(BufferedReader reader)
+    {
+        while (true) {
+            try {
+                System.out.println(
+                    "[clt] Enter a command (1: Request Stream, 2: Response Stream, 3: Round Trip, q: Quit): "
+                );
+                String command = reader.readLine();
+                
+                switch (command) {
+                case "1":
+                    callExperimentalRequestStream();
+                    break;
+                case "2":
+                    callExperimentalResponseStream();
+                    break;
+                case "3":
+                    callExperimentalRoundTrip();
+                    break;
+                case "q":
+                    System.out.println("[clt] Exiting...");
+                    return;
+                default:
+                    System.out.println("[clt] Invalid command. Please try again.");
+                }
+            }
+            catch (Throwable ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 }

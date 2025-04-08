@@ -53,6 +53,7 @@ abstract class MfsGrpcExampleBase
         var response = this.nodeControl.disableControl(
             DisableControlRequest
                 .newBuilder()
+//                .setRequestMessage("Shutdown MfsNode")
                 .build()
         );
         System.out.println(response);
