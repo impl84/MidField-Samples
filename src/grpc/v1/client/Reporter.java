@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class Reporter
 {
+    // 使い回すScanner（System.inは閉じない）
+    private static final Scanner scanner = new Scanner(System.in);
+    
     public static void error(String errorMessage)
     {
         System.out.println("ERROR> " + errorMessage);
@@ -24,7 +27,7 @@ public class Reporter
     {
         System.out.printf(format, args);
     }
-
+    
     public static void println()
     {
         System.out.println();
@@ -35,16 +38,20 @@ public class Reporter
         System.out.println(message);
     }
     
+    public static String readLine(String prompt)
+    {
+        System.out.println(prompt);
+        return Reporter.scanner.nextLine();
+    }
+    
     public static void waitForEnter()
     {
         System.out.println("> Enter キーの入力を待ちます．");
-        try (Scanner scanner = new Scanner(System.in)) {
-            scanner.nextLine();
-        }
+        Reporter.scanner.nextLine();
     }
     
     public static void warning(String warningMessage)
     {
         System.out.println("WARNING> " + warningMessage);
-    }    
+    }
 }

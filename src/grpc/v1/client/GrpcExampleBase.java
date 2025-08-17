@@ -7,11 +7,11 @@ import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 
-abstract public class MfsGrpcExampleBase
+abstract public class GrpcExampleBase
 {
     private final ManagedChannel managedChannel;
     
-    public MfsGrpcExampleBase(String host, int port)
+    public GrpcExampleBase(String host, int port)
     {
         var creds = InsecureChannelCredentials.create();
         this.managedChannel = Grpc
@@ -21,8 +21,8 @@ abstract public class MfsGrpcExampleBase
         Runtime.getRuntime()
             .addShutdownHook(new ShutdownHookForGrpcClient(managedChannel));
         
-        System.out.println("gRPC client started for experiments on " + host + ":" + port);
-        System.out.println();
+        Reporter.println("gRPC client started for experiments on " + host + ":" + port);
+        Reporter.println();
     }
     
     abstract public void execute();
@@ -31,11 +31,11 @@ abstract public class MfsGrpcExampleBase
     {
         try {
             if (this.managedChannel == null) {
-                System.err.println("gRPC client was not initialized.");
+                Reporter.error("gRPC client was not initialized.");
                 return;
             }
-            System.out.println();
-            System.out.println("Shutting down ManagedChannel...");
+            Reporter.println();
+            Reporter.println("Shutting down ManagedChannel...");
             
             this.managedChannel.shutdown();
         }
@@ -51,10 +51,10 @@ abstract public class MfsGrpcExampleBase
             }
             finally {
                 if (this.managedChannel.isTerminated()) {
-                    System.out.println("ManagedChannel terminated gracefully.");
+                    Reporter.println("ManagedChannel terminated gracefully.");
                 }
                 else {
-                    System.err.println(
+                    Reporter.error(
                         "ManagedChannel hasn't been shut down yet, so shutting down NOW..."
                     );
                     this.managedChannel.shutdownNow();
@@ -89,30 +89,30 @@ class ShutdownHookForGrpcClient
     public void run()
     {
         try {
-            System.out.println();
-            System.out.println("Shutdown hook triggered for gRPC client.");
+            Reporter.println();
+            Reporter.println("Shutdown hook triggered for gRPC client.");
             
             if (this.managedChannel.isShutdown()) {
-                System.out.println("(ManagedChannel is already shut down.)");
+                Reporter.println("(ManagedChannel is already shut down.)");
             }
             if (this.managedChannel.isTerminated()) {
-                System.out.println("(ManagedChannel is already terminated.)");
+                Reporter.println("(ManagedChannel is already terminated.)");
                 return;
             }
-            System.err.println(
+            Reporter.error(
                 "ManagedChannel hasn't been shut down yet, so shutting down NOW..."
             );
             this.managedChannel.shutdownNow();
             
             this.managedChannel.awaitTermination(8, TimeUnit.SECONDS);
-            System.err.println("ManagedChannel terminated.");
+            Reporter.error("ManagedChannel terminated.");
         }
         catch (InterruptedException ex) {
-            System.err.printf("ManagedChannel shutdown interrupted.\n", ex);
+            Reporter.error("ManagedChannel shutdown interrupted.\n", ex);
         }
         finally {
             if (this.managedChannel.isTerminated() == false) {
-                System.err.println("ManagedChannel hasn't been terminated.");
+                Reporter.error("ManagedChannel hasn't been terminated.");
             }
         }
     }

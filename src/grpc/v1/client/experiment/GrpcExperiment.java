@@ -1,13 +1,12 @@
 
 package grpc.v1.client.experiment;
 
-import java.io.BufferedReader;
-
-import grpc.v1.client.MfsGrpcExampleBase;
+import grpc.v1.client.GrpcExampleBase;
+import grpc.v1.client.Reporter;
 
 public class GrpcExperiment
     extends
-        MfsGrpcExampleBase
+        GrpcExampleBase
 {
     public GrpcExperiment(String host, int port)
     {
@@ -17,60 +16,32 @@ public class GrpcExperiment
     @Override
     public void execute()
     {
-        GrpcClientExperimenter[] experimenters = {
-            new CltRoundTrip(getManagedChannel()),
-            new CltResponseStream(getManagedChannel()),
-            new CltRequestStream(getManagedChannel()),
-            new CltBidirectionalStream(getManagedChannel())
-        };
-        for (GrpcClientExperimenter experimenter : experimenters) {
-            experimenter.doExperiments();
-        }
-/*        
-        try (
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))
-        ) {
-            System.out.println("[clt] > GrpcExperimentTester#execute() を開始します．");
+        while (true) {
+            Reporter.println();
+            var number = Reporter.readLine(
+                "GrpcExperiment> Enter the number (1: Round Trip, 2: Response Stream, 3: Request Stream, 4: Bidirectional Stream, Other: Quit)"
+            );
             
-            this.interactiveLoop(reader);
-            
-            System.out.println("[clt] > GrpcExperimentTester#execute() を終了します．");
+            var experimenter = nextGrpcClientExperimenter(number);
+            if (experimenter != null) {
+                experimenter.doExperiments();
+            }
+            else {
+                Reporter.println("Quit");
+                break;
+            }
         }
-        catch (IOException ex) {
-            ex.printStackTrace();
-        }
-*/        
     }
     
-    private void interactiveLoop(BufferedReader reader)
+    private GrpcClientExperimenter nextGrpcClientExperimenter(String number)
     {
-        while (true) {
-            try {
-                System.out.println(
-                    "[clt] Enter a command (1: Request Stream, 2: Response Stream, 3: Round Trip, q: Quit): "
-                );
-                String command = reader.readLine();
-                
-                switch (command) {
-                case "1":
-//                    callExperimentalRequestStream();
-                    break;
-                case "2":
-//                    callExperimentalResponseStream();
-                    break;
-                case "3":
-//                    callExperimentalRoundTrip();
-                    break;
-                case "q":
-                    System.out.println("[clt] Exiting...");
-                    return;
-                default:
-                    System.out.println("[clt] Invalid command. Please try again.");
-                }
-            }
-            catch (Throwable ex) {
-                ex.printStackTrace();
-            }
-        }
+        var experimenter = switch (number) {
+        case "1" -> new CltRoundTrip(getManagedChannel());
+        case "2" -> new CltResponseStream(getManagedChannel());
+        case "3" -> new CltRequestStream(getManagedChannel());
+        case "4" -> new CltBidirectionalStream(getManagedChannel());
+        default  -> null;
+        };
+        return experimenter;
     }
 }

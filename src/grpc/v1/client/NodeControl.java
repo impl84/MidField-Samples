@@ -12,7 +12,7 @@ import com.midfield_system.grpc.v1.NodeEventRequest;
 
 class NodeControl
     extends
-        MfsGrpcExampleBase
+        GrpcExampleBase
 {
     private final NodeControlBlockingStub nodeControl;
     

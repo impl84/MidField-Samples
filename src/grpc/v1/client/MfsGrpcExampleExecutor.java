@@ -2,11 +2,10 @@
 package grpc.v1.client;
 
 import com.midfield_system.grpc.v1.server.MfsGrpcServer;
-import com.midfield_system.midfield.MfsApplication;
 
 import grpc.v1.client.experiment.GrpcExperiment;
 
-public class ExampleExecutor
+public class MfsGrpcExampleExecutor
 {
     private static final String HOST = "localhost";
     private static final int    PORT = MfsGrpcServer.DEFAULT_PORT_NUMBER;
@@ -21,10 +20,10 @@ public class ExampleExecutor
             exampleNumber = Integer.parseInt(args[0]);
         }
         
-        MfsGrpcExampleBase example = null;
+        GrpcExampleBase example = null;
         try {
-            MfsApplication.launch();
-            MfsGrpcServer.launch(args, null);
+            //MfsApplication.launch();
+            //MfsGrpcServer.launch(args, null);
             
             example = switch (exampleNumber) {
             case 0 -> new GrpcExperiment(HOST, PORT);
