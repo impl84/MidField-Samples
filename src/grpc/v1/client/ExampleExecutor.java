@@ -1,20 +1,22 @@
 
-package grpc.v1.performer;
+package grpc.v1.client;
 
 import com.midfield_system.grpc.v1.server.MfsGrpcServer;
 import com.midfield_system.midfield.MfsApplication;
 
+import grpc.v1.client.experiment.GrpcExperiment;
+
 public class ExampleExecutor
 {
-    private static final int    PORT_NUMBER    = MfsGrpcServer.DEFAULT_PORT_NUMBER;
-    private static final String SERVER_ADDRESS = "localhost";
+    private static final String HOST = "localhost";
+    private static final int    PORT = MfsGrpcServer.DEFAULT_PORT_NUMBER;
     
 //    @SuppressWarnings("unused")
 //    private static final String SOURCE_ADDRESS = "172.16.126.178";
     
     public static void main(String[] args)
     {
-        int exampleNumber = 0;
+        int exampleNumber = 1;
         if (args.length > 0) {
             exampleNumber = Integer.parseInt(args[0]);
         }
@@ -25,7 +27,8 @@ public class ExampleExecutor
             MfsGrpcServer.launch(args, null);
             
             example = switch (exampleNumber) {
-            case 0 -> new GrpcExperimentTester(SERVER_ADDRESS, PORT_NUMBER);
+            case 0 -> new GrpcExperiment(HOST, PORT);
+            case 1 -> new NodeControl(HOST, PORT);
 //            case 1  -> new DeviceToNetwork(SERVER_ADDRESS, PORT_NUMBER);
 //            case 2  -> new DeviceToNetwork(SERVER_ADDRESS, PORT_NUMBER);
 //            case 3  -> new DeviceToRenderer(SERVER_ADDRESS, PORT_NUMBER);

@@ -1,8 +1,8 @@
 
-package grpc.v1.performer;
+package grpc.v1.client;
 
+import java.io.IOException;
 import java.util.Iterator;
-import java.util.concurrent.TimeUnit;
 
 import com.midfield_system.grpc.v1.DisableControlRequest;
 import com.midfield_system.grpc.v1.EnableControlRequest;
@@ -11,66 +11,48 @@ import com.midfield_system.grpc.v1.NodeControlGrpc.NodeControlBlockingStub;
 import com.midfield_system.grpc.v1.NodeEventNotification;
 import com.midfield_system.grpc.v1.NodeEventRequest;
 
-import io.grpc.Grpc;
-import io.grpc.InsecureChannelCredentials;
-import io.grpc.ManagedChannel;
-
-abstract class MfsGrpcExampleBase
+class NodeControl
+    extends
+        MfsGrpcExampleBase
 {
-    private final ManagedChannel          managedChannel;
     private final NodeControlBlockingStub nodeControl;
     
-    MfsGrpcExampleBase(String serverAddress, int portNumber)
+    NodeControl(String serverAddress, int portNumber)
     {
-        var target = serverAddress + ":" + portNumber;
+        super(serverAddress, portNumber);
         
-        var channelCredentials = InsecureChannelCredentials.create();
-        
-        managedChannel = Grpc.newChannelBuilder(target, channelCredentials)
-            .build();
-        
-        this.nodeControl = NodeControlGrpc.newBlockingStub(managedChannel);
-        
-        var response = this.nodeControl.enableControl(
-            EnableControlRequest
-                .newBuilder()
+        this.nodeControl = NodeControlGrpc.newBlockingStub(getManagedChannel());
+    }
+    
+    @Override
+    public void execute()
+    {
+        var enableControlResponse = this.nodeControl.enableControl(
+            EnableControlRequest.newBuilder()
                 .build()
         );
-        System.out.println(response);
+        System.out.println(enableControlResponse);
         
         var iterator = this.nodeControl.subscribeNodeEvent(
-            NodeEventRequest
-                .newBuilder()
+            NodeEventRequest.newBuilder()
                 .build()
         );
         new Thread(() -> handleNodeEvent(iterator)).start();
-    }
-    
-    abstract void execute();
-    
-    void shutdown()
-    {
-        var response = this.nodeControl.disableControl(
-            DisableControlRequest
-                .newBuilder()
+        
+        try {
+            System.out.print("> Enter キーの入力を待ちます．");
+            System.in.read();
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        var disableControlResponse = this.nodeControl.disableControl(
+            DisableControlRequest.newBuilder()
 //                .setRequestMessage("Shutdown MfsNode")
                 .build()
         );
-        System.out.println(response);
-        
-        try {
-            this.managedChannel
-                .shutdownNow()
-                .awaitTermination(5, TimeUnit.SECONDS);
-        }
-        catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }   
-    }
-    
-    protected ManagedChannel getManagedChannel()
-    {
-        return this.managedChannel;
+        System.out.println(disableControlResponse);
     }
     
     private void handleNodeEvent(Iterator<NodeEventNotification> iterator)
