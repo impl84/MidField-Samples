@@ -16,7 +16,7 @@ public class ExampleExecutor
     
     public static void main(String[] args)
     {
-        int exampleNumber = 1;
+        int exampleNumber = 0;
         if (args.length > 0) {
             exampleNumber = Integer.parseInt(args[0]);
         }

@@ -1,7 +1,6 @@
 
 package grpc.v1.client;
 
-import java.io.IOException;
 import java.util.Iterator;
 
 import com.midfield_system.grpc.v1.DisableControlRequest;
@@ -31,7 +30,7 @@ class NodeControl
             EnableControlRequest.newBuilder()
                 .build()
         );
-        System.out.println(enableControlResponse);
+        Reporter.println("EnableControlResponse: " + enableControlResponse.getSuccess());
         
         var iterator = this.nodeControl.subscribeNodeEvent(
             NodeEventRequest.newBuilder()
@@ -39,20 +38,14 @@ class NodeControl
         );
         new Thread(() -> handleNodeEvent(iterator)).start();
         
-        try {
-            System.out.print("> Enter キーの入力を待ちます．");
-            System.in.read();
-        }
-        catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        Reporter.waitForEnter();
         
         var disableControlResponse = this.nodeControl.disableControl(
             DisableControlRequest.newBuilder()
 //                .setRequestMessage("Shutdown MfsNode")
                 .build()
         );
-        System.out.println(disableControlResponse);
+        Reporter.println("DisableControlResponse: " + disableControlResponse.getSuccess());
     }
     
     private void handleNodeEvent(Iterator<NodeEventNotification> iterator)
@@ -62,16 +55,16 @@ class NodeControl
             
             switch (response.getEventTypeCase()) {
             case LOG_MESSAGE_EVENT:
-                System.out.print(response.getLogMessageEvent().getEventMessage());
+                Reporter.println(response.getLogMessageEvent().getEventMessage());
                 break;
             case NODE_METRICS_EVENT:
-                System.out.println(response.getNodeMetricsEvent().getEventMessage());
+                Reporter.println(response.getNodeMetricsEvent().getEventMessage());
                 break;
             case NODE_EXCEPTION_EVENT:
-                System.out.println(response.getNodeExceptionEvent().getEventMessage());
+                Reporter.println(response.getNodeExceptionEvent().getEventMessage());
                 break;
             case EVENTTYPE_NOT_SET:
-                System.out.println(response.getEventTypeCase());
+                Reporter.println(response.getEventTypeCase().toString());
                 break;
             
             }

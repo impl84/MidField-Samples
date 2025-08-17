@@ -13,6 +13,7 @@ import io.grpc.ManagedChannel;
 
 /**
  * Experimental gRPC client for testing purposes.
+ * ■■■■■■■■必要がなくなるクラス．■■■■■■■■
  */
 public class ExperimentalGrpcClient
 {

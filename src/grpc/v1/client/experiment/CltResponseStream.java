@@ -4,12 +4,12 @@ package grpc.v1.client.experiment;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
-import com.midfield_system.api.log.Log;
 import com.midfield_system.api.util.Pauser;
 import com.midfield_system.grpc.v1.ExperimentalRequest;
 import com.midfield_system.grpc.v1.ExperimentalResponse;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc;
 
+import grpc.v1.client.Reporter;
 import io.grpc.Context;
 import io.grpc.ManagedChannel;
 
@@ -29,17 +29,17 @@ class CltResponseStream
     @Override
     public void doExperiments()
     {
-        Log.message();
-        Log.message("◆◆◆◆ Experiments for Response Stream ◆◆◆");
+        Reporter.println();
+        Reporter.println("◆◆◆◆ Experiments for Response Stream ◆◆◆");
         
-        Log.message();
-        Log.message("▼allBlockingResponseStreams");
+        Reporter.println();
+        Reporter.println("▼allBlockingResponseStreams");
         allBlockingResponseStreams(this.blockingStub);
         
         Pauser.forDuration(5000);
         
-        Log.message();
-        Log.message("▼allAsyncResponseStreams");
+        Reporter.println();
+        Reporter.println("▼allAsyncResponseStreams");
         allAsyncResponseStreams(this.asyncStub);
         
         Pauser.forDuration(5000);
@@ -141,7 +141,7 @@ class CltResponseStream
             );
         }
         catch (Throwable th) {
-            Log.error("asyncResponseStream(" + message + ")", th);
+           Reporter.error("asyncResponseStream(" + message + ")", th);
         }
     }
     
@@ -155,15 +155,15 @@ class CltResponseStream
                 .build();
             
             Iterator<ExperimentalResponse> it = stub.experimentalResponseStream(request);
-            Log.message();
+            Reporter.println();
             
             for (int i = 0; it.hasNext(); i++) {
                 var response = it.next();
-                Log.message("msg> in(%d)：%s", i + 1, response.getResponseMessage());
+                Reporter.printf("msg> in(%d)：%s\n", i + 1, response.getResponseMessage());
             }
         }
         catch (Throwable th) {
-            Log.error("blockingResponseStream(" + message + ")", th);
+            Reporter.error("blockingResponseStream(" + message + ")", th);
         }
     }
 }
@@ -182,18 +182,18 @@ class CltMultipleResponseObserver
     @Override
     public void onCompleted()
     {
-        Log.message("onCompleted> for message: " + this.message);
+        Reporter.println("onCompleted> for message: " + this.message);
     }
     
     @Override
     public void onError(Throwable th)
     {
-        Log.error("onError> for message: " + this.message, th);
+        Reporter.error("onError> for message: " + this.message, th);
     }
     
     @Override
     public void onNext(ExperimentalResponse response)
     {
-        Log.message("onNext> in：" + response.getResponseMessage());
+        Reporter.println("onNext> in：" + response.getResponseMessage());
     }
 }

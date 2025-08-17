@@ -3,12 +3,12 @@ package grpc.v1.client.experiment;
 
 import java.util.concurrent.TimeUnit;
 
-import com.midfield_system.api.log.Log;
 import com.midfield_system.api.util.Pauser;
 import com.midfield_system.grpc.v1.ExperimentalRequest;
 import com.midfield_system.grpc.v1.ExperimentalResponse;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc;
 
+import grpc.v1.client.Reporter;
 import io.grpc.ManagedChannel;
 import io.grpc.stub.ClientCallStreamObserver;
 
@@ -26,11 +26,11 @@ class CltBidirectionalStream
     @Override
     public void doExperiments()
     {
-        Log.message();
-        Log.message("◆◆◆◆ Experiments for Bidirectional Stream ◆◆◆◆");
+        Reporter.println();
+        Reporter.println("◆◆◆◆ Experiments for Bidirectional Stream ◆◆◆◆");
         
-        Log.message();
-        Log.message("▼allAsyncBidirectionalStreams");
+        Reporter.println();
+        Reporter.println("▼allAsyncBidirectionalStreams");
         allAsyncBidirectionalStreams(this.asyncStub);
         
         Pauser.forDuration(5000);
@@ -131,18 +131,18 @@ class CltBidirectionalMultipleResponseObserver
     @Override
     public void onCompleted()
     {
-        Log.message("onCompleted> for message: " + this.message);
+        Reporter.println("onCompleted> for message: " + this.message);
     }
     
     @Override
     public void onError(Throwable th)
     {
-        Log.error("onError> for message: " + this.message, th);
+        Reporter.error("onError> for message: " + this.message, th);
     }
     
     @Override
     public void onNext(ExperimentalResponse response)
     {
-        Log.message("onNext> in：" + response.getResponseMessage());
+        Reporter.println("onNext> in：" + response.getResponseMessage());
     }
 }

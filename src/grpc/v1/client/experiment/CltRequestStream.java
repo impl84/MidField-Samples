@@ -3,12 +3,12 @@ package grpc.v1.client.experiment;
 
 import java.util.concurrent.TimeUnit;
 
-import com.midfield_system.api.log.Log;
 import com.midfield_system.api.util.Pauser;
 import com.midfield_system.grpc.v1.ExperimentalRequest;
 import com.midfield_system.grpc.v1.ExperimentalResponse;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc;
 
+import grpc.v1.client.Reporter;
 import io.grpc.ManagedChannel;
 import io.grpc.stub.ClientCallStreamObserver;
 
@@ -26,11 +26,11 @@ class CltRequestStream
     @Override
     public void doExperiments()
     {
-        Log.message();
-        Log.message("◆◆◆◆ Experiments for Request Stream ◆◆◆");
+        Reporter.println();
+        Reporter.println("◆◆◆◆ Experiments for Request Stream ◆◆◆");
         
-        Log.message();
-        Log.message("▼allAsyncRequestStreams");
+        Reporter.println();
+        Reporter.println("▼allAsyncRequestStreams");
         allAsyncRequestStreams(this.asyncStub);
         
         Pauser.forDuration(5000);
@@ -129,18 +129,18 @@ class CltSingleResponseObserver
     @Override
     public void onCompleted()
     {
-        Log.message("onCompleted> for message: " + this.message);
+        Reporter.println("onCompleted> for message: " + this.message);
     }
     
     @Override
     public void onError(Throwable th)
     {
-        Log.error("onError> for message: " + this.message, th);
+        Reporter.error("onError> for message: " + this.message, th);
     }
     
     @Override
     public void onNext(ExperimentalResponse response)
     {
-        Log.message("onNext> in：" + response.getResponseMessage());
+        Reporter.println("onNext> in：" + response.getResponseMessage());
     }
 }

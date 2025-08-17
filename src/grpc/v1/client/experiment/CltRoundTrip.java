@@ -3,12 +3,12 @@ package grpc.v1.client.experiment;
 
 import java.util.concurrent.TimeUnit;
 
-import com.midfield_system.api.log.Log;
 import com.midfield_system.api.util.Pauser;
 import com.midfield_system.grpc.v1.ExperimentalRequest;
 import com.midfield_system.grpc.v1.ExperimentalResponse;
 import com.midfield_system.grpc.v1.GrpcExperimentGrpc;
 
+import grpc.v1.client.Reporter;
 import io.grpc.Context;
 import io.grpc.ManagedChannel;
 
@@ -28,18 +28,18 @@ class CltRoundTrip
     @Override
     public void doExperiments()
     {
-        Log.message();
-        Log.message("◆◆◆◆ Experiments for Round Trip ◆◆◆◆");
+        Reporter.println();
+        Reporter.println("◆◆◆◆ Experiments for Round Trip ◆◆◆◆");
         
-        Log.message();
-        Log.message("▼allBlockingRoundTrips");
+        Reporter.println();
+        Reporter.println("▼allBlockingRoundTrips");
         allBlockingRoundTrips(this.blockingStub);
         
         Pauser.forDuration(5000);
         
-        Log.message("▼allAsyncRoundTrips");
+        Reporter.println("▼allAsyncRoundTrips");
         allAsyncRoundTrips(this.asyncStub);
-        Log.message();
+        Reporter.println();
         
         Pauser.forDuration(5000);
     }
@@ -136,7 +136,7 @@ class CltRoundTrip
             );
         }
         catch (Throwable th) {
-            Log.error("asyncRoundTrip(" + message + ")", th);
+            Reporter.error("asyncRoundTrip(" + message + ")", th);
         }
     }
     
@@ -150,11 +150,11 @@ class CltRoundTrip
                 .build();
             
             var response = stub.experimentalRoundTrip(request);
-            Log.message();
-            Log.message("msg> in: " + response.getResponseMessage());
+            Reporter.println();
+            Reporter.println("msg> in: " + response.getResponseMessage());
         }
         catch (Throwable th) {
-            Log.error("blockingRoundTrip(" + message + ")", th);
+            Reporter.error("blockingRoundTrip(" + message + ")", th);
         }
     }
 }
@@ -173,18 +173,18 @@ class CltRoundTripResponseObserver
     @Override
     public void onCompleted()
     {
-        Log.message("onCompleted> for message: " + this.message);
+        Reporter.println("onCompleted> for message: " + this.message);
     }
     
     @Override
     public void onError(Throwable th)
     {
-        Log.error("onError> for message: " + this.message, th);
+        Reporter.error("onError> for message: " + this.message, th);
     }
     
     @Override
     public void onNext(ExperimentalResponse response)
     {
-        Log.message("onNext> in：" + response.getResponseMessage());
+        Reporter.println("onNext> in：" + response.getResponseMessage());
     }
 }
