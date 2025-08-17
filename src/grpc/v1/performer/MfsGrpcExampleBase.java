@@ -17,7 +17,7 @@ import io.grpc.ManagedChannel;
 
 abstract class MfsGrpcExampleBase
 {
-    private final ManagedChannel          channel;
+    private final ManagedChannel          managedChannel;
     private final NodeControlBlockingStub nodeControl;
     
     MfsGrpcExampleBase(String serverAddress, int portNumber)
@@ -26,10 +26,10 @@ abstract class MfsGrpcExampleBase
         
         var channelCredentials = InsecureChannelCredentials.create();
         
-        channel = Grpc.newChannelBuilder(target, channelCredentials)
+        managedChannel = Grpc.newChannelBuilder(target, channelCredentials)
             .build();
         
-        this.nodeControl = NodeControlGrpc.newBlockingStub(channel);
+        this.nodeControl = NodeControlGrpc.newBlockingStub(managedChannel);
         
         var response = this.nodeControl.enableControl(
             EnableControlRequest
@@ -59,7 +59,7 @@ abstract class MfsGrpcExampleBase
         System.out.println(response);
         
         try {
-            this.channel
+            this.managedChannel
                 .shutdownNow()
                 .awaitTermination(5, TimeUnit.SECONDS);
         }
@@ -70,7 +70,7 @@ abstract class MfsGrpcExampleBase
     
     protected ManagedChannel getManagedChannel()
     {
-        return this.channel;
+        return this.managedChannel;
     }
     
     private void handleNodeEvent(Iterator<NodeEventNotification> iterator)
@@ -83,7 +83,7 @@ abstract class MfsGrpcExampleBase
                 System.out.print(response.getLogMessageEvent().getEventMessage());
                 break;
             case NODE_METRICS_EVENT:
-//                System.out.println(response.getNodeMetricsEvent().getEventMessage());
+                System.out.println(response.getNodeMetricsEvent().getEventMessage());
                 break;
             case NODE_EXCEPTION_EVENT:
                 System.out.println(response.getNodeExceptionEvent().getEventMessage());
