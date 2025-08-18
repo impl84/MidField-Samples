@@ -14,7 +14,7 @@ import io.grpc.stub.ClientCallStreamObserver;
 
 class CltBidirectionalStream
     implements
-        GrpcClientExperimenter
+        Experimenter
 {
     private final GrpcExperimentGrpc.GrpcExperimentStub asyncStub;
     
@@ -26,11 +26,11 @@ class CltBidirectionalStream
     @Override
     public void doExperiments()
     {
-        Reporter.println();
-        Reporter.println("◆◆◆◆ Experiments for Bidirectional Stream ◆◆◆◆");
+        Reporter.message();
+        Reporter.message("◆◆◆◆ Experiments for Bidirectional Stream ◆◆◆◆");
         
-        Reporter.println();
-        Reporter.println("▼allAsyncBidirectionalStreams");
+        Reporter.message();
+        Reporter.message("▼allAsyncBidirectionalStreams");
         allAsyncBidirectionalStreams(this.asyncStub);
         
         Pauser.forDuration(5000);
@@ -131,7 +131,7 @@ class CltBidirectionalMultipleResponseObserver
     @Override
     public void onCompleted()
     {
-        Reporter.println("onCompleted> for message: " + this.message);
+        Reporter.message("onCompleted> for message: " + this.message);
     }
     
     @Override
@@ -143,6 +143,6 @@ class CltBidirectionalMultipleResponseObserver
     @Override
     public void onNext(ExperimentalResponse response)
     {
-        Reporter.println("onNext> in：" + response.getResponseMessage());
+        Reporter.message("onNext> in：" + response.getResponseMessage());
     }
 }

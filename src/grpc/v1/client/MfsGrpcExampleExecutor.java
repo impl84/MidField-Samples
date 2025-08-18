@@ -3,7 +3,7 @@ package grpc.v1.client;
 
 import com.midfield_system.grpc.v1.server.MfsGrpcServer;
 
-import grpc.v1.client.experiment.GrpcExperiment;
+import grpc.v1.client.experiment.GrpcExperimentExample;
 
 public class MfsGrpcExampleExecutor
 {
@@ -20,14 +20,14 @@ public class MfsGrpcExampleExecutor
             exampleNumber = Integer.parseInt(args[0]);
         }
         
-        GrpcExampleBase example = null;
+        ExampleBase example = null;
         try {
             //MfsApplication.launch();
             //MfsGrpcServer.launch(args, null);
             
             example = switch (exampleNumber) {
-            case 0 -> new GrpcExperiment(HOST, PORT);
-            case 1 -> new NodeControl(HOST, PORT);
+            case 0 -> new GrpcExperimentExample(HOST, PORT);
+            case 1 -> new NodeControlExample(HOST, PORT);
 //            case 1  -> new DeviceToNetwork(SERVER_ADDRESS, PORT_NUMBER);
 //            case 2  -> new DeviceToNetwork(SERVER_ADDRESS, PORT_NUMBER);
 //            case 3  -> new DeviceToRenderer(SERVER_ADDRESS, PORT_NUMBER);

@@ -15,7 +15,7 @@ import io.grpc.ManagedChannel;
 
 class CltResponseStream
     implements
-        GrpcClientExperimenter
+        Experimenter
 {
     private final GrpcExperimentGrpc.GrpcExperimentStub         asyncStub;
     private final GrpcExperimentGrpc.GrpcExperimentBlockingStub blockingStub;
@@ -29,17 +29,17 @@ class CltResponseStream
     @Override
     public void doExperiments()
     {
-        Reporter.println();
-        Reporter.println("◆◆◆◆ Experiments for Response Stream ◆◆◆");
+        Reporter.message();
+        Reporter.message("◆◆◆◆ Experiments for Response Stream ◆◆◆");
         
-        Reporter.println();
-        Reporter.println("▼allBlockingResponseStreams");
+        Reporter.message();
+        Reporter.message("▼allBlockingResponseStreams");
         allBlockingResponseStreams(this.blockingStub);
         
         Pauser.forDuration(5000);
         
-        Reporter.println();
-        Reporter.println("▼allAsyncResponseStreams");
+        Reporter.message();
+        Reporter.message("▼allAsyncResponseStreams");
         allAsyncResponseStreams(this.asyncStub);
         
         Pauser.forDuration(5000);
@@ -155,11 +155,11 @@ class CltResponseStream
                 .build();
             
             Iterator<ExperimentalResponse> it = stub.experimentalResponseStream(request);
-            Reporter.println();
+            Reporter.message();
             
             for (int i = 0; it.hasNext(); i++) {
                 var response = it.next();
-                Reporter.printf("msg> in(%d)：%s\n", i + 1, response.getResponseMessage());
+                Reporter.message("msg> in(%d)：%s\n", i + 1, response.getResponseMessage());
             }
         }
         catch (Throwable th) {
@@ -182,7 +182,7 @@ class CltMultipleResponseObserver
     @Override
     public void onCompleted()
     {
-        Reporter.println("onCompleted> for message: " + this.message);
+        Reporter.message("onCompleted> for message: " + this.message);
     }
     
     @Override
@@ -194,6 +194,6 @@ class CltMultipleResponseObserver
     @Override
     public void onNext(ExperimentalResponse response)
     {
-        Reporter.println("onNext> in：" + response.getResponseMessage());
+        Reporter.message("onNext> in：" + response.getResponseMessage());
     }
 }

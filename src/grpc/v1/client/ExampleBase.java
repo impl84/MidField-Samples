@@ -7,11 +7,11 @@ import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 
-abstract public class GrpcExampleBase
+abstract public class ExampleBase
 {
     private final ManagedChannel managedChannel;
     
-    public GrpcExampleBase(String host, int port)
+    public ExampleBase(String host, int port)
     {
         var creds = InsecureChannelCredentials.create();
         this.managedChannel = Grpc
@@ -21,8 +21,8 @@ abstract public class GrpcExampleBase
         Runtime.getRuntime()
             .addShutdownHook(new ShutdownHookForGrpcClient(managedChannel));
         
-        Reporter.println("gRPC client started for experiments on " + host + ":" + port);
-        Reporter.println();
+        Reporter.message("gRPC client started for experiments on " + host + ":" + port);
+        Reporter.message();
     }
     
     abstract public void execute();
@@ -31,30 +31,30 @@ abstract public class GrpcExampleBase
     {
         try {
             if (this.managedChannel == null) {
-                Reporter.error("gRPC client was not initialized.");
+                Reporter.warning("gRPC client was not initialized.");
                 return;
             }
-            Reporter.println();
-            Reporter.println("Shutting down ManagedChannel...");
+            Reporter.message();
+            Reporter.message("Shutting down ManagedChannel...");
             
             this.managedChannel.shutdown();
         }
         catch (Exception ex) {
-            System.err.printf("Unexpected error in gRPC client.\n", ex);
+            Reporter.error("Unexpected error in gRPC client.\n", ex);
         }
         finally {
             try {
                 this.managedChannel.awaitTermination(8, TimeUnit.SECONDS);
             }
             catch (InterruptedException ex) {
-                System.err.printf("ManagedChannel shutdown interrupted.", ex);
+                Reporter.warning("ManagedChannel shutdown interrupted.", ex);
             }
             finally {
                 if (this.managedChannel.isTerminated()) {
-                    Reporter.println("ManagedChannel terminated gracefully.");
+                    Reporter.message("ManagedChannel terminated gracefully.");
                 }
                 else {
-                    Reporter.error(
+                    Reporter.warning(
                         "ManagedChannel hasn't been shut down yet, so shutting down NOW..."
                     );
                     this.managedChannel.shutdownNow();
@@ -89,30 +89,30 @@ class ShutdownHookForGrpcClient
     public void run()
     {
         try {
-            Reporter.println();
-            Reporter.println("Shutdown hook triggered for gRPC client.");
+            Reporter.message();
+            Reporter.message("Shutdown hook triggered for gRPC client.");
             
             if (this.managedChannel.isShutdown()) {
-                Reporter.println("(ManagedChannel is already shut down.)");
+                Reporter.message("(ManagedChannel is already shut down.)");
             }
             if (this.managedChannel.isTerminated()) {
-                Reporter.println("(ManagedChannel is already terminated.)");
+                Reporter.message("(ManagedChannel is already terminated.)");
                 return;
             }
-            Reporter.error(
+            Reporter.warning(
                 "ManagedChannel hasn't been shut down yet, so shutting down NOW..."
             );
             this.managedChannel.shutdownNow();
             
             this.managedChannel.awaitTermination(8, TimeUnit.SECONDS);
-            Reporter.error("ManagedChannel terminated.");
+            Reporter.warning("ManagedChannel terminated.");
         }
         catch (InterruptedException ex) {
-            Reporter.error("ManagedChannel shutdown interrupted.\n", ex);
+            Reporter.warning("ManagedChannel shutdown interrupted.\n", ex);
         }
         finally {
             if (this.managedChannel.isTerminated() == false) {
-                Reporter.error("ManagedChannel hasn't been terminated.");
+                Reporter.warning("ManagedChannel hasn't been terminated.");
             }
         }
     }

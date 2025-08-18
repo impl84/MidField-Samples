@@ -14,7 +14,7 @@ import io.grpc.ManagedChannel;
 
 class CltRoundTrip
     implements
-        GrpcClientExperimenter
+        Experimenter
 {
     private final GrpcExperimentGrpc.GrpcExperimentStub         asyncStub;
     private final GrpcExperimentGrpc.GrpcExperimentBlockingStub blockingStub;
@@ -28,18 +28,18 @@ class CltRoundTrip
     @Override
     public void doExperiments()
     {
-        Reporter.println();
-        Reporter.println("◆◆◆◆ Experiments for Round Trip ◆◆◆◆");
+        Reporter.message();
+        Reporter.message("◆◆◆◆ Experiments for Round Trip ◆◆◆◆");
         
-        Reporter.println();
-        Reporter.println("▼allBlockingRoundTrips");
+        Reporter.message();
+        Reporter.message("▼allBlockingRoundTrips");
         allBlockingRoundTrips(this.blockingStub);
         
         Pauser.forDuration(5000);
         
-        Reporter.println("▼allAsyncRoundTrips");
+        Reporter.message("▼allAsyncRoundTrips");
         allAsyncRoundTrips(this.asyncStub);
-        Reporter.println();
+        Reporter.message();
         
         Pauser.forDuration(5000);
     }
@@ -150,8 +150,8 @@ class CltRoundTrip
                 .build();
             
             var response = stub.experimentalRoundTrip(request);
-            Reporter.println();
-            Reporter.println("msg> in: " + response.getResponseMessage());
+            Reporter.message();
+            Reporter.message("msg> in: " + response.getResponseMessage());
         }
         catch (Throwable th) {
             Reporter.error("blockingRoundTrip(" + message + ")", th);
@@ -173,7 +173,7 @@ class CltRoundTripResponseObserver
     @Override
     public void onCompleted()
     {
-        Reporter.println("onCompleted> for message: " + this.message);
+        Reporter.message("onCompleted> for message: " + this.message);
     }
     
     @Override
@@ -185,6 +185,6 @@ class CltRoundTripResponseObserver
     @Override
     public void onNext(ExperimentalResponse response)
     {
-        Reporter.println("onNext> in：" + response.getResponseMessage());
+        Reporter.message("onNext> in：" + response.getResponseMessage());
     }
 }

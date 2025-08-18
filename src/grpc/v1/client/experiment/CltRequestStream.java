@@ -14,7 +14,7 @@ import io.grpc.stub.ClientCallStreamObserver;
 
 class CltRequestStream
     implements
-        GrpcClientExperimenter
+        Experimenter
 {
     private final GrpcExperimentGrpc.GrpcExperimentStub asyncStub;
     
@@ -26,11 +26,11 @@ class CltRequestStream
     @Override
     public void doExperiments()
     {
-        Reporter.println();
-        Reporter.println("◆◆◆◆ Experiments for Request Stream ◆◆◆");
+        Reporter.message();
+        Reporter.message("◆◆◆◆ Experiments for Request Stream ◆◆◆");
         
-        Reporter.println();
-        Reporter.println("▼allAsyncRequestStreams");
+        Reporter.message();
+        Reporter.message("▼allAsyncRequestStreams");
         allAsyncRequestStreams(this.asyncStub);
         
         Pauser.forDuration(5000);
@@ -129,7 +129,7 @@ class CltSingleResponseObserver
     @Override
     public void onCompleted()
     {
-        Reporter.println("onCompleted> for message: " + this.message);
+        Reporter.message("onCompleted> for message: " + this.message);
     }
     
     @Override
@@ -141,6 +141,6 @@ class CltSingleResponseObserver
     @Override
     public void onNext(ExperimentalResponse response)
     {
-        Reporter.println("onNext> in：" + response.getResponseMessage());
+        Reporter.message("onNext> in：" + response.getResponseMessage());
     }
 }

@@ -10,13 +10,13 @@ import com.midfield_system.grpc.v1.NodeControlGrpc.NodeControlBlockingStub;
 import com.midfield_system.grpc.v1.NodeEventNotification;
 import com.midfield_system.grpc.v1.NodeEventRequest;
 
-class NodeControl
+class NodeControlExample
     extends
-        GrpcExampleBase
+        ExampleBase
 {
     private final NodeControlBlockingStub nodeControl;
     
-    NodeControl(String serverAddress, int portNumber)
+    NodeControlExample(String serverAddress, int portNumber)
     {
         super(serverAddress, portNumber);
         
@@ -30,7 +30,7 @@ class NodeControl
             EnableControlRequest.newBuilder()
                 .build()
         );
-        Reporter.println("EnableControlResponse: " + enableControlResponse.getSuccess());
+        Reporter.message("EnableControlResponse: " + enableControlResponse.getSuccess());
         
         var iterator = this.nodeControl.subscribeNodeEvent(
             NodeEventRequest.newBuilder()
@@ -45,7 +45,7 @@ class NodeControl
 //                .setRequestMessage("Shutdown MfsNode")
                 .build()
         );
-        Reporter.println("DisableControlResponse: " + disableControlResponse.getSuccess());
+        Reporter.message("DisableControlResponse: " + disableControlResponse.getSuccess());
     }
     
     private void handleNodeEvent(Iterator<NodeEventNotification> iterator)
@@ -55,16 +55,16 @@ class NodeControl
             
             switch (response.getEventTypeCase()) {
             case LOG_MESSAGE_EVENT:
-                Reporter.println(response.getLogMessageEvent().getEventMessage());
+                Reporter.message(response.getLogMessageEvent().getEventMessage());
                 break;
             case NODE_METRICS_EVENT:
-                Reporter.println(response.getNodeMetricsEvent().getEventMessage());
+                Reporter.message(response.getNodeMetricsEvent().getEventMessage());
                 break;
             case NODE_EXCEPTION_EVENT:
-                Reporter.println(response.getNodeExceptionEvent().getEventMessage());
+                Reporter.message(response.getNodeExceptionEvent().getEventMessage());
                 break;
             case EVENTTYPE_NOT_SET:
-                Reporter.println(response.getEventTypeCase().toString());
+                Reporter.message(response.getEventTypeCase().toString());
                 break;
             
             }

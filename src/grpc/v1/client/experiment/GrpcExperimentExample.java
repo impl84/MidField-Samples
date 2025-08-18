@@ -1,14 +1,14 @@
 
 package grpc.v1.client.experiment;
 
-import grpc.v1.client.GrpcExampleBase;
+import grpc.v1.client.ExampleBase;
 import grpc.v1.client.Reporter;
 
-public class GrpcExperiment
+public class GrpcExperimentExample
     extends
-        GrpcExampleBase
+        ExampleBase
 {
-    public GrpcExperiment(String host, int port)
+    public GrpcExperimentExample(String host, int port)
     {
         super(host, port);
     }
@@ -17,23 +17,27 @@ public class GrpcExperiment
     public void execute()
     {
         while (true) {
-            Reporter.println();
-            var number = Reporter.readLine(
-                "GrpcExperiment> Enter the number (1: Round Trip, 2: Response Stream, 3: Request Stream, 4: Bidirectional Stream, Other: Quit)"
-            );
+            Reporter.message("");
+            Reporter.message("--------------------------------------------------------");
+            Reporter.message("> 1: Round Trip");
+            Reporter.message("> 2: Response Stream");
+            Reporter.message("> 3: Request Stream");
+            Reporter.message("> 4: Bidirectional Stream");
+            Reporter.message("> The other: Quit");
+            var number = Reporter.readLine("> Enter the number: ");
             
             var experimenter = nextGrpcClientExperimenter(number);
             if (experimenter != null) {
                 experimenter.doExperiments();
             }
             else {
-                Reporter.println("Quit");
+                Reporter.message("Quit");
                 break;
             }
         }
     }
     
-    private GrpcClientExperimenter nextGrpcClientExperimenter(String number)
+    private Experimenter nextGrpcClientExperimenter(String number)
     {
         var experimenter = switch (number) {
         case "1" -> new CltRoundTrip(getManagedChannel());

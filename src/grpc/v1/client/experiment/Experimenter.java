@@ -1,7 +1,7 @@
 
 package grpc.v1.client.experiment;
 
-public interface GrpcClientExperimenter
+public interface Experimenter
 {
     void doExperiments();
 }
