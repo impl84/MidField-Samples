@@ -23,6 +23,7 @@ public class GrpcExperimentExample
             Reporter.message("> 2: Response Stream");
             Reporter.message("> 3: Request Stream");
             Reporter.message("> 4: Bidirectional Stream");
+            Reporter.message("> --");
             Reporter.message("> The other: Quit");
             var number = Reporter.readLine("> Enter the number: ");
             

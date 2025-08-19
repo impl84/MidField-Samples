@@ -7,10 +7,38 @@ import io.grpc.Grpc;
 import io.grpc.InsecureChannelCredentials;
 import io.grpc.ManagedChannel;
 
+/**
+ * Base class for gRPC client examples.
+ * 
+ * This class provides a managed channel for gRPC communication
+ * and handles the shutdown process.
+ * Subclasses must implement the `execute` method to define their specific behavior.
+ */
 abstract public class ExampleBase
 {
+    /**
+     * ManagedChannel for gRPC communication.
+     * This channel is created with insecure credentials for testing purposes.
+     * In production, consider using secure credentials.
+     */
     private final ManagedChannel managedChannel;
     
+    /**
+     * Shutdown hook for the gRPC client.
+     * This hook ensures that the managed channel is properly shut down when the JVM
+     * exits.
+     */
+    private final ShutdownHookForGrpcClient shutdownHook;
+    
+    /**
+     * Constructor for the ExampleBase class.
+     * Initializes the gRPC client with the specified host and port.
+     * 
+     * @param host
+     *        the hostname or IP address of the gRPC server.
+     * @param port
+     *        the port number on which the gRPC server is listening.
+     */
     public ExampleBase(String host, int port)
     {
         var creds = InsecureChannelCredentials.create();
@@ -18,15 +46,23 @@ abstract public class ExampleBase
             .newChannelBuilderForAddress(host, port, creds)
             .build();
         
-        Runtime.getRuntime()
-            .addShutdownHook(new ShutdownHookForGrpcClient(managedChannel));
+        this.shutdownHook = new ShutdownHookForGrpcClient(this.managedChannel);
+        Runtime.getRuntime().addShutdownHook(this.shutdownHook);
         
         Reporter.message("gRPC client started for experiments on " + host + ":" + port);
         Reporter.message();
     }
     
+    /**
+     * Executes the specific gRPC client example.
+     * This method must be implemented by subclasses to define their behavior.
+     */
     abstract public void execute();
     
+    /**
+     * Shuts down the gRPC client and its managed channel.
+     * This method gracefully shuts down the channel and waits for its termination.
+     */
     public void shutdown()
     {
         try {
@@ -52,6 +88,7 @@ abstract public class ExampleBase
             finally {
                 if (this.managedChannel.isTerminated()) {
                     Reporter.message("ManagedChannel terminated gracefully.");
+                    Runtime.getRuntime().removeShutdownHook(this.shutdownHook);
                 }
                 else {
                     Reporter.warning(
@@ -64,6 +101,12 @@ abstract public class ExampleBase
         
     }
     
+    /**
+     * Returns the managed channel for gRPC communication.
+     * This method is protected to allow access in subclasses.
+     * 
+     * @return the ManagedChannel instance used for gRPC communication.
+     */
     protected ManagedChannel getManagedChannel()
     {
         return this.managedChannel;
