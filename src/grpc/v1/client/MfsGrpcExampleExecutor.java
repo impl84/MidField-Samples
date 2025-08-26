@@ -8,7 +8,7 @@ import grpc.v1.client.experiment.GrpcExperimentExample;
 public class MfsGrpcExampleExecutor
 {
     private static final String HOST = "localhost";
-    private static final int    PORT = MfsGrpcServer.DEFAULT_PORT_NUMBER;
+    private static final int    PORT = MfsGrpcServer.DEFAULT_PORT;
     
 //    @SuppressWarnings("unused")
 //    private static final String SOURCE_ADDRESS = "172.16.126.178";
