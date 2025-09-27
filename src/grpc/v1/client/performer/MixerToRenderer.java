@@ -5,31 +5,26 @@ import grpc.v1.client.ExampleBase;
 import grpc.v1.client.PerformerControlClient;
 import grpc.v1.client.PerformerIoClient;
 import grpc.v1.client.PerformerManagerClient;
-import grpc.v1.client.SourceInfoClient;
 
-public class NetworkToRenderer
+public class MixerToRenderer
     extends
         ExampleBase
 {
-    private final String targetNode;
+    private static final String MIXER_NAME = "Experimental Mixer";
     
-    public NetworkToRenderer(String host, int port, String targetNode)
+    public MixerToRenderer(String host, int port)
     {
         super(host, port);
-        this.targetNode = targetNode;
     }
     
     @Override
     public void execute()
     {
-        var sourceInfo    = new SourceInfoClient(getManagedChannel());
-        var networkSource = sourceInfo.getFirstNetworkSource(this.targetNode);
-        
         var performerManager = new PerformerManagerClient(getManagedChannel());
-        var instanceId       = performerManager.registerPerformer("NetworkToRenderer");
+        var instanceId       = performerManager.registerPerformer("MixerToRenderer");
         
         var performerIo = new PerformerIoClient(getManagedChannel());
-        performerIo.configureNetworkSource(instanceId, networkSource);
+        performerIo.configureMixerSource(instanceId, MIXER_NAME);
         performerIo.configureRenderer(instanceId);
         
         var performerControl = new PerformerControlClient(getManagedChannel());

@@ -7,13 +7,13 @@ import grpc.v1.client.PerformerIoClient;
 import grpc.v1.client.PerformerManagerClient;
 import grpc.v1.client.SourceInfoClient;
 
-public class NetworkToRenderer
+public class NetworkToNetwork
     extends
         ExampleBase
 {
     private final String targetNode;
     
-    public NetworkToRenderer(String host, int port, String targetNode)
+    public NetworkToNetwork(String host, int port, String targetNode)
     {
         super(host, port);
         this.targetNode = targetNode;
@@ -26,11 +26,12 @@ public class NetworkToRenderer
         var networkSource = sourceInfo.getFirstNetworkSource(this.targetNode);
         
         var performerManager = new PerformerManagerClient(getManagedChannel());
-        var instanceId       = performerManager.registerPerformer("NetworkToRenderer");
+        var instanceId       = performerManager.registerPerformer("NetworkToNetwork");
         
         var performerIo = new PerformerIoClient(getManagedChannel());
         performerIo.configureNetworkSource(instanceId, networkSource);
-        performerIo.configureRenderer(instanceId);
+        var formatList = performerIo.listOutgoingStreamFormat(instanceId);
+        performerIo.configureNetworkOutput(instanceId, formatList);
         
         var performerControl = new PerformerControlClient(getManagedChannel());
         performerControl.controlPerformer(instanceId);

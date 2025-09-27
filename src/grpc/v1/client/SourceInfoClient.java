@@ -2,8 +2,10 @@
 package grpc.v1.client;
 
 import com.midfield_system.grpc.v1.ListDeviceSourcesRequest;
+import com.midfield_system.grpc.v1.ListMixerSourcesRequest;
 import com.midfield_system.grpc.v1.ListNetworkSourcesRequest;
 import com.midfield_system.grpc.v1.MediaType;
+import com.midfield_system.grpc.v1.MixerSource;
 import com.midfield_system.grpc.v1.NetworkSource;
 import com.midfield_system.grpc.v1.SourceInfoGrpc;
 import com.midfield_system.grpc.v1.SourceInfoGrpc.SourceInfoBlockingStub;
@@ -42,7 +44,20 @@ public class SourceInfoClient
         return new DeviceSourceEntry(sourceId, formatIndex);
     }
     
-    public NetworkSource getDefaultNetworkSource(String targetNode)
+    public MixerSource getFirstMixerSource()
+    {
+        var request = ListMixerSourcesRequest.newBuilder()
+            .build();
+        
+        var response = this.blockingStub.listMixerSources(request);
+        if (response.getMixerSourcesCount() == 0) {
+            throw new RuntimeException("ミキサーソースが見つかりません");
+        }
+        var mixerSource = response.getMixerSourcesList().get(0);
+        return mixerSource;
+    }
+    
+    public NetworkSource getFirstNetworkSource(String targetNode)
     {
         var request = ListNetworkSourcesRequest.newBuilder()
             .setTargetNode(targetNode)

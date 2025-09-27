@@ -1,36 +1,38 @@
 
 package grpc.v1.client.performer;
 
+import com.midfield_system.grpc.v1.MediaType;
+
 import grpc.v1.client.ExampleBase;
 import grpc.v1.client.PerformerControlClient;
 import grpc.v1.client.PerformerIoClient;
 import grpc.v1.client.PerformerManagerClient;
 import grpc.v1.client.SourceInfoClient;
 
-public class NetworkToRenderer
+public class DeviceToMixerInput
     extends
         ExampleBase
 {
-    private final String targetNode;
-    
-    public NetworkToRenderer(String host, int port, String targetNode)
+    public DeviceToMixerInput(String host, int port)
     {
         super(host, port);
-        this.targetNode = targetNode;
     }
     
     @Override
     public void execute()
     {
-        var sourceInfo    = new SourceInfoClient(getManagedChannel());
-        var networkSource = sourceInfo.getFirstNetworkSource(this.targetNode);
+        var sourceInfo = new SourceInfoClient(getManagedChannel());
+        var videoEntry = sourceInfo.getDefaultDeviceSourceEntry(MediaType.VIDEO);
+        var audioEntry = sourceInfo.getDefaultDeviceSourceEntry(MediaType.AUDIO);
+        
+        var mixerSource = sourceInfo.getFirstMixerSource();
         
         var performerManager = new PerformerManagerClient(getManagedChannel());
-        var instanceId       = performerManager.registerPerformer("NetworkToRenderer");
+        var instanceId       = performerManager.registerPerformer("DeviceToMixerInput");
         
         var performerIo = new PerformerIoClient(getManagedChannel());
-        performerIo.configureNetworkSource(instanceId, networkSource);
-        performerIo.configureRenderer(instanceId);
+        performerIo.configureDeviceSource(instanceId, videoEntry, audioEntry);
+        performerIo.configureMixerInput(instanceId, mixerSource);
         
         var performerControl = new PerformerControlClient(getManagedChannel());
         performerControl.controlPerformer(instanceId);

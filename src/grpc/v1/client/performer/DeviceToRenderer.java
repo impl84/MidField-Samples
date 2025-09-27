@@ -8,7 +8,6 @@ import grpc.v1.client.PerformerControlClient;
 import grpc.v1.client.PerformerIoClient;
 import grpc.v1.client.PerformerManagerClient;
 import grpc.v1.client.SourceInfoClient;
-import io.grpc.StatusRuntimeException;
 
 public class DeviceToRenderer
     extends
@@ -21,20 +20,6 @@ public class DeviceToRenderer
     
     @Override
     public void execute()
-    {
-        try {
-            setupAndControlPerformer();
-        }
-        catch (StatusRuntimeException ex) {
-            System.err.println("gRPCエラー: " + ex.getStatus() + " - " + ex.getMessage());
-        }
-        catch (Exception ex) {
-            System.err.println("実行時エラー: " + ex.getMessage());
-            ex.printStackTrace();
-        }
-    }
-    
-    private void setupAndControlPerformer()
     {
         var sourceInfo = new SourceInfoClient(getManagedChannel());
         var videoEntry = sourceInfo.getDefaultDeviceSourceEntry(MediaType.VIDEO);
