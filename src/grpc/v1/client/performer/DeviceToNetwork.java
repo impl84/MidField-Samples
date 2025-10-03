@@ -30,7 +30,7 @@ public class DeviceToNetwork
         
         var performerIo = new PerformerIoClient(getManagedChannel());
         performerIo.configureDeviceSource(instanceId, videoEntry, audioEntry);
-        var formatList = performerIo.listOutgoingStreamFormat(instanceId);
+        var formatList = performerIo.listOutgoingStreamFormats(instanceId);
         performerIo.configureNetworkOutput(instanceId, formatList);
         
         var performerControl = new PerformerControlClient(getManagedChannel());

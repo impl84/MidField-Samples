@@ -29,7 +29,7 @@ public class NetworkToNetwork
         
         var performerIo = new PerformerIoClient(getManagedChannel());
         performerIo.configureNetworkSource(instanceId, networkSource);
-        var formatList = performerIo.listOutgoingStreamFormat(instanceId);
+        var formatList = performerIo.listOutgoingStreamFormats(instanceId);
         performerIo.configureNetworkOutput(instanceId, formatList);
         
         var performerControl = new PerformerControlClient(getManagedChannel());

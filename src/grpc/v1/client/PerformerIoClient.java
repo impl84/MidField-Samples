@@ -6,8 +6,8 @@ import com.midfield_system.grpc.v1.ConfigureDestinationRequest;
 import com.midfield_system.grpc.v1.ConfigureSourceRequest;
 import com.midfield_system.grpc.v1.ConnectionMode;
 import com.midfield_system.grpc.v1.DeviceSourceSettings;
-import com.midfield_system.grpc.v1.ListOutgoingStreamFormatRequest;
-import com.midfield_system.grpc.v1.ListOutgoingStreamFormatResponse;
+import com.midfield_system.grpc.v1.ListOutgoingStreamFormatsRequest;
+import com.midfield_system.grpc.v1.ListOutgoingStreamFormatsResponse;
 import com.midfield_system.grpc.v1.MixerInputSettings;
 import com.midfield_system.grpc.v1.MixerSource;
 import com.midfield_system.grpc.v1.MixerSourceSettings;
@@ -109,7 +109,7 @@ public class PerformerIoClient
     }
     
     public void configureNetworkOutput(
-        String instanceId, ListOutgoingStreamFormatResponse formatList
+        String instanceId, ListOutgoingStreamFormatsResponse formatList
     )
     {
         var networkOutputSettings = NetworkOutputSettings.newBuilder()
@@ -171,13 +171,13 @@ public class PerformerIoClient
         }
     }
     
-    public ListOutgoingStreamFormatResponse listOutgoingStreamFormat(String instanceId)
+    public ListOutgoingStreamFormatsResponse listOutgoingStreamFormats(String instanceId)
     {
-        var request = ListOutgoingStreamFormatRequest.newBuilder()
+        var request = ListOutgoingStreamFormatsRequest.newBuilder()
             .setInstanceId(instanceId)
             .build();
         
-        var response = this.blockingStub.listOutgoingStreamFormat(request);
+        var response = this.blockingStub.listOutgoingStreamFormats(request);
         return response;
     }
 }
