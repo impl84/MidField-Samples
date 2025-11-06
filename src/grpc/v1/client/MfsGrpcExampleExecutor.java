@@ -7,6 +7,7 @@ import grpc.v1.client.experiment.GrpcExperimentExample;
 import grpc.v1.client.performer.DeviceToMixerInput;
 import grpc.v1.client.performer.DeviceToNetwork;
 import grpc.v1.client.performer.DeviceToRenderer;
+import grpc.v1.client.performer.MixerControlExample;
 import grpc.v1.client.performer.MixerToRenderer;
 import grpc.v1.client.performer.NetworkToNetwork;
 import grpc.v1.client.performer.NetworkToRenderer;
@@ -27,6 +28,8 @@ public class MfsGrpcExampleExecutor
         "> 5: NetworkToNetwork",
         "> 6: MixerToRenderer",
         "> 7: DeviceToMixerInput",
+        "> --",
+        "> 8: MixerControlExample",
         "> --",
         "> The other: Quit",
     };
@@ -80,6 +83,7 @@ public class MfsGrpcExampleExecutor
         case "5" -> new NetworkToNetwork(HOST, PORT);
         case "6" -> new MixerToRenderer(HOST, PORT);
         case "7" -> new DeviceToMixerInput(HOST, PORT);
+        case "8" -> new MixerControlExample(HOST, PORT);
         default  -> null;
         };
         return example;

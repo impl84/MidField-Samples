@@ -1,6 +1,7 @@
 
 package util;
 
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -8,13 +9,11 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import com.midfield_system.api.viewer.VideoCanvas;
-
 /**
  * 
  * Sample code for MidField API
  *
- * Date Modified: 2021.09.19
+ * Date Modified: 2025.11.12
  *
  */
 @SuppressWarnings("serial")
@@ -43,10 +42,10 @@ public class SimpleViewer
     
     // - PUBLIC METHOD ---------------------------------------------------------
     //
-    public SimpleViewer(String title, VideoCanvas vidCvs)
+    public SimpleViewer(String title, Canvas canvas)
     {
         this(title);
-        addVideoCanvas(vidCvs);
+        addCanvas(canvas);
     }
     
     // - PUBLIC METHOD ---------------------------------------------------------
@@ -59,25 +58,25 @@ public class SimpleViewer
     
     // - PUBLIC METHOD ---------------------------------------------------------
     //
-    public void addVideoCanvas(VideoCanvas vidCvs)
+    public void addCanvas(Canvas canvas)
     {
-        if (vidCvs == null) {
+        if (canvas == null) {
             return;
         }
         Container container = getContentPane();
-        container.add(vidCvs);
+        container.add(canvas);
         validate();
     }
     
     // - PUBLIC METHOD ---------------------------------------------------------
     //
-    public void removeVideoCanvas(VideoCanvas vidCvs)
+    public void removeCanvas(Canvas canvas)
     {
-        if (vidCvs == null) {
+        if (canvas == null) {
             return;
         }
         Container container = getContentPane();
-        container.remove(vidCvs);
+        container.remove(canvas);
         validate();
     }
     

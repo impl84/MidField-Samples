@@ -17,7 +17,7 @@ public class PerformerControlClient
         this.blockingStub = PerformerControlGrpc.newBlockingStub(managedChannel);
     }
     
-    public void controlPerformer(String instanceId)
+    public void openAndStart(String instanceId)
     {
         var request = PerformerControlRequest.newBuilder()
             .setInstanceId(instanceId)
@@ -27,7 +27,9 @@ public class PerformerControlClient
         
         response = this.blockingStub.openPerformer(request);
         if (response.getSuccess() == false) {
-            throw new RuntimeException("openPerformer 失敗: " + response.getErrorMessage());
+            throw new RuntimeException(
+                "openPerformer 失敗: " + response.getErrorMessage()
+            );
         }
         response = this.blockingStub.startPerformer(request);
         if (response.getSuccess() == false) {
@@ -35,12 +37,21 @@ public class PerformerControlClient
                 "startPerformer 失敗: " + response.getErrorMessage()
             );
         }
+    }
+    
+    public void stopAndClose(String instanceId)
+    {
+        var request = PerformerControlRequest.newBuilder()
+            .setInstanceId(instanceId)
+            .build();
         
-        Reporter.readLine("> Enter キーの入力を待ちます．");
+        PerformerControlResponse response;
         
         response = this.blockingStub.stopPerformer(request);
         if (response.getSuccess() == false) {
-            throw new RuntimeException("stopPerformer 失敗: " + response.getErrorMessage());
+            throw new RuntimeException(
+                "stopPerformer 失敗: " + response.getErrorMessage()
+            );
         }
         response = this.blockingStub.closePerformer(request);
         if (response.getSuccess() == false) {

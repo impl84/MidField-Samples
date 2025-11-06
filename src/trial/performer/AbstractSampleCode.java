@@ -214,7 +214,7 @@ abstract class AbstractSampleCode
         // StreamPerformer が映像表示に利用する VideoCanvas を取得し，
         // SimpleViewer ビューワに追加する．
         VideoCanvas vidCvs = this.pfmr.getVideoCanvas();
-        this.viewer.addVideoCanvas(vidCvs);
+        this.viewer.addCanvas(vidCvs);
     }
     
     // - PRIVATE METHOD --------------------------------------------------------

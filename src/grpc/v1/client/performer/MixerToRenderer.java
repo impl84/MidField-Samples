@@ -5,6 +5,7 @@ import grpc.v1.client.ExampleBase;
 import grpc.v1.client.PerformerControlClient;
 import grpc.v1.client.PerformerIoClient;
 import grpc.v1.client.PerformerManagerClient;
+import grpc.v1.client.Reporter;
 
 public class MixerToRenderer
     extends
@@ -28,6 +29,10 @@ public class MixerToRenderer
         performerIo.configureRenderer(instanceId);
         
         var performerControl = new PerformerControlClient(getManagedChannel());
-        performerControl.controlPerformer(instanceId);
+        performerControl.openAndStart(instanceId);
+
+        Reporter.readLine("> Enter キーの入力を待ちます．");
+        
+        performerControl.stopAndClose(instanceId);
     }
 }
